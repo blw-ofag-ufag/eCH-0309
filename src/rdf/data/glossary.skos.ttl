@@ -3,8 +3,8 @@
 # ==============================================================================
 
 # Project-specific namespaces/qnames
-@prefix :                <https://agriculture.ld.admin.ch/eCH-1234/2/> .
-@prefix term:            <https://agriculture.ld.admin.ch/eCH-1234/2/term/> .
+@prefix :                <https://agriculture.ld.admin.ch/eCH-0309/2/> .
+@prefix term:            <https://agriculture.ld.admin.ch/eCH-0309/2/term/> .
 
 # Globally used namespaces/qnames
 @prefix schema:          <http://schema.org/> .
@@ -15,9 +15,9 @@
 # ==============================================================================
 
 :glossary a skos:ConceptScheme ;
-    schema:name "Glossar des Standards eCH-1234"@de,
-        "Glossary of the eCH-1234 standard"@en,
-        "Glossaire de la norme eCH-1234"@fr .
+    schema:name "Glossar des Standards eCH-0309"@de,
+        "Glossary of the eCH-0309 standard"@en,
+        "Glossaire de la norme eCH-0309"@fr .
 
 # ==============================================================================
 # GLOSSARY TERMS

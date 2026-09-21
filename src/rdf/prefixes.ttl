@@ -4,20 +4,7 @@
 # ==============================================================================
 
 # Project-specific namespaces/qnames
-@prefix :                <https://agriculture.ld.admin.ch/eCH-1234/2/> .
-@prefix term:            <https://agriculture.ld.admin.ch/eCH-1234/2/term/> .
-@prefix address:         <https://agriculture.ld.admin.ch/eCH-1234/2/address/> .
-@prefix album:           <https://agriculture.ld.admin.ch/eCH-1234/2/album/> .
-@prefix artist:          <https://agriculture.ld.admin.ch/eCH-1234/2/artist/> .
-@prefix customer:        <https://agriculture.ld.admin.ch/eCH-1234/2/customer/> .
-@prefix employee:        <https://agriculture.ld.admin.ch/eCH-1234/2/employee/> .
-@prefix genre:           <https://agriculture.ld.admin.ch/eCH-1234/2/genre/> .
-@prefix invline:         <https://agriculture.ld.admin.ch/eCH-1234/2/invoiceline/> .
-@prefix invoice:         <https://agriculture.ld.admin.ch/eCH-1234/2/invoice/> .
-@prefix media:           <https://agriculture.ld.admin.ch/eCH-1234/2/mediatype/> .
-@prefix playlist:        <https://agriculture.ld.admin.ch/eCH-1234/2/playlist/> .
-@prefix track:           <https://agriculture.ld.admin.ch/eCH-1234/2/tracks/> .
-@prefix person:          <https://agriculture.ld.admin.ch/eCH-1234/2/person/> .
+@prefix :                <https://agriculture.ld.admin.ch/eCH-0309/1/> .
 
 # LINDAS-specific namespaces/qnames
 @prefix org:             <https://register.ld.admin.ch/opendataswiss/org/> .

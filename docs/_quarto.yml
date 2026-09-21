@@ -7,8 +7,8 @@ project:
     - en/index.qmd
 
 website:
-  title: eCH-1234 Version 2.4.1 (Working Draft)
-  repo-url: https://github.com/blw-ofag-ufag/semantic-web-template
+  title: eCH-0309 Version 1.0.0 (Working Draft)
+  repo-url: hhttps://github.com/blw-ofag-ufag/eCH-0309
   repo-subdir: docs
   repo-actions: [source, issue]
   favicon: assets/favicon.svg
@@ -16,7 +16,7 @@ website:
     background: dark
     right:
       - icon: github
-        href: https://github.com/blw-ofag-ufag/semantic-web-template
+        href: https://github.com/blw-ofag-ufag/eCH-0309
       - icon: envelope
         href: mailto:agridata.ch@blw.admin.ch
       - icon: translate
@@ -52,7 +52,7 @@ format:
     toc: true
     toc-depth: 2
     number-sections: true
-    reference-doc: https://s.zazuko.com/MHXTkQ
+    # reference-doc: https://s.zazuko.com/MHXTkQ
     link-citations: true
   typst:
     toc: true
