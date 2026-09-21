@@ -1,0 +1,62 @@
+# ==============================================================================
+# NON-NORMATIVE EXAMPLE GRAPH
+#
+# This file exercises every class and every association of
+# src/rdf/shapes/model.shacl.ttl so that the shapes are actually validated by
+# tests/test_model.py.
+#
+# It deliberately lives under tests/ and NOT under src/rdf/data/: the Makefile
+# merges src/rdf/data/*.ttl into build/rdf/03-processed.ttl, which `make
+# publish` uploads to LINDAS. Nothing here is part of the standard, so nothing
+# here may be published.
+#
+# The identifiers are fictitious.
+# ==============================================================================
+
+@prefix :              <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix animalkeeper:  <https://agriculture.ld.admin.ch/eCH-0309/1/animalkeeper/> .
+@prefix localunit:     <https://agriculture.ld.admin.ch/eCH-0309/1/localunit/> .
+@prefix animal:        <https://agriculture.ld.admin.ch/eCH-0309/1/animal/> .
+@prefix notification:  <https://agriculture.ld.admin.ch/eCH-0309/1/notification/> .
+@prefix healthstatus:  <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatus/> .
+
+# A keeper with two holdings. The keeper satisfies the sh:sparql constraint on
+# :AnimalKeeperShape only because at least one local unit points back at it.
+animalkeeper:1 a :AnimalKeeper .
+
+localunit:1 a :LocalUnit ;
+    :animalKeeper animalkeeper:1 .
+
+localunit:2 a :LocalUnit ;
+    :animalKeeper animalkeeper:1 .
+
+# Three individual animals plus one equid.
+animal:1 a :Animal .
+
+animal:2 a :Animal .
+
+animal:3 a :Animal ;
+    :mother animal:1 ;
+    :father animal:2 .
+
+animal:4 a :Equid .
+
+# A move of animal:3 from localunit:1 to localunit:2, and a group notification
+# for a herd of pigs or poultry on localunit:1.
+notification:1 a :AnimalNotification ;
+    :animal animal:3 ;
+    :localUnit localunit:2 ;
+    :originLocalUnit localunit:1 .
+
+notification:2 a :GroupNotification ;
+    :localUnit localunit:1 .
+
+healthstatus:1 a :LocalUnitHealthStatus ;
+    :localUnit localunit:1 .
+
+# Load-bearing assertion: :animal requires sh:class :Animal, but animal:4 is
+# typed :Equid only. sh:class traverses rdfs:subClassOf*, so this conforms only
+# as long as :Equid rdfs:subClassOf :Animal is in scope -- it breaks the moment
+# the specialization is dropped from src/rdf/ontology/model.owl.ttl.
+healthstatus:2 a :AnimalHealthStatus ;
+    :animal animal:4 .

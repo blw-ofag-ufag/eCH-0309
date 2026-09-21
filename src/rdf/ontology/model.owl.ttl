@@ -4,3 +4,61 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix schema: <http://schema.org/> .
 
+# ==============================================================================
+# CLASSES
+#
+# Taxonomy only. All constraints (cardinalities, value types) live in
+# src/rdf/shapes/model.shacl.ttl; all labels and descriptions live there too,
+# because src/python/utils/generate_shacl_docs.py reads the shapes file only.
+# ==============================================================================
+
+:AnimalKeeper a owl:Class .
+
+:LocalUnit a owl:Class .
+
+:Animal a owl:Class .
+
+:Equid a owl:Class ;
+    rdfs:subClassOf :Animal .
+
+:AnimalNotification a owl:Class .
+
+:GroupNotification a owl:Class .
+
+:LocalUnitHealthStatus a owl:Class .
+
+:AnimalHealthStatus a owl:Class .
+
+# ==============================================================================
+# OBJECT PROPERTIES
+#
+# Declared without rdfs:domain/rdfs:range on purpose: :localUnit has three
+# domains, and under ClassAssertion inference a domain axiom would manufacture
+# types instead of flagging malformed data.
+# ==============================================================================
+
+:animalKeeper a owl:ObjectProperty .
+
+:localUnit a owl:ObjectProperty .
+
+:originLocalUnit a owl:ObjectProperty .
+
+:animal a owl:ObjectProperty .
+
+:mother a owl:ObjectProperty .
+
+:father a owl:ObjectProperty .
+
+# ==============================================================================
+# ANNOTATION PROPERTIES
+#
+# Provenance of every class and property: the term used in the Objektkatalog
+# (section 3.3 of the Hilfsmittel) and the corresponding schema name in the
+# AnimalTracing / TVD openAPI specification. Annotation properties are ignored
+# by the reasoner, and their values carry no language tag, so they impose no
+# translation burden (see tests/test_translations.py).
+# ==============================================================================
+
+:sourceTerm a owl:AnnotationProperty .
+
+:animalTracingTerm a owl:AnnotationProperty .
