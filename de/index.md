@@ -1,4 +1,4 @@
-# eCH-1234 Quarto-Dokument als Vorlage
+# eCH-0309 Quarto-Dokument als Vorlage
 
 21. September 2026
 
@@ -54,9 +54,7 @@ Schreibweisen werden nicht verwendet.
 
 ## Status
 
-Genehmigt: Dieses Dokument wurde vom Fach-Ausschuss verabschiedet. Es
-entfaltet normative Kraft für den definierten Anwendungsbereich im
-festgelegten Geltungsbereich.
+In Arbeit
 
 ## Geltungsbereich
 
