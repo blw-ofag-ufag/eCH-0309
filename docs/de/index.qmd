@@ -1,5 +1,5 @@
 ---
-title: eCH-1234 Quarto-Dokument als Vorlage
+title: eCH-0309 Quarto-Dokument als Vorlage
 abstract: Kurze Zusammenfassung des Zwecks dieses Dokuments
 date: today
 date-format: long
@@ -14,7 +14,7 @@ Im vorliegenden Dokument wird bei der Bezeichnung von Personen eine geschlechtsn
 
 ## Status {#sec-status}
 
-Genehmigt: Dieses Dokument wurde vom Fach-Ausschuss verabschiedet. Es entfaltet normative Kraft für den definierten Anwendungsbereich im festgelegten Geltungsbereich.
+In Arbeit
 
 ## Geltungsbereich {#sec-scope-of-application}
 
