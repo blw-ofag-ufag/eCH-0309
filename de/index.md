@@ -1,0 +1,295 @@
+# eCH-1234 Quarto-Dokument als Vorlage
+
+21. September 2026
+
+- [Hinweis](#sec-note)
+- [<span class="toc-section-number">1</span>
+  Einleitung](#sec-introduction)
+  - [<span class="toc-section-number">1.1</span> Status](#sec-status)
+  - [<span class="toc-section-number">1.2</span>
+    Geltungsbereich](#sec-scope-of-application)
+  - [<span class="toc-section-number">1.3</span> Wir können Untertitel
+    haben](#sec-example-subheading)
+- [<span class="toc-section-number">2</span> Technische
+  Hinweise](#sec-technical-notes)
+- [<span class="toc-section-number">3</span>
+  Datenmodell](#sec-data-model)
+- [<span class="toc-section-number">4</span>
+  Datenbezug](#sec-data-retrieval)
+- [<span class="toc-section-number">5</span>
+  Sicherheitsaspekte](#sec-safety-consideration)
+- [<span class="toc-section-number">6</span>
+  Haftungsausschluss](#sec-disclaimer)
+- [<span class="toc-section-number">7</span>
+  Urheberrechte](#sec-copyrights)
+- [<span class="toc-section-number">8</span> Anhang A -
+  Referenzen](#sec-appendix-a)
+- [<span class="toc-section-number">9</span> Anhang B - Mitwirkung und
+  Prüfung](#sec-appendix-b)
+- [<span class="toc-section-number">10</span> Anhang C - Abkürzungen und
+  Glossar](#sec-appendix-c)
+- [<span class="toc-section-number">11</span> Anhang D - Änderungen
+  gegenüber der Vorversion](#sec-appendix-d)
+- [<span class="toc-section-number">12</span> Anhang E -
+  Abbildungsverzeichnis](#sec-appendix-e)
+- [<span class="toc-section-number">13</span> Anhang F -
+  Tabellenverzeichnis](#sec-appendix-f)
+
+# Hinweis
+
+Im vorliegenden Dokument wird bei der Bezeichnung von Personen eine
+geschlechtsneutrale Formulierung verwendet. Basis bildet der Leitfaden
+der Bundeskanzlei. Je nach Situation kommen Paarformen (Bürgerinnen und
+Bürger), geschlechtsabstrakte Formen (versicherte Person),
+geschlechtsneutrale Formen (Versicherte) oder Umschreibungen ohne
+Personenbezug zum Einsatz. Das generische Maskulin (Bürger) ist nicht
+zulässig. Vollformen werden in fortlaufenden Texten verwendet, also in
+Texten, die aus ausformulierten Sätzen bestehen. In verknappten
+Textpassagen, namentlich in Tabellen, können Kurzformen verwendet
+werden. Dabei wird die Kurzform mit Schrägstrich, aber ohne
+Auslassungsstrich verwendet (Referent/in). Genderstern und ähnliche
+Schreibweisen werden nicht verwendet.
+
+# Einleitung
+
+## Status
+
+Genehmigt: Dieses Dokument wurde vom Fach-Ausschuss verabschiedet. Es
+entfaltet normative Kraft für den definierten Anwendungsbereich im
+festgelegten Geltungsbereich.
+
+## Geltungsbereich
+
+Die Angaben in diesem Kapitel sollen dem Leser einen raschen Überblick
+geben, wofür dieser Standard gedacht ist. Hinweise zu folgenden
+Sachverhalten können dabei hilfreich sein.
+
+## Wir können Untertitel haben
+
+Und etwas Text schreiben.
+
+### Auch Unter-Unterüberschriften
+
+Und noch mehr Text schreiben. Vielleicht sogar mit einem schönen Bild.
+
+<div id="fig-example">
+
+![](https://fastly.picsum.photos/id/653/536/354.jpg?hmac=3InR8I5KmwbdkPHehlM8BMPd_BDHG_RWZkxt_IkeQGY)
+
+Abbildung 1: Fügen Sie immer etwas Text hinzu, um zu beschreiben, was
+das Bild zeigt.
+
+</div>
+
+Bei der Darstellung von Diagrammen sollte versucht werden, diese direkt
+in Mermaid JS zu erstellen; dies macht zukünftige Änderungen oder
+Übersetzungen sehr einfach.
+
+# Technische Hinweise
+
+Wir verwenden die ROBOT CLI in unserem Projekt (Jackson u. a. 2019),
+insbesondere wegen ihrer Fähigkeit, den HermiT Reasoner auszuführen
+(Glimm u. a. 2014).
+
+# Datenmodell
+
+# Datenbezug
+
+Die diesem Dokument zugrundeliegenden Master- und Referenzdaten sind als
+*Linked Data* verfügbar.
+
+Die technologische Basis dafür bildet das Resource Description Framework
+(RDF, Cyganiak u. a. 2014), ein zentraler Standard des World Wide Web
+Consortiums (W3C) zur Modellierung von Datenstrukturen im Web. In RDF
+werden Informationen nicht in klassischen Tabellen, sondern als
+vernetzte Graphen abgebildet. Jede Aussage besteht dabei aus einem
+sogenannten Triple (Subjekt, Prädikat, Objekt). Diese Struktur
+ermöglicht eine maschinenlesbare, interoperable und systemübergreifend
+eindeutige Beschreibung von Ressourcen und deren Relationen zueinander.
+
+Für die Speicherung und Publikation dieser RDF-Daten wird
+[LINDAS](https://lindas.admin.ch/) (Linked Data Service) genutzt, der
+offizielle Linked-Data-Dienst der Schweizer Bundesverwaltung. LINDAS
+fungiert als sogenannter *Triple Store*, einer spezialisierte
+Graphdatenbank, die für das effiziente Speichern und Abfragen von
+RDF-Triples optimiert ist und die Daten öffentlich über eine genormte
+Schnittstelle bereitstellt.
+
+Das folgende Kapitel gibt eine minimale Anleitung, wie die Daten von
+LINDAS abgefragt und bezogen werden können.
+
+``` rq
+BASE <https://agriculture.ld.admin.ch/eCH-1234/2/>
+PREFIX schema: <http://schema.org/>
+SELECT *
+WHERE {
+    ?genre a <Genre> ;
+        schema:name ?name .
+}
+LIMIT 10
+```
+
+Die zugrundeliegenden Daten selbst werden auf GitHub als Turtle-Files
+gepflegt.
+
+``` ttl
+@base <https://agriculture.ld.admin.ch/eCH-1234/2/> .
+@prefix genre: <https://agriculture.ld.admin.ch/eCH-1234/2/genre/> .
+@prefix schema: <http://schema.org/> .
+
+genre:1 a <Genre> ;
+    schema:name "Rock" .
+
+genre:2 a <Genre> ;
+    schema:name "Jazz" .
+
+genre:3 a <Genre> ;
+    schema:name "Metal" ;
+    schema:partOf genre:1 .
+```
+
+# Sicherheitsaspekte
+
+Informationen zu den ausdrücklich massgeblichen rechtlichen Grundlagen
+oder ein Hinweis darauf, dass bei der Umsetzung die entsprechenden
+rechtlichen Grundlagen zu beachten sind.
+
+# Haftungsausschluss
+
+eCH-Standards, die der Verein eCH dem Anwender kostenlos zur Verfügung
+stellt oder die auf eCH verweisen, haben nur den Status von
+Empfehlungen. Der Verein eCH haftet in keinem Fall für Entscheidungen
+oder Massnahmen, die der Anwender auf der Grundlage dieser Dokumente
+trifft bzw. ergreift. Der Anwender ist dafür verantwortlich, die
+Dokumente vor ihrer Verwendung selbst zu überprüfen und gegebenenfalls
+fachlichen Rat einzuholen. eCH-Standards können und sollen die
+technische, organisatorische oder rechtliche Beratung im Einzelfall
+nicht ersetzen.
+
+Dokumente, Verfahren, Methoden, Produkte und Standards, auf die in
+eCH-Standards verwiesen wird, sind möglicherweise durch Marken-,
+Urheber- oder Patentrechte geschützt. Es liegt in der ausschliesslichen
+Verantwortung des Anwenders, die erforderlichen Lizenzen von den
+berechtigten Personen und/oder Organisationen einzuholen.
+
+Obwohl der Verein eCH bei der Erstellung der eCH-Standards mit
+angemessener Sorgfalt vorgegangen ist, kann er keine Gewährleistung oder
+Garantie dafür übernehmen, dass die bereitgestellten Informationen und
+Dokumente aktuell, vollständig, richtig oder fehlerfrei sind. eCH behält
+sich das Recht vor, die Inhalte der eCH-Standards jederzeit und ohne
+vorherige Ankündigung zu ändern.
+
+Jede Haftung für Schäden, die durch die Nutzung der eCH-Standards durch
+den Anwender entstehen, wird im gesetzlich zulässigen Rahmen
+ausgeschlossen.
+
+# Urheberrechte
+
+Personen, die eCH-Standards erarbeiten, bleiben Inhaber ihrer geistigen
+Eigentumsrechte. Diese Personen verpflichten sich jedoch, ihre geistigen
+Eigentumsrechte oder andere Rechte an geistigen Eigentumsrechten
+Dritter, soweit möglich, den jeweiligen Fachgruppen und dem Verein eCH
+kostenlos und zur uneingeschränkten Nutzung und Weiterentwicklung im
+Rahmen des Vereinszwecks zur Verfügung zu stellen.
+
+Die von den Fachgruppen erarbeiteten Standards dürfen unter Nennung des
+jeweiligen Autors von eCH kostenlos und in uneingeschränktem Umfang
+genutzt, verbreitet und weiterentwickelt werden.
+
+eCH-Standards sind vollständig dokumentiert und frei von lizenz-
+und/oder patentrechtlichen Einschränkungen. Die dazugehörige
+Dokumentation kann kostenlos angefordert werden. Diese Bestimmungen
+gelten jedoch nur für die von eCH erarbeiteten Standards, nicht aber für
+Standards oder Produkte Dritter, die auf eCH-Standards verweisen. Die
+Standards enthalten die entsprechenden Hinweise auf Rechte Dritter.
+
+# Anhang A - Referenzen
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-cyganiak2014rdf11" class="csl-entry">
+
+Cyganiak, Richard, David Wood, und Markus Lanthaler. 2014. *RDF 1.1
+Concepts and Abstract Syntax*. W3C Recommendation. World Wide Web
+Consortium (W3C). <https://www.w3.org/TR/rdf11-concepts/>.
+
+</div>
+
+<div id="ref-glimm2014hermit" class="csl-entry">
+
+Glimm, Birte, Ian Horrocks, Boris Motik, Giorgos Stoilos, und Zhe Wang.
+2014. „HermiT: an OWL 2 reasoner“. *Journal of automated reasoning* 53
+(3): 245–69.
+
+</div>
+
+<div id="ref-jackson2019robot" class="csl-entry">
+
+Jackson, Rebecca C, James P Balhoff, Eric Douglass, Nomi L Harris,
+Christopher J Mungall, und James A Overton. 2019. „ROBOT: a tool for
+automating ontology workflows“. *BMC bioinformatics* 20 (1): 407.
+<https://doi.org/10.1186/s12859-019-3002-3>.
+
+</div>
+
+</div>
+
+# Anhang B - Mitwirkung und Prüfung
+
+# Anhang C - Abkürzungen und Glossar
+
+<div id="tbl-glossary">
+
+Tabelle 1: Glossar des Standards eCH-0309
+
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 25%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">IRI</th>
+<th style="text-align: left;">Begriff</th>
+<th style="text-align: left;">Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/term/lindas"><code>term:lindas</code></a></td>
+<td style="text-align: left;"><strong>Linked Data Service</strong>
+(LINDAS)</td>
+<td style="text-align: left;">Der offizielle Linked-Data-Dienst der
+Schweizer Bundesverwaltung, der als Triple Store fungiert.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/term/rdf"><code>term:rdf</code></a></td>
+<td style="text-align: left;"><strong>Resource Description
+Framework</strong> (RDF)</td>
+<td style="text-align: left;">Ein zentraler Standard des World Wide Web
+Consortiums (W3C) zur Modellierung von Datenstrukturen im Web.
+Informationen werden nicht in klassischen Tabellen, sondern als
+vernetzte Graphen abgebildet.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/term/triple"><code>term:triple</code></a></td>
+<td style="text-align: left;"><strong>Tripel</strong></td>
+<td style="text-align: left;"><p>Die Grundstruktur einer Aussage in RDF,
+bestehend aus Subjekt, Prädikat und Objekt.</p>
+<p><em>Oberbegriff</em>: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/term/rdf"><code>term:rdf</code></a></p></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+# Anhang D - Änderungen gegenüber der Vorversion
+
+# Anhang E - Abbildungsverzeichnis
+
+# Anhang F - Tabellenverzeichnis
