@@ -3,8 +3,8 @@
 # ==============================================================================
 
 # Project-specific namespaces/qnames
-@prefix :                <https://agriculture.ld.admin.ch/eCH-0309/2/> .
-@prefix term:            <https://agriculture.ld.admin.ch/eCH-0309/2/term/> .
+@prefix :                <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix term:            <https://agriculture.ld.admin.ch/eCH-0309/1/term/> .
 
 # Globally used namespaces/qnames
 @prefix schema:          <http://schema.org/> .
