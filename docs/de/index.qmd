@@ -39,6 +39,8 @@ Wir verwenden die ROBOT CLI in unserem Projekt [@jackson2019robot], insbesondere
 
 # Datenmodell {#sec-data-model}
 
+![UML-Diagramm des Datenmodells von eCH-0309. Dieses Diagramm wurde automatisch mithilfe von SHACL PLAY! [@francart2020shacl] aus den SHACL-Spezifikationen generiert.](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
+
 {{< include entities.md >}}
 
 # Datenbezug {#sec-data-retrieval}

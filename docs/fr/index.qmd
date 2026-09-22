@@ -39,6 +39,8 @@ Nous utilisons l'interface en ligne de commande (CLI) ROBOT dans notre projet [@
 
 # Modèle de données {#sec-data-model}
 
+![Diagramme UML du modèle de données eCH-0309. Ce diagramme a été généré automatiquement à partir des spécifications SHACL à l'aide de SHACL PLAY! [@francart2020shacl].](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
+
 {{< include entities.md >}}
 
 # Accès aux données {#sec-data-retrieval}

@@ -39,6 +39,8 @@ We use the ROBOT CLI in our project [@jackson2019robot], especially for it's abi
 
 # Data Model {#sec-data-model}
 
+![UML diagram of the eCH-0309 data model. This diagram was generated automatically from the SHACL specifications using SHACL PLAY! [@francart2020shacl].](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
+
 {{< include entities.md >}}
 
 # Data Retrieval {#sec-data-retrieval}
