@@ -14,24 +14,35 @@ Dans le présent document, les désignations de personnes sont formulées de man
 
 ## Statut {#sec-status}
 
-Approuvé : Ce document a été approuvé par le comité d'experts. Il a force normative pour le domaine d'application défini et dans le champ d'application déterminé.
+En cours : L'utilisation n'est autorisée qu'au sein du groupe spécialisé et du comité d'experts.
 
-## Champ d'application {#sec-scope-of-application}
+## Domaine d'application {#sec-scope-of-application}
 
-Les informations de ce chapitre doivent donner au lecteur un aperçu rapide de ce à quoi ce standard est destiné.
-Des indications sur les éléments suivants peuvent s'avérer utiles.
+Le présent document décrit sémantiquement les données de la banque de données sur le trafic des animaux (BDTA), afin de permettre également aux spécialistes sans connaissances informatiques approfondies de mieux comprendre ces données.
 
-## Nous pouvons avoir des sous-titres {#sec-example-subheading}
+## La notification du trafic des animaux en Suisse {#sec-animal-movement-reporting}
 
-Et écrire un peu de texte.
+Dans les années 1990, l'agriculture et l'industrie alimentaire suisses ont été fortement mises à l'épreuve par l'épizootie «ESB». Lorsque la transmissibilité de la maladie de l'animal à l'être humain s'est confirmée en 1996, cela a provoqué une grande incertitude. Les attentes en matière de sécurité des denrées alimentaires d'origine animale ont augmenté en conséquence, de même que la conscience de l'importance du contrôle des denrées alimentaires. L'approche «de l'étable à la table» s'est imposée. La surveillance basée sur les risques, la traçabilité sans faille des animaux de rente, le contrôle du trafic des animaux, l'obligation de déclarer la provenance ainsi que les contrôles de qualité tout au long de la chaîne de production et de transformation constituent depuis lors la base d'un niveau élevé de sécurité alimentaire.
 
-### Et aussi des sous-sous-titres {#sec-example-subsubheading}
+L'expérience de l'ESB a conduit en 1999 à la création d'une banque de données nationale sur le trafic des animaux (BDTA). L'article 7a ainsi que les articles 13 à 15 de la loi sur les épizooties et le titre 2, sections 1, 1a et 2a de l'ordonnance sur les épizooties énoncent les dispositions légales fondamentales relatives à l'identification/au marquage et à l'enregistrement des animaux de rente ainsi qu'aux obligations d'annonce correspondantes. Elles s'alignent sur la législation européenne en la matière (règlement (UE) 2016/429 sur les maladies animales transmissibles; règlement délégué (UE) 2019/2035 concernant les établissements détenant des animaux terrestres et les couvoirs ainsi que la traçabilité).
 
-Et écrire encore plus de texte. Peut-être même avec une belle image.
+Si seuls les bovins étaient soumis à l'obligation d'annonce à partir de 1999, les porcs et les équidés ont suivi dès 2011, même si les porcs ne font aujourd'hui encore pas l'objet d'annonces par animal individuel. À partir de 2014, respectivement de 2020, l'obligation d'annonce à la BDTA s'est également appliquée aux petits ruminants (moutons et chèvres). Au début, en 2014, elle ne concernait que les abattoirs. Depuis 2014, il existe également une obligation d'annonce pour la volaille. Depuis janvier 2020, les détenteurs de petits ruminants sont eux aussi intégrés dans le système d'annonce des animaux individuels. L'identification et le marquage des animaux à onglons au moyen de marques auriculaires, l'enregistrement individuel des bovins, des moutons et des chèvres dans la BDTA, ainsi que l'annonce des entrées, des sorties (l'animal quitte vivant une unité d'élevage), des naissances, des importations, des exportations, des abattages, des abattages à la ferme et des morts (l'animal est désannoncé comme n'étant plus vivant) sont obligatoires pour tous les détenteurs d'animaux en Suisse.
 
-![Ajoutez toujours du texte pour décrire ce que montre l'image.](https://fastly.picsum.photos/id/653/536/354.jpg?hmac=3InR8I5KmwbdkPHehlM8BMPd_BDHG_RWZkxt_IkeQGY){#fig-example}
+La BDTA fait partie d'un paysage systémique regroupant l'agriculture, les affaires vétérinaires et la sécurité alimentaire. Le portail Agate en constitue la porte d'entrée centrale, avec au cœur le système d'information sur la politique agricole AGIS.
 
-Lors de la présentation de diagrammes, essayez de les créer directement dans Mermaid JS ; cela facilite grandement les modifications futures ou les traductions.
+<!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
+
+L'ordonnance sur Identitas SA et la banque de données sur le trafic des animaux (OId-BDTA) précise les contenus relatifs au trafic des animaux, les tâches d'Identitas SA ainsi que les droits d'accès aux données. L'importance de l'identification/du marquage des animaux de rente dépasse largement la problématique des épizooties et a donc également trouvé sa place dans la législation agricole (loi sur l'agriculture LAgr, art. 165g, 177 et 185) et dans diverses ordonnances associées. Les données issues du trafic des animaux sont devenues un élément indispensable de la mise en œuvre des mesures de politique agricole, par exemple les paiements directs liés aux animaux, la détermination des flux d'éléments nutritifs ou le monitoring agroenvironnemental. Ces données servent en outre de base au relevé des structures de l'agriculture suisse et, plus généralement, à la statistique agricole.
+
+Le système d'annonce du trafic des animaux s'est rapidement imposé tout au long de la chaîne de valeur alimentaire. Les programmes assortis de promesses en matière de bien-être animal, de traçabilité et de provenance s'y appuient. La diversité des informations sur les animaux issues du système d'annonce du trafic des animaux se reflète également dans les jeux de données publiquement disponibles de la plateforme Open Data Tierstatistik.
+
+La description technique des interfaces figurant dans le présent document se fonde sur la description technique de service AnimalTracing v1.32 ainsi que sur la spécification openAPI v. x.xx.
+
+## Renvois {#sec-references}
+
+Interfaces: AnimalTracing API, description technique de service AnimalTracing
+
+NB: les noms des classes décrites au chapitre 3 ne correspondent pas aux ServiceOperations d'AnimalTracing, car la description sémantique doit donner une vue d'ensemble du contenu des données et présente un degré de détail plus fin que la description de service.
 
 # Notes techniques {#sec-technical-notes}
 
@@ -42,6 +53,10 @@ Nous utilisons l'interface en ligne de commande (CLI) ROBOT dans notre projet [@
 ![Diagramme UML du modèle de données eCH-0309.](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
 
 {{< include entities.md >}}
+
+# Domaines de valeurs {#sec-code-lists}
+
+{{< include code-lists.md >}}
 
 # Accès aux données {#sec-data-retrieval}
 

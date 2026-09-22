@@ -14,24 +14,35 @@ This document uses a gender-neutral formulation when referring to persons. This 
 
 ## Status {#sec-status}
 
-Approved: This document was approved by the Experts’ Committee. It has normative power for the defined field of application in the determined scope of application.
+In progress: Use is permitted only within the technical group and the Experts’ Committee.
 
-## Scope of application {#sec-scope-of-application}
+## Field of application {#sec-scope-of-application}
 
-The information in this chapter should provide the reader with a brief overview of what this standard is intended for.
-Information about the following matters may be helpful here.
+This document describes the data of the animal movement database (TVD) semantically, so that specialists without in-depth IT knowledge can also gain a better understanding of the data.
 
-## We can have sub-headings {#sec-example-subheading}
+## Animal movement reporting in Switzerland {#sec-animal-movement-reporting}
 
-And write some text.
+In the 1990s, Swiss agriculture and the food industry were severely challenged by the animal disease BSE. When the realisation that the disease could be transmitted from animals to humans was confirmed in 1996, this caused great uncertainty. Expectations regarding the safety of food of animal origin rose as a result, as did awareness of the importance of food control. The approach «from stable to table» became established. Risk-based surveillance, seamless traceability of farm animals, control of animal movements, the obligation to declare origin and quality controls throughout the production and processing chain have formed the basis for a high standard of food safety ever since.
 
-### Also sub-sub-headings {#sec-example-subsubheading}
+The BSE experience led to the establishment of a national animal movement database (TVD) in 1999. Article 7a and Articles 13–15 of the Animal Diseases Act and Title 2, Sections 1, 1a and 2a of the Animal Diseases Ordinance set out the basic legal provisions on the identification/marking and the registration of farm animals as well as the associated reporting obligations. They follow European legislation on the same subject (Regulation (EU) 2016/429 on transmissible animal diseases; Delegated Regulation (EU) 2019/2035 on establishments keeping terrestrial animals and hatcheries, and on traceability).
 
-And write some more text. Maybe even with a pretty image.
+While only cattle were subject to reporting from 1999, pigs and equids followed from 2011, although pigs are to this day not reported as individual animals. From 2014 and 2020 respectively, the obligation to report to the TVD also applied to small ruminants (sheep and goats). At the beginning, in 2014, this concerned only the slaughterhouses. Since 2014 there has also been an obligation to report poultry. Since January 2020, keepers of small ruminants have been included in individual animal reporting as well. The identification and marking of cloven-hoofed animals with ear tags, the individual registration of cattle, sheep and goats in the TVD, and the reporting of animal arrivals, animal departures (an animal leaves a holding alive), births, imports, exports, slaughter, on-farm slaughter and death (an animal is deregistered as no longer living) are mandatory for all animal keepers in Switzerland.
 
-![Always add some text to describe what the image shows.](https://fastly.picsum.photos/id/653/536/354.jpg?hmac=3InR8I5KmwbdkPHehlM8BMPd_BDHG_RWZkxt_IkeQGY){#fig-example}
+The TVD is part of a system landscape spanning agriculture, veterinary affairs and food safety. The central entry point is the Agate portal, with the agricultural policy information system AGIS at its centre.
 
-When displaying diagrams, try to write them in Mermaid JS straight away; this makes changes in the future or translations straightforward.
+<!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
+
+The Ordinance on Identitas AG and the animal movement database (IdTVD-V) further sets out the content relating to animal movements, the tasks of Identitas AG and the rights of access to the data. The importance of identifying/marking farm animals goes far beyond the subject of animal disease and therefore also found its way into agricultural legislation (Agriculture Act LwG, Articles 165g, 177 and 185) and various associated ordinances. The animal movement data have become an indispensable component in implementing agricultural policy measures, for example animal-related direct payments, the determination of nutrient flows or agri-environmental monitoring. The data also serve as a basis for the structural survey of Swiss agriculture and for agricultural statistics in general.
+
+Animal movement reporting quickly became established along the entire food value chain as well. Programmes with animal welfare, traceability and origin commitments rely on it. The variety of animal information from animal movement reporting is also reflected in the publicly available datasets of the Tierstatistik open data platform.
+
+The technical interface description in this document is based on the technical service description AnimalTracing v1.32 and on the openAPI specification v. x.xx.
+
+## References {#sec-references}
+
+Interfaces: AnimalTracing API, technical service description AnimalTracing
+
+NB: the names of the classes described in chapter 3 do not match the ServiceOperations in AnimalTracing, because the semantic description is intended to provide an overview of the data content and is more detailed than the service description.
 
 # Technical notes {#sec-technical-notes}
 
@@ -42,6 +53,10 @@ We use the ROBOT CLI in our project [@jackson2019robot], especially for it's abi
 ![UML diagram of the eCH-0309 data model.](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
 
 {{< include entities.md >}}
+
+# Code lists {#sec-code-lists}
+
+{{< include code-lists.md >}}
 
 # Data Retrieval {#sec-data-retrieval}
 
