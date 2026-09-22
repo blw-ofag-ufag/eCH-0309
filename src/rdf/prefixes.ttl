@@ -5,6 +5,7 @@
 
 # Project-specific namespaces/qnames
 @prefix :                <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix code:            <https://agriculture.ld.admin.ch/eCH-0309/1/code/> .
 
 # LINDAS-specific namespaces/qnames
 @prefix org:             <https://register.ld.admin.ch/opendataswiss/org/> .
