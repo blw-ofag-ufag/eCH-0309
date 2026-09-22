@@ -7,7 +7,7 @@
 #
 # It deliberately lives under tests/ and NOT under src/rdf/data/: the Makefile
 # merges src/rdf/data/*.ttl into build/rdf/03-processed.ttl, which `make
-# publish` uploads to LINDAS. Nothing here is part of the standard, so nothing
+# publish` uploads to LINDAS. Nothing here is part of the Hilfsmittel, so nothing
 # here may be published.
 #
 # The identifiers are fictitious.

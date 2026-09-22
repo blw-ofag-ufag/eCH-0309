@@ -15,9 +15,9 @@
 # ==============================================================================
 
 :glossary a skos:ConceptScheme ;
-    schema:name "Glossar des Standards eCH-0309"@de,
-        "Glossary of the eCH-0309 standard"@en,
-        "Glossaire de la norme eCH-0309"@fr .
+    schema:name "Glossar des Hilfsmittels eCH-0309"@de,
+        "Glossary of eCH-0309"@en,
+        "Glossaire de l'eCH-0309"@fr .
 
 # ==============================================================================
 # GLOSSARY TERMS
