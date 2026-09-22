@@ -1,6 +1,6 @@
 ---
-title: Modèle de document Quarto eCH-0309
-abstract: Bref résumé de l'objectif de ce document
+title: "Document auxiliaire : données sur le trafic des animaux"
+abstract: Le présent document décrit sémantiquement les données de la banque de données sur le trafic des animaux (BDTA), afin de permettre également aux spécialistes sans connaissances informatiques approfondies de mieux comprendre ces données.
 date: today
 date-format: long
 lang: fr

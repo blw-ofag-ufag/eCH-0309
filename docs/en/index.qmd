@@ -1,6 +1,6 @@
 ---
-title: eCH-0309 Template Quarto Document
-abstract: Brief summary of the purpose of the document.
+title: "Auxiliary document: animal movement data"
+abstract: This document describes the data of the animal movement database (TVD) semantically, so that specialists without in-depth IT knowledge can also gain a better understanding of the data.
 date: today
 date-format: long
 lang: en
@@ -46,7 +46,7 @@ NB: the names of the classes described in chapter 3 do not match the ServiceOper
 
 # Technical notes {#sec-technical-notes}
 
-We use the ROBOT CLI in our project [@jackson2019robot], especially for it's ability to run the HermiT reasoner [@glimm2014hermit].
+We use the ROBOT CLI in our project [@jackson2019robot], especially for its ability to run the HermiT reasoner [@glimm2014hermit].
 
 # Data Model {#sec-data-model}
 

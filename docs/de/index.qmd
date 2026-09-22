@@ -1,6 +1,6 @@
 ---
-title: eCH-0309 Quarto-Dokument als Vorlage
-abstract: Kurze Zusammenfassung des Zwecks dieses Dokuments
+title: Hilfsmittel Tierverkehrsdaten
+abstract: Das vorliegende Dokument beschreibt die Daten der Tierverkehrsdatenbank (TVD) semantisch, um auch Fachpersonen ohne vertiefte IT-Kenntnisse ein besseres Verständnis der Daten zu ermöglichen.
 date: today
 date-format: long
 lang: de
