@@ -67,17 +67,34 @@
 # rdfs:comment.
 # ==============================================================================
 
+:LegalUnitShape a sh:NodeShape ;
+    rdfs:label "Rechtliche Einheit"@de,
+        "Legal unit"@en,
+        "Unité juridique"@fr,
+        "Unità giuridica"@it ;
+    rdfs:comment "Die rechtliche Einheit nach eCH-0108 ist eine juristische Person (z.B. Aktiengesellschaft, GmbH), eine Personengesellschaft (z.B. Kollektivgesellschaft) oder eine selbstständigerwerbende natürliche Person, die dem Bundesgesetz über die Unternehmens-Identifikationsnummer (UIDG) unterstellt ist und einen Eintrag im UID-Register aufweist. Die rechtliche Einheit wird mit der UID identifiziert; das Mastersystem für diese Daten ist das UID-Register des BFS. Der Tierhaltende und der Equideneigentümer sind die beiden Ausprägungen der rechtlichen Einheit, die in diesem Standard vorkommen (Kapitel 3.1.1 des Hilfsmittels). Die Attribute sind in [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), Kapitel 3.1 und 3.2, sowie in [eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), Kapitel 3.1, beschrieben."@de,
+        "A legal unit as defined in eCH-0108 is a legal entity (e.g. a public limited company or a limited liability company), a partnership (e.g. a general partnership) or a self-employed natural person that is subject to the federal act on the business identification number (UIDG) and has an entry in the UID register. The legal unit is identified by its UID; the master system for this data is the FSO's UID register. The animal keeper and the equid owner are the two forms of legal unit that occur in this standard (chapter 3.1.1 of the tool). The attributes are described in [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapters 3.1 and 3.2, and in [eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), chapter 3.1."@en,
+        "L'unité juridique au sens de l'eCH-0108 est une personne morale (p. ex. société anonyme, Sàrl), une société de personnes (p. ex. société en nom collectif) ou une personne physique exerçant une activité indépendante qui est soumise à la loi fédérale sur le numéro d'identification des entreprises (LIDE) et qui est inscrite au registre IDE. L'unité juridique est identifiée par son IDE ; le système maître de ces données est le registre IDE de l'OFS. Le détenteur d'animaux et le propriétaire d'équidés sont les deux formes d'unité juridique qui apparaissent dans la présente norme (chapitre 3.1.1 de l'outil). Les attributs sont décrits dans l'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapitres 3.1 et 3.2, ainsi que dans l'[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), chapitre 3.1."@fr,
+        "L'unità giuridica ai sensi dell'eCH-0108 è una persona giuridica (p. es. società anonima, Sagl), una società di persone (p. es. società in nome collettivo) o una persona fisica che esercita un'attività indipendente, soggetta alla legge federale sul numero d'identificazione delle imprese (LIDI) e iscritta nel registro IDI. L'unità giuridica è identificata dal suo IDI; il sistema master di questi dati è il registro IDI dell'UST. Il detentore di animali e il proprietario di equidi sono le due forme di unità giuridica che compaiono in questo standard (capitolo 3.1.1 dello strumento). Gli attributi sono descritti nell'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), capitoli 3.1 e 3.2, e nell'[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), capitolo 3.1."@it ;
+    # No :sourceTerm: the Objektkatalog has no «rechtliche Einheit» block. The
+    # class comes from the Semantikbeschreibung, chapter 3.1.1, whose heading
+    # reads "Rechtliche Einheit Tierhalter und Eigentümer".
+    :animalTracingTerm "LegalUnitOrganisationResponse", "LegalUnitPersonResponse" ;
+    :echTerm "eCH-0108:legalUnitMasterDataType", "eCH-0261:legalUnitType" ;
+    sh:targetClass :LegalUnit .
+
 :AnimalKeeperShape a sh:NodeShape ;
     rdfs:label "Tierhaltender"@de,
         "Animal keeper"@en,
         "Détenteur d'animaux"@fr,
         "Detentore di animali"@it ;
-    rdfs:comment "Eine rechtliche Einheit nach eCH-0108, die Tiere hält (LBV Art. 11a) und dafür eine örtliche Einheit (Tierhaltung) benötigt. Der Tierhaltende trägt die Verantwortung für das Meldewesen aller Tierkategorien mit Ausnahme der Equiden. Die Attribute sind in eCH-0261 beschrieben."@de,
-        "A legal unit as defined in eCH-0108 that keeps animals (LBV Art. 11a) and therefore requires a local unit (animal holding). The animal keeper is responsible for reporting for all animal categories except equids. The attributes are described in eCH-0261."@en,
-        "Une unité juridique au sens de l'eCH-0108 qui détient des animaux (OTerm art. 11a) et qui nécessite donc une unité locale (unité d'élevage). Le détenteur d'animaux est responsable des notifications pour toutes les catégories d'animaux à l'exception des équidés. Les attributs sont décrits dans l'eCH-0261."@fr,
-        "Un'unità giuridica ai sensi dell'eCH-0108 che detiene animali (OTerm art. 11a) e che necessita quindi di un'unità locale (detenzione di animali). Il detentore di animali è responsabile delle notifiche per tutte le categorie di animali ad eccezione degli equidi. Gli attributi sono descritti nell'eCH-0261."@it ;
+    rdfs:comment "Ein Bewirtschafter ist eine rechtliche Einheit nach eCH-0108, die das Geschäftsrisiko für einen Betrieb trägt (LBV Art. 2). Der Tierhaltende ist eine Form des Bewirtschafters, der Tiere hält (LBV Art. 11a); er braucht somit eine örtliche Einheit (Tierhaltung). Die Verantwortung für das Meldewesen obliegt dem Tierhaltenden für alle Tierkategorien mit Ausnahme der Equiden; bei Equiden liegt sie beim Eigentümer oder bei der Eigentümerin (Kapitel 3.1.1 des Hilfsmittels). Die Attribute sind in [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), Kapitel 3.1 und 3.2, beschrieben."@de,
+        "A farm manager (Bewirtschafter) is a legal unit as defined in eCH-0108 that bears the business risk for a farm (LBV Art. 2). The animal keeper is a form of farm manager that keeps animals (LBV Art. 11a) and therefore requires a local unit (animal holding). Responsibility for reporting lies with the animal keeper for all animal categories except equids; for equids it lies with the owner (chapter 3.1.1 of the tool). The attributes are described in [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapters 3.1 and 3.2."@en,
+        "Un exploitant est une unité juridique au sens de l'eCH-0108 qui assume le risque économique d'une exploitation (OTerm art. 2). Le détenteur d'animaux est une forme d'exploitant qui détient des animaux (OTerm art. 11a) ; il lui faut donc une unité locale (unité d'élevage). La responsabilité des notifications incombe au détenteur d'animaux pour toutes les catégories d'animaux à l'exception des équidés ; pour les équidés, elle incombe au propriétaire ou à la propriétaire (chapitre 3.1.1 de l'outil). Les attributs sont décrits dans l'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapitres 3.1 et 3.2."@fr,
+        "Un gestore è un'unità giuridica ai sensi dell'eCH-0108 che si assume il rischio aziendale di un'azienda (OTerm art. 2). Il detentore di animali è una forma di gestore che detiene animali (OTerm art. 11a); necessita quindi di un'unità locale (detenzione di animali). La responsabilità delle notifiche spetta al detentore di animali per tutte le categorie di animali ad eccezione degli equidi; per gli equidi spetta al proprietario o alla proprietaria (capitolo 3.1.1 dello strumento). Gli attributi sono descritti nell'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), capitoli 3.1 e 3.2."@it ;
     :sourceTerm "Tierhaltender" ;
     :animalTracingTerm "LegalUnitOrganisationResponse", "LegalUnitPersonResponse", "FarmManagerV1Response" ;
+    :echTerm "eCH-0108:legalUnitMasterDataType", "eCH-0261:legalUnitType" ;
     sh:targetClass :AnimalKeeper ;
     sh:sparql [
         a sh:SPARQLConstraint ;
@@ -103,12 +120,13 @@
         "Local unit"@en,
         "Unité locale"@fr,
         "Unità locale"@it ;
-    rdfs:comment "Eine Einrichtung an einem bestimmten Ort, an welcher eine wirtschaftliche Tätigkeit ausgeübt wird (eCH-0108). Eine örtliche Einheit wird über die BUR-Nummer identifiziert und ist immer einer rechtlichen Einheit zugeordnet. In der Tierverkehrsdatenbank werden örtliche Einheiten mit einer TVD-Nummer 'Tierhaltungen' genannt. Die Attribute sind in eCH-0261 beschrieben."@de,
-        "A facility at a given location where an economic activity is carried out (eCH-0108). A local unit is identified by its BUR number and is always assigned to a legal unit. In the animal movement database, local units holding a TVD number are called 'animal holdings'. The attributes are described in eCH-0261."@en,
-        "Une installation située en un lieu déterminé où s'exerce une activité économique (eCH-0108). Une unité locale est identifiée par son numéro REE et est toujours rattachée à une unité juridique. Dans la banque de données sur le trafic des animaux, les unités locales disposant d'un numéro BDTA sont appelées « unités d'élevage ». Les attributs sont décrits dans l'eCH-0261."@fr,
-        "Un impianto situato in un luogo determinato in cui viene svolta un'attività economica (eCH-0108). Un'unità locale è identificata dal suo numero RIS ed è sempre assegnata a un'unità giuridica. Nella banca dati sul traffico di animali, le unità locali dotate di un numero BDTA sono chiamate 'detenzioni di animali'. Gli attributi sono descritti nell'eCH-0261."@it ;
+    rdfs:comment "Eine örtliche Einheit nach eCH-0108 ist eine Einrichtung an einem bestimmten Ort, an welcher eine wirtschaftliche Tätigkeit ausgeübt wird. Eine örtliche Einheit hat eine BUR-Nummer und ist immer einer rechtlichen Einheit (bzw. einem Unternehmen) zugeordnet. Die örtliche Einheit wird über die BUR-Nummer identifiziert. Die örtliche Einheit kann aus einem oder mehreren Gebäuden bestehen. Die der BUR-Nummer zugewiesene EGID bezieht sich auf «das Zentrum» der örtlichen Einheit, resp. das Hauptgebäude. In der TVD werden die örtlichen Einheiten «Tierhaltungen» genannt und sind zusätzlich über die TVD-Nummer identifiziert. Diese Definition stammt aus [eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), Kapitel 1.5; die agrarspezifischen Ergänzungen sind in [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), Kapitel 3.3 und 3.4, beschrieben."@de,
+        "A local unit as defined in eCH-0108 is a facility at a given location where an economic activity is carried out. A local unit has a BUR number and is always assigned to a legal unit (or enterprise). The local unit is identified by its BUR number. A local unit may consist of one or more buildings. The EGID assigned to the BUR number refers to «the centre» of the local unit, that is, its main building. In the TVD, local units are called «animal holdings» and are additionally identified by their TVD number. This definition is taken from [eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), chapter 1.5; the agriculture-specific additions are described in [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapters 3.3 and 3.4."@en,
+        "Une unité locale au sens de l'eCH-0108 est une installation située en un lieu déterminé où s'exerce une activité économique. Une unité locale possède un numéro REE et est toujours rattachée à une unité juridique (ou entreprise). L'unité locale est identifiée par son numéro REE. Une unité locale peut se composer d'un ou de plusieurs bâtiments. L'EGID attribué au numéro REE se rapporte au «centre» de l'unité locale, respectivement à son bâtiment principal. Dans la BDTA, les unités locales sont appelées «unités d'élevage» et sont en outre identifiées par leur numéro BDTA. Cette définition est tirée de l'[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), chapitre 1.5 ; les compléments spécifiques à l'agriculture sont décrits dans l'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapitres 3.3 et 3.4."@fr,
+        "Un'unità locale ai sensi dell'eCH-0108 è un impianto situato in un luogo determinato in cui viene svolta un'attività economica. Un'unità locale possiede un numero RIS ed è sempre assegnata a un'unità giuridica (o impresa). L'unità locale è identificata dal suo numero RIS. Un'unità locale può essere composta da uno o più edifici. L'EGID attribuito al numero RIS si riferisce al «centro» dell'unità locale, rispettivamente al suo edificio principale. Nella BDTA le unità locali sono chiamate «detenzioni di animali» e sono inoltre identificate dal loro numero BDTA. Questa definizione è tratta dall'[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), capitolo 1.5; i complementi specifici per l'agricoltura sono descritti nell'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), capitoli 3.3 e 3.4."@it ;
     :sourceTerm "örtliche Einheit" ;
     :animalTracingTerm "LocalUnitOwnResponse", "LocalUnitPublicResponse", "FarmDataV1Response" ;
+    :echTerm "eCH-0108:localUnitMasterDataType", "eCH-0261:localUnitType" ;
     sh:targetClass :LocalUnit ;
     sh:property [
         sh:order 1 ;
@@ -116,16 +134,21 @@
             "Animal keeper"@en,
             "Détenteur d'animaux"@fr,
             "Detentore di animali"@it ;
-        :sourceTerm "Tierhaltender" ;
+        # Not an Objektkatalog row: the catalogue's «örtliche Einheit» block
+        # refers to eCH-0261 for all attributes, so there is no :sourceTerm.
         :animalTracingTerm "LocalUnitOwnResponse.mainUid" ;
+        :echTerm "eCH-0108:localUnitMasterDataType/mainUid" ;
+        sh:description "Zuordnung der örtlichen Einheit zum Tierhaltenden. Nach eCH-0108, Kapitel 1.5, ist eine örtliche Einheit immer einer rechtlichen Einheit (bzw. einem Unternehmen) zugeordnet; die Stammdaten der örtlichen Einheit führen dafür das optionale Merkmal «mainUid» mit der UID der rechtlichen Haupteinheit. Da der Tierhaltende nach dem Objektkatalog nur eine Sonderform der rechtlichen Einheit ist, ist diese Zuordnung nicht zwingend."@de,
+            "Assignment of the local unit to the animal keeper. According to eCH-0108, chapter 1.5, a local unit is always assigned to a legal unit (or enterprise); the master data of the local unit carries the optional attribute «mainUid» holding the UID of the main legal unit. Because the object catalogue treats the animal keeper only as a special form of the legal unit, this assignment is not mandatory."@en,
+            "Rattachement de l'unité locale au détenteur d'animaux. Selon l'eCH-0108, chapitre 1.5, une unité locale est toujours rattachée à une unité juridique (ou entreprise) ; les données de base de l'unité locale comportent à cet effet l'attribut facultatif «mainUid» contenant l'IDE de l'unité juridique principale. Le détenteur d'animaux n'étant, selon le catalogue d'objets, qu'une forme particulière de l'unité juridique, ce rattachement n'est pas obligatoire."@fr,
+            "Assegnazione dell'unità locale al detentore di animali. Secondo l'eCH-0108, capitolo 1.5, un'unità locale è sempre assegnata a un'unità giuridica (o impresa); i dati di base dell'unità locale riportano a tal fine l'attributo facoltativo «mainUid» con l'IDI dell'unità giuridica principale. Poiché il catalogo degli oggetti considera il detentore di animali soltanto una forma particolare dell'unità giuridica, questa assegnazione non è obbligatoria."@it ;
         sh:path :animalKeeper ;
         sh:class :AnimalKeeper ;
-        sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message "Eine örtliche Einheit ist immer genau einem Tierhaltenden zugeordnet."@de,
-            "A local unit is always assigned to exactly one animal keeper."@en,
-            "Une unité locale est toujours rattachée à exactement un détenteur d'animaux."@fr,
-            "Un'unità locale è sempre assegnata a esattamente un detentore di animali."@it ;
+        sh:message "Eine örtliche Einheit ist höchstens einem Tierhaltenden zugeordnet."@de,
+            "A local unit is assigned to at most one animal keeper."@en,
+            "Une unité locale est rattachée à au plus un détenteur d'animaux."@fr,
+            "Un'unità locale è assegnata al massimo a un detentore di animali."@it ;
     ] .
 
 :AnimalShape a sh:NodeShape ;
@@ -173,18 +196,99 @@
             "Un animale singolo ha al massimo un padre."@it ;
     ] .
 
+# ==============================================================================
+# OPEN QUESTION FOR THE WORKING GROUP — :owner / «Equideneigentümer»
+#
+# Is the Equideneigentümer always a rechtliche Einheit with an entry in the UID
+# register? The sources disagree, so :owner is modelled as 0..1 :LegalUnit
+# until this is settled. What each source says:
+#
+# 1. Objektkatalog (chapter 3.3), subclass «Equiden»:
+#        | Eigentümer oder Eigentümerin | 1 | uid |
+#    Mandatory, and typed as a uid — i.e. a rechtliche Einheit by definition.
+#
+# 2. Semantikbeschreibung, chapter 3.1.1:
+#        "Ein Eigentümer ist die rechtliche Einheit, in deren Eigentum Equiden
+#         sind. Dieser Begriff wird nur Equideneigentümer geführt, da die
+#         Verantwortung für das Meldewesen der Equiden beim Eigentümer und
+#         nicht beim Tierhalter liegt."
+#
+# 3. Semantikbeschreibung, chapter 3.1.4:
+#        "Bei Equiden werden die Ereignisse durch die berechtigten Personen des
+#         verantwortlichen Equideneigentümers (LegalUnit) gemeldet."
+#
+# 4. Review comment [SB14], attached to exactly that sentence in 3.1.4:
+#        "Equideneigentümer sind nicht zwingend legalUnits nach UID-Register.
+#         Es ist nicht unbedingt korrekt, diese hier so zu nennen."
+#
+# 5. The AnimalTracing openAPI (openapi_tvd.json) sides with 1–3. The owner
+#    types live in the namespace ...Contracts.LegalUnit.EquidOwner, and `uid`
+#    is a required, non-nullable property of every one of them:
+#        EquidDetailsOwnerResponse
+#            required: [dateOfOwnershipStart, fullName, mainAddress, uid]
+#        EquidOwnershipListV1LegalUnitResponse
+#            required: [fullName, mainAddress, uid]
+#        LegalUnitBaseResponse
+#            required: [correspondenceLanguage, uid]
+#    Note that fullName and mainAddress are nullable there, but uid is not.
+#
+# Four sources say "rechtliche Einheit with a mandatory UID"; one reviewer says
+# that is wrong. DECISION: follow the four — :owner is 1..1 :LegalUnit, matching
+# the Objektkatalog's cardinality. The question below stays open regardless, and
+# [SB14] is the reason it is written down here rather than treated as settled.
+#
+# Questions to put to the experts:
+#
+#   a) Which owners does [SB14] have in mind — owners resident abroad, private
+#      individuals with no UID entry, owners held only by name and address?
+#   b) If such owners exist: is the UID then merely optional on a :LegalUnit,
+#      or is such an owner not a :LegalUnit at all and needs its own class?
+#   c) How do the equid owner and the Tierhaltende relate for one and the same
+#      animal? Chapter 3.1.1 moves only the Meldewesen responsibility to the
+#      owner, and every Meldung Einzeltier still carries an örtliche Einheit,
+#      so both appear to apply at once — is that intended?
+#   d) Does the answer change with the "Zustand ab 2027" that other review
+#      comments refer to?
+#
+# If [SB14] is upheld, the consequence is either dropping sh:minCount on :owner
+# or splitting a separate :EquidOwner class off :LegalUnit. The latter changes a
+# version-pinned namespace, so it needs to be settled before publication.
+# ==============================================================================
+
 :EquidShape a sh:NodeShape ;
     rdfs:label "Equide"@de,
         "Equid"@en,
         "Équidé"@fr,
         "Equide"@it ;
-    rdfs:comment "Subklasse der Klasse Einzeltier für Tiere der Gattung Equiden (Pferd, Maultier, Maulesel, Esel). Alle Attribute der Klasse Einzeltier gelten auch für Equiden; diese Klasse beschreibt ausschliesslich die zusätzlichen, equidenspezifischen Angaben. Die Verantwortung für das Meldewesen liegt bei Equiden nicht beim Tierhaltenden, sondern bei der Eigentümerin oder beim Eigentümer."@de,
-        "Subclass of the class individual animal for animals of the equid genus (horse, mule, hinny, donkey). All attributes of the class individual animal also apply to equids; this class describes only the additional, equid-specific information. For equids, responsibility for reporting lies with the owner rather than with the animal keeper."@en,
-        "Sous-classe de la classe animal individuel pour les animaux du genre équidé (cheval, mulet, bardot, âne). Tous les attributs de la classe animal individuel s'appliquent également aux équidés ; cette classe ne décrit que les informations supplémentaires propres aux équidés. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d'animaux."@fr,
-        "Sottoclasse della classe animale singolo per gli animali del genere equide (cavallo, mulo, bardotto, asino). Tutti gli attributi della classe animale singolo si applicano anche agli equidi; questa classe descrive esclusivamente le informazioni aggiuntive specifiche degli equidi. Per gli equidi la responsabilità delle notifiche spetta al proprietario e non al detentore di animali."@it ;
+    rdfs:comment "Subklasse der Klasse Einzeltier für Tiere der Gattung Equiden (Pferd, Maultier, Maulesel, Esel). Alle Attribute der Klasse Einzeltier gelten auch für Equiden; diese Klasse beschreibt ausschliesslich die zusätzlichen, equidenspezifischen Angaben. Die Verantwortung für das Meldewesen liegt bei Equiden nicht beim Tierhaltenden, sondern bei der Eigentümerin oder beim Eigentümer. Ein Eigentümer ist die rechtliche Einheit, in deren Eigentum Equiden sind; der Begriff wird nur für Equideneigentümer geführt (Kapitel 3.1.1 des Hilfsmittels)."@de,
+        "Subclass of the class individual animal for animals of the equid genus (horse, mule, hinny, donkey). All attributes of the class individual animal also apply to equids; this class describes only the additional, equid-specific information. For equids, responsibility for reporting lies with the owner rather than with the animal keeper. An owner is the legal unit that owns equids; the term is used for equid owners only (chapter 3.1.1 of the tool)."@en,
+        "Sous-classe de la classe animal individuel pour les animaux du genre équidé (cheval, mulet, bardot, âne). Tous les attributs de la classe animal individuel s'appliquent également aux équidés ; cette classe ne décrit que les informations supplémentaires propres aux équidés. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d'animaux. Un propriétaire est l'unité juridique qui détient des équidés en propriété ; le terme n'est utilisé que pour les propriétaires d'équidés (chapitre 3.1.1 de l'outil)."@fr,
+        "Sottoclasse della classe animale singolo per gli animali del genere equide (cavallo, mulo, bardotto, asino). Tutti gli attributi della classe animale singolo si applicano anche agli equidi; questa classe descrive esclusivamente le informazioni aggiuntive specifiche degli equidi. Per gli equidi la responsabilità delle notifiche spetta al proprietario e non al detentore di animali. Un proprietario è l'unità giuridica che ha in proprietà degli equidi; il termine è usato solo per i proprietari di equidi (capitolo 3.1.1 dello strumento)."@it ;
     :sourceTerm "Equiden" ;
     :animalTracingTerm "EquidDetailsEquidResponse", "EquidDetailsPublicEquidResponse" ;
-    sh:targetClass :Equid .
+    sh:targetClass :Equid ;
+    sh:property [
+        sh:order 1 ;
+        sh:name "Eigentümer oder Eigentümerin"@de,
+            "Owner"@en,
+            "Propriétaire"@fr,
+            "Proprietario o proprietaria"@it ;
+        :sourceTerm "Eigentümer oder Eigentümerin" ;
+        :animalTracingTerm "EquidDetailsOwnerResponse.uid", "EquidOwnershipListV1LegalUnitResponse.uid" ;
+        :echTerm "eCH-0108:uidType" ;
+        sh:description "Die rechtliche Einheit, in deren Eigentum der Equide steht. Bei Equiden liegt die Verantwortung für das Meldewesen beim Eigentümer und nicht beim Tierhaltenden (Kapitel 3.1.1 des Hilfsmittels)."@de,
+            "The legal unit that owns the equid. For equids, responsibility for reporting lies with the owner rather than with the animal keeper (chapter 3.1.1 of the tool)."@en,
+            "L'unité juridique qui détient l'équidé en propriété. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d'animaux (chapitre 3.1.1 de l'outil)."@fr,
+            "L'unità giuridica che ha in proprietà l'equide. Per gli equidi la responsabilità delle notifiche spetta al proprietario e non al detentore di animali (capitolo 3.1.1 dello strumento)."@it ;
+        sh:path :owner ;
+        sh:class :LegalUnit ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Ein Equide hat genau einen Eigentümer oder eine Eigentümerin."@de,
+            "An equid has exactly one owner."@en,
+            "Un équidé a exactement un propriétaire."@fr,
+            "Un equide ha esattamente un proprietario."@it ;
+    ] .
 
 :AnimalNotificationShape a sh:NodeShape ;
     rdfs:label "Meldung Einzeltier"@de,
@@ -223,6 +327,10 @@
             "Unità locale"@it ;
         :sourceTerm "Örtliche Einheit" ;
         :animalTracingTerm "CattleDetailV1NotificationResponse.localId" ;
+        sh:description "BUR-Nummer der örtlichen Einheit, auf die sich die Meldung bezieht"@de,
+            "BUR number of the local unit to which the notification refers"@en,
+            "Numéro REE de l'unité locale à laquelle se rapporte la notification"@fr,
+            "Numero RIS dell'unità locale a cui si riferisce la notifica"@it ;
         sh:path :localUnit ;
         sh:class :LocalUnit ;
         sh:minCount 1 ;
@@ -240,6 +348,10 @@
             "Provenienza"@it ;
         :sourceTerm "Herkunft" ;
         :animalTracingTerm "CattleDetailV1StaysArrivalNotificationResponse.originLocalId" ;
+        sh:description "BUR-Nummer der örtlichen Einheit von der das Tier kommt"@de,
+            "BUR number of the local unit the animal comes from"@en,
+            "Numéro REE de l'unité locale d'où provient l'animal"@fr,
+            "Numero RIS dell'unità locale da cui proviene l'animale"@it ;
         sh:path :originLocalUnit ;
         sh:class :LocalUnit ;
         sh:maxCount 1 ;
@@ -267,6 +379,10 @@
             "Unité locale"@fr,
             "Unità locale"@it ;
         :sourceTerm "Örtliche Einheit" ;
+        sh:description "BUR-Nummer der örtlichen Einheit"@de,
+            "BUR number of the local unit"@en,
+            "Numéro REE de l'unité locale"@fr,
+            "Numero RIS dell'unità locale"@it ;
         sh:path :localUnit ;
         sh:class :LocalUnit ;
         sh:minCount 1 ;
@@ -283,6 +399,10 @@
             "Provenance"@fr,
             "Provenienza"@it ;
         :sourceTerm "Herkunft" ;
+        sh:description "BUR-Nummer der örtlichen Einheit von der das Tier kommt"@de,
+            "BUR number of the local unit the animal comes from"@en,
+            "Numéro REE de l'unité locale d'où provient l'animal"@fr,
+            "Numero RIS dell'unità locale da cui proviene l'animale"@it ;
         sh:path :originLocalUnit ;
         sh:class :LocalUnit ;
         sh:maxCount 1 ;
@@ -311,6 +431,10 @@
             "Unità locale"@it ;
         :sourceTerm "Örtliche Einheit" ;
         :animalTracingTerm "LocalUnitPublicResponse.bvdState", "LocalUnitPublicResponse.footRotState" ;
+        sh:description "BUR-Nummer der örtlichen Einheit"@de,
+            "BUR number of the local unit"@en,
+            "Numéro REE de l'unité locale"@fr,
+            "Numero RIS dell'unità locale"@it ;
         sh:path :localUnit ;
         sh:class :LocalUnit ;
         sh:minCount 1 ;

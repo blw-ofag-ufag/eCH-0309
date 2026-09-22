@@ -19,6 +19,7 @@
 @prefix animal:        <https://agriculture.ld.admin.ch/eCH-0309/1/animal/> .
 @prefix notification:  <https://agriculture.ld.admin.ch/eCH-0309/1/notification/> .
 @prefix healthstatus:  <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatus/> .
+@prefix legalunit:     <https://agriculture.ld.admin.ch/eCH-0309/1/legalunit/> .
 
 # A keeper with two holdings. The keeper satisfies the sh:sparql constraint on
 # :AnimalKeeperShape only because at least one local unit points back at it.
@@ -39,7 +40,18 @@ animal:3 a :Animal ;
     :mother animal:1 ;
     :father animal:2 .
 
-animal:4 a :Equid .
+# The equid's owner is a plain legal unit: chapter 3.1.1 makes the owner, not
+# the keeper, responsible for reporting equids.
+legalunit:1 a :LegalUnit .
+
+animal:4 a :Equid ;
+    :owner legalunit:1 .
+
+# Second load-bearing assertion: :owner requires sh:class :LegalUnit, but
+# animalkeeper:1 is typed :AnimalKeeper only. This conforms only as long as
+# :AnimalKeeper rdfs:subClassOf :LegalUnit is in scope.
+animal:5 a :Equid ;
+    :owner animalkeeper:1 .
 
 # A move of animal:3 from localunit:1 to localunit:2, and a group notification
 # for a herd of pigs or poultry on localunit:1.

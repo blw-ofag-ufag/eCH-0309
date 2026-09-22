@@ -12,7 +12,13 @@
 # because src/python/utils/generate_shacl_docs.py reads the shapes file only.
 # ==============================================================================
 
-:AnimalKeeper a owl:Class .
+:LegalUnit a owl:Class .
+
+# Chapter 3.1.1 of the Hilfsmittel derives both the animal keeper and the
+# equid owner from the legal unit. Only the animal keeper is asserted here;
+# see the note on :owner in the shapes file for why the equid owner is not.
+:AnimalKeeper a owl:Class ;
+    rdfs:subClassOf :LegalUnit .
 
 :LocalUnit a owl:Class .
 
@@ -49,6 +55,8 @@
 
 :father a owl:ObjectProperty .
 
+:owner a owl:ObjectProperty .
+
 # ==============================================================================
 # ANNOTATION PROPERTIES
 #
@@ -62,3 +70,7 @@
 :sourceTerm a owl:AnnotationProperty .
 
 :animalTracingTerm a owl:AnnotationProperty .
+
+# Counterpart in the eCH data standards this model builds on, written in the
+# notation those standards use themselves (e.g. "eCH-0108:localIdType").
+:echTerm a owl:AnnotationProperty .
