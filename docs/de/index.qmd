@@ -44,10 +44,6 @@ Schnittstellen: AnimalTracing API, Technische Servicebeschreibung AnimalTracing
 
 NB: die Namen der im Kapitel 3 beschriebenen Klassen stimmen nicht mit den ServiceOperations in AnimalTracing überein, da die semantische Beschreibung einen Überblick über die Dateninhalte verschaffen soll und gegenüber der Servicebeschreibung einen tieferen Detaillierungsgrad aufweist.
 
-# Technische Hinweise {#sec-technical-notes}
-
-Wir verwenden die ROBOT CLI in unserem Projekt [@jackson2019robot], insbesondere wegen ihrer Fähigkeit, den HermiT Reasoner auszuführen [@glimm2014hermit].
-
 # Datenmodell {#sec-data-model}
 
 ![UML-Diagramm des Datenmodells von eCH-0309.](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
