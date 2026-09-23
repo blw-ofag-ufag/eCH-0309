@@ -199,6 +199,8 @@
 # ==============================================================================
 # OPEN QUESTION FOR THE WORKING GROUP — :owner / «Equideneigentümer»
 #
+# Listed as A1 in OPEN-QUESTIONS.md, which collects every open point.
+#
 # Is the Equideneigentümer always a rechtliche Einheit with an entry in the UID
 # register? The sources disagree, so :owner is modelled as 0..1 :LegalUnit
 # until this is settled. What each source says:

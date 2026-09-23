@@ -13,3 +13,10 @@ Fähigkeit, den HermiT Reasoner auszuführen. Das UML-Diagramm des Datenmodells 
 SHACL Play aus den Shapes gezeichnet und mit PlantUML gerendert; die Wertebereiche werden
 aus der openAPI-Spezifikation der TVD generiert.
 
+## Offene Fragen
+
+Fragen, die mit der Fachgruppe zu klären sind, sammelt
+[OPEN-QUESTIONS.md](OPEN-QUESTIONS.md) – zusammen mit den noch offenen
+Prüfkommentaren aus dem Word-Dokument und dem Hinweis, wo die jeweilige
+Entscheidung im Repository kodiert ist.
+
