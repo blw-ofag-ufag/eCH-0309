@@ -14,6 +14,10 @@
 # NAEBI and PSM lists are keyed by their own numeric codes. The identifier is
 # therefore not ours to case.
 #
+# Values that the Hilfsmittel strikes through or does not list are left out, and
+# the omission is noted on the scheme: the two documents are meant to carry the
+# same values.
+#
 # The openAPI is still in development, so these lists are provisional. French
 # and Italian labels are missing: neither source provides them, and inventing
 # them here would misrepresent the source. See :codeLists for the as-of date.
@@ -48,19 +52,16 @@
 # ------------------------------------------------------------------------------
 # Nutztierart -- openAPI EnumGenus
 # Hilfsmittel: Tabelle 2: Definition Wertebereich Nutztierarten für die TVD
+# Nicht übernommen: Bee -- in Tabelle 2 durchgestrichen.
+# Nicht übernommen: Fish -- in Tabelle 2 durchgestrichen.
+# Nicht übernommen: Unknow -- nicht in Tabelle 2 aufgeführt.
+# Nicht übernommen: Others -- nicht in Tabelle 2 aufgeführt.
 # ------------------------------------------------------------------------------
 
 genus:ConceptScheme a skos:ConceptScheme ;
     schema:name "Nutztierart"@de,
         "Genus"@en ;
     :animalTracingTerm "EnumGenus" .
-
-genus:Unknow a skos:Concept ;
-    skos:inScheme genus:ConceptScheme ;
-    skos:topConceptOf genus:ConceptScheme ;
-    skos:notation "Unknow" ;
-    schema:name "Unknow"@en ;
-    :animalTracingTerm "EnumGenus.Unknow" .
 
 genus:Cattle a skos:Concept ;
     skos:inScheme genus:ConceptScheme ;
@@ -129,24 +130,6 @@ genus:Equid a skos:Concept ;
     :sourceTerm "Equiden" ;
     :animalTracingTerm "EnumGenus.Equid" .
 
-genus:Bee a skos:Concept ;
-    skos:inScheme genus:ConceptScheme ;
-    skos:topConceptOf genus:ConceptScheme ;
-    skos:notation "Bee" ;
-    schema:name "Biene"@de,
-        "Bee"@en ;
-    :sourceTerm "Biene" ;
-    :animalTracingTerm "EnumGenus.Bee" .
-
-genus:Fish a skos:Concept ;
-    skos:inScheme genus:ConceptScheme ;
-    skos:topConceptOf genus:ConceptScheme ;
-    skos:notation "Fish" ;
-    schema:name "Fisch"@de,
-        "Fish"@en ;
-    :sourceTerm "Fisch" ;
-    :animalTracingTerm "EnumGenus.Fish" .
-
 genus:Poultry a skos:Concept ;
     skos:inScheme genus:ConceptScheme ;
     skos:topConceptOf genus:ConceptScheme ;
@@ -155,13 +138,6 @@ genus:Poultry a skos:Concept ;
         "Poultry"@en ;
     :sourceTerm "Geflügel" ;
     :animalTracingTerm "EnumGenus.Poultry" .
-
-genus:Others a skos:Concept ;
-    skos:inScheme genus:ConceptScheme ;
-    skos:topConceptOf genus:ConceptScheme ;
-    skos:notation "Others" ;
-    schema:name "Others"@en ;
-    :animalTracingTerm "EnumGenus.Others" .
 
 
 # ------------------------------------------------------------------------------
@@ -196,19 +172,13 @@ gender:Male a skos:Concept ;
 # ------------------------------------------------------------------------------
 # Zweck (Rinder, Schafe, Ziegen) -- openAPI EnumAnimalTypeOfUse
 # Hilfsmittel: Tabelle 3: Definition Wertebereich Zweck pro Nutztierart
+# Nicht übernommen: NotDefined -- nicht in Tabelle 3 aufgeführt.
 # ------------------------------------------------------------------------------
 
 animaltypeofuse:ConceptScheme a skos:ConceptScheme ;
     schema:name "Zweck (Rinder, Schafe, Ziegen)"@de,
         "Type of use (cattle, sheep, goats)"@en ;
     :animalTracingTerm "EnumAnimalTypeOfUse" .
-
-animaltypeofuse:NotDefined a skos:Concept ;
-    skos:inScheme animaltypeofuse:ConceptScheme ;
-    skos:topConceptOf animaltypeofuse:ConceptScheme ;
-    skos:notation "NotDefined" ;
-    schema:name "Not defined"@en ;
-    :animalTracingTerm "EnumAnimalTypeOfUse.NotDefined" .
 
 animaltypeofuse:Other a skos:Concept ;
     skos:inScheme animaltypeofuse:ConceptScheme ;
@@ -233,19 +203,13 @@ animaltypeofuse:Milk a skos:Concept ;
 # ------------------------------------------------------------------------------
 # Zweck (Equiden) -- openAPI EquidTypeOfUsage
 # Hilfsmittel: Tabelle 3: Definition Wertebereich Zweck pro Nutztierart
+# Nicht übernommen: Undefined -- nicht in Tabelle 3 aufgeführt.
 # ------------------------------------------------------------------------------
 
 equidtypeofusage:ConceptScheme a skos:ConceptScheme ;
     schema:name "Zweck (Equiden)"@de,
         "Type of use (equids)"@en ;
     :animalTracingTerm "EquidTypeOfUsage" .
-
-equidtypeofusage:Undefined a skos:Concept ;
-    skos:inScheme equidtypeofusage:ConceptScheme ;
-    skos:topConceptOf equidtypeofusage:ConceptScheme ;
-    skos:notation "Undefined" ;
-    schema:name "Undefined"@en ;
-    :animalTracingTerm "EquidTypeOfUsage.Undefined" .
 
 equidtypeofusage:CompanionAnimal a skos:Concept ;
     skos:inScheme equidtypeofusage:ConceptScheme ;

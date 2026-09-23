@@ -37,6 +37,12 @@ SCHEMES = [
             "Camelid": "Kameliden", "Game": "Wild", "Pig": "Schweine", "Bee": "Biene",
             "Fish": "Fisch", "Poultry": "Geflügel",
         },
+        "excluded": {
+            "Bee": "in Tabelle 2 durchgestrichen",
+            "Fish": "in Tabelle 2 durchgestrichen",
+            "Unknow": "nicht in Tabelle 2 aufgeführt",
+            "Others": "nicht in Tabelle 2 aufgeführt",
+        },
         "descriptions": {
             "Cattle": "Tiere der Rindergattung (Bos) und Wasserbüffel (Bubalus bubalis)",
             "Equid": "Tiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel)",
@@ -56,6 +62,7 @@ SCHEMES = [
         "name": {"de": "Zweck (Rinder, Schafe, Ziegen)", "en": "Type of use (cattle, sheep, goats)"},
         "table": "Tabelle 3: Definition Wertebereich Zweck pro Nutztierart",
         "german": {"Milk": "Milch", "Other": "Andere"},
+        "excluded": {"NotDefined": "nicht in Tabelle 3 aufgeführt"},
         "descriptions": {"Milk": "Milchkühe, -schafe und -ziegen"},
     },
     {
@@ -63,6 +70,7 @@ SCHEMES = [
         "name": {"de": "Zweck (Equiden)", "en": "Type of use (equids)"},
         "table": "Tabelle 3: Definition Wertebereich Zweck pro Nutztierart",
         "german": {"CompanionAnimal": "Heimtier", "FarmAnimal": "Nutztier"},
+        "excluded": {"Undefined": "nicht in Tabelle 3 aufgeführt"},
         "descriptions": {},
     },
     {
@@ -100,6 +108,10 @@ HEADER = '''# ==================================================================
 # identifier the source system uses for it, as in eCH-0265, where the AGIS,
 # NAEBI and PSM lists are keyed by their own numeric codes. The identifier is
 # therefore not ours to case.
+#
+# Values that the Hilfsmittel strikes through or does not list are left out, and
+# the omission is noted on the scheme: the two documents are meant to carry the
+# same values.
 #
 # The openAPI is still in development, so these lists are provisional. French
 # and Italian labels are missing: neither source provides them, and inventing
@@ -180,10 +192,17 @@ def main():
             missing.append(spec_entry["enum"])
             continue
 
+        excluded = spec_entry.get("excluded", {})
+        dropped = "".join(
+            f"\n# Nicht übernommen: {value} -- {reason}."
+            for value, reason in excluded.items() if value in values
+        )
+        values = [value for value in values if value not in excluded]
+
         out.append(f'''
 # ------------------------------------------------------------------------------
 # {spec_entry["name"]["de"]} -- openAPI {spec_entry["enum"]}
-# {"Hilfsmittel: " + spec_entry["table"] if spec_entry["table"] else "No Wertebereich table in the Hilfsmittel."}
+# {"Hilfsmittel: " + spec_entry["table"] if spec_entry["table"] else "No Wertebereich table in the Hilfsmittel."}{dropped}
 # ------------------------------------------------------------------------------
 
 {spec_entry["scheme"].lower()}:ConceptScheme a skos:ConceptScheme ;
