@@ -17,6 +17,15 @@ below:
    SHACL Play never reads, so a subclass with no property shapes of its own
    ends up as an isolated box.
 
+Two further passes make the drawing legible once it is scaled to the width of a
+page. After that scaling, apparent text size depends only on the text height
+divided by the diagram width, so the only way to enlarge the lettering is to
+narrow the content. `drop_attribute_types` removes the datatype from each box
+attribute -- it is in the Typ column of the entity table on the next page -- and
+`shorten_titles` reduces a title to the class it targets. Together they take the
+diagram from 1416 to 786 pixels wide, which is 1.8 times larger lettering, and
+turn a strip using a third of the page into a figure using two thirds of it.
+
 The passes are applied in that order and do not commute: `promote_references`
 has to see the box attributes before `demote_value_domains` rewrites references
 back into that form, and `add_generalizations` has to see the final set of drawn
@@ -45,6 +54,9 @@ ATTRIBUTE_RE = re.compile(
 # non-breaking space.
 LINE_BREAK = "\\l"
 MEMBER_RE = re.compile(r'^\s*(?P<property>\S+?)(?:<U\+00A0>|\s)+\[(?P<cardinality>[^\]]+)\]')
+ATTRIBUTE_LINE_RE = re.compile(
+    r'^(?P<source>"[^"]+")\s*:\s*\+?(?P<property>\S+)\s*:\s*\S+\s*\[(?P<cardinality>[^\]]+)\]\s*$')
+TITLE_RE = re.compile(r'"[^"]*\((:[^)]+)\)"')
 
 
 def local_name(term):
@@ -154,6 +166,23 @@ def add_generalizations(lines, ontology):
     return patched
 
 
+def drop_attribute_types(lines):
+    """Leaves a box attribute as name and cardinality. The type is in the tables."""
+    return [
+        (f'{match.group("source")} : {match.group("property")} [{match.group("cardinality")}] '
+         if (match := ATTRIBUTE_LINE_RE.match(line)) else line)
+        for line in lines
+    ]
+
+
+def shorten_titles(lines):
+    """Reduces `":AnimalShape (:Animal)"` to `":Animal"` everywhere it appears.
+
+    Runs last: every other pass matches on the parenthesised form.
+    """
+    return [TITLE_RE.sub(lambda match: f'"{match.group(1)}"', line) for line in lines]
+
+
 def main():
     parser = argparse.ArgumentParser(description="Complete a SHACL Play PlantUML diagram.")
     parser.add_argument("-i", "--input", required=True, help="PlantUML file (.puml), edited in place")
@@ -171,6 +200,8 @@ def main():
     lines = promote_references(lines, domains)
     lines = demote_value_domains(lines, domains)
     lines = add_generalizations(lines, ontology)
+    lines = drop_attribute_types(lines)
+    lines = shorten_titles(lines)
 
     puml.write_text("\n".join(lines) + "\n", encoding="utf-8")
 

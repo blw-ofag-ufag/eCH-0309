@@ -132,3 +132,20 @@ def test_the_passes_compose(patch, tmp_path):
     assert not any("-->" in line and ":Genus" in line for line in lines)
     assert f'{ANIMAL} <|-- {EQUID} ' in lines
     assert sum(1 for line in lines if line.startswith("Class ")) == 3
+
+
+def test_attribute_types_are_dropped(patch):
+    """The type belongs in the entity table; the diagram keeps name and cardinality."""
+    result = patch.drop_attribute_types([
+        f'{ANIMAL} : :identifier  : xsd:string  [1..1]  ',
+        f'{ANIMAL} : +:gender : :Gender [0..1] ',
+        f'{ANIMAL} --> "{EQUID[1:-1]}" : :mother [0..1] ',
+    ])
+    assert result[0] == f'{ANIMAL} : :identifier [1..1] '
+    assert result[1] == f'{ANIMAL} : :gender [0..1] '
+    assert result[2] == f'{ANIMAL} --> "{EQUID[1:-1]}" : :mother [0..1] ', "associations untouched"
+
+
+def test_titles_are_shortened_to_the_target_class(patch):
+    result = patch.shorten_titles([f"Class {ANIMAL} ", f'{ANIMAL} <|-- {EQUID} '])
+    assert result == ['Class ":Animal" ', '":Animal" <|-- ":Equid" ']
