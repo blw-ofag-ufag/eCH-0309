@@ -9,13 +9,23 @@
 # Wertebereich tables of the Hilfsmittel. Every concept records both with
 # :animalTracingTerm and :sourceTerm.
 #
+# Each code list gets its own sub-namespace and each concept is named by the
+# identifier the source system uses for it, as in eCH-0265, where the AGIS,
+# NAEBI and PSM lists are keyed by their own numeric codes. The identifier is
+# therefore not ours to case.
+#
 # The openAPI is still in development, so these lists are provisional. French
 # and Italian labels are missing: neither source provides them, and inventing
 # them here would misrepresent the source. See :codeLists for the as-of date.
 # ==============================================================================
 
 @prefix :                <https://agriculture.ld.admin.ch/eCH-0309/1/> .
-@prefix code:            <https://agriculture.ld.admin.ch/eCH-0309/1/code/> .
+@prefix genus:                  <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
+@prefix gender:                 <https://agriculture.ld.admin.ch/eCH-0309/1/gender/> .
+@prefix animaltypeofuse:        <https://agriculture.ld.admin.ch/eCH-0309/1/animaltypeofuse/> .
+@prefix equidtypeofusage:       <https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/> .
+@prefix animalhistorystate:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
+@prefix equidwithersclass:      <https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
 
 @prefix dcterms:         <http://purl.org/dc/terms/> .
 @prefix schema:          <http://schema.org/> .
@@ -32,7 +42,7 @@
         "Code lists of the animal movement data"@en ;
     dcterms:source "https://test-03-tvd-api-at.identitas.ch/open-api/v1.0" ;
     dcterms:hasVersion "TVD API Gateway Animal Tracing 1.0" ;
-    dcterms:modified "2026-09-22"^^xsd:date .
+    dcterms:modified "2026-09-23"^^xsd:date .
 
 
 # ------------------------------------------------------------------------------
@@ -40,21 +50,21 @@
 # Hilfsmittel: Tabelle 2: Definition Wertebereich Nutztierarten für die TVD
 # ------------------------------------------------------------------------------
 
-:genus a skos:ConceptScheme ;
+genus:ConceptScheme a skos:ConceptScheme ;
     schema:name "Nutztierart"@de,
         "Genus"@en ;
     :animalTracingTerm "EnumGenus" .
 
-code:genus-unknow a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Unknow a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Unknow" ;
     schema:name "Unknow"@en ;
     :animalTracingTerm "EnumGenus.Unknow" .
 
-code:genus-cattle a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Cattle a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Cattle" ;
     schema:name "Rindvieh"@de,
         "Cattle"@en ;
@@ -62,36 +72,36 @@ code:genus-cattle a skos:Concept ;
     :sourceTerm "Rindvieh" ;
     :animalTracingTerm "EnumGenus.Cattle" .
 
-code:genus-pig a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Pig a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Pig" ;
     schema:name "Schweine"@de,
         "Pig"@en ;
     :sourceTerm "Schweine" ;
     :animalTracingTerm "EnumGenus.Pig" .
 
-code:genus-sheep a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Sheep a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Sheep" ;
     schema:name "Schafe"@de,
         "Sheep"@en ;
     :sourceTerm "Schafe" ;
     :animalTracingTerm "EnumGenus.Sheep" .
 
-code:genus-goat a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Goat a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Goat" ;
     schema:name "Ziegen"@de,
         "Goat"@en ;
     :sourceTerm "Ziegen" ;
     :animalTracingTerm "EnumGenus.Goat" .
 
-code:genus-camelid a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Camelid a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Camelid" ;
     schema:name "Kameliden"@de,
         "Camelid"@en ;
@@ -99,9 +109,9 @@ code:genus-camelid a skos:Concept ;
     :sourceTerm "Kameliden" ;
     :animalTracingTerm "EnumGenus.Camelid" .
 
-code:genus-game a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Game a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Game" ;
     schema:name "Wild"@de,
         "Game"@en ;
@@ -109,9 +119,9 @@ code:genus-game a skos:Concept ;
     :sourceTerm "Wild" ;
     :animalTracingTerm "EnumGenus.Game" .
 
-code:genus-equid a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Equid a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Equid" ;
     schema:name "Equiden"@de,
         "Equid"@en ;
@@ -119,36 +129,36 @@ code:genus-equid a skos:Concept ;
     :sourceTerm "Equiden" ;
     :animalTracingTerm "EnumGenus.Equid" .
 
-code:genus-bee a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Bee a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Bee" ;
     schema:name "Biene"@de,
         "Bee"@en ;
     :sourceTerm "Biene" ;
     :animalTracingTerm "EnumGenus.Bee" .
 
-code:genus-fish a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Fish a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Fish" ;
     schema:name "Fisch"@de,
         "Fish"@en ;
     :sourceTerm "Fisch" ;
     :animalTracingTerm "EnumGenus.Fish" .
 
-code:genus-poultry a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Poultry a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Poultry" ;
     schema:name "Geflügel"@de,
         "Poultry"@en ;
     :sourceTerm "Geflügel" ;
     :animalTracingTerm "EnumGenus.Poultry" .
 
-code:genus-others a skos:Concept ;
-    skos:inScheme :genus ;
-    skos:topConceptOf :genus ;
+genus:Others a skos:Concept ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Others" ;
     schema:name "Others"@en ;
     :animalTracingTerm "EnumGenus.Others" .
@@ -159,23 +169,23 @@ code:genus-others a skos:Concept ;
 # Hilfsmittel: Tabelle 6: Definition Wertebereich Geschlecht
 # ------------------------------------------------------------------------------
 
-:gender a skos:ConceptScheme ;
+gender:ConceptScheme a skos:ConceptScheme ;
     schema:name "Geschlecht"@de,
         "Gender"@en ;
     :animalTracingTerm "EnumGender" .
 
-code:gender-female a skos:Concept ;
-    skos:inScheme :gender ;
-    skos:topConceptOf :gender ;
+gender:Female a skos:Concept ;
+    skos:inScheme gender:ConceptScheme ;
+    skos:topConceptOf gender:ConceptScheme ;
     skos:notation "Female" ;
     schema:name "Weiblich"@de,
         "Female"@en ;
     :sourceTerm "Weiblich" ;
     :animalTracingTerm "EnumGender.Female" .
 
-code:gender-male a skos:Concept ;
-    skos:inScheme :gender ;
-    skos:topConceptOf :gender ;
+gender:Male a skos:Concept ;
+    skos:inScheme gender:ConceptScheme ;
+    skos:topConceptOf gender:ConceptScheme ;
     skos:notation "Male" ;
     schema:name "Männlich"@de,
         "Male"@en ;
@@ -188,30 +198,30 @@ code:gender-male a skos:Concept ;
 # Hilfsmittel: Tabelle 3: Definition Wertebereich Zweck pro Nutztierart
 # ------------------------------------------------------------------------------
 
-:animalTypeOfUse a skos:ConceptScheme ;
+animaltypeofuse:ConceptScheme a skos:ConceptScheme ;
     schema:name "Zweck (Rinder, Schafe, Ziegen)"@de,
         "Type of use (cattle, sheep, goats)"@en ;
     :animalTracingTerm "EnumAnimalTypeOfUse" .
 
-code:animal-type-of-use-not-defined a skos:Concept ;
-    skos:inScheme :animalTypeOfUse ;
-    skos:topConceptOf :animalTypeOfUse ;
+animaltypeofuse:NotDefined a skos:Concept ;
+    skos:inScheme animaltypeofuse:ConceptScheme ;
+    skos:topConceptOf animaltypeofuse:ConceptScheme ;
     skos:notation "NotDefined" ;
     schema:name "Not defined"@en ;
     :animalTracingTerm "EnumAnimalTypeOfUse.NotDefined" .
 
-code:animal-type-of-use-other a skos:Concept ;
-    skos:inScheme :animalTypeOfUse ;
-    skos:topConceptOf :animalTypeOfUse ;
+animaltypeofuse:Other a skos:Concept ;
+    skos:inScheme animaltypeofuse:ConceptScheme ;
+    skos:topConceptOf animaltypeofuse:ConceptScheme ;
     skos:notation "Other" ;
     schema:name "Andere"@de,
         "Other"@en ;
     :sourceTerm "Andere" ;
     :animalTracingTerm "EnumAnimalTypeOfUse.Other" .
 
-code:animal-type-of-use-milk a skos:Concept ;
-    skos:inScheme :animalTypeOfUse ;
-    skos:topConceptOf :animalTypeOfUse ;
+animaltypeofuse:Milk a skos:Concept ;
+    skos:inScheme animaltypeofuse:ConceptScheme ;
+    skos:topConceptOf animaltypeofuse:ConceptScheme ;
     skos:notation "Milk" ;
     schema:name "Milch"@de,
         "Milk"@en ;
@@ -225,30 +235,30 @@ code:animal-type-of-use-milk a skos:Concept ;
 # Hilfsmittel: Tabelle 3: Definition Wertebereich Zweck pro Nutztierart
 # ------------------------------------------------------------------------------
 
-:equidTypeOfUsage a skos:ConceptScheme ;
+equidtypeofusage:ConceptScheme a skos:ConceptScheme ;
     schema:name "Zweck (Equiden)"@de,
         "Type of use (equids)"@en ;
     :animalTracingTerm "EquidTypeOfUsage" .
 
-code:equid-type-of-usage-undefined a skos:Concept ;
-    skos:inScheme :equidTypeOfUsage ;
-    skos:topConceptOf :equidTypeOfUsage ;
+equidtypeofusage:Undefined a skos:Concept ;
+    skos:inScheme equidtypeofusage:ConceptScheme ;
+    skos:topConceptOf equidtypeofusage:ConceptScheme ;
     skos:notation "Undefined" ;
     schema:name "Undefined"@en ;
     :animalTracingTerm "EquidTypeOfUsage.Undefined" .
 
-code:equid-type-of-usage-companion-animal a skos:Concept ;
-    skos:inScheme :equidTypeOfUsage ;
-    skos:topConceptOf :equidTypeOfUsage ;
+equidtypeofusage:CompanionAnimal a skos:Concept ;
+    skos:inScheme equidtypeofusage:ConceptScheme ;
+    skos:topConceptOf equidtypeofusage:ConceptScheme ;
     skos:notation "CompanionAnimal" ;
     schema:name "Heimtier"@de,
         "Companion animal"@en ;
     :sourceTerm "Heimtier" ;
     :animalTracingTerm "EquidTypeOfUsage.CompanionAnimal" .
 
-code:equid-type-of-usage-farm-animal a skos:Concept ;
-    skos:inScheme :equidTypeOfUsage ;
-    skos:topConceptOf :equidTypeOfUsage ;
+equidtypeofusage:FarmAnimal a skos:Concept ;
+    skos:inScheme equidtypeofusage:ConceptScheme ;
+    skos:topConceptOf equidtypeofusage:ConceptScheme ;
     skos:notation "FarmAnimal" ;
     schema:name "Nutztier"@de,
         "Farm animal"@en ;
@@ -261,50 +271,50 @@ code:equid-type-of-usage-farm-animal a skos:Concept ;
 # Hilfsmittel: Tabelle 7: Definition Wertebereich Tiergeschichtestatus
 # ------------------------------------------------------------------------------
 
-:animalHistoryState a skos:ConceptScheme ;
+animalhistorystate:ConceptScheme a skos:ConceptScheme ;
     schema:name "Tiergeschichtestatus"@de,
         "Animal history state"@en ;
     :animalTracingTerm "EnumAnimalHistoryState" .
 
-code:animal-history-state-not-defined a skos:Concept ;
-    skos:inScheme :animalHistoryState ;
-    skos:topConceptOf :animalHistoryState ;
+animalhistorystate:NotDefined a skos:Concept ;
+    skos:inScheme animalhistorystate:ConceptScheme ;
+    skos:topConceptOf animalhistorystate:ConceptScheme ;
     skos:notation "NotDefined" ;
     schema:name "Nicht definiert"@de,
         "Not defined"@en ;
     :sourceTerm "Nicht definiert" ;
     :animalTracingTerm "EnumAnimalHistoryState.NotDefined" .
 
-code:animal-history-state-not-ok a skos:Concept ;
-    skos:inScheme :animalHistoryState ;
-    skos:topConceptOf :animalHistoryState ;
+animalhistorystate:NotOk a skos:Concept ;
+    skos:inScheme animalhistorystate:ConceptScheme ;
+    skos:topConceptOf animalhistorystate:ConceptScheme ;
     skos:notation "NotOk" ;
     schema:name "Fehlerhaft"@de,
         "Not ok"@en ;
     :sourceTerm "Fehlerhaft" ;
     :animalTracingTerm "EnumAnimalHistoryState.NotOk" .
 
-code:animal-history-state-temporary-ok a skos:Concept ;
-    skos:inScheme :animalHistoryState ;
-    skos:topConceptOf :animalHistoryState ;
+animalhistorystate:TemporaryOk a skos:Concept ;
+    skos:inScheme animalhistorystate:ConceptScheme ;
+    skos:topConceptOf animalhistorystate:ConceptScheme ;
     skos:notation "TemporaryOk" ;
     schema:name "Temporär OK"@de,
         "Temporary ok"@en ;
     :sourceTerm "Temporär OK" ;
     :animalTracingTerm "EnumAnimalHistoryState.TemporaryOk" .
 
-code:animal-history-state-ok a skos:Concept ;
-    skos:inScheme :animalHistoryState ;
-    skos:topConceptOf :animalHistoryState ;
+animalhistorystate:Ok a skos:Concept ;
+    skos:inScheme animalhistorystate:ConceptScheme ;
+    skos:topConceptOf animalhistorystate:ConceptScheme ;
     skos:notation "Ok" ;
     schema:name "OK"@de,
         "Ok"@en ;
     :sourceTerm "OK" ;
     :animalTracingTerm "EnumAnimalHistoryState.Ok" .
 
-code:animal-history-state-lost a skos:Concept ;
-    skos:inScheme :animalHistoryState ;
-    skos:topConceptOf :animalHistoryState ;
+animalhistorystate:Lost a skos:Concept ;
+    skos:inScheme animalhistorystate:ConceptScheme ;
+    skos:topConceptOf animalhistorystate:ConceptScheme ;
     skos:notation "Lost" ;
     schema:name "Verschollen"@de,
         "Lost"@en ;
@@ -317,21 +327,21 @@ code:animal-history-state-lost a skos:Concept ;
 # No Wertebereich table in the Hilfsmittel.
 # ------------------------------------------------------------------------------
 
-:equidWithersClass a skos:ConceptScheme ;
+equidwithersclass:ConceptScheme a skos:ConceptScheme ;
     schema:name "Grössenkategorie"@de,
         "Withers class"@en ;
     :animalTracingTerm "EnumEquidWithersClass" .
 
-code:equid-withers-class-less-or-equal-than148cm a skos:Concept ;
-    skos:inScheme :equidWithersClass ;
-    skos:topConceptOf :equidWithersClass ;
+equidwithersclass:LessOrEqualThan148cm a skos:Concept ;
+    skos:inScheme equidwithersclass:ConceptScheme ;
+    skos:topConceptOf equidwithersclass:ConceptScheme ;
     skos:notation "LessOrEqualThan148cm" ;
     schema:name "Less or equal than 148cm"@en ;
     :animalTracingTerm "EnumEquidWithersClass.LessOrEqualThan148cm" .
 
-code:equid-withers-class-greater-than148cm a skos:Concept ;
-    skos:inScheme :equidWithersClass ;
-    skos:topConceptOf :equidWithersClass ;
+equidwithersclass:GreaterThan148cm a skos:Concept ;
+    skos:inScheme equidwithersclass:ConceptScheme ;
+    skos:topConceptOf equidwithersclass:ConceptScheme ;
     skos:notation "GreaterThan148cm" ;
     schema:name "Greater than 148cm"@en ;
     :animalTracingTerm "EnumEquidWithersClass.GreaterThan148cm" .

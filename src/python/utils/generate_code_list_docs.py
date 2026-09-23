@@ -65,7 +65,10 @@ def get_localized_value(graph, subject, predicates, lang):
 
 
 def anchor(uri):
-    return re.sub(r"[^a-z0-9]+", "-", str(uri).rsplit("/", 1)[-1].lower()).strip("-")
+    """The code list's own segment: a scheme sits at <list>/ConceptScheme."""
+    parts = [part for part in str(uri).split("/") if part]
+    name = parts[-2] if parts[-1] == "ConceptScheme" and len(parts) > 1 else parts[-1]
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
 def cell(text):

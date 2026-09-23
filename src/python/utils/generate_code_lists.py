@@ -23,6 +23,7 @@ from datetime import date
 from pathlib import Path
 
 DEFAULT_URL = "https://test-03-tvd-api-at.identitas.ch/open-api/v1.0"
+NAMESPACE = "https://agriculture.ld.admin.ch/eCH-0309/1/"
 
 # Scheme local name -> how to build it. "german" maps an openAPI value to the
 # Hilfsmittel's wording; "descriptions" to that table's Definition column.
@@ -95,14 +96,18 @@ HEADER = '''# ==================================================================
 # Wertebereich tables of the Hilfsmittel. Every concept records both with
 # :animalTracingTerm and :sourceTerm.
 #
+# Each code list gets its own sub-namespace and each concept is named by the
+# identifier the source system uses for it, as in eCH-0265, where the AGIS,
+# NAEBI and PSM lists are keyed by their own numeric codes. The identifier is
+# therefore not ours to case.
+#
 # The openAPI is still in development, so these lists are provisional. French
 # and Italian labels are missing: neither source provides them, and inventing
 # them here would misrepresent the source. See :codeLists for the as-of date.
 # ==============================================================================
 
 @prefix :                <https://agriculture.ld.admin.ch/eCH-0309/1/> .
-@prefix code:            <https://agriculture.ld.admin.ch/eCH-0309/1/code/> .
-
+{prefixes}
 @prefix dcterms:         <http://purl.org/dc/terms/> .
 @prefix schema:          <http://schema.org/> .
 @prefix skos:            <http://www.w3.org/2004/02/skos/core#> .
@@ -150,7 +155,11 @@ def main():
     enums = enums_by_short_name(spec)
 
     info = spec.get("info", {})
-    out = [HEADER]
+    prefixes = "\n".join(
+        f'@prefix {name + ":":24s}<{NAMESPACE}{name}/> .'
+        for name in (entry["scheme"].lower() for entry in SCHEMES)
+    ) + "\n"
+    out = [HEADER.format(prefixes=prefixes)]
     out.append(f'''
 # ==============================================================================
 # SCHEME METADATA
@@ -177,19 +186,19 @@ def main():
 # {"Hilfsmittel: " + spec_entry["table"] if spec_entry["table"] else "No Wertebereich table in the Hilfsmittel."}
 # ------------------------------------------------------------------------------
 
-:{spec_entry["scheme"]} a skos:ConceptScheme ;
+{spec_entry["scheme"].lower()}:ConceptScheme a skos:ConceptScheme ;
     schema:name "{escape(spec_entry["name"]["de"])}"@de,
         "{escape(spec_entry["name"]["en"])}"@en ;
     :animalTracingTerm "{spec_entry["enum"]}" .
 ''')
         for value in values:
-            iri = f'code:{slug(spec_entry["scheme"])}-{slug(value)}'
+            iri = f'{spec_entry["scheme"].lower()}:{value}'
             german = spec_entry["german"].get(value)
             description = spec_entry["descriptions"].get(value)
 
             lines = [f"{iri} a skos:Concept ;",
-                     f'    skos:inScheme :{spec_entry["scheme"]} ;',
-                     f'    skos:topConceptOf :{spec_entry["scheme"]} ;',
+                     f'    skos:inScheme {spec_entry["scheme"].lower()}:ConceptScheme ;',
+                     f'    skos:topConceptOf {spec_entry["scheme"].lower()}:ConceptScheme ;',
                      f'    skos:notation "{escape(value)}" ;']
             names = []
             if german:
