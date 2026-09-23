@@ -172,6 +172,38 @@ vollständig viersprachig.
 beziehen – deren `EnumerationValue` liefert `TranslatedText` je Sprache – oder
 übersetzen lassen. Für die Schnittstelle fehlt derzeit der Zugang.
 
+### B11. Rasse: eine Liste oder vier?
+
+Der Objektkatalog führt «Rasse» auf der Klasse «Einzeltier» als Wertebereich,
+eine Wertebereichstabelle dazu gibt es nicht. Die openAPI führt vier Listen:
+`CattleBreed` (67), `SheepBreed` (48), `GoatBreed` (20) und `EquidBreed` (198) –
+dazu `EnumCattleRace` (68), dieselbe Rinderliste auf Deutsch, siehe B8.
+
+**Kodiert als** noch nicht modelliert; das Attribut fehlt auf `:Animal`.
+
+**Konsequenz** Ein gemeinsames Schema über alle Gattungen oder eines je Gattung?
+Und welche der beiden Rinderlisten gilt?
+
+### B12. Tierkategorie
+
+Der Objektkatalog führt «Tierkategorie» auf «Gruppenmeldung» (Kardinalität 1)
+und auf «Gesundheitsstatus Standort» als Wertebereich. Eine Wertebereichstabelle
+fehlt, und in der openAPI ist kein eindeutiges Gegenstück erkennbar.
+
+**Kodiert als** noch nicht modelliert.
+
+**Konsequenz** Worin unterscheidet sich die Tierkategorie von der Nutztierart?
+
+### B13. Seuche
+
+«Seuche» ist auf beiden Gesundheitsstatus-Klassen als Wertebereich geführt, ohne
+Tabelle. Die Schnittstelle kennt stattdessen Felder je Seuche – `BvdState`,
+`BvdRisk`, `FootrotState` – siehe B2.
+
+**Kodiert als** noch nicht modelliert.
+
+**Konsequenz** Braucht es eine Seuchenliste, und wenn ja, aus welcher Quelle?
+
 ### B10. Grössenkategorie ohne Wertebereichstabelle
 
 Der Begriff kommt im Hilfsmittel genau einmal vor, als Attributzeile der
