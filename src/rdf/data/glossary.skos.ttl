@@ -66,9 +66,12 @@ term:triple a skos:Concept ;
 # Datenmodells sind: der Objektkatalog führt sie nicht als Klasse, und für die
 # meldende Person hält ein Prüfkommentar fest, dass sie kein öffentlicher
 # Bestandteil der Meldung ist.
+#
+# Die lokalen Namen sind wie im übrigen Modell englisch, damit der Identifikator
+# keine Sprache bevorzugt; die Benennungen stehen in schema:name je Sprache.
 # ==============================================================================
 
-term:bewirtschafter a skos:Concept ;
+term:farmManager a skos:Concept ;
     skos:inScheme :glossary ;
     skos:topConceptOf :glossary ;
     schema:name "Bewirtschafter"@de,
@@ -78,7 +81,7 @@ term:bewirtschafter a skos:Concept ;
         "A legal unit that bears the business risk for a farm (LBV Art. 2). The animal keeper is a form of farm manager that keeps animals (LBV Art. 11a)."@en,
         "Une unité juridique qui assume le risque économique d'une exploitation (OTerm art. 2). Le détenteur d'animaux est une forme d'exploitant qui détient des animaux (OTerm art. 11a)."@fr .
 
-term:meldendePerson a skos:Concept ;
+term:reportingPerson a skos:Concept ;
     skos:inScheme :glossary ;
     skos:topConceptOf :glossary ;
     schema:name "Meldende Person"@de,
@@ -88,7 +91,7 @@ term:meldendePerson a skos:Concept ;
         "The person or persons who make notifications for an animal holding or for an equid owner."@en,
         "La personne ou les personnes qui effectuent les annonces pour une unité d'élevage ou pour un propriétaire d'équidés."@fr .
 
-term:stammbetrieb a skos:Concept ;
+term:homeHolding a skos:Concept ;
     skos:inScheme :glossary ;
     skos:topConceptOf :glossary ;
     schema:name "Stammbetrieb"@de,
@@ -98,7 +101,7 @@ term:stammbetrieb a skos:Concept ;
         "For cattle, a home holding can be recorded in order to represent an animal's affiliation to an animal holding while the animal is located on another local unit."@en,
         "Pour les bovins, une exploitation de référence peut être enregistrée afin de représenter l'appartenance des animaux à une unité d'élevage lorsqu'un animal se trouve sur une autre unité locale."@fr .
 
-term:tierhaltung a skos:Concept ;
+term:animalHolding a skos:Concept ;
     skos:inScheme :glossary ;
     skos:topConceptOf :glossary ;
     schema:name "Tierhaltung"@de,
