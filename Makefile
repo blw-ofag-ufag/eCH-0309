@@ -198,7 +198,7 @@ build: $(PROCESSED_DATA)
 # BUILD DOCUMENTATION
 # ==============================================================================
 
-$(DOCS_UML_PNG): $(SHAPES) $(ONTO) src/python/utils/patch_uml_diagram.py | $(IMG_DIR) $(LOG_DIR) $(SHACL_PLAY_JAR) $(PLANTUML_JAR) $(JAVA17)
+$(DOCS_UML_PNG): $(SHAPES) $(ONTO) src/rdf/data/code_lists.skos.ttl src/python/utils/patch_uml_diagram.py | $(IMG_DIR) $(LOG_DIR) $(SHACL_PLAY_JAR) $(PLANTUML_JAR) $(JAVA17)
 	@mkdir -p $(DOCS_IMG_DIR)
 	@printf "$(BOLD)[*] Extracting UML structure via SHACL Play...$(NC)\n"
 	@printf "$(GREY)"; \
@@ -208,7 +208,7 @@ $(DOCS_UML_PNG): $(SHAPES) $(ONTO) src/python/utils/patch_uml_diagram.py | $(IMG
 	@printf "$(BOLD)[*] Rendering PNG with PlantUML (Pure Java Smetana engine)...$(NC)\n"
 	@printf "$(GREY)"; \
 	awk '/@startuml/{print;print "!pragma layout smetana";next} /^remove @unlinked/{next} 1' $(UML_PUML) > $(UML_PUML).tmp && mv $(UML_PUML).tmp $(UML_PUML); \
-	$(VENV_PYTHON) src/python/utils/patch_uml_diagram.py -i $(UML_PUML) -o $(ONTO) || { printf "$(NC)"; exit 1; }; \
+	$(VENV_PYTHON) src/python/utils/patch_uml_diagram.py -i $(UML_PUML) -o $(ONTO) -c src/rdf/data/code_lists.skos.ttl || { printf "$(NC)"; exit 1; }; \
 	$(JAVA17) -jar $(PLANTUML_JAR) -tpng $(UML_PUML) -o $(shell cd $(IMG_DIR) && pwd) || { printf "$(NC)"; exit 1; }; \
 	cp $(IMG_DIR)/uml.png $(DOCS_UML_PNG); \
 	printf "$(NC)"
