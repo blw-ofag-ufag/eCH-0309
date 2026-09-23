@@ -36,6 +36,34 @@
 :AnimalHealthStatus a owl:Class .
 
 # ==============================================================================
+# CODE LIST CLASSES
+#
+# One class per Wertebereich, as in eCH-0265, so that an attribute can be
+# constrained with sh:class instead of admitting any skos:Concept. The
+# concepts themselves live in src/rdf/data/code_lists.skos.ttl.
+# ==============================================================================
+
+:Genus a owl:Class .
+
+:Gender a owl:Class .
+
+:AnimalTypeOfUse a owl:Class .
+
+:EquidTypeOfUsage a owl:Class .
+
+:AnimalHistoryState a owl:Class .
+
+:EquidWithersClass a owl:Class .
+
+:NotificationType a owl:Class .
+
+:HealthStatusType a owl:Class .
+
+:LocalUnitEpizooticStatus a owl:Class .
+
+:AnimalEpizooticStatus a owl:Class .
+
+# ==============================================================================
 # OBJECT PROPERTIES
 #
 # Declared without rdfs:domain/rdfs:range on purpose: :localUnit has three
@@ -57,6 +85,22 @@
 
 :owner a owl:ObjectProperty .
 
+:genus a owl:ObjectProperty .
+
+:gender a owl:ObjectProperty .
+
+:animalHistoryState a owl:ObjectProperty .
+
+:typeOfUse a owl:ObjectProperty .
+
+:withersClass a owl:ObjectProperty .
+
+:notificationType a owl:ObjectProperty .
+
+:healthStatusType a owl:ObjectProperty .
+
+:epizooticStatus a owl:ObjectProperty .
+
 # ==============================================================================
 # ANNOTATION PROPERTIES
 #
@@ -75,3 +119,31 @@
 # Counterpart in the eCH data standards this model builds on, written in the
 # notation those standards use themselves (e.g. "eCH-0108:localIdType").
 :echTerm a owl:AnnotationProperty .
+
+# ==============================================================================
+# DATATYPE PROPERTIES
+# ==============================================================================
+
+:identifier a owl:DatatypeProperty .
+
+:eventIdentifier a owl:DatatypeProperty .
+
+:dateOfBirth a owl:DatatypeProperty .
+
+:dateOfDeath a owl:DatatypeProperty .
+
+:castrated a owl:DatatypeProperty .
+
+:groupInformation a owl:DatatypeProperty .
+
+:eventDate a owl:DatatypeProperty .
+
+:notificationDate a owl:DatatypeProperty .
+
+:count a owl:DatatypeProperty .
+
+:weight a owl:DatatypeProperty .
+
+:age a owl:DatatypeProperty .
+
+:validFrom a owl:DatatypeProperty .

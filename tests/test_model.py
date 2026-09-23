@@ -17,10 +17,17 @@ def test_model_shacl():
     carries :Equid rdfs:subClassOf :Animal, which sh:class traverses when it
     checks whether an :Equid is an acceptable value for :animal. RDFS inference
     is switched on in addition, mirroring the `robot reason` stage of the build.
+
+    src/rdf/data/code_lists.skos.ttl is merged into the data graph, because the
+    coded attributes are constrained with sh:class against the code list classes
+    and those types sit on the concepts in that file. It belongs in the data
+    graph rather than the ontology graph: pyshacl does not expose ont_graph
+    types to sh:class, and `robot merge` puts both in one graph anyway.
     """
     data_path = Path("tests/fixtures/example_model.ttl")
     shapes_path = Path("src/rdf/shapes/model.shacl.ttl")
     ontology_path = Path("src/rdf/ontology/model.owl.ttl")
+    code_lists_path = Path("src/rdf/data/code_lists.skos.ttl")
 
     if not data_path.exists():
         pytest.skip(f"Data file not found: {data_path}")
@@ -30,6 +37,8 @@ def test_model_shacl():
     data_graph = Graph().parse(data_path, format="turtle")
     shapes_graph = Graph().parse(shapes_path, format="turtle")
     ont_graph = Graph().parse(ontology_path, format="turtle")
+    if code_lists_path.exists():
+        data_graph.parse(code_lists_path, format="turtle")
 
     conforms, report_graph, report_text = validate(
         data_graph,

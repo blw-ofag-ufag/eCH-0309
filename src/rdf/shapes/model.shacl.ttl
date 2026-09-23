@@ -163,6 +163,110 @@
     :sourceTerm "Einzeltier" ;
     :animalTracingTerm "CattleDetailV1Response", "SheepDetailV1Response", "GoatDetailV1Response" ;
     sh:targetClass :Animal ;
+    sh:property
+    [
+        sh:order 3 ;
+        sh:name "Identifikator"@de,
+            "Identifier"@en,
+            "Identifiant"@fr,
+            "Identificatore"@it ;
+        :sourceTerm "Identifikator" ;
+        sh:description "Ohrmarkennummer, bei Equiden UELN"@de,
+            "Ear tag number, or UELN for equids"@en,
+            "Numéro de marque auriculaire, UELN pour les équidés"@fr,
+            "Numero della marca auricolare, UELN per gli equidi"@it ;
+        sh:path :identifier ;
+        sh:datatype xsd:string ;
+        sh:maxLength 15 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 4 ;
+        sh:name "Nutztierart"@de,
+            "Genus"@en,
+            "Espèce d'animal de rente"@fr,
+            "Specie di animale da reddito"@it ;
+        :sourceTerm "Nutztierart" ;
+        :animalTracingTerm "EnumGenus" ;
+        sh:path :genus ;
+        sh:class :Genus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 5 ;
+        sh:name "Geschlecht"@de,
+            "Gender"@en,
+            "Sexe"@fr,
+            "Sesso"@it ;
+        :sourceTerm "Geschlecht" ;
+        :animalTracingTerm "EnumGender" ;
+        sh:path :gender ;
+        sh:class :Gender ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 6 ;
+        sh:name "Geburtsdatum"@de,
+            "Date of birth"@en,
+            "Date de naissance"@fr,
+            "Data di nascita"@it ;
+        :sourceTerm "Geburtsdatum" ;
+        :animalTracingTerm "CattleDetailV1Response.dateOfBirth" ;
+        sh:path :dateOfBirth ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 7 ;
+        sh:name "Todesdatum"@de,
+            "Date of death"@en,
+            "Date de mort"@fr,
+            "Data di morte"@it ;
+        :sourceTerm "Todesdatum" ;
+        :animalTracingTerm "CattleDetailV1Response.dateOfDeath" ;
+        sh:path :dateOfDeath ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 8 ;
+        sh:name "TiergeschichteStatus"@de,
+            "Animal history state"@en,
+            "Statut de l'historique de l'animal"@fr,
+            "Stato della storia dell'animale"@it ;
+        :sourceTerm "TiergeschichteStatus" ;
+        :animalTracingTerm "EnumAnimalHistoryState" ;
+        sh:path :animalHistoryState ;
+        sh:class :AnimalHistoryState ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 11 ;
+        sh:name "Zweck"@de,
+            "Type of use"@en,
+            "Type d'utilisation"@fr,
+            "Tipo di utilizzo"@it ;
+        :sourceTerm "Zweck" ;
+        :animalTracingTerm "EnumAnimalTypeOfUse" ;
+        sh:path :typeOfUse ;
+        sh:class :AnimalTypeOfUse ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 12 ;
+        sh:name "Kastriert"@de,
+            "Castrated"@en,
+            "Castré"@fr,
+            "Castrato"@it ;
+        :sourceTerm "Kastriert" ;
+        :animalTracingTerm "CattleDetailV1Response.isCastrated" ;
+        sh:path :castrated ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+    ] ;
     sh:property [
         sh:order 1 ;
         sh:name "Identifikation Mutter"@de,
@@ -269,6 +373,20 @@
     :sourceTerm "Equiden" ;
     :animalTracingTerm "EquidDetailsEquidResponse", "EquidDetailsPublicEquidResponse" ;
     sh:targetClass :Equid ;
+    sh:property
+    [
+        sh:order 2 ;
+        sh:name "Grössenkategorie"@de,
+            "Withers class"@en,
+            "Catégorie de taille"@fr,
+            "Categoria di grandezza"@it ;
+        :sourceTerm "Grössenkategorie" ;
+        :animalTracingTerm "EnumEquidWithersClass" ;
+        sh:path :withersClass ;
+        sh:class :EquidWithersClass ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
     sh:property [
         sh:order 1 ;
         sh:name "Eigentümer oder Eigentümerin"@de,
@@ -304,6 +422,80 @@
     :sourceTerm "Meldung Einzeltier" ;
     :animalTracingTerm "CattleDetailV1NotificationResponse", "SheepDetailV1NotificationResponse", "GoatDetailV1NotificationResponse" ;
     sh:targetClass :AnimalNotification ;
+    sh:property
+    [
+        sh:order 4 ;
+        sh:name "ID"@de,
+            "ID"@en,
+            "ID"@fr,
+            "ID"@it ;
+        :sourceTerm "ID" ;
+        sh:description "Eindeutiger Identifikator der Bewegung, der durch das System vergeben wird."@de,
+            "Unique identifier of the movement, assigned by the system."@en,
+            "Identifiant univoque du mouvement, attribué par le système."@fr,
+            "Identificatore univoco del movimento, attribuito dal sistema."@it ;
+        sh:path :eventIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 5 ;
+        sh:name "Nutztierart"@de,
+            "Genus"@en,
+            "Espèce d'animal de rente"@fr,
+            "Specie di animale da reddito"@it ;
+        :sourceTerm "Nutztierart" ;
+        :animalTracingTerm "EnumGenus" ;
+        sh:path :genus ;
+        sh:class :Genus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 6 ;
+        sh:name "Meldungstyp"@de,
+            "Notification type"@en,
+            "Type de mouvement"@fr,
+            "Tipo di movimento"@it ;
+        :sourceTerm "Meldungstyp" ;
+        sh:path :notificationType ;
+        sh:class :NotificationType ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 7 ;
+        sh:name "Ereignisdatum"@de,
+            "Event date"@en,
+            "Date de l'événement"@fr,
+            "Data dell'evento"@it ;
+        :sourceTerm "Ereignisdatum" ;
+        sh:description "Datum, an dem das Ereignis stattgefunden hat"@de,
+            "Date on which the event took place"@en,
+            "Date à laquelle l'événement a eu lieu"@fr,
+            "Data in cui si è verificato l'evento"@it ;
+        sh:path :eventDate ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 8 ;
+        sh:name "Meldedatum"@de,
+            "Notification date"@en,
+            "Date d'annonce"@fr,
+            "Data di notifica"@it ;
+        :sourceTerm "Meldedatum" ;
+        sh:description "Datum, an dem das Ereignis gemeldet wurde"@de,
+            "Date on which the event was reported"@en,
+            "Date à laquelle l'événement a été annoncé"@fr,
+            "Data in cui l'evento è stato notificato"@it ;
+        sh:path :notificationDate ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
     sh:property [
         sh:order 1 ;
         sh:name "Einzeltier"@de,
@@ -374,6 +566,155 @@
         "Un evento che riguarda un gruppo di animali non identificabili singolarmente. Le notifiche di gruppo sono registrate per gli animali delle categorie suini e pollame; gli individui di un tale gruppo non sono pertanto noti. Gli eventi sono notificati dalle persone fisiche dell'unità giuridica responsabile, il detentore di animali. Comprendono le notifiche di accasamento per il pollame, le notifiche di movimento per i suini nonché le notifiche di macellazione di suini (in capi) e di gruppi di pollame (in kg). Questa classe non ha alcun corrispettivo nella specifica openAPI di AnimalTracing, poiché i suini e il pollame non vi sono rappresentati."@it ;
     :sourceTerm "Gruppenmeldung" ;
     sh:targetClass :GroupNotification ;
+    sh:property
+    [
+        sh:order 3 ;
+        sh:name "ID"@de,
+            "ID"@en,
+            "ID"@fr,
+            "ID"@it ;
+        :sourceTerm "ID" ;
+        sh:description "Eindeutiger Identifikator der Bewegung, der durch das System vergeben wird."@de,
+            "Unique identifier of the movement, assigned by the system."@en,
+            "Identifiant univoque du mouvement, attribué par le système."@fr,
+            "Identificatore univoco del movimento, attribuito dal sistema."@it ;
+        sh:path :eventIdentifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 4 ;
+        sh:name "Nutztierart"@de,
+            "Genus"@en,
+            "Espèce d'animal de rente"@fr,
+            "Specie di animale da reddito"@it ;
+        :sourceTerm "Nutztierart" ;
+        :animalTracingTerm "EnumGenus" ;
+        sh:path :genus ;
+        sh:class :Genus ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 5 ;
+        sh:name "Gruppeninformation"@de,
+            "Group information"@en,
+            "Information de groupe"@fr,
+            "Informazione di gruppo"@it ;
+        :sourceTerm "Gruppeninformation" ;
+        sh:description "Bei Einstallungsmeldungen von Geflügel ist eine Gruppeninformation anzugeben"@de,
+            "Group information must be given for housing notifications of poultry"@en,
+            "Une information de groupe doit être indiquée pour les annonces de mise en place de volaille"@fr,
+            "Per le notifiche di accasamento di pollame va indicata un'informazione di gruppo"@it ;
+        sh:path :groupInformation ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 6 ;
+        sh:name "Meldungstyp"@de,
+            "Notification type"@en,
+            "Type de mouvement"@fr,
+            "Tipo di movimento"@it ;
+        :sourceTerm "Meldungstyp" ;
+        sh:path :notificationType ;
+        sh:class :NotificationType ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 7 ;
+        sh:name "Ereignisdatum"@de,
+            "Event date"@en,
+            "Date de l'événement"@fr,
+            "Data dell'evento"@it ;
+        :sourceTerm "Ereignisdatum" ;
+        sh:description "Datum, an dem das Ereignis stattgefunden hat"@de,
+            "Date on which the event took place"@en,
+            "Date à laquelle l'événement a eu lieu"@fr,
+            "Data in cui si è verificato l'evento"@it ;
+        sh:path :eventDate ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 8 ;
+        sh:name "Meldedatum"@de,
+            "Notification date"@en,
+            "Date d'annonce"@fr,
+            "Data di notifica"@it ;
+        :sourceTerm "Meldedatum" ;
+        sh:description "Datum, an dem das Ereignis gemeldet wurde"@de,
+            "Date on which the event was reported"@en,
+            "Date à laquelle l'événement a été annoncé"@fr,
+            "Data in cui l'evento è stato notificato"@it ;
+        sh:path :notificationDate ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 9 ;
+        sh:name "Anzahl"@de,
+            "Number"@en,
+            "Nombre"@fr,
+            "Numero"@it ;
+        :sourceTerm "Anzahl" ;
+        sh:description "Anzahl Tiere, die in einer Bewegung verstellt wurden (Schweine/Geflügel)"@de,
+            "Number of animals moved in one movement (pigs/poultry)"@en,
+            "Nombre d'animaux déplacés lors d'un mouvement (porcs/volaille)"@fr,
+            "Numero di animali spostati in un movimento (suini/pollame)"@it ;
+        sh:path :count ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 10 ;
+        sh:name "Gewicht"@de,
+            "Weight"@en,
+            "Poids"@fr,
+            "Peso"@it ;
+        :sourceTerm "Gewicht" ;
+        sh:description "Gesamtgewicht in kg der Tiergruppe bei Schlachtungsmeldungen von Geflügel"@de,
+            "Total weight in kg of the animal group for slaughter notifications of poultry"@en,
+            "Poids total en kg du groupe d'animaux pour les annonces d'abattage de volaille"@fr,
+            "Peso totale in kg del gruppo di animali per le notifiche di macellazione di pollame"@it ;
+        sh:path :weight ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 11 ;
+        sh:name "Zweck"@de,
+            "Type of use"@en,
+            "Type d'utilisation"@fr,
+            "Tipo di utilizzo"@it ;
+        :sourceTerm "Zweck" ;
+        sh:description "Nutzungsart der Tiergruppe (bei Einzeltieren wird die Nutzungsart auf der Klasse «Einzeltier» geführt)"@de,
+            "Type of use of the animal group (for individual animals it is held on the class «Einzeltier»)"@en,
+            "Type d'utilisation du groupe d'animaux (pour les animaux individuels il figure sur la classe «Einzeltier»)"@fr,
+            "Tipo di utilizzo del gruppo di animali (per gli animali singoli figura sulla classe «Einzeltier»)"@it ;
+        sh:path :typeOfUse ;
+        sh:class :AnimalTypeOfUse ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 12 ;
+        sh:name "Alter"@de,
+            "Age"@en,
+            "Âge"@fr,
+            "Età"@it ;
+        :sourceTerm "Alter" ;
+        sh:description "Bei Einstallungsmeldungen von Geflügel ist das Alter in Wochen anzugeben"@de,
+            "For housing notifications of poultry the age must be given in weeks"@en,
+            "Pour les annonces de mise en place de volaille, l'âge doit être indiqué en semaines"@fr,
+            "Per le notifiche di accasamento di pollame l'età va indicata in settimane"@it ;
+        sh:path :age ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+    ] ;
     sh:property [
         sh:order 1 ;
         sh:name "Örtliche Einheit"@de,
@@ -425,6 +766,48 @@
         "Quando si verificano epizoozie di rilevanza nazionale, è essenziale che i detentori di animali siano informati sui blocchi e sullo stato epizootico, affinché il rischio di diffusione attraverso il traffico di animali possa essere ridotto al minimo. Un'informazione epizootica registrata su un'unità locale. Oltre allo stato epizootico di un'unità locale, possono essere rappresentati anche i risultati di vaccinazione, di rischio e di laboratorio. La specifica openAPI di AnimalTracing non prevede una classe distinta a tal fine; le informazioni corrispondenti vi figurano come attributi dell'unità locale."@it ;
     :sourceTerm "Gesundheitsstatus Standort" ;
     sh:targetClass :LocalUnitHealthStatus ;
+    sh:property
+    [
+        sh:order 2 ;
+        sh:name "Typ"@de,
+            "Type"@en,
+            "Type"@fr,
+            "Tipo"@it ;
+        :sourceTerm "Typ" ;
+        sh:description "z. B. Seuchenstatus, Impfstatus, Risikostatus"@de,
+            "e.g. epizootic, vaccination or risk status"@en,
+            "p. ex. statut épizootique, vaccinal ou de risque"@fr,
+            "p. es. stato epizootico, vaccinale o di rischio"@it ;
+        sh:path :healthStatusType ;
+        sh:class :HealthStatusType ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 4 ;
+        sh:name "Status"@de,
+            "Status"@en,
+            "Statut"@fr,
+            "Stato"@it ;
+        :sourceTerm "Status" ;
+        sh:path :epizooticStatus ;
+        sh:class :LocalUnitEpizooticStatus ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 5 ;
+        sh:name "Datum"@de,
+            "Date"@en,
+            "Date"@fr,
+            "Data"@it ;
+        :sourceTerm "Datum" ;
+        sh:description "Datum, ab dem der Seuchenstatus gültig ist"@de,
+            "Date from which the status is valid"@en,
+            "Date à partir de laquelle le statut est valable"@fr,
+            "Data a partire dalla quale lo stato è valido"@it ;
+        sh:path :validFrom ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+    ] ;
     sh:property [
         sh:order 1 ;
         sh:name "Örtliche Einheit"@de,
@@ -459,6 +842,48 @@
     :sourceTerm "Gesundheitsstatus Einzeltier" ;
     :animalTracingTerm "CattleDetailV1DiseasesResponse" ;
     sh:targetClass :AnimalHealthStatus ;
+    sh:property
+    [
+        sh:order 2 ;
+        sh:name "Typ"@de,
+            "Type"@en,
+            "Type"@fr,
+            "Tipo"@it ;
+        :sourceTerm "Typ" ;
+        sh:description "z. B. Seuchenstatus, Impfstatus, Risikostatus"@de,
+            "e.g. epizootic, vaccination or risk status"@en,
+            "p. ex. statut épizootique, vaccinal ou de risque"@fr,
+            "p. es. stato epizootico, vaccinale o di rischio"@it ;
+        sh:path :healthStatusType ;
+        sh:class :HealthStatusType ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 4 ;
+        sh:name "Status"@de,
+            "Status"@en,
+            "Statut"@fr,
+            "Stato"@it ;
+        :sourceTerm "Status" ;
+        sh:path :epizooticStatus ;
+        sh:class :AnimalEpizooticStatus ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 5 ;
+        sh:name "Datum"@de,
+            "Date"@en,
+            "Date"@fr,
+            "Data"@it ;
+        :sourceTerm "Datum" ;
+        sh:description "Datum, ab dem der Seuchenstatus gültig ist"@de,
+            "Date from which the status is valid"@en,
+            "Date à partir de laquelle le statut est valable"@fr,
+            "Data a partire dalla quale lo stato è valido"@it ;
+        sh:path :validFrom ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+    ] ;
     sh:property [
         sh:order 1 ;
         sh:name "Einzeltier"@de,

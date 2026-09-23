@@ -69,7 +69,7 @@ genus:ConceptScheme a skos:ConceptScheme ;
         "Specie di animale da reddito"@it ;
     :animalTracingTerm "EnumGenus" .
 
-genus:Cattle a skos:Concept ;
+genus:Cattle a skos:Concept, :Genus ;
     skos:inScheme genus:ConceptScheme ;
     skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Cattle" ;
@@ -79,7 +79,7 @@ genus:Cattle a skos:Concept ;
     :sourceTerm "Rindvieh" ;
     :animalTracingTerm "EnumGenus.Cattle" .
 
-genus:Pig a skos:Concept ;
+genus:Pig a skos:Concept, :Genus ;
     skos:inScheme genus:ConceptScheme ;
     skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Pig" ;
@@ -88,7 +88,7 @@ genus:Pig a skos:Concept ;
     :sourceTerm "Schweine" ;
     :animalTracingTerm "EnumGenus.Pig" .
 
-genus:Sheep a skos:Concept ;
+genus:Sheep a skos:Concept, :Genus ;
     skos:inScheme genus:ConceptScheme ;
     skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Sheep" ;
@@ -97,7 +97,7 @@ genus:Sheep a skos:Concept ;
     :sourceTerm "Schafe" ;
     :animalTracingTerm "EnumGenus.Sheep" .
 
-genus:Goat a skos:Concept ;
+genus:Goat a skos:Concept, :Genus ;
     skos:inScheme genus:ConceptScheme ;
     skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Goat" ;
@@ -106,7 +106,7 @@ genus:Goat a skos:Concept ;
     :sourceTerm "Ziegen" ;
     :animalTracingTerm "EnumGenus.Goat" .
 
-genus:Camelid a skos:Concept ;
+genus:Camelid a skos:Concept, :Genus ;
     skos:inScheme genus:ConceptScheme ;
     skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Camelid" ;
@@ -116,7 +116,7 @@ genus:Camelid a skos:Concept ;
     :sourceTerm "Kameliden" ;
     :animalTracingTerm "EnumGenus.Camelid" .
 
-genus:Game a skos:Concept ;
+genus:Game a skos:Concept, :Genus ;
     skos:inScheme genus:ConceptScheme ;
     skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Game" ;
@@ -126,7 +126,7 @@ genus:Game a skos:Concept ;
     :sourceTerm "Wild" ;
     :animalTracingTerm "EnumGenus.Game" .
 
-genus:Equid a skos:Concept ;
+genus:Equid a skos:Concept, :Genus ;
     skos:inScheme genus:ConceptScheme ;
     skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Equid" ;
@@ -136,7 +136,7 @@ genus:Equid a skos:Concept ;
     :sourceTerm "Equiden" ;
     :animalTracingTerm "EnumGenus.Equid" .
 
-genus:Poultry a skos:Concept ;
+genus:Poultry a skos:Concept, :Genus ;
     skos:inScheme genus:ConceptScheme ;
     skos:topConceptOf genus:ConceptScheme ;
     skos:notation "Poultry" ;
@@ -158,7 +158,7 @@ gender:ConceptScheme a skos:ConceptScheme ;
         "Sesso"@it ;
     :animalTracingTerm "EnumGender" .
 
-gender:Female a skos:Concept ;
+gender:Female a skos:Concept, :Gender ;
     skos:inScheme gender:ConceptScheme ;
     skos:topConceptOf gender:ConceptScheme ;
     skos:notation "Female" ;
@@ -167,7 +167,7 @@ gender:Female a skos:Concept ;
     :sourceTerm "Weiblich" ;
     :animalTracingTerm "EnumGender.Female" .
 
-gender:Male a skos:Concept ;
+gender:Male a skos:Concept, :Gender ;
     skos:inScheme gender:ConceptScheme ;
     skos:topConceptOf gender:ConceptScheme ;
     skos:notation "Male" ;
@@ -190,7 +190,7 @@ animaltypeofuse:ConceptScheme a skos:ConceptScheme ;
         "Tipo di utilizzo (bovini, ovini, caprini)"@it ;
     :animalTracingTerm "EnumAnimalTypeOfUse" .
 
-animaltypeofuse:Other a skos:Concept ;
+animaltypeofuse:Other a skos:Concept, :AnimalTypeOfUse ;
     skos:inScheme animaltypeofuse:ConceptScheme ;
     skos:topConceptOf animaltypeofuse:ConceptScheme ;
     skos:notation "Other" ;
@@ -199,7 +199,7 @@ animaltypeofuse:Other a skos:Concept ;
     :sourceTerm "Andere" ;
     :animalTracingTerm "EnumAnimalTypeOfUse.Other" .
 
-animaltypeofuse:Milk a skos:Concept ;
+animaltypeofuse:Milk a skos:Concept, :AnimalTypeOfUse ;
     skos:inScheme animaltypeofuse:ConceptScheme ;
     skos:topConceptOf animaltypeofuse:ConceptScheme ;
     skos:notation "Milk" ;
@@ -223,7 +223,7 @@ equidtypeofusage:ConceptScheme a skos:ConceptScheme ;
         "Tipo di utilizzo (equidi)"@it ;
     :animalTracingTerm "EquidTypeOfUsage" .
 
-equidtypeofusage:CompanionAnimal a skos:Concept ;
+equidtypeofusage:CompanionAnimal a skos:Concept, :EquidTypeOfUsage ;
     skos:inScheme equidtypeofusage:ConceptScheme ;
     skos:topConceptOf equidtypeofusage:ConceptScheme ;
     skos:notation "CompanionAnimal" ;
@@ -232,7 +232,7 @@ equidtypeofusage:CompanionAnimal a skos:Concept ;
     :sourceTerm "Heimtier" ;
     :animalTracingTerm "EquidTypeOfUsage.CompanionAnimal" .
 
-equidtypeofusage:FarmAnimal a skos:Concept ;
+equidtypeofusage:FarmAnimal a skos:Concept, :EquidTypeOfUsage ;
     skos:inScheme equidtypeofusage:ConceptScheme ;
     skos:topConceptOf equidtypeofusage:ConceptScheme ;
     skos:notation "FarmAnimal" ;
@@ -254,7 +254,7 @@ animalhistorystate:ConceptScheme a skos:ConceptScheme ;
         "Stato della storia dell'animale"@it ;
     :animalTracingTerm "EnumAnimalHistoryState" .
 
-animalhistorystate:NotDefined a skos:Concept ;
+animalhistorystate:NotDefined a skos:Concept, :AnimalHistoryState ;
     skos:inScheme animalhistorystate:ConceptScheme ;
     skos:topConceptOf animalhistorystate:ConceptScheme ;
     skos:notation "NotDefined" ;
@@ -263,7 +263,7 @@ animalhistorystate:NotDefined a skos:Concept ;
     :sourceTerm "Nicht definiert" ;
     :animalTracingTerm "EnumAnimalHistoryState.NotDefined" .
 
-animalhistorystate:NotOk a skos:Concept ;
+animalhistorystate:NotOk a skos:Concept, :AnimalHistoryState ;
     skos:inScheme animalhistorystate:ConceptScheme ;
     skos:topConceptOf animalhistorystate:ConceptScheme ;
     skos:notation "NotOk" ;
@@ -272,7 +272,7 @@ animalhistorystate:NotOk a skos:Concept ;
     :sourceTerm "Fehlerhaft" ;
     :animalTracingTerm "EnumAnimalHistoryState.NotOk" .
 
-animalhistorystate:TemporaryOk a skos:Concept ;
+animalhistorystate:TemporaryOk a skos:Concept, :AnimalHistoryState ;
     skos:inScheme animalhistorystate:ConceptScheme ;
     skos:topConceptOf animalhistorystate:ConceptScheme ;
     skos:notation "TemporaryOk" ;
@@ -281,7 +281,7 @@ animalhistorystate:TemporaryOk a skos:Concept ;
     :sourceTerm "Temporär OK" ;
     :animalTracingTerm "EnumAnimalHistoryState.TemporaryOk" .
 
-animalhistorystate:Ok a skos:Concept ;
+animalhistorystate:Ok a skos:Concept, :AnimalHistoryState ;
     skos:inScheme animalhistorystate:ConceptScheme ;
     skos:topConceptOf animalhistorystate:ConceptScheme ;
     skos:notation "Ok" ;
@@ -290,7 +290,7 @@ animalhistorystate:Ok a skos:Concept ;
     :sourceTerm "OK" ;
     :animalTracingTerm "EnumAnimalHistoryState.Ok" .
 
-animalhistorystate:Lost a skos:Concept ;
+animalhistorystate:Lost a skos:Concept, :AnimalHistoryState ;
     skos:inScheme animalhistorystate:ConceptScheme ;
     skos:topConceptOf animalhistorystate:ConceptScheme ;
     skos:notation "Lost" ;
@@ -312,7 +312,7 @@ equidwithersclass:ConceptScheme a skos:ConceptScheme ;
         "Categoria di grandezza"@it ;
     :animalTracingTerm "EnumEquidWithersClass" .
 
-equidwithersclass:LessOrEqualThan148cm a skos:Concept ;
+equidwithersclass:LessOrEqualThan148cm a skos:Concept, :EquidWithersClass ;
     skos:inScheme equidwithersclass:ConceptScheme ;
     skos:topConceptOf equidwithersclass:ConceptScheme ;
     skos:notation "LessOrEqualThan148cm" ;
@@ -322,7 +322,7 @@ equidwithersclass:LessOrEqualThan148cm a skos:Concept ;
         "Altezza al garrese fino a 148 cm"@it ;
     :animalTracingTerm "EnumEquidWithersClass.LessOrEqualThan148cm" .
 
-equidwithersclass:GreaterThan148cm a skos:Concept ;
+equidwithersclass:GreaterThan148cm a skos:Concept, :EquidWithersClass ;
     skos:inScheme equidwithersclass:ConceptScheme ;
     skos:topConceptOf equidwithersclass:ConceptScheme ;
     skos:notation "GreaterThan148cm" ;
@@ -343,7 +343,7 @@ notificationtype:ConceptScheme a skos:ConceptScheme ;
         "Type de mouvement"@fr,
         "Tipo di movimento"@it .
 
-notificationtype:Birth a skos:Concept ;
+notificationtype:Birth a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "Birth" ;
@@ -354,7 +354,7 @@ notificationtype:Birth a skos:Concept ;
     :sourceTerm "Geburt" ;
     :animalTracingTerm "EnumCattleNotificationType.Birth", "EnumSheepNotificationType.Birth", "EnumGoatNotificationType.Birth" .
 
-notificationtype:Arrival a skos:Concept ;
+notificationtype:Arrival a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "Arrival" ;
@@ -369,7 +369,7 @@ notificationtype:Arrival a skos:Concept ;
     :sourceTerm "Zugang" ;
     :animalTracingTerm "EnumCattleNotificationType.Arrival", "EnumSheepNotificationType.Arrival", "EnumGoatNotificationType.Arrival" .
 
-notificationtype:Leaving a skos:Concept ;
+notificationtype:Leaving a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "Leaving" ;
@@ -384,7 +384,7 @@ notificationtype:Leaving a skos:Concept ;
     :sourceTerm "Abgang" ;
     :animalTracingTerm "EnumCattleNotificationType.Leaving", "EnumSheepNotificationType.Leaving", "EnumGoatNotificationType.Leaving" .
 
-notificationtype:Slaughter a skos:Concept ;
+notificationtype:Slaughter a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "Slaughter" ;
@@ -395,7 +395,7 @@ notificationtype:Slaughter a skos:Concept ;
     :sourceTerm "Schlachtung" ;
     :animalTracingTerm "EnumCattleNotificationType.Slaughtering", "EnumSheepNotificationType.Slaughter", "EnumGoatNotificationType.Slaughter" .
 
-notificationtype:Deceased a skos:Concept ;
+notificationtype:Deceased a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "Deceased" ;
@@ -410,7 +410,7 @@ notificationtype:Deceased a skos:Concept ;
     :sourceTerm "Verendung" ;
     :animalTracingTerm "EnumCattleNotificationType.Deceased", "EnumSheepNotificationType.Deceased", "EnumGoatNotificationType.Deceased" .
 
-notificationtype:Import a skos:Concept ;
+notificationtype:Import a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "Import" ;
@@ -421,7 +421,7 @@ notificationtype:Import a skos:Concept ;
     :sourceTerm "Einfuhr" ;
     :animalTracingTerm "EnumCattleNotificationType.Import", "EnumSheepNotificationType.Import", "EnumGoatNotificationType.Import" .
 
-notificationtype:Export a skos:Concept ;
+notificationtype:Export a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "Export" ;
@@ -436,7 +436,7 @@ notificationtype:Export a skos:Concept ;
     :sourceTerm "Ausfuhr" ;
     :animalTracingTerm "EnumCattleNotificationType.Export", "EnumSheepNotificationType.Export", "EnumGoatNotificationType.Export" .
 
-notificationtype:DayStay a skos:Concept ;
+notificationtype:DayStay a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "DayStay" ;
@@ -450,7 +450,7 @@ notificationtype:DayStay a skos:Concept ;
         "Non per gli equidi"@it ;
     :sourceTerm "Tagesaufenthalt" .
 
-notificationtype:ImportAfterExport a skos:Concept ;
+notificationtype:ImportAfterExport a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "ImportAfterExport" ;
@@ -464,7 +464,7 @@ notificationtype:ImportAfterExport a skos:Concept ;
         "Non per gli equidi"@it ;
     :sourceTerm "Einfuhr nach Ausfuhr" .
 
-notificationtype:OnFarmSlaughter a skos:Concept ;
+notificationtype:OnFarmSlaughter a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "OnFarmSlaughter" ;
@@ -479,7 +479,7 @@ notificationtype:OnFarmSlaughter a skos:Concept ;
     :sourceTerm "Hofschlachtung" ;
     :animalTracingTerm "EnumCattleNotificationType.YardSlaughter", "EnumSheepNotificationType.OnFarmSlaughter", "EnumGoatNotificationType.OnFarmSlaughter" .
 
-notificationtype:DeathBirth a skos:Concept ;
+notificationtype:DeathBirth a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "DeathBirth" ;
@@ -494,7 +494,7 @@ notificationtype:DeathBirth a skos:Concept ;
     :sourceTerm "Totgeburt" ;
     :animalTracingTerm "EnumCattleNotificationType.DeathBirth", "EnumSheepNotificationType.DeathBirth", "EnumGoatNotificationType.DeathBirth" .
 
-notificationtype:LocationChange a skos:Concept ;
+notificationtype:LocationChange a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "LocationChange" ;
@@ -508,7 +508,7 @@ notificationtype:LocationChange a skos:Concept ;
         "Solo per gli equidi"@it ;
     :sourceTerm "Standortwechsel" .
 
-notificationtype:FirstRegistration a skos:Concept ;
+notificationtype:FirstRegistration a skos:Concept, :NotificationType ;
     skos:inScheme notificationtype:ConceptScheme ;
     skos:topConceptOf notificationtype:ConceptScheme ;
     skos:notation "FirstRegistration" ;
@@ -530,7 +530,7 @@ healthstatustype:ConceptScheme a skos:ConceptScheme ;
         "Type d'état sanitaire"@fr,
         "Tipo di stato sanitario"@it .
 
-healthstatustype:EpizooticStatus a skos:Concept ;
+healthstatustype:EpizooticStatus a skos:Concept, :HealthStatusType ;
     skos:inScheme healthstatustype:ConceptScheme ;
     skos:topConceptOf healthstatustype:ConceptScheme ;
     skos:notation "EpizooticStatus" ;
@@ -541,7 +541,7 @@ healthstatustype:EpizooticStatus a skos:Concept ;
     :sourceTerm "Seuchenstatus" ;
     :animalTracingTerm "BvdState", "FootrotState" .
 
-healthstatustype:VaccinationStatus a skos:Concept ;
+healthstatustype:VaccinationStatus a skos:Concept, :HealthStatusType ;
     skos:inScheme healthstatustype:ConceptScheme ;
     skos:topConceptOf healthstatustype:ConceptScheme ;
     skos:notation "VaccinationStatus" ;
@@ -551,7 +551,7 @@ healthstatustype:VaccinationStatus a skos:Concept ;
         "Stato vaccinale"@it ;
     :sourceTerm "Impfstatus" .
 
-healthstatustype:RiskStatus a skos:Concept ;
+healthstatustype:RiskStatus a skos:Concept, :HealthStatusType ;
     skos:inScheme healthstatustype:ConceptScheme ;
     skos:topConceptOf healthstatustype:ConceptScheme ;
     skos:notation "RiskStatus" ;
@@ -562,7 +562,7 @@ healthstatustype:RiskStatus a skos:Concept ;
     :sourceTerm "Risikostatus" ;
     :animalTracingTerm "BvdRisk" .
 
-healthstatustype:LaboratoryResult a skos:Concept ;
+healthstatustype:LaboratoryResult a skos:Concept, :HealthStatusType ;
     skos:inScheme healthstatustype:ConceptScheme ;
     skos:topConceptOf healthstatustype:ConceptScheme ;
     skos:notation "LaboratoryResult" ;
@@ -583,7 +583,7 @@ localunithealthstatus:ConceptScheme a skos:ConceptScheme ;
         "État sanitaire de l'unité locale"@fr,
         "Stato sanitario dell'unità locale"@it .
 
-localunithealthstatus:Blocked a skos:Concept ;
+localunithealthstatus:Blocked a skos:Concept, :LocalUnitEpizooticStatus ;
     skos:inScheme localunithealthstatus:ConceptScheme ;
     skos:topConceptOf localunithealthstatus:ConceptScheme ;
     skos:notation "Blocked" ;
@@ -598,7 +598,7 @@ localunithealthstatus:Blocked a skos:Concept ;
     :sourceTerm "gesperrt" ;
     :animalTracingTerm "FootRotState.Blocked", "BvdState.Blocked" .
 
-localunithealthstatus:Free a skos:Concept ;
+localunithealthstatus:Free a skos:Concept, :LocalUnitEpizooticStatus ;
     skos:inScheme localunithealthstatus:ConceptScheme ;
     skos:topConceptOf localunithealthstatus:ConceptScheme ;
     skos:notation "Free" ;
@@ -613,7 +613,7 @@ localunithealthstatus:Free a skos:Concept ;
     :sourceTerm "frei" ;
     :animalTracingTerm "FootRotState.Free" .
 
-localunithealthstatus:NotTested a skos:Concept ;
+localunithealthstatus:NotTested a skos:Concept, :LocalUnitEpizooticStatus ;
     skos:inScheme localunithealthstatus:ConceptScheme ;
     skos:topConceptOf localunithealthstatus:ConceptScheme ;
     skos:notation "NotTested" ;
@@ -628,7 +628,7 @@ localunithealthstatus:NotTested a skos:Concept ;
     :sourceTerm "Nicht getestet" ;
     :animalTracingTerm "FootRotState.NotTested" .
 
-localunithealthstatus:High a skos:Concept ;
+localunithealthstatus:High a skos:Concept, :LocalUnitEpizooticStatus ;
     skos:inScheme localunithealthstatus:ConceptScheme ;
     skos:topConceptOf localunithealthstatus:ConceptScheme ;
     skos:notation "High" ;
@@ -642,7 +642,7 @@ localunithealthstatus:High a skos:Concept ;
         "Tipo: stato di rischio"@it ;
     :sourceTerm "Hoch" .
 
-localunithealthstatus:Low a skos:Concept ;
+localunithealthstatus:Low a skos:Concept, :LocalUnitEpizooticStatus ;
     skos:inScheme localunithealthstatus:ConceptScheme ;
     skos:topConceptOf localunithealthstatus:ConceptScheme ;
     skos:notation "Low" ;
@@ -656,7 +656,7 @@ localunithealthstatus:Low a skos:Concept ;
         "Tipo: stato di rischio"@it ;
     :sourceTerm "Tief" .
 
-localunithealthstatus:Medium a skos:Concept ;
+localunithealthstatus:Medium a skos:Concept, :LocalUnitEpizooticStatus ;
     skos:inScheme localunithealthstatus:ConceptScheme ;
     skos:topConceptOf localunithealthstatus:ConceptScheme ;
     skos:notation "Medium" ;
@@ -670,7 +670,7 @@ localunithealthstatus:Medium a skos:Concept ;
         "Tipo: stato di rischio"@it ;
     :sourceTerm "Mittel" .
 
-localunithealthstatus:Positive a skos:Concept ;
+localunithealthstatus:Positive a skos:Concept, :LocalUnitEpizooticStatus ;
     skos:inScheme localunithealthstatus:ConceptScheme ;
     skos:topConceptOf localunithealthstatus:ConceptScheme ;
     skos:notation "Positive" ;
@@ -684,7 +684,7 @@ localunithealthstatus:Positive a skos:Concept ;
         "Tipo: risultato di laboratorio"@it ;
     :sourceTerm "positiv" .
 
-localunithealthstatus:Negative a skos:Concept ;
+localunithealthstatus:Negative a skos:Concept, :LocalUnitEpizooticStatus ;
     skos:inScheme localunithealthstatus:ConceptScheme ;
     skos:topConceptOf localunithealthstatus:ConceptScheme ;
     skos:notation "Negative" ;
@@ -709,7 +709,7 @@ animalhealthstatus:ConceptScheme a skos:ConceptScheme ;
         "État sanitaire de l'animal individuel"@fr,
         "Stato sanitario dell'animale singolo"@it .
 
-animalhealthstatus:Blocked a skos:Concept ;
+animalhealthstatus:Blocked a skos:Concept, :AnimalEpizooticStatus ;
     skos:inScheme animalhealthstatus:ConceptScheme ;
     skos:topConceptOf animalhealthstatus:ConceptScheme ;
     skos:notation "Blocked" ;
@@ -723,7 +723,7 @@ animalhealthstatus:Blocked a skos:Concept ;
         "Tipo: stato epizootico"@it ;
     :sourceTerm "gesperrt" .
 
-animalhealthstatus:Free a skos:Concept ;
+animalhealthstatus:Free a skos:Concept, :AnimalEpizooticStatus ;
     skos:inScheme animalhealthstatus:ConceptScheme ;
     skos:topConceptOf animalhealthstatus:ConceptScheme ;
     skos:notation "Free" ;
@@ -737,7 +737,7 @@ animalhealthstatus:Free a skos:Concept ;
         "Tipo: stato epizootico"@it ;
     :sourceTerm "frei" .
 
-animalhealthstatus:NotTested a skos:Concept ;
+animalhealthstatus:NotTested a skos:Concept, :AnimalEpizooticStatus ;
     skos:inScheme animalhealthstatus:ConceptScheme ;
     skos:topConceptOf animalhealthstatus:ConceptScheme ;
     skos:notation "NotTested" ;
@@ -751,7 +751,7 @@ animalhealthstatus:NotTested a skos:Concept ;
         "Tipo: stato epizootico"@it ;
     :sourceTerm "Nicht getestet" .
 
-animalhealthstatus:Vaccinated a skos:Concept ;
+animalhealthstatus:Vaccinated a skos:Concept, :AnimalEpizooticStatus ;
     skos:inScheme animalhealthstatus:ConceptScheme ;
     skos:topConceptOf animalhealthstatus:ConceptScheme ;
     skos:notation "Vaccinated" ;

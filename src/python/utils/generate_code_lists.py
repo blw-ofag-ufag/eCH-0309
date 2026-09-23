@@ -29,7 +29,7 @@ NAMESPACE = "https://agriculture.ld.admin.ch/eCH-0309/1/"
 # Hilfsmittel's wording; "descriptions" to that table's Definition column.
 SCHEMES = [
     {
-        "scheme": "genus", "enum": "EnumGenus",
+        "scheme": "genus", "class": "Genus", "enum": "EnumGenus",
         "name": {"de": "Nutztierart", "en": "Genus", "fr": "Espèce d'animal de rente", "it": "Specie di animale da reddito"},
         "table": "Tabelle 2: Definition Wertebereich Nutztierarten für die TVD",
         "german": {
@@ -51,14 +51,14 @@ SCHEMES = [
         },
     },
     {
-        "scheme": "gender", "enum": "EnumGender",
+        "scheme": "gender", "class": "Gender", "enum": "EnumGender",
         "name": {"de": "Geschlecht", "en": "Gender", "fr": "Sexe", "it": "Sesso"},
         "table": "Tabelle 6: Definition Wertebereich Geschlecht",
         "german": {"Male": "Männlich", "Female": "Weiblich"},
         "descriptions": {},
     },
     {
-        "scheme": "animalTypeOfUse", "enum": "EnumAnimalTypeOfUse",
+        "scheme": "animalTypeOfUse", "class": "AnimalTypeOfUse", "enum": "EnumAnimalTypeOfUse",
         "name": {"de": "Zweck (Rinder, Schafe, Ziegen)", "en": "Type of use (cattle, sheep, goats)", "fr": "Type d'utilisation (bovins, ovins, caprins)", "it": "Tipo di utilizzo (bovini, ovini, caprini)"},
         "table": "Tabelle 3: Definition Wertebereich Zweck pro Nutztierart",
         "german": {"Milk": "Milch", "Other": "Andere"},
@@ -66,7 +66,7 @@ SCHEMES = [
         "descriptions": {"Milk": "Milchkühe, -schafe und -ziegen"},
     },
     {
-        "scheme": "equidTypeOfUsage", "enum": "EquidTypeOfUsage",
+        "scheme": "equidTypeOfUsage", "class": "EquidTypeOfUsage", "enum": "EquidTypeOfUsage",
         "name": {"de": "Zweck (Equiden)", "en": "Type of use (equids)", "fr": "Type d'utilisation (équidés)", "it": "Tipo di utilizzo (equidi)"},
         "table": "Tabelle 3: Definition Wertebereich Zweck pro Nutztierart",
         "german": {"CompanionAnimal": "Heimtier", "FarmAnimal": "Nutztier"},
@@ -74,7 +74,7 @@ SCHEMES = [
         "descriptions": {},
     },
     {
-        "scheme": "animalHistoryState", "enum": "EnumAnimalHistoryState",
+        "scheme": "animalHistoryState", "class": "AnimalHistoryState", "enum": "EnumAnimalHistoryState",
         "name": {"de": "Tiergeschichtestatus", "en": "Animal history state", "fr": "Statut de l'historique de l'animal", "it": "Stato della storia dell'animale"},
         "table": "Tabelle 7: Definition Wertebereich Tiergeschichtestatus",
         "german": {
@@ -85,7 +85,7 @@ SCHEMES = [
     },
     {
         # No Wertebereich table in the Hilfsmittel for «Grössenkategorie».
-        "scheme": "equidWithersClass", "enum": "EnumEquidWithersClass",
+        "scheme": "equidWithersClass", "class": "EquidWithersClass", "enum": "EnumEquidWithersClass",
         "name": {"de": "Grössenkategorie", "en": "Withers class", "fr": "Catégorie de taille", "it": "Categoria di grandezza"},
         # The enum is named WithersClass and chapter 3.1.4 lists «Widerristhöhe»
         # among the equid attributes, so the threshold is the height at the withers.
@@ -113,7 +113,7 @@ SCHEMES = [
 # ImportSwissEarTag -- neither is certain enough to assert.
 DOCUMENT_SCHEMES = [
     {
-        "scheme": "notificationType",
+        "scheme": "notificationType", "class": "NotificationType",
         "name": {"de": "Bewegungstyp", "en": "Notification type",
                  "fr": "Type de mouvement", "it": "Tipo di movimento"},
         "table": "Tabelle 8: Definition Wertebereich Bewegungstyp",
@@ -148,7 +148,7 @@ DOCUMENT_SCHEMES = [
         ],
     },
     {
-        "scheme": "healthStatusType",
+        "scheme": "healthStatusType", "class": "HealthStatusType",
         "name": {"de": "Typ Gesundheitsstatus", "en": "Health status type",
                  "fr": "Type d'état sanitaire", "it": "Tipo di stato sanitario"},
         "table": "Tabelle 9: Definition Wertebereich Typ Gesundheitsstatus",
@@ -160,7 +160,7 @@ DOCUMENT_SCHEMES = [
         ],
     },
     {
-        "scheme": "localUnitHealthStatus",
+        "scheme": "localUnitHealthStatus", "class": "LocalUnitEpizooticStatus",
         "name": {"de": "Seuchenstatus örtliche Einheit", "en": "Health status of a local unit",
                  "fr": "État sanitaire de l'unité locale", "it": "Stato sanitario dell'unità locale"},
         "table": "Tabelle 10: Definition Wertebereich Seuchenstatus örtliche Einheit",
@@ -176,7 +176,7 @@ DOCUMENT_SCHEMES = [
         ],
     },
     {
-        "scheme": "animalHealthStatus",
+        "scheme": "animalHealthStatus", "class": "AnimalEpizooticStatus",
         "name": {"de": "Seuchenstatus Einzeltier", "en": "Health status of an individual animal",
                  "fr": "État sanitaire de l'animal individuel", "it": "Stato sanitario dell'animale singolo"},
         "table": "Tabelle 11: Definition Wertebereich Seuchenstatus Einzeltier",
@@ -329,7 +329,7 @@ def main():
             german = spec_entry["german"].get(value)
             description = spec_entry["descriptions"].get(value)
 
-            lines = [f"{iri} a skos:Concept ;",
+            lines = [f'{iri} a skos:Concept, :{spec_entry["class"]} ;',
                      f'    skos:inScheme {spec_entry["scheme"].lower()}:ConceptScheme ;',
                      f'    skos:topConceptOf {spec_entry["scheme"].lower()}:ConceptScheme ;',
                      f'    skos:notation "{escape(value)}" ;']
@@ -362,7 +362,7 @@ def main():
     schema:name {",".join(chr(10) + "        " + chr(34) + escape(text) + chr(34) + "@" + code if n else chr(34) + escape(text) + chr(34) + "@" + code for n, (code, text) in enumerate(entry["name"].items()))} .
 ''')
         for notation, de, en, fr, it, note, tracing in entry["values"]:
-            lines = [f"{prefix}:{notation} a skos:Concept ;",
+            lines = [f'{prefix}:{notation} a skos:Concept, :{entry["class"]} ;',
                      f"    skos:inScheme {prefix}:ConceptScheme ;",
                      f"    skos:topConceptOf {prefix}:ConceptScheme ;",
                      f'    skos:notation "{escape(notation)}" ;',
