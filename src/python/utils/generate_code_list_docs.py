@@ -23,27 +23,27 @@ SCHEMA = Namespace("http://schema.org/")
 TRANSLATIONS = {
     "en": {
         "value": "Value", "term": "Designation", "desc": "Description",
-        "note": "No French or Italian designations are available for these code lists yet; the "
+        "note": "For some of these code lists no French or Italian designations are available yet; the "
                 "designations below are given in German and English, as provided by the sources.",
         "caption": "Values of the code list",
     },
     "de": {
         "value": "Wert", "term": "Bezeichnung", "desc": "Beschreibung",
-        "note": "Für diese Wertebereiche liegen noch keine französischen und italienischen "
+        "note": "Für einen Teil der Wertebereiche liegen noch keine französischen und italienischen "
                 "Bezeichnungen vor; die Bezeichnungen sind in Deutsch und Englisch aufgeführt, "
                 "so wie sie die Quellen liefern.",
         "caption": "Werte des Wertebereichs",
     },
     "fr": {
         "value": "Valeur", "term": "Désignation", "desc": "Description",
-        "note": "Aucune désignation française ou italienne n'est encore disponible pour ces "
-                "domaines de valeurs ; les désignations sont indiquées en allemand et en anglais, "
+        "note": "Pour une partie de ces domaines de valeurs, aucune désignation française ou italienne n'est encore disponible ; "
+                "les désignations sont indiquées en allemand et en anglais, "
                 "telles que les sources les fournissent.",
         "caption": "Valeurs du domaine de valeurs",
     },
     "it": {
         "value": "Valore", "term": "Designazione", "desc": "Descrizione",
-        "note": "Per questi domini di valori non sono ancora disponibili designazioni francesi e "
+        "note": "Per una parte di questi domini di valori non sono ancora disponibili designazioni francesi e "
                 "italiane; le designazioni sono riportate in tedesco e in inglese, così come le "
                 "forniscono le fonti.",
         "caption": "Valori del dominio di valori",

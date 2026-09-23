@@ -30,7 +30,7 @@ NAMESPACE = "https://agriculture.ld.admin.ch/eCH-0309/1/"
 SCHEMES = [
     {
         "scheme": "genus", "enum": "EnumGenus",
-        "name": {"de": "Nutztierart", "en": "Genus"},
+        "name": {"de": "Nutztierart", "en": "Genus", "fr": "Espèce d'animal de rente", "it": "Specie di animale da reddito"},
         "table": "Tabelle 2: Definition Wertebereich Nutztierarten für die TVD",
         "german": {
             "Cattle": "Rindvieh", "Sheep": "Schafe", "Goat": "Ziegen", "Equid": "Equiden",
@@ -52,14 +52,14 @@ SCHEMES = [
     },
     {
         "scheme": "gender", "enum": "EnumGender",
-        "name": {"de": "Geschlecht", "en": "Gender"},
+        "name": {"de": "Geschlecht", "en": "Gender", "fr": "Sexe", "it": "Sesso"},
         "table": "Tabelle 6: Definition Wertebereich Geschlecht",
         "german": {"Male": "Männlich", "Female": "Weiblich"},
         "descriptions": {},
     },
     {
         "scheme": "animalTypeOfUse", "enum": "EnumAnimalTypeOfUse",
-        "name": {"de": "Zweck (Rinder, Schafe, Ziegen)", "en": "Type of use (cattle, sheep, goats)"},
+        "name": {"de": "Zweck (Rinder, Schafe, Ziegen)", "en": "Type of use (cattle, sheep, goats)", "fr": "Type d'utilisation (bovins, ovins, caprins)", "it": "Tipo di utilizzo (bovini, ovini, caprini)"},
         "table": "Tabelle 3: Definition Wertebereich Zweck pro Nutztierart",
         "german": {"Milk": "Milch", "Other": "Andere"},
         "excluded": {"NotDefined": "nicht in Tabelle 3 aufgeführt"},
@@ -67,7 +67,7 @@ SCHEMES = [
     },
     {
         "scheme": "equidTypeOfUsage", "enum": "EquidTypeOfUsage",
-        "name": {"de": "Zweck (Equiden)", "en": "Type of use (equids)"},
+        "name": {"de": "Zweck (Equiden)", "en": "Type of use (equids)", "fr": "Type d'utilisation (équidés)", "it": "Tipo di utilizzo (equidi)"},
         "table": "Tabelle 3: Definition Wertebereich Zweck pro Nutztierart",
         "german": {"CompanionAnimal": "Heimtier", "FarmAnimal": "Nutztier"},
         "excluded": {"Undefined": "nicht in Tabelle 3 aufgeführt"},
@@ -75,7 +75,7 @@ SCHEMES = [
     },
     {
         "scheme": "animalHistoryState", "enum": "EnumAnimalHistoryState",
-        "name": {"de": "Tiergeschichtestatus", "en": "Animal history state"},
+        "name": {"de": "Tiergeschichtestatus", "en": "Animal history state", "fr": "Statut de l'historique de l'animal", "it": "Stato della storia dell'animale"},
         "table": "Tabelle 7: Definition Wertebereich Tiergeschichtestatus",
         "german": {
             "NotDefined": "Nicht definiert", "NotOk": "Fehlerhaft",
@@ -86,9 +86,18 @@ SCHEMES = [
     {
         # No Wertebereich table in the Hilfsmittel for «Grössenkategorie».
         "scheme": "equidWithersClass", "enum": "EnumEquidWithersClass",
-        "name": {"de": "Grössenkategorie", "en": "Withers class"},
+        "name": {"de": "Grössenkategorie", "en": "Withers class", "fr": "Catégorie de taille", "it": "Categoria di grandezza"},
+        # The enum is named WithersClass and chapter 3.1.4 lists «Widerristhöhe»
+        # among the equid attributes, so the threshold is the height at the withers.
         "table": None,
-        "german": {},
+        "german": {"LessOrEqualThan148cm": "Widerristhöhe bis 148 cm",
+                   "GreaterThan148cm": "Widerristhöhe über 148 cm"},
+        "english": {"LessOrEqualThan148cm": "Withers height up to 148 cm",
+                    "GreaterThan148cm": "Withers height above 148 cm"},
+        "french": {"LessOrEqualThan148cm": "Hauteur au garrot jusqu'à 148 cm",
+                   "GreaterThan148cm": "Hauteur au garrot supérieure à 148 cm"},
+        "italian": {"LessOrEqualThan148cm": "Altezza al garrese fino a 148 cm",
+                    "GreaterThan148cm": "Altezza al garrese superiore a 148 cm"},
         "descriptions": {},
     },
 ]
@@ -206,8 +215,7 @@ def main():
 # ------------------------------------------------------------------------------
 
 {spec_entry["scheme"].lower()}:ConceptScheme a skos:ConceptScheme ;
-    schema:name "{escape(spec_entry["name"]["de"])}"@de,
-        "{escape(spec_entry["name"]["en"])}"@en ;
+    schema:name {",".join(chr(10) + "        " + chr(34) + escape(text) + chr(34) + "@" + code if n else chr(34) + escape(text) + chr(34) + "@" + code for n, (code, text) in enumerate(spec_entry["name"].items()))} ;
     :animalTracingTerm "{spec_entry["enum"]}" .
 ''')
         for value in values:
@@ -220,13 +228,19 @@ def main():
                      f'    skos:topConceptOf {spec_entry["scheme"].lower()}:ConceptScheme ;',
                      f'    skos:notation "{escape(value)}" ;']
             names = []
-            if german:
-                names.append(f'"{escape(german)}"@de')
-            names.append(f'"{escape(readable(value))}"@en')
+            for code in ("de", "en", "fr", "it"):
+                key = {"de": "german", "en": "english", "fr": "french", "it": "italian"}[code]
+                text = spec_entry.get(key, {}).get(value)
+                if text is None and code == "en":
+                    text = readable(value)
+                if text:
+                    names.append(f'"{escape(text)}"@{code}')
             lines.append("    schema:name " + (",\n        ".join(names)) + " ;")
             if description:
                 lines.append(f'    schema:description "{escape(description)}"@de ;')
-            if german:
+            # :sourceTerm is the Hilfsmittel's own wording, so only a scheme that
+            # has a Wertebereich table can carry one.
+            if german and spec_entry["table"]:
                 lines.append(f'    :sourceTerm "{escape(german)}" ;')
             lines.append(f'    :animalTracingTerm "{spec_entry["enum"]}.{escape(value)}" .')
             out.append("\n".join(lines) + "\n")

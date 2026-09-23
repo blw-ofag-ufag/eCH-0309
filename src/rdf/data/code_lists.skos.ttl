@@ -60,7 +60,9 @@
 
 genus:ConceptScheme a skos:ConceptScheme ;
     schema:name "Nutztierart"@de,
-        "Genus"@en ;
+        "Genus"@en,
+        "Espèce d'animal de rente"@fr,
+        "Specie di animale da reddito"@it ;
     :animalTracingTerm "EnumGenus" .
 
 genus:Cattle a skos:Concept ;
@@ -147,7 +149,9 @@ genus:Poultry a skos:Concept ;
 
 gender:ConceptScheme a skos:ConceptScheme ;
     schema:name "Geschlecht"@de,
-        "Gender"@en ;
+        "Gender"@en,
+        "Sexe"@fr,
+        "Sesso"@it ;
     :animalTracingTerm "EnumGender" .
 
 gender:Female a skos:Concept ;
@@ -177,7 +181,9 @@ gender:Male a skos:Concept ;
 
 animaltypeofuse:ConceptScheme a skos:ConceptScheme ;
     schema:name "Zweck (Rinder, Schafe, Ziegen)"@de,
-        "Type of use (cattle, sheep, goats)"@en ;
+        "Type of use (cattle, sheep, goats)"@en,
+        "Type d'utilisation (bovins, ovins, caprins)"@fr,
+        "Tipo di utilizzo (bovini, ovini, caprini)"@it ;
     :animalTracingTerm "EnumAnimalTypeOfUse" .
 
 animaltypeofuse:Other a skos:Concept ;
@@ -208,7 +214,9 @@ animaltypeofuse:Milk a skos:Concept ;
 
 equidtypeofusage:ConceptScheme a skos:ConceptScheme ;
     schema:name "Zweck (Equiden)"@de,
-        "Type of use (equids)"@en ;
+        "Type of use (equids)"@en,
+        "Type d'utilisation (équidés)"@fr,
+        "Tipo di utilizzo (equidi)"@it ;
     :animalTracingTerm "EquidTypeOfUsage" .
 
 equidtypeofusage:CompanionAnimal a skos:Concept ;
@@ -237,7 +245,9 @@ equidtypeofusage:FarmAnimal a skos:Concept ;
 
 animalhistorystate:ConceptScheme a skos:ConceptScheme ;
     schema:name "Tiergeschichtestatus"@de,
-        "Animal history state"@en ;
+        "Animal history state"@en,
+        "Statut de l'historique de l'animal"@fr,
+        "Stato della storia dell'animale"@it ;
     :animalTracingTerm "EnumAnimalHistoryState" .
 
 animalhistorystate:NotDefined a skos:Concept ;
@@ -293,19 +303,27 @@ animalhistorystate:Lost a skos:Concept ;
 
 equidwithersclass:ConceptScheme a skos:ConceptScheme ;
     schema:name "Grössenkategorie"@de,
-        "Withers class"@en ;
+        "Withers class"@en,
+        "Catégorie de taille"@fr,
+        "Categoria di grandezza"@it ;
     :animalTracingTerm "EnumEquidWithersClass" .
 
 equidwithersclass:LessOrEqualThan148cm a skos:Concept ;
     skos:inScheme equidwithersclass:ConceptScheme ;
     skos:topConceptOf equidwithersclass:ConceptScheme ;
     skos:notation "LessOrEqualThan148cm" ;
-    schema:name "Less or equal than 148cm"@en ;
+    schema:name "Widerristhöhe bis 148 cm"@de,
+        "Withers height up to 148 cm"@en,
+        "Hauteur au garrot jusqu'à 148 cm"@fr,
+        "Altezza al garrese fino a 148 cm"@it ;
     :animalTracingTerm "EnumEquidWithersClass.LessOrEqualThan148cm" .
 
 equidwithersclass:GreaterThan148cm a skos:Concept ;
     skos:inScheme equidwithersclass:ConceptScheme ;
     skos:topConceptOf equidwithersclass:ConceptScheme ;
     skos:notation "GreaterThan148cm" ;
-    schema:name "Greater than 148cm"@en ;
+    schema:name "Widerristhöhe über 148 cm"@de,
+        "Withers height above 148 cm"@en,
+        "Hauteur au garrot supérieure à 148 cm"@fr,
+        "Altezza al garrese superiore a 148 cm"@it ;
     :animalTracingTerm "EnumEquidWithersClass.GreaterThan148cm" .
