@@ -102,6 +102,112 @@ SCHEMES = [
     },
 ]
 
+
+# Code lists the Hilfsmittel defines itself. The openAPI has no matching list:
+# notification types are split per species there and carry no equid variant, and
+# the health statuses appear as separate fields (BvdState, BvdRisk, FootrotState)
+# rather than as a Typ/Status pair. Values, wording and order therefore come from
+# the Wertebereich tables; :animalTracingTerm records only the counterparts that
+# are unambiguous. Deliberately unmapped: «Tagesaufenthalt», which resembles
+# CommuteStart/CommuteStop, and «Einfuhr nach Ausfuhr», which resembles
+# ImportSwissEarTag -- neither is certain enough to assert.
+DOCUMENT_SCHEMES = [
+    {
+        "scheme": "notificationType",
+        "name": {"de": "Bewegungstyp", "en": "Notification type",
+                 "fr": "Type de mouvement", "it": "Tipo di movimento"},
+        "table": "Tabelle 8: Definition Wertebereich Bewegungstyp",
+        "values": [
+            ("Birth", "Geburt", "Birth", "Naissance", "Nascita", None,
+             ["EnumCattleNotificationType.Birth", "EnumSheepNotificationType.Birth", "EnumGoatNotificationType.Birth"]),
+            ("Arrival", "Zugang", "Arrival", "Entrée", "Entrata", "nicht",
+             ["EnumCattleNotificationType.Arrival", "EnumSheepNotificationType.Arrival", "EnumGoatNotificationType.Arrival"]),
+            ("Leaving", "Abgang", "Departure", "Sortie", "Uscita", "nicht",
+             ["EnumCattleNotificationType.Leaving", "EnumSheepNotificationType.Leaving", "EnumGoatNotificationType.Leaving"]),
+            ("Slaughter", "Schlachtung", "Slaughter", "Abattage", "Macellazione", None,
+             ["EnumCattleNotificationType.Slaughtering", "EnumSheepNotificationType.Slaughter", "EnumGoatNotificationType.Slaughter"]),
+            ("Deceased", "Verendung", "Death", "Mort", "Morte", "euthanasie",
+             ["EnumCattleNotificationType.Deceased", "EnumSheepNotificationType.Deceased", "EnumGoatNotificationType.Deceased"]),
+            ("Import", "Einfuhr", "Import", "Importation", "Importazione", None,
+             ["EnumCattleNotificationType.Import", "EnumSheepNotificationType.Import", "EnumGoatNotificationType.Import"]),
+            ("Export", "Ausfuhr", "Export", "Exportation", "Esportazione", "eigentum",
+             ["EnumCattleNotificationType.Export", "EnumSheepNotificationType.Export", "EnumGoatNotificationType.Export"]),
+            ("DayStay", "Tagesaufenthalt", "Day stay", "Séjour à la journée", "Soggiorno giornaliero", "nicht", []),
+            ("ImportAfterExport", "Einfuhr nach Ausfuhr", "Import after export",
+             "Importation après exportation", "Importazione dopo esportazione", "nicht", []),
+            ("OnFarmSlaughter", "Hofschlachtung", "On-farm slaughter", "Abattage à la ferme",
+             "Macellazione in azienda", "nicht",
+             ["EnumCattleNotificationType.YardSlaughter", "EnumSheepNotificationType.OnFarmSlaughter", "EnumGoatNotificationType.OnFarmSlaughter"]),
+            ("DeathBirth", "Totgeburt", "Stillbirth", "Mortinaissance", "Nato morto", "nicht",
+             ["EnumCattleNotificationType.DeathBirth", "EnumSheepNotificationType.DeathBirth", "EnumGoatNotificationType.DeathBirth"]),
+            ("LocationChange", "Standortwechsel", "Change of location", "Changement de lieu",
+             "Cambiamento di ubicazione", "nur", []),
+            ("FirstRegistration", "Erstregistrierung", "First registration", "Premier enregistrement",
+             "Prima registrazione", None,
+             ["EnumSheepNotificationType.FirstRegistration", "EnumGoatNotificationType.FirstRegistration"]),
+        ],
+    },
+    {
+        "scheme": "healthStatusType",
+        "name": {"de": "Typ Gesundheitsstatus", "en": "Health status type",
+                 "fr": "Type d'état sanitaire", "it": "Tipo di stato sanitario"},
+        "table": "Tabelle 9: Definition Wertebereich Typ Gesundheitsstatus",
+        "values": [
+            ("EpizooticStatus", "Seuchenstatus", "Epizootic status", "Statut épizootique", "Stato epizootico", None, ["BvdState", "FootrotState"]),
+            ("VaccinationStatus", "Impfstatus", "Vaccination status", "Statut vaccinal", "Stato vaccinale", None, []),
+            ("RiskStatus", "Risikostatus", "Risk status", "Statut de risque", "Stato di rischio", None, ["BvdRisk"]),
+            ("LaboratoryResult", "Laborergebnis", "Laboratory result", "Résultat de laboratoire", "Risultato di laboratorio", None, []),
+        ],
+    },
+    {
+        "scheme": "localUnitHealthStatus",
+        "name": {"de": "Seuchenstatus örtliche Einheit", "en": "Health status of a local unit",
+                 "fr": "État sanitaire de l'unité locale", "it": "Stato sanitario dell'unità locale"},
+        "table": "Tabelle 10: Definition Wertebereich Seuchenstatus örtliche Einheit",
+        "values": [
+            ("Blocked", "gesperrt", "Blocked", "Bloqué", "Bloccato", "Seuchenstatus", ["FootRotState.Blocked", "BvdState.Blocked"]),
+            ("Free", "frei", "Free", "Libre", "Libero", "Seuchenstatus", ["FootRotState.Free"]),
+            ("NotTested", "Nicht getestet", "Not tested", "Non testé", "Non testato", "Seuchenstatus", ["FootRotState.NotTested"]),
+            ("High", "Hoch", "High", "Élevé", "Alto", "Risikostatus", []),
+            ("Low", "Tief", "Low", "Faible", "Basso", "Risikostatus", []),
+            ("Medium", "Mittel", "Medium", "Moyen", "Medio", "Risikostatus", []),
+            ("Positive", "positiv", "Positive", "Positif", "Positivo", "Laborergebnis", []),
+            ("Negative", "negativ", "Negative", "Négatif", "Negativo", "Laborergebnis", []),
+        ],
+    },
+    {
+        "scheme": "animalHealthStatus",
+        "name": {"de": "Seuchenstatus Einzeltier", "en": "Health status of an individual animal",
+                 "fr": "État sanitaire de l'animal individuel", "it": "Stato sanitario dell'animale singolo"},
+        "table": "Tabelle 11: Definition Wertebereich Seuchenstatus Einzeltier",
+        "values": [
+            ("Blocked", "gesperrt", "Blocked", "Bloqué", "Bloccato", "Seuchenstatus", []),
+            ("Free", "frei", "Free", "Libre", "Libero", "Seuchenstatus", []),
+            ("NotTested", "Nicht getestet", "Not tested", "Non testé", "Non testato", "Seuchenstatus", []),
+            ("Vaccinated", "geimpft", "Vaccinated", "Vacciné", "Vaccinato", "Impfstatus", ["EnumCattleLsdState.Vaccinated"]),
+        ],
+    },
+]
+
+# The Definition column of the tables, reused across rows.
+NOTES = {
+    "nicht": {"de": "Nicht für Equiden", "en": "Not for equids", "fr": "Pas pour les équidés", "it": "Non per gli equidi"},
+    "nur": {"de": "Nur für Equiden", "en": "For equids only", "fr": "Uniquement pour les équidés", "it": "Solo per gli equidi"},
+    "euthanasie": {"de": "Bei Equiden: Euthanasierung", "en": "For equids: euthanasia",
+                   "fr": "Pour les équidés : euthanasie", "it": "Per gli equidi: eutanasia"},
+    "eigentum": {"de": "Bei Equiden: Eigentumsabgabe ins Ausland", "en": "For equids: transfer of ownership abroad",
+                 "fr": "Pour les équidés : cession de propriété à l'étranger",
+                 "it": "Per gli equidi: cessione di proprietà all'estero"},
+    "Seuchenstatus": {"de": "Typ: Seuchenstatus", "en": "Type: epizootic status",
+                      "fr": "Type : statut épizootique", "it": "Tipo: stato epizootico"},
+    "Risikostatus": {"de": "Typ: Risikostatus", "en": "Type: risk status",
+                     "fr": "Type : statut de risque", "it": "Tipo: stato di rischio"},
+    "Laborergebnis": {"de": "Typ: Laborergebnis", "en": "Type: laboratory result",
+                      "fr": "Type : résultat de laboratoire", "it": "Tipo: risultato di laboratorio"},
+    "Impfstatus": {"de": "Typ: Impfstatus", "en": "Type: vaccination status",
+                   "fr": "Type : statut vaccinal", "it": "Tipo: stato vaccinale"},
+}
+
 HEADER = '''# ==============================================================================
 # CODE LISTS (Wertebereiche)
 #
@@ -178,7 +284,7 @@ def main():
     info = spec.get("info", {})
     prefixes = "\n".join(
         f'@prefix {name + ":":24s}<{NAMESPACE}{name}/> .'
-        for name in (entry["scheme"].lower() for entry in SCHEMES)
+        for name in (entry["scheme"].lower() for entry in SCHEMES + DOCUMENT_SCHEMES)
     ) + "\n"
     out = [HEADER.format(prefixes=prefixes)]
     out.append(f'''
@@ -243,6 +349,33 @@ def main():
             if german and spec_entry["table"]:
                 lines.append(f'    :sourceTerm "{escape(german)}" ;')
             lines.append(f'    :animalTracingTerm "{spec_entry["enum"]}.{escape(value)}" .')
+            out.append("\n".join(lines) + "\n")
+
+    for entry in DOCUMENT_SCHEMES:
+        prefix = entry["scheme"].lower()
+        out.append(f'''
+# ------------------------------------------------------------------------------
+# {entry["name"]["de"]} -- aus dem Hilfsmittel, {entry["table"]}
+# ------------------------------------------------------------------------------
+
+{prefix}:ConceptScheme a skos:ConceptScheme ;
+    schema:name {",".join(chr(10) + "        " + chr(34) + escape(text) + chr(34) + "@" + code if n else chr(34) + escape(text) + chr(34) + "@" + code for n, (code, text) in enumerate(entry["name"].items()))} .
+''')
+        for notation, de, en, fr, it, note, tracing in entry["values"]:
+            lines = [f"{prefix}:{notation} a skos:Concept ;",
+                     f"    skos:inScheme {prefix}:ConceptScheme ;",
+                     f"    skos:topConceptOf {prefix}:ConceptScheme ;",
+                     f'    skos:notation "{escape(notation)}" ;',
+                     "    schema:name " + ",\n        ".join(
+                         f'"{escape(text)}"@{code}' for code, text in
+                         (("de", de), ("en", en), ("fr", fr), ("it", it))) + " ;"]
+            if note:
+                lines.append("    schema:description " + ",\n        ".join(
+                    f'"{escape(NOTES[note][code])}"@{code}' for code in ("de", "en", "fr", "it")) + " ;")
+            lines.append(f'    :sourceTerm "{escape(de)}" ;')
+            if tracing:
+                lines.append("    :animalTracingTerm " + ", ".join(f'"{escape(t)}"' for t in tracing) + " ;")
+            lines[-1] = lines[-1][:-1] + "."
             out.append("\n".join(lines) + "\n")
 
     Path(args.output).write_text("\n".join(out), encoding="utf-8")

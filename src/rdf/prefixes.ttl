@@ -11,6 +11,10 @@
 @prefix equidtypeofusage:<https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/> .
 @prefix animalhistorystate:<https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
 @prefix equidwithersclass:<https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
+@prefix notificationtype:<https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
+@prefix healthstatustype:<https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/> .
+@prefix localunithealthstatus:<https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/> .
+@prefix animalhealthstatus:<https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/> .
 
 # LINDAS-specific namespaces/qnames
 @prefix org:             <https://register.ld.admin.ch/opendataswiss/org/> .
