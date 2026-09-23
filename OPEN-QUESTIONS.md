@@ -57,6 +57,39 @@ Einheit.
 **Konsequenz** Soll stattdessen `:LocalUnit → :LegalUnit [1..1]` modelliert
 werden, was Kapitel 3.1.2 wörtlich entspricht?
 
+### A7. Identifikatoren als Beziehung statt als Zeichenkette
+
+Der Objektkatalog führt mehrere Attribute als Zeichenkette, die im Modell als
+Beziehung zur referenzierten Klasse abgebildet sind:
+
+| Klasse | Attribut | Datentyp im Katalog | Modelliert als |
+|---|---|---|---|
+| Meldung Einzeltier | Identifikator | `string` | `:animal → :Animal` |
+| Gesundheitsstatus Einzeltier | Tier-ID | – | `:animal → :Animal` |
+| Meldung Einzeltier, Gruppenmeldung, Gesundheitsstatus Standort | Örtliche Einheit, Herkunft | `eCH-0108:localIdType` | `:localUnit`, `:originLocalUnit → :LocalUnit` |
+| Subklasse «Equiden» | Eigentümer oder Eigentümerin | `uid` | `:owner → :LegalUnit` |
+
+Das ist die übliche Übersetzung nach RDF: der Identifikator *ist* der Verweis
+auf das Objekt. Der Katalog liest sich aber anders, und wer beide Dokumente
+nebeneinanderlegt, sieht eine Abweichung.
+
+**Konsequenz** Bestätigen, dass die Identifikatoren als Beziehung abgebildet
+werden dürfen, oder die Datentypspalte im Katalog entsprechend anpassen. Mit
+der Ausrichtung auf eCH-0108/eCH-0261 (Schritt 4) kommen die Identifikatoren
+zusätzlich als Attribute der jeweiligen Klasse dazu.
+
+### A8. Ist die Grössenkategorie wirklich obligatorisch?
+
+Der Objektkatalog gibt für «Grössenkategorie» der Subklasse «Equiden» die
+Kardinalität 1 an, entsprechend ist sie als `1..1` modelliert. Zu klären, ob
+für jeden Equiden eine Grössenkategorie vorliegt oder ob `0..1` richtig wäre.
+
+### A9. Datentyp der Attribute «ID»
+
+«ID» der beiden Meldungsklassen hat im Katalog keine Datentypspalte. Modelliert
+als `xsd:string`, weil die Beschreibung von einem systemvergebenen Identifikator
+spricht.
+
 ### A4. Meldende Person: Begriff oder Klasse?
 
 > `[DJ21]` «Meldende Person ist kein öffentlicher Bestandteil der Meldung.»

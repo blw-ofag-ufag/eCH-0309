@@ -498,10 +498,10 @@
     ] ;
     sh:property [
         sh:order 1 ;
-        sh:name "Einzeltier"@de,
-            "Individual animal"@en,
-            "Animal individuel"@fr,
-            "Animale singolo"@it ;
+        sh:name "Identifikator"@de,
+            "Identifier"@en,
+            "Identifiant"@fr,
+            "Identificatore"@it ;
         :sourceTerm "Identifikator" ;
         :animalTracingTerm "CattleDetailV1Response.eartagNumber" ;
         sh:path :animal ;
@@ -876,20 +876,20 @@
             "Date"@fr,
             "Data"@it ;
         :sourceTerm "Datum" ;
-        sh:description "Datum, ab dem der Seuchenstatus gültig ist"@de,
-            "Date from which the status is valid"@en,
-            "Date à partir de laquelle le statut est valable"@fr,
-            "Data a partire dalla quale lo stato è valido"@it ;
+        sh:description "Datum, ab dem der Seuchenstatus gültig ist oder das Impfdatum"@de,
+            "Date from which the status is valid, or the date of vaccination"@en,
+            "Date à partir de laquelle le statut est valable, ou la date de vaccination"@fr,
+            "Data a partire dalla quale lo stato è valido, o la data della vaccinazione"@it ;
         sh:path :validFrom ;
         sh:datatype xsd:date ;
         sh:maxCount 1 ;
     ] ;
     sh:property [
         sh:order 1 ;
-        sh:name "Einzeltier"@de,
-            "Individual animal"@en,
-            "Animal individuel"@fr,
-            "Animale singolo"@it ;
+        sh:name "Tier-ID"@de,
+            "Animal ID"@en,
+            "ID de l'animal"@fr,
+            "ID dell'animale"@it ;
         :sourceTerm "Tier-ID" ;
         :animalTracingTerm "CattleDetailV1Response.eartagNumber" ;
         sh:path :animal ;
