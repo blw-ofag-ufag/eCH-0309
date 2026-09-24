@@ -105,11 +105,13 @@
 # ANNOTATION PROPERTIES
 #
 # Provenance of every class, property and code list concept: the term used in
-# the Hilfsmittel -- the Objektkatalog (section 3.3) for classes and
-# properties, the Wertebereich tables for code list values -- and the
-# corresponding name in the AnimalTracing / TVD openAPI specification. Annotation properties are ignored
-# by the reasoner, and their values carry no language tag, so they impose no
-# translation burden (see tests/test_translations.py).
+# the Hilfsmittel -- the Objektkatalog (section 3.3) for classes and properties,
+# the Wertebereich tables for code list values -- and the corresponding name in
+# the AnimalTracing / TVD openAPI specification.
+#
+# Annotation properties are ignored by the reasoner, and their values carry no
+# language tag, so they impose no translation burden (see
+# tests/test_translations.py).
 # ==============================================================================
 
 :sourceTerm a owl:AnnotationProperty .

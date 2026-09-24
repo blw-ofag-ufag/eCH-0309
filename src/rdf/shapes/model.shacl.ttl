@@ -56,15 +56,17 @@
 # ==============================================================================
 # NODE SHAPES
 #
-# Step 1 of the model: the classes of the Objektkatalog (chapter 3.3 of the
-# Hilfsmittel) and the associations between them. Literal attributes, code
-# lists and the alignment with eCH-0108/eCH-0261 follow in later steps.
+# One shape per class of the Objektkatalog (chapter 3.3 of the Hilfsmittel),
+# and :LegalUnitShape, which the Semantikbeschreibung describes but the
+# catalogue does not list.
 #
-# Every shape and every property records its provenance with :sourceTerm (the
-# term used in the Objektkatalog) and :animalTracingTerm (the corresponding
-# schema name in the AnimalTracing/TVD openAPI). Where the openAPI has no
-# counterpart, :animalTracingTerm is absent and the fact is stated in the
-# rdfs:comment.
+# Every shape and every property records where it comes from: :sourceTerm is
+# the term the Hilfsmittel uses, :animalTracingTerm the counterpart in the TVD
+# openAPI, :echTerm the one in eCH-0108 or eCH-0261. A missing annotation means
+# that source has no counterpart, which the rdfs:comment then says.
+#
+# Points still to be settled with the Fachgruppe are collected in
+# OPEN-QUESTIONS.md, not here.
 # ==============================================================================
 
 :LegalUnitShape a sh:NodeShape ;
@@ -300,66 +302,10 @@
             "Un animale singolo ha al massimo un padre."@it ;
     ] .
 
-# ==============================================================================
-# OPEN QUESTION FOR THE WORKING GROUP — :owner / «Equideneigentümer»
-#
-# Listed as A1 in OPEN-QUESTIONS.md, which collects every open point.
-#
-# Is the Equideneigentümer always a rechtliche Einheit with an entry in the UID
-# register? The sources disagree, so :owner is modelled as 0..1 :LegalUnit
-# until this is settled. What each source says:
-#
-# 1. Objektkatalog (chapter 3.3), subclass «Equiden»:
-#        | Eigentümer oder Eigentümerin | 1 | uid |
-#    Mandatory, and typed as a uid — i.e. a rechtliche Einheit by definition.
-#
-# 2. Semantikbeschreibung, chapter 3.1.1:
-#        "Ein Eigentümer ist die rechtliche Einheit, in deren Eigentum Equiden
-#         sind. Dieser Begriff wird nur Equideneigentümer geführt, da die
-#         Verantwortung für das Meldewesen der Equiden beim Eigentümer und
-#         nicht beim Tierhalter liegt."
-#
-# 3. Semantikbeschreibung, chapter 3.1.4:
-#        "Bei Equiden werden die Ereignisse durch die berechtigten Personen des
-#         verantwortlichen Equideneigentümers (LegalUnit) gemeldet."
-#
-# 4. Review comment [SB14], attached to exactly that sentence in 3.1.4:
-#        "Equideneigentümer sind nicht zwingend legalUnits nach UID-Register.
-#         Es ist nicht unbedingt korrekt, diese hier so zu nennen."
-#
-# 5. The AnimalTracing openAPI (openapi_tvd.json) sides with 1–3. The owner
-#    types live in the namespace ...Contracts.LegalUnit.EquidOwner, and `uid`
-#    is a required, non-nullable property of every one of them:
-#        EquidDetailsOwnerResponse
-#            required: [dateOfOwnershipStart, fullName, mainAddress, uid]
-#        EquidOwnershipListV1LegalUnitResponse
-#            required: [fullName, mainAddress, uid]
-#        LegalUnitBaseResponse
-#            required: [correspondenceLanguage, uid]
-#    Note that fullName and mainAddress are nullable there, but uid is not.
-#
-# Four sources say "rechtliche Einheit with a mandatory UID"; one reviewer says
-# that is wrong. DECISION: follow the four — :owner is 1..1 :LegalUnit, matching
-# the Objektkatalog's cardinality. The question below stays open regardless, and
-# [SB14] is the reason it is written down here rather than treated as settled.
-#
-# Questions to put to the experts:
-#
-#   a) Which owners does [SB14] have in mind — owners resident abroad, private
-#      individuals with no UID entry, owners held only by name and address?
-#   b) If such owners exist: is the UID then merely optional on a :LegalUnit,
-#      or is such an owner not a :LegalUnit at all and needs its own class?
-#   c) How do the equid owner and the Tierhaltende relate for one and the same
-#      animal? Chapter 3.1.1 moves only the Meldewesen responsibility to the
-#      owner, and every Meldung Einzeltier still carries an örtliche Einheit,
-#      so both appear to apply at once — is that intended?
-#   d) Does the answer change with the "Zustand ab 2027" that other review
-#      comments refer to?
-#
-# If [SB14] is upheld, the consequence is either dropping sh:minCount on :owner
-# or splitting a separate :EquidOwner class off :LegalUnit. The latter changes a
-# version-pinned namespace, so it needs to be settled before publication.
-# ==============================================================================
+# :owner follows the Objektkatalog's cardinality of 1. Whether an equid owner
+# is always a UID-registered rechtliche Einheit is disputed by review comment
+# [SB14]; A1 in OPEN-QUESTIONS.md sets out the five sources and what changes
+# if the comment is upheld.
 
 :EquidShape a sh:NodeShape ;
     rdfs:label "Equide"@de,
@@ -541,7 +487,7 @@
             "Provenance"@fr,
             "Provenienza"@it ;
         :sourceTerm "Herkunft" ;
-        :animalTracingTerm "CattleDetailV1StaysArrivalNotificationResponse.originLocalId" ;
+        :animalTracingTerm "ArrivalNotificationResponse.originLocalId" ;
         sh:description "BUR-Nummer der örtlichen Einheit von der das Tier kommt"@de,
             "BUR number of the local unit the animal comes from"@en,
             "Numéro REE de l'unité locale d'où provient l'animal"@fr,
