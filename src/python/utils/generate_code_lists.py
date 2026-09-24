@@ -110,9 +110,11 @@ SCHEMES = [
 # the Wertebereich tables; :animalTracingTerm records only the counterparts that
 # are unambiguous. Deliberately unmapped: «Tagesaufenthalt», which resembles
 # CommuteStart/CommuteStop, and «Einfuhr nach Ausfuhr», which resembles
-# ImportSwissEarTag -- neither is certain enough to assert. «Risikostatus» is
-# left unmapped too: its counterpart BvdRisk appears in the technical service
-# description but not in the openAPI, and :animalTracingTerm names the latter.
+# ImportSwissEarTag -- neither is certain enough to assert. BvdRisk, the
+# counterpart of «Risikostatus», comes from the technical service description:
+# the openAPI carries BvdState and FootRotState but not BvdRisk, whose values
+# that interface serves through GetEnumeration. Revisit once the openAPI is
+# released.
 DOCUMENT_SCHEMES = [
     {
         "scheme": "notificationType", "class": "NotificationType",
@@ -157,7 +159,7 @@ DOCUMENT_SCHEMES = [
         "values": [
             ("EpizooticStatus", "Seuchenstatus", "Epizootic status", "Statut épizootique", "Stato epizootico", None, ["BvdState", "FootRotState"]),
             ("VaccinationStatus", "Impfstatus", "Vaccination status", "Statut vaccinal", "Stato vaccinale", None, []),
-            ("RiskStatus", "Risikostatus", "Risk status", "Statut de risque", "Stato di rischio", None, []),
+            ("RiskStatus", "Risikostatus", "Risk status", "Statut de risque", "Stato di rischio", None, ["BvdRisk"]),
             ("LaboratoryResult", "Laborergebnis", "Laboratory result", "Résultat de laboratoire", "Risultato di laboratorio", None, []),
         ],
     },

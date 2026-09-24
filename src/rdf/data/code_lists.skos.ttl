@@ -559,7 +559,8 @@ healthstatustype:RiskStatus a skos:Concept, :HealthStatusType ;
         "Risk status"@en,
         "Statut de risque"@fr,
         "Stato di rischio"@it ;
-    :sourceTerm "Risikostatus" .
+    :sourceTerm "Risikostatus" ;
+    :animalTracingTerm "BvdRisk" .
 
 healthstatustype:LaboratoryResult a skos:Concept, :HealthStatusType ;
     skos:inScheme healthstatustype:ConceptScheme ;
