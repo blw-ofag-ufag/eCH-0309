@@ -1,6 +1,6 @@
 ---
-title: eCH-0309 Quarto-Dokument als Vorlage
-abstract: Kurze Zusammenfassung des Zwecks dieses Dokuments
+title: Hilfsmittel Tierverkehrsdaten
+abstract: Das vorliegende Dokument beschreibt die Daten der Tierverkehrsdatenbank (TVD) semantisch, um auch Fachpersonen ohne vertiefte IT-Kenntnisse ein besseres Verständnis der Daten zu ermöglichen.
 date: today
 date-format: long
 lang: de
@@ -14,56 +14,45 @@ Im vorliegenden Dokument wird bei der Bezeichnung von Personen eine geschlechtsn
 
 ## Status {#sec-status}
 
-In Arbeit
+In Arbeit: Der Gebrauch ist nur innerhalb der Fachgruppe, bzw. im Expertenausschuss zugelassen.
 
-## Geltungsbereich {#sec-scope-of-application}
+## Anwendungsgebiet {#sec-scope-of-application}
 
-Die Angaben in diesem Kapitel sollen dem Leser einen raschen Überblick geben, wofür dieser Standard gedacht ist.
-Hinweise zu folgenden Sachverhalten können dabei hilfreich sein.
+Das vorliegende Dokument beschreibt die Daten der Tierverkehrsdatenbank (TVD) semantisch, um auch Fachpersonen ohne vertiefte IT-Kenntnisse ein besseres Verständnis der Daten zu ermöglichen.
 
-## Wir können Untertitel haben {#sec-example-subheading}
+## Das Tiermeldewesen in der Schweiz {#sec-animal-movement-reporting}
 
-Und etwas Text schreiben.
+Die Land- und Ernährungswirtschaft in der Schweiz wurde in den 1990er Jahren stark durch die Tierseuche «BSE» herausgefordert. Als sich 1996 die Erkenntnis der Übertragbarkeit der Krankheit vom Tier auf den Menschen erhärtete, führte dies zu grosser Verunsicherung. In der Folge stiegen die Erwartungen an die Sicherheit von tierischen Lebensmitteln und das Bewusstsein für die Bedeutung der Lebensmittelkontrolle. Der Ansatz «vom Stall bis auf den Teller» etablierte sich. Die risikobasierte Überwachung, die lückenlose Rückverfolgbarkeit der Nutztiere, die Kontrolle des Tierverkehrs, die Pflicht zur Herkunftsdeklaration sowie Qualitätskontrollen in der gesamten Produktions- und Verarbeitungskette bilden seither die Basis für einen hohen Standard in der Lebensmittelsicherheit.
 
-### Auch Unter-Unterüberschriften {#sec-example-subsubheading}
+Die Erfahrung BSE führte 1999 zum Aufbau einer nationalen Tierverkehrsdatenbank (TVD). In Artikel 7a sowie 13–15 des Tierseuchengesetzes und in Titel 2, Abschnitt 1, 1a und 2a der Tierseuchenverordnung sind die grundlegenden gesetzlichen Ausführungen zur Identifizierung/Kennzeichnung und der Registrierung von Nutztieren sowie die zugehörigen Meldepflichten formuliert. Diese orientieren sich an der europäischen Gesetzgebung zur selben Thematik (Verordnung (EU) 2016/429 zu Tierseuchen; Delegierte Verordnung (EU) 2019/2035 über Betriebe, in denen Landtiere gehalten werden, und für Brütereien sowie zur Rückverfolgbarkeit).
 
-Und noch mehr Text schreiben. Vielleicht sogar mit einem schönen Bild.
+Waren ab 1999 vorerst Rinder meldepflichtig, folgten ab 2011 die Schweine und Equiden, wenn auch die Schweine bis heute nicht in Form von Einzeltiermeldungen. Ab 2014, respektive 2020 galt die Meldepflicht in die TVD dann auch für Kleinwiederkäuer (Schafe und Ziegen). Zu Beginn, 2014, betraf diese nur die Schlachtbetriebe. Seit 2014 besteht auch die Meldepflicht für Geflügel. Seit dem Januar 2020 sind auch die Tierhaltenden von Kleinwiederkäuern in das Meldewesen der Einzeltiere eingebunden. Die Identifizierung und Kennzeichnung der Klauentiere mit Ohrmarken, die Einzeltierregistrierung von Rindern, Schafen und Ziegen in der TVD, sowie die Meldung von Tierzugängen, Tierabgängen (Tier verlässt eine Tierhaltung lebend), Geburten, Einfuhr, Ausfuhr, Schlachtung, Hofschlachtung und Verendung (Tier wird als nicht mehr lebend abgemeldet), sind für alle Tierhaltenden in der Schweiz obligatorisch.
 
-![Fügen Sie immer etwas Text hinzu, um zu beschreiben, was das Bild zeigt.](https://fastly.picsum.photos/id/653/536/354.jpg?hmac=3InR8I5KmwbdkPHehlM8BMPd_BDHG_RWZkxt_IkeQGY){#fig-example}
+Die TVD ist Teil einer Systemlandschaft der Bereiche Landwirtschaft, Veterinärwesen und Lebensmittelsicherheit. Die zentrale Eingangspforte bildet dabei das Portal Agate, mit dem Agrarpolitischen Informationssystem AGIS im Zentrum.
 
-Bei der Darstellung von Diagrammen sollte versucht werden, diese direkt in Mermaid JS zu erstellen; dies macht zukünftige Änderungen oder Übersetzungen sehr einfach.
+<!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
 
-# Technische Hinweise {#sec-technical-notes}
+In der Verordnung über die Identitas AG und die Tierverkehrsdatenbank (IdTVD-V) werden Inhalte zum Tierverkehr und Aufgaben der Identitas AG sowie die Zugriffsrechte auf die Daten weiter ausgeführt. Die Bedeutung der Identifizierung/Kennzeichnung von Nutztieren geht weit über die Seuchenthematik hinaus und fand deshalb auch Eingang in die landwirtschaftliche Gesetzgebung (Landwirtschaftsgesetz LwG Artikel 165g, 177 und 185) und diverse zugehörige Verordnungen. Die Daten aus dem Tierverkehr entwickelten sich zu einem unverzichtbaren Bestandteil in der Umsetzung agrarpolitischer Massnahmen, beispielsweise der tierbezogenen Direktzahlungen, der Bestimmung der Nährstoffflüsse oder des Agrarumweltmonitorings. Weiter dienen die Daten auch als Grundlage für die Strukturerhebung der Landwirtschaft in der Schweiz und generell der landwirtschaftlichen Statistik.
 
-Wir verwenden die ROBOT CLI in unserem Projekt [@jackson2019robot], insbesondere wegen ihrer Fähigkeit, den HermiT Reasoner auszuführen [@glimm2014hermit].
+Rasch etablierte sich das Tiermeldewesen auch entlang der gesamten Lebensmittelwertschöpfungskette. Programme mit Tierwohl-, Rückverfolgbarkeits- und Herkunftsversprechen stützen sich darauf ab. Die Vielfalt der Tierinformation aus dem Meldewesen des Tierverkehrs spiegelt sich auch in den öffentlich verfügbaren Datensätzen der Open Data Plattform Tierstatistik.
+
+Die technische Schnittstellenbeschreibung in diesem Dokument basiert auf der technischen Servicebeschreibung AnimalTracing v1.32, sowie der openAPI-Spezifikation v. x.xx.
+
+## Verweise {#sec-references}
+
+Schnittstellen: AnimalTracing API, Technische Servicebeschreibung AnimalTracing
+
+NB: die Namen der im Kapitel 3 beschriebenen Klassen stimmen nicht mit den ServiceOperations in AnimalTracing überein, da die semantische Beschreibung einen Überblick über die Dateninhalte verschaffen soll und gegenüber der Servicebeschreibung einen tieferen Detaillierungsgrad aufweist.
 
 # Datenmodell {#sec-data-model}
 
+![UML-Diagramm des Datenmodells von eCH-0309.](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
+
 {{< include entities.md >}}
 
-# Datenbezug {#sec-data-retrieval}
+# Wertebereiche {#sec-code-lists}
 
-Die diesem Dokument zugrundeliegenden Master- und Referenzdaten sind als _Linked Data_ verfügbar.
-
-Die technologische Basis dafür bildet das Resource Description Framework [RDF, @cyganiak2014rdf11], ein zentraler Standard des World Wide Web Consortiums (W3C) zur Modellierung von Datenstrukturen im Web.
-In RDF werden Informationen nicht in klassischen Tabellen, sondern als vernetzte Graphen abgebildet.
-Jede Aussage besteht dabei aus einem sogenannten Triple (Subjekt, Prädikat, Objekt).
-Diese Struktur ermöglicht eine maschinenlesbare, interoperable und systemübergreifend eindeutige Beschreibung von Ressourcen und deren Relationen zueinander.
-
-Für die Speicherung und Publikation dieser RDF-Daten wird [LINDAS](https://lindas.admin.ch/) (Linked Data Service) genutzt, der offizielle Linked-Data-Dienst der Schweizer Bundesverwaltung.
-LINDAS fungiert als sogenannter _Triple Store_, einer spezialisierte Graphdatenbank, die für das effiziente Speichern und Abfragen von RDF-Triples optimiert ist und die Daten öffentlich über eine genormte Schnittstelle bereitstellt.
-
-Das folgende Kapitel gibt eine minimale Anleitung, wie die Daten von LINDAS abgefragt und bezogen werden können.
-
-``` rq
-{{< include ../data/example.rq >}}
-```
-
-Die zugrundeliegenden Daten selbst werden auf GitHub als Turtle-Files gepflegt.
-
-``` ttl
-{{< include ../data/example.ttl >}}
-```
+{{< include code-lists.md >}}
 
 # Sicherheitsaspekte {#sec-safety-consideration}
 

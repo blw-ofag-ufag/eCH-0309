@@ -15,9 +15,9 @@
 # ==============================================================================
 
 :glossary a skos:ConceptScheme ;
-    schema:name "Glossar des Standards eCH-0309"@de,
-        "Glossary of the eCH-0309 standard"@en,
-        "Glossaire de la norme eCH-0309"@fr .
+    schema:name "Glossar des Hilfsmittels eCH-0309"@de,
+        "Glossary of eCH-0309"@en,
+        "Glossaire de l'eCH-0309"@fr .
 
 # ==============================================================================
 # GLOSSARY TERMS
@@ -58,3 +58,56 @@ term:triple a skos:Concept ;
     schema:description "Die Grundstruktur einer Aussage in RDF, bestehend aus Subjekt, Prädikat und Objekt."@de,
         "The basic structure of a statement in RDF, consisting of a subject, predicate, and object."@en,
         "La structure de base d'une déclaration en RDF, composée d'un sujet, d'un prédicat et d'un objet."@fr .
+
+# ==============================================================================
+# BEGRIFFE AUS DER SEMANTIKBESCHREIBUNG (Kapitel 3.1 des Hilfsmittels)
+#
+# Begriffe, die das Hilfsmittel definiert, die aber keine eigene Klasse des
+# Datenmodells sind: der Objektkatalog führt sie nicht als Klasse, und für die
+# meldende Person hält ein Prüfkommentar fest, dass sie kein öffentlicher
+# Bestandteil der Meldung ist.
+#
+# Die lokalen Namen sind wie im übrigen Modell englisch, damit der Identifikator
+# keine Sprache bevorzugt; die Benennungen stehen in schema:name je Sprache.
+# ==============================================================================
+
+term:farmManager a skos:Concept ;
+    skos:inScheme :glossary ;
+    skos:topConceptOf :glossary ;
+    schema:name "Bewirtschafter"@de,
+        "Farm manager"@en,
+        "Exploitant"@fr ;
+    schema:description "Eine rechtliche Einheit, die das Geschäftsrisiko für einen Betrieb trägt (LBV Art. 2). Der Tierhaltende ist eine Form des Bewirtschafters, der Tiere hält (LBV Art. 11a)."@de,
+        "A legal unit that bears the business risk for a farm (LBV Art. 2). The animal keeper is a form of farm manager that keeps animals (LBV Art. 11a)."@en,
+        "Une unité juridique qui assume le risque économique d'une exploitation (OTerm art. 2). Le détenteur d'animaux est une forme d'exploitant qui détient des animaux (OTerm art. 11a)."@fr .
+
+term:reportingPerson a skos:Concept ;
+    skos:inScheme :glossary ;
+    skos:topConceptOf :glossary ;
+    schema:name "Meldende Person"@de,
+        "Reporting person"@en,
+        "Personne déclarante"@fr ;
+    schema:description "Die Person oder die Personen, die für eine Tierhaltung oder für einen Equideneigentümer Meldungen machen."@de,
+        "The person or persons who make notifications for an animal holding or for an equid owner."@en,
+        "La personne ou les personnes qui effectuent les annonces pour une unité d'élevage ou pour un propriétaire d'équidés."@fr .
+
+term:homeHolding a skos:Concept ;
+    skos:inScheme :glossary ;
+    skos:topConceptOf :glossary ;
+    schema:name "Stammbetrieb"@de,
+        "Home holding"@en,
+        "Exploitation de référence"@fr ;
+    schema:description "Bei Rindern kann ein Stammbetrieb hinterlegt werden, um die Zugehörigkeit der Tiere zu einer Tierhaltung abzubilden, wenn sich ein Tier auf einer anderen örtlichen Einheit befindet."@de,
+        "For cattle, a home holding can be recorded in order to represent an animal's affiliation to an animal holding while the animal is located on another local unit."@en,
+        "Pour les bovins, une exploitation de référence peut être enregistrée afin de représenter l'appartenance des animaux à une unité d'élevage lorsqu'un animal se trouve sur une autre unité locale."@fr .
+
+term:animalHolding a skos:Concept ;
+    skos:inScheme :glossary ;
+    skos:topConceptOf :glossary ;
+    schema:name "Tierhaltung"@de,
+        "Animal holding"@en,
+        "Unité d'élevage"@fr ;
+    schema:description "In der Tierverkehrsdatenbank werden örtliche Einheiten «Tierhaltungen» genannt; sie sind zusätzlich über die TVD-Nummer identifiziert."@de,
+        "In the animal movement database, local units are called «animal holdings»; they are additionally identified by their TVD number."@en,
+        "Dans la banque de données sur le trafic des animaux, les unités locales sont appelées «unités d'élevage»; elles sont en outre identifiées par leur numéro BDTA."@fr .
+

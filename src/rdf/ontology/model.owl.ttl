@@ -4,3 +4,150 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix schema: <http://schema.org/> .
 
+# ==============================================================================
+# CLASSES
+#
+# Taxonomy only. All constraints (cardinalities, value types) live in
+# src/rdf/shapes/model.shacl.ttl; all labels and descriptions live there too,
+# because src/python/utils/generate_shacl_docs.py reads the shapes file only.
+# ==============================================================================
+
+:LegalUnit a owl:Class .
+
+# Chapter 3.1.1 of the Hilfsmittel derives both the animal keeper and the
+# equid owner from the legal unit. Only the animal keeper is asserted here;
+# see the note on :owner in the shapes file for why the equid owner is not.
+:AnimalKeeper a owl:Class ;
+    rdfs:subClassOf :LegalUnit .
+
+:LocalUnit a owl:Class .
+
+:Animal a owl:Class .
+
+:Equid a owl:Class ;
+    rdfs:subClassOf :Animal .
+
+:AnimalNotification a owl:Class .
+
+:GroupNotification a owl:Class .
+
+:LocalUnitHealthStatus a owl:Class .
+
+:AnimalHealthStatus a owl:Class .
+
+# ==============================================================================
+# CODE LIST CLASSES
+#
+# One class per Wertebereich, as in eCH-0265, so that an attribute can be
+# constrained with sh:class instead of admitting any skos:Concept. The
+# concepts themselves live in src/rdf/data/code_lists.skos.ttl.
+# ==============================================================================
+
+:Genus a owl:Class .
+
+:Gender a owl:Class .
+
+:AnimalTypeOfUse a owl:Class .
+
+:EquidTypeOfUsage a owl:Class .
+
+:AnimalHistoryState a owl:Class .
+
+:EquidWithersClass a owl:Class .
+
+:NotificationType a owl:Class .
+
+:HealthStatusType a owl:Class .
+
+:LocalUnitEpizooticStatus a owl:Class .
+
+:AnimalEpizooticStatus a owl:Class .
+
+# ==============================================================================
+# OBJECT PROPERTIES
+#
+# Declared without rdfs:domain/rdfs:range on purpose: :localUnit has three
+# domains, and under ClassAssertion inference a domain axiom would manufacture
+# types instead of flagging malformed data.
+# ==============================================================================
+
+:animalKeeper a owl:ObjectProperty .
+
+:localUnit a owl:ObjectProperty .
+
+:originLocalUnit a owl:ObjectProperty .
+
+:animal a owl:ObjectProperty .
+
+:mother a owl:ObjectProperty .
+
+:father a owl:ObjectProperty .
+
+:owner a owl:ObjectProperty .
+
+:genus a owl:ObjectProperty .
+
+:gender a owl:ObjectProperty .
+
+:animalHistoryState a owl:ObjectProperty .
+
+:typeOfUse a owl:ObjectProperty .
+
+:withersClass a owl:ObjectProperty .
+
+:notificationType a owl:ObjectProperty .
+
+:healthStatusType a owl:ObjectProperty .
+
+:epizooticStatus a owl:ObjectProperty .
+
+# ==============================================================================
+# ANNOTATION PROPERTIES
+#
+# Provenance of every class, property and code list concept: the term used in
+# the Hilfsmittel -- the Objektkatalog (section 3.3) for classes and properties,
+# the Wertebereich tables for code list values -- and the corresponding name in
+# AnimalTracing. That is the TVD openAPI wherever it carries one, and otherwise
+# the technical service description, which publishes datatypes the openAPI does
+# not, such as BvdRisk.
+#
+# Annotation properties are ignored by the reasoner, and their values carry no
+# language tag, so they impose no translation burden (see
+# tests/test_translations.py).
+# ==============================================================================
+
+:sourceTerm a owl:AnnotationProperty .
+
+:animalTracingTerm a owl:AnnotationProperty .
+
+# Counterpart in the eCH data standards this model builds on, written in the
+# notation those standards use themselves (e.g. "eCH-0108:localIdType").
+:echTerm a owl:AnnotationProperty .
+
+# ==============================================================================
+# DATATYPE PROPERTIES
+# ==============================================================================
+
+:identifier a owl:DatatypeProperty .
+
+:eventIdentifier a owl:DatatypeProperty .
+
+:dateOfBirth a owl:DatatypeProperty .
+
+:dateOfDeath a owl:DatatypeProperty .
+
+:castrated a owl:DatatypeProperty .
+
+:groupInformation a owl:DatatypeProperty .
+
+:eventDate a owl:DatatypeProperty .
+
+:notificationDate a owl:DatatypeProperty .
+
+:count a owl:DatatypeProperty .
+
+:weight a owl:DatatypeProperty .
+
+:age a owl:DatatypeProperty .
+
+:validFrom a owl:DatatypeProperty .

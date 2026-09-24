@@ -1,0 +1,767 @@
+# ==============================================================================
+# CODE LISTS (Wertebereiche)
+#
+# GENERATED FILE -- do not edit by hand. Regenerate with:
+#     venv/bin/python src/python/utils/generate_code_lists.py \
+#         -o src/rdf/data/code_lists.skos.ttl
+#
+# Values are taken from the TVD AnimalTracing openAPI, German wording from the
+# Wertebereich tables of the Hilfsmittel. Every concept records both with
+# :animalTracingTerm and :sourceTerm.
+#
+# Each code list gets its own sub-namespace and each concept is named by the
+# identifier the source system uses for it, as in eCH-0265, where the AGIS,
+# NAEBI and PSM lists are keyed by their own numeric codes. The identifier is
+# therefore not ours to case.
+#
+# Values that the Hilfsmittel strikes through or does not list are left out, and
+# the omission is noted on the scheme: the two documents are meant to carry the
+# same values.
+#
+# The openAPI is still in development, so these lists are provisional. French
+# and Italian labels are missing: neither source provides them, and inventing
+# them here would misrepresent the source. See :codeLists for the as-of date.
+# ==============================================================================
+
+@prefix :                <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix genus:                  <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
+@prefix gender:                 <https://agriculture.ld.admin.ch/eCH-0309/1/gender/> .
+@prefix animaltypeofuse:        <https://agriculture.ld.admin.ch/eCH-0309/1/animaltypeofuse/> .
+@prefix equidtypeofusage:       <https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/> .
+@prefix animalhistorystate:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
+@prefix equidwithersclass:      <https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
+@prefix notificationtype:       <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
+@prefix healthstatustype:       <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/> .
+@prefix localunithealthstatus:  <https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/> .
+@prefix animalhealthstatus:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/> .
+
+@prefix dcterms:         <http://purl.org/dc/terms/> .
+@prefix schema:          <http://schema.org/> .
+@prefix skos:            <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:             <http://www.w3.org/2001/XMLSchema#> .
+
+
+# ==============================================================================
+# SCHEME METADATA
+# ==============================================================================
+
+:codeLists a skos:Collection ;
+    schema:name "Wertebereiche der Tierverkehrsdaten"@de,
+        "Code lists of the animal movement data"@en ;
+    dcterms:source "https://test-03-tvd-api-at.identitas.ch/open-api/v1.0" ;
+    dcterms:hasVersion "TVD API Gateway Animal Tracing 1.0" ;
+    dcterms:modified "2026-09-24"^^xsd:date .
+
+
+# ------------------------------------------------------------------------------
+# Nutztierart -- openAPI EnumGenus
+# Hilfsmittel: Tabelle 2: Definition Wertebereich Nutztierarten für die TVD
+# Nicht übernommen: Bee -- in Tabelle 2 durchgestrichen.
+# Nicht übernommen: Fish -- in Tabelle 2 durchgestrichen.
+# Nicht übernommen: Unknow -- nicht in Tabelle 2 aufgeführt.
+# Nicht übernommen: Others -- nicht in Tabelle 2 aufgeführt.
+# ------------------------------------------------------------------------------
+
+genus:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Nutztierart"@de,
+        "Genus"@en,
+        "Espèce d'animal de rente"@fr,
+        "Specie di animale da reddito"@it ;
+    :animalTracingTerm "EnumGenus" .
+
+genus:Cattle a skos:Concept, :Genus ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
+    skos:notation "Cattle" ;
+    schema:name "Rindvieh"@de,
+        "Cattle"@en ;
+    schema:description "Tiere der Rindergattung (Bos) und Wasserbüffel (Bubalus bubalis)"@de ;
+    :sourceTerm "Rindvieh" ;
+    :animalTracingTerm "EnumGenus.Cattle" .
+
+genus:Pig a skos:Concept, :Genus ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
+    skos:notation "Pig" ;
+    schema:name "Schweine"@de,
+        "Pig"@en ;
+    :sourceTerm "Schweine" ;
+    :animalTracingTerm "EnumGenus.Pig" .
+
+genus:Sheep a skos:Concept, :Genus ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
+    skos:notation "Sheep" ;
+    schema:name "Schafe"@de,
+        "Sheep"@en ;
+    :sourceTerm "Schafe" ;
+    :animalTracingTerm "EnumGenus.Sheep" .
+
+genus:Goat a skos:Concept, :Genus ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
+    skos:notation "Goat" ;
+    schema:name "Ziegen"@de,
+        "Goat"@en ;
+    :sourceTerm "Ziegen" ;
+    :animalTracingTerm "EnumGenus.Goat" .
+
+genus:Camelid a skos:Concept, :Genus ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
+    skos:notation "Camelid" ;
+    schema:name "Kameliden"@de,
+        "Camelid"@en ;
+    schema:description "Neuweltkameliden"@de ;
+    :sourceTerm "Kameliden" ;
+    :animalTracingTerm "EnumGenus.Camelid" .
+
+genus:Game a skos:Concept, :Genus ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
+    skos:notation "Game" ;
+    schema:name "Wild"@de,
+        "Game"@en ;
+    schema:description "Wild in Gehegen"@de ;
+    :sourceTerm "Wild" ;
+    :animalTracingTerm "EnumGenus.Game" .
+
+genus:Equid a skos:Concept, :Genus ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
+    skos:notation "Equid" ;
+    schema:name "Equiden"@de,
+        "Equid"@en ;
+    schema:description "Tiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel)"@de ;
+    :sourceTerm "Equiden" ;
+    :animalTracingTerm "EnumGenus.Equid" .
+
+genus:Poultry a skos:Concept, :Genus ;
+    skos:inScheme genus:ConceptScheme ;
+    skos:topConceptOf genus:ConceptScheme ;
+    skos:notation "Poultry" ;
+    schema:name "Geflügel"@de,
+        "Poultry"@en ;
+    :sourceTerm "Geflügel" ;
+    :animalTracingTerm "EnumGenus.Poultry" .
+
+
+# ------------------------------------------------------------------------------
+# Geschlecht -- openAPI EnumGender
+# Hilfsmittel: Tabelle 6: Definition Wertebereich Geschlecht
+# ------------------------------------------------------------------------------
+
+gender:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Geschlecht"@de,
+        "Gender"@en,
+        "Sexe"@fr,
+        "Sesso"@it ;
+    :animalTracingTerm "EnumGender" .
+
+gender:Female a skos:Concept, :Gender ;
+    skos:inScheme gender:ConceptScheme ;
+    skos:topConceptOf gender:ConceptScheme ;
+    skos:notation "Female" ;
+    schema:name "Weiblich"@de,
+        "Female"@en ;
+    :sourceTerm "Weiblich" ;
+    :animalTracingTerm "EnumGender.Female" .
+
+gender:Male a skos:Concept, :Gender ;
+    skos:inScheme gender:ConceptScheme ;
+    skos:topConceptOf gender:ConceptScheme ;
+    skos:notation "Male" ;
+    schema:name "Männlich"@de,
+        "Male"@en ;
+    :sourceTerm "Männlich" ;
+    :animalTracingTerm "EnumGender.Male" .
+
+
+# ------------------------------------------------------------------------------
+# Zweck (Rinder, Schafe, Ziegen) -- openAPI EnumAnimalTypeOfUse
+# Hilfsmittel: Tabelle 3: Definition Wertebereich Zweck pro Nutztierart
+# Nicht übernommen: NotDefined -- nicht in Tabelle 3 aufgeführt.
+# ------------------------------------------------------------------------------
+
+animaltypeofuse:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Zweck (Rinder, Schafe, Ziegen)"@de,
+        "Type of use (cattle, sheep, goats)"@en,
+        "Type d'utilisation (bovins, ovins, caprins)"@fr,
+        "Tipo di utilizzo (bovini, ovini, caprini)"@it ;
+    :animalTracingTerm "EnumAnimalTypeOfUse" .
+
+animaltypeofuse:Other a skos:Concept, :AnimalTypeOfUse ;
+    skos:inScheme animaltypeofuse:ConceptScheme ;
+    skos:topConceptOf animaltypeofuse:ConceptScheme ;
+    skos:notation "Other" ;
+    schema:name "Andere"@de,
+        "Other"@en ;
+    :sourceTerm "Andere" ;
+    :animalTracingTerm "EnumAnimalTypeOfUse.Other" .
+
+animaltypeofuse:Milk a skos:Concept, :AnimalTypeOfUse ;
+    skos:inScheme animaltypeofuse:ConceptScheme ;
+    skos:topConceptOf animaltypeofuse:ConceptScheme ;
+    skos:notation "Milk" ;
+    schema:name "Milch"@de,
+        "Milk"@en ;
+    schema:description "Milchkühe, -schafe und -ziegen"@de ;
+    :sourceTerm "Milch" ;
+    :animalTracingTerm "EnumAnimalTypeOfUse.Milk" .
+
+
+# ------------------------------------------------------------------------------
+# Zweck (Equiden) -- openAPI EquidTypeOfUsage
+# Hilfsmittel: Tabelle 3: Definition Wertebereich Zweck pro Nutztierart
+# Nicht übernommen: Undefined -- nicht in Tabelle 3 aufgeführt.
+# ------------------------------------------------------------------------------
+
+equidtypeofusage:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Zweck (Equiden)"@de,
+        "Type of use (equids)"@en,
+        "Type d'utilisation (équidés)"@fr,
+        "Tipo di utilizzo (equidi)"@it ;
+    :animalTracingTerm "EquidTypeOfUsage" .
+
+equidtypeofusage:CompanionAnimal a skos:Concept, :EquidTypeOfUsage ;
+    skos:inScheme equidtypeofusage:ConceptScheme ;
+    skos:topConceptOf equidtypeofusage:ConceptScheme ;
+    skos:notation "CompanionAnimal" ;
+    schema:name "Heimtier"@de,
+        "Companion animal"@en ;
+    :sourceTerm "Heimtier" ;
+    :animalTracingTerm "EquidTypeOfUsage.CompanionAnimal" .
+
+equidtypeofusage:FarmAnimal a skos:Concept, :EquidTypeOfUsage ;
+    skos:inScheme equidtypeofusage:ConceptScheme ;
+    skos:topConceptOf equidtypeofusage:ConceptScheme ;
+    skos:notation "FarmAnimal" ;
+    schema:name "Nutztier"@de,
+        "Farm animal"@en ;
+    :sourceTerm "Nutztier" ;
+    :animalTracingTerm "EquidTypeOfUsage.FarmAnimal" .
+
+
+# ------------------------------------------------------------------------------
+# Tiergeschichtestatus -- openAPI EnumAnimalHistoryState
+# Hilfsmittel: Tabelle 7: Definition Wertebereich Tiergeschichtestatus
+# ------------------------------------------------------------------------------
+
+animalhistorystate:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Tiergeschichtestatus"@de,
+        "Animal history state"@en,
+        "Statut de l'historique de l'animal"@fr,
+        "Stato della storia dell'animale"@it ;
+    :animalTracingTerm "EnumAnimalHistoryState" .
+
+animalhistorystate:NotDefined a skos:Concept, :AnimalHistoryState ;
+    skos:inScheme animalhistorystate:ConceptScheme ;
+    skos:topConceptOf animalhistorystate:ConceptScheme ;
+    skos:notation "NotDefined" ;
+    schema:name "Nicht definiert"@de,
+        "Not defined"@en ;
+    :sourceTerm "Nicht definiert" ;
+    :animalTracingTerm "EnumAnimalHistoryState.NotDefined" .
+
+animalhistorystate:NotOk a skos:Concept, :AnimalHistoryState ;
+    skos:inScheme animalhistorystate:ConceptScheme ;
+    skos:topConceptOf animalhistorystate:ConceptScheme ;
+    skos:notation "NotOk" ;
+    schema:name "Fehlerhaft"@de,
+        "Not ok"@en ;
+    :sourceTerm "Fehlerhaft" ;
+    :animalTracingTerm "EnumAnimalHistoryState.NotOk" .
+
+animalhistorystate:TemporaryOk a skos:Concept, :AnimalHistoryState ;
+    skos:inScheme animalhistorystate:ConceptScheme ;
+    skos:topConceptOf animalhistorystate:ConceptScheme ;
+    skos:notation "TemporaryOk" ;
+    schema:name "Temporär OK"@de,
+        "Temporary ok"@en ;
+    :sourceTerm "Temporär OK" ;
+    :animalTracingTerm "EnumAnimalHistoryState.TemporaryOk" .
+
+animalhistorystate:Ok a skos:Concept, :AnimalHistoryState ;
+    skos:inScheme animalhistorystate:ConceptScheme ;
+    skos:topConceptOf animalhistorystate:ConceptScheme ;
+    skos:notation "Ok" ;
+    schema:name "OK"@de,
+        "Ok"@en ;
+    :sourceTerm "OK" ;
+    :animalTracingTerm "EnumAnimalHistoryState.Ok" .
+
+animalhistorystate:Lost a skos:Concept, :AnimalHistoryState ;
+    skos:inScheme animalhistorystate:ConceptScheme ;
+    skos:topConceptOf animalhistorystate:ConceptScheme ;
+    skos:notation "Lost" ;
+    schema:name "Verschollen"@de,
+        "Lost"@en ;
+    :sourceTerm "Verschollen" ;
+    :animalTracingTerm "EnumAnimalHistoryState.Lost" .
+
+
+# ------------------------------------------------------------------------------
+# Grössenkategorie -- openAPI EnumEquidWithersClass
+# No Wertebereich table in the Hilfsmittel.
+# ------------------------------------------------------------------------------
+
+equidwithersclass:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Grössenkategorie"@de,
+        "Withers class"@en,
+        "Catégorie de taille"@fr,
+        "Categoria di grandezza"@it ;
+    :animalTracingTerm "EnumEquidWithersClass" .
+
+equidwithersclass:LessOrEqualThan148cm a skos:Concept, :EquidWithersClass ;
+    skos:inScheme equidwithersclass:ConceptScheme ;
+    skos:topConceptOf equidwithersclass:ConceptScheme ;
+    skos:notation "LessOrEqualThan148cm" ;
+    schema:name "Widerristhöhe bis 148 cm"@de,
+        "Withers height up to 148 cm"@en,
+        "Hauteur au garrot jusqu'à 148 cm"@fr,
+        "Altezza al garrese fino a 148 cm"@it ;
+    :animalTracingTerm "EnumEquidWithersClass.LessOrEqualThan148cm" .
+
+equidwithersclass:GreaterThan148cm a skos:Concept, :EquidWithersClass ;
+    skos:inScheme equidwithersclass:ConceptScheme ;
+    skos:topConceptOf equidwithersclass:ConceptScheme ;
+    skos:notation "GreaterThan148cm" ;
+    schema:name "Widerristhöhe über 148 cm"@de,
+        "Withers height above 148 cm"@en,
+        "Hauteur au garrot supérieure à 148 cm"@fr,
+        "Altezza al garrese superiore a 148 cm"@it ;
+    :animalTracingTerm "EnumEquidWithersClass.GreaterThan148cm" .
+
+
+# ------------------------------------------------------------------------------
+# Bewegungstyp -- aus dem Hilfsmittel, Tabelle 8: Definition Wertebereich Bewegungstyp
+# ------------------------------------------------------------------------------
+
+notificationtype:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Bewegungstyp"@de,
+        "Notification type"@en,
+        "Type de mouvement"@fr,
+        "Tipo di movimento"@it .
+
+notificationtype:Birth a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "Birth" ;
+    schema:name "Geburt"@de,
+        "Birth"@en,
+        "Naissance"@fr,
+        "Nascita"@it ;
+    :sourceTerm "Geburt" ;
+    :animalTracingTerm "EnumCattleNotificationType.Birth", "EnumSheepNotificationType.Birth", "EnumGoatNotificationType.Birth" .
+
+notificationtype:Arrival a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "Arrival" ;
+    schema:name "Zugang"@de,
+        "Arrival"@en,
+        "Entrée"@fr,
+        "Entrata"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it ;
+    :sourceTerm "Zugang" ;
+    :animalTracingTerm "EnumCattleNotificationType.Arrival", "EnumSheepNotificationType.Arrival", "EnumGoatNotificationType.Arrival" .
+
+notificationtype:Leaving a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "Leaving" ;
+    schema:name "Abgang"@de,
+        "Departure"@en,
+        "Sortie"@fr,
+        "Uscita"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it ;
+    :sourceTerm "Abgang" ;
+    :animalTracingTerm "EnumCattleNotificationType.Leaving", "EnumSheepNotificationType.Leaving", "EnumGoatNotificationType.Leaving" .
+
+notificationtype:Slaughter a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "Slaughter" ;
+    schema:name "Schlachtung"@de,
+        "Slaughter"@en,
+        "Abattage"@fr,
+        "Macellazione"@it ;
+    :sourceTerm "Schlachtung" ;
+    :animalTracingTerm "EnumCattleNotificationType.Slaughtering", "EnumSheepNotificationType.Slaughter", "EnumGoatNotificationType.Slaughter" .
+
+notificationtype:Deceased a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "Deceased" ;
+    schema:name "Verendung"@de,
+        "Death"@en,
+        "Mort"@fr,
+        "Morte"@it ;
+    schema:description "Bei Equiden: Euthanasierung"@de,
+        "For equids: euthanasia"@en,
+        "Pour les équidés : euthanasie"@fr,
+        "Per gli equidi: eutanasia"@it ;
+    :sourceTerm "Verendung" ;
+    :animalTracingTerm "EnumCattleNotificationType.Deceased", "EnumSheepNotificationType.Deceased", "EnumGoatNotificationType.Deceased" .
+
+notificationtype:Import a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "Import" ;
+    schema:name "Einfuhr"@de,
+        "Import"@en,
+        "Importation"@fr,
+        "Importazione"@it ;
+    :sourceTerm "Einfuhr" ;
+    :animalTracingTerm "EnumCattleNotificationType.Import", "EnumSheepNotificationType.Import", "EnumGoatNotificationType.Import" .
+
+notificationtype:Export a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "Export" ;
+    schema:name "Ausfuhr"@de,
+        "Export"@en,
+        "Exportation"@fr,
+        "Esportazione"@it ;
+    schema:description "Bei Equiden: Eigentumsabgabe ins Ausland"@de,
+        "For equids: transfer of ownership abroad"@en,
+        "Pour les équidés : cession de propriété à l'étranger"@fr,
+        "Per gli equidi: cessione di proprietà all'estero"@it ;
+    :sourceTerm "Ausfuhr" ;
+    :animalTracingTerm "EnumCattleNotificationType.Export", "EnumSheepNotificationType.Export", "EnumGoatNotificationType.Export" .
+
+notificationtype:DayStay a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "DayStay" ;
+    schema:name "Tagesaufenthalt"@de,
+        "Day stay"@en,
+        "Séjour à la journée"@fr,
+        "Soggiorno giornaliero"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it ;
+    :sourceTerm "Tagesaufenthalt" .
+
+notificationtype:ImportAfterExport a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "ImportAfterExport" ;
+    schema:name "Einfuhr nach Ausfuhr"@de,
+        "Import after export"@en,
+        "Importation après exportation"@fr,
+        "Importazione dopo esportazione"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it ;
+    :sourceTerm "Einfuhr nach Ausfuhr" .
+
+notificationtype:OnFarmSlaughter a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "OnFarmSlaughter" ;
+    schema:name "Hofschlachtung"@de,
+        "On-farm slaughter"@en,
+        "Abattage à la ferme"@fr,
+        "Macellazione in azienda"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it ;
+    :sourceTerm "Hofschlachtung" ;
+    :animalTracingTerm "EnumCattleNotificationType.YardSlaughter", "EnumSheepNotificationType.OnFarmSlaughter", "EnumGoatNotificationType.OnFarmSlaughter" .
+
+notificationtype:DeathBirth a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "DeathBirth" ;
+    schema:name "Totgeburt"@de,
+        "Stillbirth"@en,
+        "Mortinaissance"@fr,
+        "Nato morto"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it ;
+    :sourceTerm "Totgeburt" ;
+    :animalTracingTerm "EnumCattleNotificationType.DeathBirth", "EnumSheepNotificationType.DeathBirth", "EnumGoatNotificationType.DeathBirth" .
+
+notificationtype:LocationChange a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "LocationChange" ;
+    schema:name "Standortwechsel"@de,
+        "Change of location"@en,
+        "Changement de lieu"@fr,
+        "Cambiamento di ubicazione"@it ;
+    schema:description "Nur für Equiden"@de,
+        "For equids only"@en,
+        "Uniquement pour les équidés"@fr,
+        "Solo per gli equidi"@it ;
+    :sourceTerm "Standortwechsel" .
+
+notificationtype:FirstRegistration a skos:Concept, :NotificationType ;
+    skos:inScheme notificationtype:ConceptScheme ;
+    skos:topConceptOf notificationtype:ConceptScheme ;
+    skos:notation "FirstRegistration" ;
+    schema:name "Erstregistrierung"@de,
+        "First registration"@en,
+        "Premier enregistrement"@fr,
+        "Prima registrazione"@it ;
+    :sourceTerm "Erstregistrierung" ;
+    :animalTracingTerm "EnumSheepNotificationType.FirstRegistration", "EnumGoatNotificationType.FirstRegistration" .
+
+
+# ------------------------------------------------------------------------------
+# Typ Gesundheitsstatus -- aus dem Hilfsmittel, Tabelle 9: Definition Wertebereich Typ Gesundheitsstatus
+# ------------------------------------------------------------------------------
+
+healthstatustype:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Typ Gesundheitsstatus"@de,
+        "Health status type"@en,
+        "Type d'état sanitaire"@fr,
+        "Tipo di stato sanitario"@it .
+
+healthstatustype:EpizooticStatus a skos:Concept, :HealthStatusType ;
+    skos:inScheme healthstatustype:ConceptScheme ;
+    skos:topConceptOf healthstatustype:ConceptScheme ;
+    skos:notation "EpizooticStatus" ;
+    schema:name "Seuchenstatus"@de,
+        "Epizootic status"@en,
+        "Statut épizootique"@fr,
+        "Stato epizootico"@it ;
+    :sourceTerm "Seuchenstatus" ;
+    :animalTracingTerm "BvdState", "FootRotState" .
+
+healthstatustype:VaccinationStatus a skos:Concept, :HealthStatusType ;
+    skos:inScheme healthstatustype:ConceptScheme ;
+    skos:topConceptOf healthstatustype:ConceptScheme ;
+    skos:notation "VaccinationStatus" ;
+    schema:name "Impfstatus"@de,
+        "Vaccination status"@en,
+        "Statut vaccinal"@fr,
+        "Stato vaccinale"@it ;
+    :sourceTerm "Impfstatus" .
+
+healthstatustype:RiskStatus a skos:Concept, :HealthStatusType ;
+    skos:inScheme healthstatustype:ConceptScheme ;
+    skos:topConceptOf healthstatustype:ConceptScheme ;
+    skos:notation "RiskStatus" ;
+    schema:name "Risikostatus"@de,
+        "Risk status"@en,
+        "Statut de risque"@fr,
+        "Stato di rischio"@it ;
+    :sourceTerm "Risikostatus" ;
+    :animalTracingTerm "BvdRisk" .
+
+healthstatustype:LaboratoryResult a skos:Concept, :HealthStatusType ;
+    skos:inScheme healthstatustype:ConceptScheme ;
+    skos:topConceptOf healthstatustype:ConceptScheme ;
+    skos:notation "LaboratoryResult" ;
+    schema:name "Laborergebnis"@de,
+        "Laboratory result"@en,
+        "Résultat de laboratoire"@fr,
+        "Risultato di laboratorio"@it ;
+    :sourceTerm "Laborergebnis" .
+
+
+# ------------------------------------------------------------------------------
+# Seuchenstatus örtliche Einheit -- aus dem Hilfsmittel, Tabelle 10: Definition Wertebereich Seuchenstatus örtliche Einheit
+# ------------------------------------------------------------------------------
+
+localunithealthstatus:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Seuchenstatus örtliche Einheit"@de,
+        "Health status of a local unit"@en,
+        "État sanitaire de l'unité locale"@fr,
+        "Stato sanitario dell'unità locale"@it .
+
+localunithealthstatus:Blocked a skos:Concept, :LocalUnitEpizooticStatus ;
+    skos:inScheme localunithealthstatus:ConceptScheme ;
+    skos:topConceptOf localunithealthstatus:ConceptScheme ;
+    skos:notation "Blocked" ;
+    schema:name "gesperrt"@de,
+        "Blocked"@en,
+        "Bloqué"@fr,
+        "Bloccato"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it ;
+    :sourceTerm "gesperrt" ;
+    :animalTracingTerm "FootRotState.Blocked", "BvdState.Blocked" .
+
+localunithealthstatus:Free a skos:Concept, :LocalUnitEpizooticStatus ;
+    skos:inScheme localunithealthstatus:ConceptScheme ;
+    skos:topConceptOf localunithealthstatus:ConceptScheme ;
+    skos:notation "Free" ;
+    schema:name "frei"@de,
+        "Free"@en,
+        "Libre"@fr,
+        "Libero"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it ;
+    :sourceTerm "frei" ;
+    :animalTracingTerm "FootRotState.Free" .
+
+localunithealthstatus:NotTested a skos:Concept, :LocalUnitEpizooticStatus ;
+    skos:inScheme localunithealthstatus:ConceptScheme ;
+    skos:topConceptOf localunithealthstatus:ConceptScheme ;
+    skos:notation "NotTested" ;
+    schema:name "Nicht getestet"@de,
+        "Not tested"@en,
+        "Non testé"@fr,
+        "Non testato"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it ;
+    :sourceTerm "Nicht getestet" ;
+    :animalTracingTerm "FootRotState.NotTested" .
+
+localunithealthstatus:High a skos:Concept, :LocalUnitEpizooticStatus ;
+    skos:inScheme localunithealthstatus:ConceptScheme ;
+    skos:topConceptOf localunithealthstatus:ConceptScheme ;
+    skos:notation "High" ;
+    schema:name "Hoch"@de,
+        "High"@en,
+        "Élevé"@fr,
+        "Alto"@it ;
+    schema:description "Typ: Risikostatus"@de,
+        "Type: risk status"@en,
+        "Type : statut de risque"@fr,
+        "Tipo: stato di rischio"@it ;
+    :sourceTerm "Hoch" .
+
+localunithealthstatus:Low a skos:Concept, :LocalUnitEpizooticStatus ;
+    skos:inScheme localunithealthstatus:ConceptScheme ;
+    skos:topConceptOf localunithealthstatus:ConceptScheme ;
+    skos:notation "Low" ;
+    schema:name "Tief"@de,
+        "Low"@en,
+        "Faible"@fr,
+        "Basso"@it ;
+    schema:description "Typ: Risikostatus"@de,
+        "Type: risk status"@en,
+        "Type : statut de risque"@fr,
+        "Tipo: stato di rischio"@it ;
+    :sourceTerm "Tief" .
+
+localunithealthstatus:Medium a skos:Concept, :LocalUnitEpizooticStatus ;
+    skos:inScheme localunithealthstatus:ConceptScheme ;
+    skos:topConceptOf localunithealthstatus:ConceptScheme ;
+    skos:notation "Medium" ;
+    schema:name "Mittel"@de,
+        "Medium"@en,
+        "Moyen"@fr,
+        "Medio"@it ;
+    schema:description "Typ: Risikostatus"@de,
+        "Type: risk status"@en,
+        "Type : statut de risque"@fr,
+        "Tipo: stato di rischio"@it ;
+    :sourceTerm "Mittel" .
+
+localunithealthstatus:Positive a skos:Concept, :LocalUnitEpizooticStatus ;
+    skos:inScheme localunithealthstatus:ConceptScheme ;
+    skos:topConceptOf localunithealthstatus:ConceptScheme ;
+    skos:notation "Positive" ;
+    schema:name "positiv"@de,
+        "Positive"@en,
+        "Positif"@fr,
+        "Positivo"@it ;
+    schema:description "Typ: Laborergebnis"@de,
+        "Type: laboratory result"@en,
+        "Type : résultat de laboratoire"@fr,
+        "Tipo: risultato di laboratorio"@it ;
+    :sourceTerm "positiv" .
+
+localunithealthstatus:Negative a skos:Concept, :LocalUnitEpizooticStatus ;
+    skos:inScheme localunithealthstatus:ConceptScheme ;
+    skos:topConceptOf localunithealthstatus:ConceptScheme ;
+    skos:notation "Negative" ;
+    schema:name "negativ"@de,
+        "Negative"@en,
+        "Négatif"@fr,
+        "Negativo"@it ;
+    schema:description "Typ: Laborergebnis"@de,
+        "Type: laboratory result"@en,
+        "Type : résultat de laboratoire"@fr,
+        "Tipo: risultato di laboratorio"@it ;
+    :sourceTerm "negativ" .
+
+
+# ------------------------------------------------------------------------------
+# Seuchenstatus Einzeltier -- aus dem Hilfsmittel, Tabelle 11: Definition Wertebereich Seuchenstatus Einzeltier
+# ------------------------------------------------------------------------------
+
+animalhealthstatus:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Seuchenstatus Einzeltier"@de,
+        "Health status of an individual animal"@en,
+        "État sanitaire de l'animal individuel"@fr,
+        "Stato sanitario dell'animale singolo"@it .
+
+animalhealthstatus:Blocked a skos:Concept, :AnimalEpizooticStatus ;
+    skos:inScheme animalhealthstatus:ConceptScheme ;
+    skos:topConceptOf animalhealthstatus:ConceptScheme ;
+    skos:notation "Blocked" ;
+    schema:name "gesperrt"@de,
+        "Blocked"@en,
+        "Bloqué"@fr,
+        "Bloccato"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it ;
+    :sourceTerm "gesperrt" .
+
+animalhealthstatus:Free a skos:Concept, :AnimalEpizooticStatus ;
+    skos:inScheme animalhealthstatus:ConceptScheme ;
+    skos:topConceptOf animalhealthstatus:ConceptScheme ;
+    skos:notation "Free" ;
+    schema:name "frei"@de,
+        "Free"@en,
+        "Libre"@fr,
+        "Libero"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it ;
+    :sourceTerm "frei" .
+
+animalhealthstatus:NotTested a skos:Concept, :AnimalEpizooticStatus ;
+    skos:inScheme animalhealthstatus:ConceptScheme ;
+    skos:topConceptOf animalhealthstatus:ConceptScheme ;
+    skos:notation "NotTested" ;
+    schema:name "Nicht getestet"@de,
+        "Not tested"@en,
+        "Non testé"@fr,
+        "Non testato"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it ;
+    :sourceTerm "Nicht getestet" .
+
+animalhealthstatus:Vaccinated a skos:Concept, :AnimalEpizooticStatus ;
+    skos:inScheme animalhealthstatus:ConceptScheme ;
+    skos:topConceptOf animalhealthstatus:ConceptScheme ;
+    skos:notation "Vaccinated" ;
+    schema:name "geimpft"@de,
+        "Vaccinated"@en,
+        "Vacciné"@fr,
+        "Vaccinato"@it ;
+    schema:description "Typ: Impfstatus"@de,
+        "Type: vaccination status"@en,
+        "Type : statut vaccinal"@fr,
+        "Tipo: stato vaccinale"@it ;
+    :sourceTerm "geimpft" ;
+    :animalTracingTerm "EnumCattleLsdState.Vaccinated" .
