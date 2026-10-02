@@ -60,10 +60,10 @@
 # and :LegalUnitShape, which the Semantikbeschreibung describes but the
 # catalogue does not list.
 #
-# Every shape and every property records where it comes from: :sourceTerm is
-# the term the Hilfsmittel uses, :animalTracingTerm the counterpart in the TVD
-# openAPI, :echTerm the one in eCH-0108 or eCH-0261. A missing annotation means
-# that source has no counterpart, which the rdfs:comment then says.
+# The German rdfs:label and sh:name are the Hilfsmittel's own wording.
+# :animalTracingTerm records the counterpart in AnimalTracing and :echTerm the
+# one in eCH-0108 or eCH-0261; a missing annotation means that source has no
+# counterpart, which the rdfs:comment then says.
 #
 # Points still to be settled with the Fachgruppe are collected in
 # OPEN-QUESTIONS.md, not here.
@@ -78,9 +78,9 @@
         "A legal unit as defined in eCH-0108 is a legal entity (e.g. a public limited company or a limited liability company), a partnership (e.g. a general partnership) or a self-employed natural person that is subject to the federal act on the business identification number (UIDG) and has an entry in the UID register. It identifies, for example, the taxable entity for the tax authorities or the person liable for social insurance contributions. The legal unit is identified by its UID. Only where the enterprise is a «sole proprietorship» is the farm manager at the same time a natural person. The master system for this data is the FSO's UID register; the agricultural information system obtains the data from that register through an interface. The animal keeper and the equid owner are the two forms of legal unit that occur in this Hilfsmittel (chapter 3.1.1 of the tool). The attributes are described in [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapters 3.1 and 3.2, and in [eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), chapter 3.1."@en,
         "L'unité juridique au sens de l'eCH-0108 est une personne morale (p. ex. société anonyme, Sàrl), une société de personnes (p. ex. société en nom collectif) ou une personne physique exerçant une activité indépendante qui est soumise à la loi fédérale sur le numéro d'identification des entreprises (LIDE) et qui est inscrite au registre IDE. Elle identifie par exemple le sujet fiscal pour les autorités fiscales ou la personne assujettie aux cotisations d'assurances sociales. L'unité juridique est identifiée par son IDE. Ce n'est que lorsque l'entreprise est une «entreprise individuelle» que l'exploitant est en même temps une personne physique. Le système maître de ces données est le registre IDE de l'OFS ; le système d'information agricole obtient les données de ce registre via une interface. Le détenteur d'animaux et le propriétaire d'équidés sont les deux formes d'unité juridique qui apparaissent dans le présent Hilfsmittel (chapitre 3.1.1 de l'outil). Les attributs sont décrits dans l'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapitres 3.1 et 3.2, ainsi que dans l'[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), chapitre 3.1."@fr,
         "L'unità giuridica ai sensi dell'eCH-0108 è una persona giuridica (p. es. società anonima, Sagl), una società di persone (p. es. società in nome collettivo) o una persona fisica che esercita un'attività indipendente, soggetta alla legge federale sul numero d'identificazione delle imprese (LIDI) e iscritta nel registro IDI. Essa identifica ad esempio il soggetto fiscale per le autorità fiscali o la persona tenuta a versare i contributi alle assicurazioni sociali. L'unità giuridica è identificata dal suo IDI. Soltanto se l'impresa è una «ditta individuale» il gestore è al contempo una persona fisica. Il sistema master di questi dati è il registro IDI dell'UST; il sistema d'informazione agricolo ottiene i dati da tale registro tramite un'interfaccia. Il detentore di animali e il proprietario di equidi sono le due forme di unità giuridica che compaiono in questo Hilfsmittel (capitolo 3.1.1 dello strumento). Gli attributi sono descritti nell'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), capitoli 3.1 e 3.2, e nell'[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), capitolo 3.1."@it ;
-    # No :sourceTerm: the Objektkatalog has no «rechtliche Einheit» block. The
-    # class comes from the Semantikbeschreibung, chapter 3.1.1, whose heading
-    # reads "Rechtliche Einheit Tierhalter und Eigentümer".
+    # The Objektkatalog has no «rechtliche Einheit» block; this class comes from
+    # the Semantikbeschreibung, chapter 3.1.1, whose heading reads
+    # "Rechtliche Einheit Tierhalter und Eigentümer".
     :animalTracingTerm "LegalUnitOrganisationResponse", "LegalUnitPersonResponse" ;
     :echTerm "eCH-0108:legalUnitMasterDataType", "eCH-0261:legalUnitType" ;
     sh:targetClass :LegalUnit .
@@ -94,7 +94,6 @@
         "A farm manager (Bewirtschafter) is a legal unit as defined in eCH-0108 that bears the business risk for a farm (LBV Art. 2). The animal keeper is a form of farm manager that keeps animals (LBV Art. 11a) and therefore requires a local unit (animal holding). Responsibility for reporting lies with the animal keeper for all animal categories except equids; for equids it lies with the owner (chapter 3.1.1 of the tool). The attributes are described in [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapters 3.1 and 3.2."@en,
         "Un exploitant est une unité juridique au sens de l'eCH-0108 qui assume le risque économique d'une exploitation (OTerm art. 2). Le détenteur d'animaux est une forme d'exploitant qui détient des animaux (OTerm art. 11a) ; il lui faut donc une unité locale (unité d'élevage). La responsabilité des notifications incombe au détenteur d'animaux pour toutes les catégories d'animaux à l'exception des équidés ; pour les équidés, elle incombe au propriétaire ou à la propriétaire (chapitre 3.1.1 de l'outil). Les attributs sont décrits dans l'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapitres 3.1 et 3.2."@fr,
         "Un gestore è un'unità giuridica ai sensi dell'eCH-0108 che si assume il rischio aziendale di un'azienda (OTerm art. 2). Il detentore di animali è una forma di gestore che detiene animali (OTerm art. 11a); necessita quindi di un'unità locale (detenzione di animali). La responsabilità delle notifiche spetta al detentore di animali per tutte le categorie di animali ad eccezione degli equidi; per gli equidi spetta al proprietario o alla proprietaria (capitolo 3.1.1 dello strumento). Gli attributi sono descritti nell'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), capitoli 3.1 e 3.2."@it ;
-    :sourceTerm "Tierhaltender" ;
     :animalTracingTerm "LegalUnitOrganisationResponse", "LegalUnitPersonResponse", "FarmManagerV1Response" ;
     :echTerm "eCH-0108:legalUnitMasterDataType", "eCH-0261:legalUnitType" ;
     sh:targetClass :AnimalKeeper ;
@@ -126,7 +125,6 @@
         "A local unit as defined in eCH-0108 is a facility at a given location where an economic activity is carried out. A local unit has a BUR number and is always assigned to a legal unit (or enterprise). The local unit is identified by its BUR number. A local unit may consist of one or more buildings. The EGID assigned to the BUR number refers to «the centre» of the local unit, that is, its main building. In the TVD, local units are called «animal holdings» and are additionally identified by their TVD number. This definition is taken from [eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), chapter 1.5; the agriculture-specific additions are described in [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapters 3.3 and 3.4."@en,
         "Une unité locale au sens de l'eCH-0108 est une installation située en un lieu déterminé où s'exerce une activité économique. Une unité locale possède un numéro REE et est toujours rattachée à une unité juridique (ou entreprise). L'unité locale est identifiée par son numéro REE. Une unité locale peut se composer d'un ou de plusieurs bâtiments. L'EGID attribué au numéro REE se rapporte au «centre» de l'unité locale, respectivement à son bâtiment principal. Dans la BDTA, les unités locales sont appelées «unités d'élevage» et sont en outre identifiées par leur numéro BDTA. Cette définition est tirée de l'[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), chapitre 1.5 ; les compléments spécifiques à l'agriculture sont décrits dans l'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), chapitres 3.3 et 3.4."@fr,
         "Un'unità locale ai sensi dell'eCH-0108 è un impianto situato in un luogo determinato in cui viene svolta un'attività economica. Un'unità locale possiede un numero RIS ed è sempre assegnata a un'unità giuridica (o impresa). L'unità locale è identificata dal suo numero RIS. Un'unità locale può essere composta da uno o più edifici. L'EGID attribuito al numero RIS si riferisce al «centro» dell'unità locale, rispettivamente al suo edificio principale. Nella BDTA le unità locali sono chiamate «detenzioni di animali» e sono inoltre identificate dal loro numero BDTA. Questa definizione è tratta dall'[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), capitolo 1.5; i complementi specifici per l'agricoltura sono descritti nell'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), capitoli 3.3 e 3.4."@it ;
-    :sourceTerm "örtliche Einheit" ;
     :animalTracingTerm "LocalUnitOwnResponse", "LocalUnitPublicResponse", "FarmDataV1Response" ;
     :echTerm "eCH-0108:localUnitMasterDataType", "eCH-0261:localUnitType" ;
     sh:targetClass :LocalUnit ;
@@ -137,7 +135,7 @@
             "Détenteur d'animaux"@fr,
             "Detentore di animali"@it ;
         # Not an Objektkatalog row: the catalogue's «örtliche Einheit» block
-        # refers to eCH-0261 for all attributes, so there is no :sourceTerm.
+        # refers to eCH-0261 for every attribute. See also A3 in OPEN-QUESTIONS.md.
         :animalTracingTerm "LocalUnitOwnResponse.mainUid" ;
         :echTerm "eCH-0108:localUnitMasterDataType/mainUid" ;
         sh:description "Zuordnung der örtlichen Einheit zum Tierhaltenden. Nach eCH-0108, Kapitel 1.5, ist eine örtliche Einheit immer einer rechtlichen Einheit (bzw. einem Unternehmen) zugeordnet; die Stammdaten der örtlichen Einheit führen dafür das optionale Merkmal «mainUid» mit der UID der rechtlichen Haupteinheit. Da der Tierhaltende nach dem Objektkatalog nur eine Sonderform der rechtlichen Einheit ist, ist diese Zuordnung nicht zwingend."@de,
@@ -162,7 +160,6 @@
         "An individually identified farm animal. In the animal movement database, animals of the categories cattle, sheep, goats and equids are recorded as individual animals; they are uniquely identified by their ear tag number, or by the UELN in the case of equids. No individual animals are kept for pigs and poultry, only group notifications."@en,
         "Un animal de rente identifié individuellement. Dans la banque de données sur le trafic des animaux, les animaux des catégories bovins, ovins, caprins et équidés sont enregistrés comme animaux individuels ; ils sont identifiés de manière univoque par leur numéro de marque auriculaire, ou par l'UELN pour les équidés. Aucun animal individuel n'est tenu pour les porcs et la volaille, mais uniquement des notifications de groupe."@fr,
         "Un animale da reddito identificato singolarmente. Nella banca dati sul traffico di animali, gli animali delle categorie bovini, ovini, caprini ed equidi sono registrati come animali singoli; sono identificati in modo univoco dal numero della marca auricolare o, per gli equidi, dall'UELN. Per i suini e il pollame non vengono tenuti animali singoli, ma esclusivamente notifiche di gruppo."@it ;
-    :sourceTerm "Einzeltier" ;
     :animalTracingTerm "CattleDetailV1Response", "SheepDetailV1Response", "GoatDetailV1Response" ;
     sh:targetClass :Animal ;
     sh:property
@@ -172,7 +169,6 @@
             "Identifier"@en,
             "Identifiant"@fr,
             "Identificatore"@it ;
-        :sourceTerm "Identifikator" ;
         sh:description "Ohrmarkennummer, bei Equiden UELN"@de,
             "Ear tag number, or UELN for equids"@en,
             "Numéro de marque auriculaire, UELN pour les équidés"@fr,
@@ -189,7 +185,6 @@
             "Genus"@en,
             "Espèce d'animal de rente"@fr,
             "Specie di animale da reddito"@it ;
-        :sourceTerm "Nutztierart" ;
         :animalTracingTerm "EnumGenus" ;
         sh:path :genus ;
         sh:class :Genus ;
@@ -202,7 +197,6 @@
             "Gender"@en,
             "Sexe"@fr,
             "Sesso"@it ;
-        :sourceTerm "Geschlecht" ;
         :animalTracingTerm "EnumGender" ;
         sh:path :gender ;
         sh:class :Gender ;
@@ -214,7 +208,6 @@
             "Date of birth"@en,
             "Date de naissance"@fr,
             "Data di nascita"@it ;
-        :sourceTerm "Geburtsdatum" ;
         :animalTracingTerm "CattleDetailV1Response.dateOfBirth" ;
         sh:path :dateOfBirth ;
         sh:datatype xsd:date ;
@@ -226,7 +219,6 @@
             "Date of death"@en,
             "Date de mort"@fr,
             "Data di morte"@it ;
-        :sourceTerm "Todesdatum" ;
         :animalTracingTerm "CattleDetailV1Response.dateOfDeath" ;
         sh:path :dateOfDeath ;
         sh:datatype xsd:date ;
@@ -238,7 +230,6 @@
             "Animal history state"@en,
             "Statut de l'historique de l'animal"@fr,
             "Stato della storia dell'animale"@it ;
-        :sourceTerm "TiergeschichteStatus" ;
         :animalTracingTerm "EnumAnimalHistoryState" ;
         sh:path :animalHistoryState ;
         sh:class :AnimalHistoryState ;
@@ -251,7 +242,6 @@
             "Type of use"@en,
             "Type d'utilisation"@fr,
             "Tipo di utilizzo"@it ;
-        :sourceTerm "Zweck" ;
         :animalTracingTerm "EnumAnimalTypeOfUse" ;
         sh:path :typeOfUse ;
         sh:class :AnimalTypeOfUse ;
@@ -263,7 +253,6 @@
             "Castrated"@en,
             "Castré"@fr,
             "Castrato"@it ;
-        :sourceTerm "Kastriert" ;
         :animalTracingTerm "CattleDetailV1Response.isCastrated" ;
         sh:path :castrated ;
         sh:datatype xsd:boolean ;
@@ -275,7 +264,6 @@
             "Mother"@en,
             "Mère"@fr,
             "Madre"@it ;
-        :sourceTerm "Identifikation Mutter" ;
         :animalTracingTerm "CattleDetailV1ParentageResponse.motherEartagNumber" ;
         sh:path :mother ;
         sh:class :Animal ;
@@ -291,7 +279,6 @@
             "Father"@en,
             "Père"@fr,
             "Padre"@it ;
-        :sourceTerm "Identifikation Vater" ;
         :animalTracingTerm "CattleDetailV1ParentageResponse.fatherEartagNumber" ;
         sh:path :father ;
         sh:class :Animal ;
@@ -316,7 +303,6 @@
         "Subclass of the class individual animal for animals of the equid genus (horse, mule, hinny, donkey). All attributes of the class individual animal also apply to equids; this class describes only the additional, equid-specific information. For equids, responsibility for reporting lies with the owner rather than with the animal keeper. An owner is the legal unit that owns equids; the term is used for equid owners only (chapter 3.1.1 of the tool)."@en,
         "Sous-classe de la classe animal individuel pour les animaux du genre équidé (cheval, mulet, bardot, âne). Tous les attributs de la classe animal individuel s'appliquent également aux équidés ; cette classe ne décrit que les informations supplémentaires propres aux équidés. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d'animaux. Un propriétaire est l'unité juridique qui détient des équidés en propriété ; le terme n'est utilisé que pour les propriétaires d'équidés (chapitre 3.1.1 de l'outil)."@fr,
         "Sottoclasse della classe animale singolo per gli animali del genere equide (cavallo, mulo, bardotto, asino). Tutti gli attributi della classe animale singolo si applicano anche agli equidi; questa classe descrive esclusivamente le informazioni aggiuntive specifiche degli equidi. Per gli equidi la responsabilità delle notifiche spetta al proprietario e non al detentore di animali. Un proprietario è l'unità giuridica che ha in proprietà degli equidi; il termine è usato solo per i proprietari di equidi (capitolo 3.1.1 dello strumento)."@it ;
-    :sourceTerm "Equiden" ;
     :animalTracingTerm "EquidDetailsEquidResponse", "EquidDetailsPublicEquidResponse" ;
     sh:targetClass :Equid ;
     sh:property
@@ -326,7 +312,6 @@
             "Withers class"@en,
             "Catégorie de taille"@fr,
             "Categoria di grandezza"@it ;
-        :sourceTerm "Grössenkategorie" ;
         :animalTracingTerm "EnumEquidWithersClass" ;
         sh:path :withersClass ;
         sh:class :EquidWithersClass ;
@@ -339,7 +324,6 @@
             "Owner"@en,
             "Propriétaire"@fr,
             "Proprietario o proprietaria"@it ;
-        :sourceTerm "Eigentümer oder Eigentümerin" ;
         :animalTracingTerm "EquidDetailsOwnerResponse.uid", "EquidOwnershipListV1LegalUnitResponse.uid" ;
         :echTerm "eCH-0108:uidType" ;
         sh:description "Die rechtliche Einheit, in deren Eigentum der Equide steht. Bei Equiden liegt die Verantwortung für das Meldewesen beim Eigentümer und nicht beim Tierhaltenden (Kapitel 3.1.1 des Hilfsmittels)."@de,
@@ -365,7 +349,6 @@
         "An event concerning an individual animal. Events comprise movement notifications, notifications of basic data, changes to individual attributes of the basic data as well as final notifications. A notification always refers to the local unit at which the event took place and may in addition state the local unit of origin. Events are reported by the authorised persons, stating the animal holding to which the notification refers; for equids they are reported by the authorised persons of the responsible equid owner."@en,
         "Un événement concernant un animal individuel. Sont considérées comme événements les notifications de mouvement, les notifications de données de base, les modifications d'attributs individuels des données de base ainsi que les notifications finales. Une notification se rapporte toujours à l'unité locale où l'événement a eu lieu et peut en outre indiquer l'unité locale de provenance. Les événements sont annoncés par les personnes autorisées, avec indication de l'unité d'élevage à laquelle la notification se rapporte ; pour les équidés, ils sont annoncés par les personnes autorisées du propriétaire d'équidés responsable."@fr,
         "Un evento che riguarda un animale singolo. Sono considerati eventi le notifiche di movimento, le notifiche di dati di base, le modifiche di singoli attributi dei dati di base nonché le notifiche finali. Una notifica si riferisce sempre all'unità locale in cui si è verificato l'evento e può inoltre indicare l'unità locale di provenienza. Gli eventi sono notificati dalle persone autorizzate, con indicazione della detenzione di animali cui si riferisce la notifica; per gli equidi sono notificati dalle persone autorizzate del proprietario di equidi responsabile."@it ;
-    :sourceTerm "Meldung Einzeltier" ;
     :animalTracingTerm "CattleDetailV1NotificationResponse", "SheepDetailV1NotificationResponse", "GoatDetailV1NotificationResponse" ;
     sh:targetClass :AnimalNotification ;
     sh:property
@@ -375,7 +358,6 @@
             "ID"@en,
             "ID"@fr,
             "ID"@it ;
-        :sourceTerm "ID" ;
         sh:description "Eindeutiger Identifikator der Bewegung, der durch das System vergeben wird."@de,
             "Unique identifier of the movement, assigned by the system."@en,
             "Identifiant univoque du mouvement, attribué par le système."@fr,
@@ -391,7 +373,6 @@
             "Genus"@en,
             "Espèce d'animal de rente"@fr,
             "Specie di animale da reddito"@it ;
-        :sourceTerm "Nutztierart" ;
         :animalTracingTerm "EnumGenus" ;
         sh:path :genus ;
         sh:class :Genus ;
@@ -404,7 +385,6 @@
             "Notification type"@en,
             "Type de mouvement"@fr,
             "Tipo di movimento"@it ;
-        :sourceTerm "Meldungstyp" ;
         sh:path :notificationType ;
         sh:class :NotificationType ;
         sh:minCount 1 ;
@@ -416,7 +396,6 @@
             "Event date"@en,
             "Date de l'événement"@fr,
             "Data dell'evento"@it ;
-        :sourceTerm "Ereignisdatum" ;
         sh:description "Datum, an dem das Ereignis stattgefunden hat"@de,
             "Date on which the event took place"@en,
             "Date à laquelle l'événement a eu lieu"@fr,
@@ -432,7 +411,6 @@
             "Notification date"@en,
             "Date d'annonce"@fr,
             "Data di notifica"@it ;
-        :sourceTerm "Meldedatum" ;
         sh:description "Datum, an dem das Ereignis gemeldet wurde"@de,
             "Date on which the event was reported"@en,
             "Date à laquelle l'événement a été annoncé"@fr,
@@ -448,7 +426,6 @@
             "Identifier"@en,
             "Identifiant"@fr,
             "Identificatore"@it ;
-        :sourceTerm "Identifikator" ;
         :animalTracingTerm "CattleDetailV1Response.eartagNumber" ;
         sh:path :animal ;
         sh:class :Animal ;
@@ -465,7 +442,6 @@
             "Local unit"@en,
             "Unité locale"@fr,
             "Unità locale"@it ;
-        :sourceTerm "Örtliche Einheit" ;
         :animalTracingTerm "CattleDetailV1NotificationResponse.localId" ;
         sh:description "BUR-Nummer der örtlichen Einheit, auf die sich die Meldung bezieht"@de,
             "BUR number of the local unit to which the notification refers"@en,
@@ -486,7 +462,6 @@
             "Origin"@en,
             "Provenance"@fr,
             "Provenienza"@it ;
-        :sourceTerm "Herkunft" ;
         :animalTracingTerm "ArrivalNotificationResponse.originLocalId" ;
         sh:description "BUR-Nummer der örtlichen Einheit von der das Tier kommt"@de,
             "BUR number of the local unit the animal comes from"@en,
@@ -510,7 +485,6 @@
         "An event concerning a group of animals that cannot be identified individually. Group notifications are recorded for animals of the categories pigs and poultry; the individuals of such a group are therefore not known. Events are reported by the natural persons of the responsible legal unit, the animal keeper. They comprise housing notifications for poultry, movement notifications for pigs, and slaughter notifications for pigs (by head) and poultry groups (in kg). This class has no counterpart in the AnimalTracing openAPI specification, because pigs and poultry are not covered there."@en,
         "Un événement concernant un groupe d'animaux qui ne peuvent pas être identifiés individuellement. Les notifications de groupe sont enregistrées pour les animaux des catégories porcs et volaille ; les individus d'un tel groupe ne sont donc pas connus. Les événements sont annoncés par les personnes physiques de l'unité juridique responsable, le détenteur d'animaux. Ils comprennent les annonces de mise en place pour la volaille, les annonces de mouvement pour les porcs ainsi que les annonces d'abattage de porcs (en têtes) et de groupes de volaille (en kg). Cette classe n'a pas d'équivalent dans la spécification openAPI d'AnimalTracing, car les porcs et la volaille n'y sont pas représentés."@fr,
         "Un evento che riguarda un gruppo di animali non identificabili singolarmente. Le notifiche di gruppo sono registrate per gli animali delle categorie suini e pollame; gli individui di un tale gruppo non sono pertanto noti. Gli eventi sono notificati dalle persone fisiche dell'unità giuridica responsabile, il detentore di animali. Comprendono le notifiche di accasamento per il pollame, le notifiche di movimento per i suini nonché le notifiche di macellazione di suini (in capi) e di gruppi di pollame (in kg). Questa classe non ha alcun corrispettivo nella specifica openAPI di AnimalTracing, poiché i suini e il pollame non vi sono rappresentati."@it ;
-    :sourceTerm "Gruppenmeldung" ;
     sh:targetClass :GroupNotification ;
     sh:property
     [
@@ -519,7 +493,6 @@
             "ID"@en,
             "ID"@fr,
             "ID"@it ;
-        :sourceTerm "ID" ;
         sh:description "Eindeutiger Identifikator der Bewegung, der durch das System vergeben wird."@de,
             "Unique identifier of the movement, assigned by the system."@en,
             "Identifiant univoque du mouvement, attribué par le système."@fr,
@@ -535,7 +508,6 @@
             "Genus"@en,
             "Espèce d'animal de rente"@fr,
             "Specie di animale da reddito"@it ;
-        :sourceTerm "Nutztierart" ;
         :animalTracingTerm "EnumGenus" ;
         sh:path :genus ;
         sh:class :Genus ;
@@ -548,7 +520,6 @@
             "Group information"@en,
             "Information de groupe"@fr,
             "Informazione di gruppo"@it ;
-        :sourceTerm "Gruppeninformation" ;
         sh:description "Bei Einstallungsmeldungen von Geflügel ist eine Gruppeninformation anzugeben"@de,
             "Group information must be given for housing notifications of poultry"@en,
             "Une information de groupe doit être indiquée pour les annonces de mise en place de volaille"@fr,
@@ -563,7 +534,6 @@
             "Notification type"@en,
             "Type de mouvement"@fr,
             "Tipo di movimento"@it ;
-        :sourceTerm "Meldungstyp" ;
         sh:path :notificationType ;
         sh:class :NotificationType ;
         sh:minCount 1 ;
@@ -575,7 +545,6 @@
             "Event date"@en,
             "Date de l'événement"@fr,
             "Data dell'evento"@it ;
-        :sourceTerm "Ereignisdatum" ;
         sh:description "Datum, an dem das Ereignis stattgefunden hat"@de,
             "Date on which the event took place"@en,
             "Date à laquelle l'événement a eu lieu"@fr,
@@ -591,7 +560,6 @@
             "Notification date"@en,
             "Date d'annonce"@fr,
             "Data di notifica"@it ;
-        :sourceTerm "Meldedatum" ;
         sh:description "Datum, an dem das Ereignis gemeldet wurde"@de,
             "Date on which the event was reported"@en,
             "Date à laquelle l'événement a été annoncé"@fr,
@@ -607,7 +575,6 @@
             "Number"@en,
             "Nombre"@fr,
             "Numero"@it ;
-        :sourceTerm "Anzahl" ;
         sh:description "Anzahl Tiere, die in einer Bewegung verstellt wurden (Schweine/Geflügel)"@de,
             "Number of animals moved in one movement (pigs/poultry)"@en,
             "Nombre d'animaux déplacés lors d'un mouvement (porcs/volaille)"@fr,
@@ -622,7 +589,6 @@
             "Weight"@en,
             "Poids"@fr,
             "Peso"@it ;
-        :sourceTerm "Gewicht" ;
         sh:description "Gesamtgewicht in kg der Tiergruppe bei Schlachtungsmeldungen von Geflügel"@de,
             "Total weight in kg of the animal group for slaughter notifications of poultry"@en,
             "Poids total en kg du groupe d'animaux pour les annonces d'abattage de volaille"@fr,
@@ -637,7 +603,6 @@
             "Type of use"@en,
             "Type d'utilisation"@fr,
             "Tipo di utilizzo"@it ;
-        :sourceTerm "Zweck" ;
         sh:description "Nutzungsart der Tiergruppe (bei Einzeltieren wird die Nutzungsart auf der Klasse «Einzeltier» geführt)"@de,
             "Type of use of the animal group (for individual animals it is held on the class «Einzeltier»)"@en,
             "Type d'utilisation du groupe d'animaux (pour les animaux individuels il figure sur la classe «Einzeltier»)"@fr,
@@ -652,7 +617,6 @@
             "Age"@en,
             "Âge"@fr,
             "Età"@it ;
-        :sourceTerm "Alter" ;
         sh:description "Bei Einstallungsmeldungen von Geflügel ist das Alter in Wochen anzugeben"@de,
             "For housing notifications of poultry the age must be given in weeks"@en,
             "Pour les annonces de mise en place de volaille, l'âge doit être indiqué en semaines"@fr,
@@ -667,7 +631,6 @@
             "Local unit"@en,
             "Unité locale"@fr,
             "Unità locale"@it ;
-        :sourceTerm "Örtliche Einheit" ;
         sh:description "BUR-Nummer der örtlichen Einheit"@de,
             "BUR number of the local unit"@en,
             "Numéro REE de l'unité locale"@fr,
@@ -687,7 +650,6 @@
             "Origin"@en,
             "Provenance"@fr,
             "Provenienza"@it ;
-        :sourceTerm "Herkunft" ;
         sh:description "BUR-Nummer der örtlichen Einheit von der das Tier kommt"@de,
             "BUR number of the local unit the animal comes from"@en,
             "Numéro REE de l'unité locale d'où provient l'animal"@fr,
@@ -710,7 +672,6 @@
         "Where animal disease events are of national significance, it is essential that animal keepers are informed about movement bans and disease status, so that the risk of spread through animal movements can be minimised. Disease information recorded for a local unit. In addition to the epizootic status of a local unit, vaccination, risk and laboratory results can also be represented. The AnimalTracing openAPI specification has no dedicated class for this; there the corresponding information is held as attributes of the local unit."@en,
         "Lorsque des épizooties revêtent une importance nationale, il est essentiel que les détenteurs d'animaux soient informés des interdictions de déplacement et du statut épizootique, afin de minimiser le risque de propagation par le trafic des animaux. Une information épizootique enregistrée sur une unité locale. Outre le statut épizootique d'une unité locale, les résultats de vaccination, de risque et de laboratoire peuvent également être représentés. La spécification openAPI d'AnimalTracing ne prévoit pas de classe distincte à cet effet ; les informations correspondantes y sont des attributs de l'unité locale."@fr,
         "Quando si verificano epizoozie di rilevanza nazionale, è essenziale che i detentori di animali siano informati sui blocchi e sullo stato epizootico, affinché il rischio di diffusione attraverso il traffico di animali possa essere ridotto al minimo. Un'informazione epizootica registrata su un'unità locale. Oltre allo stato epizootico di un'unità locale, possono essere rappresentati anche i risultati di vaccinazione, di rischio e di laboratorio. La specifica openAPI di AnimalTracing non prevede una classe distinta a tal fine; le informazioni corrispondenti vi figurano come attributi dell'unità locale."@it ;
-    :sourceTerm "Gesundheitsstatus Standort" ;
     sh:targetClass :LocalUnitHealthStatus ;
     sh:property
     [
@@ -719,7 +680,6 @@
             "Type"@en,
             "Type"@fr,
             "Tipo"@it ;
-        :sourceTerm "Typ" ;
         sh:description "z. B. Seuchenstatus, Impfstatus, Risikostatus"@de,
             "e.g. epizootic, vaccination or risk status"@en,
             "p. ex. statut épizootique, vaccinal ou de risque"@fr,
@@ -734,7 +694,6 @@
             "Status"@en,
             "Statut"@fr,
             "Stato"@it ;
-        :sourceTerm "Status" ;
         sh:path :epizooticStatus ;
         sh:class :LocalUnitEpizooticStatus ;
         sh:maxCount 1 ;
@@ -745,7 +704,6 @@
             "Date"@en,
             "Date"@fr,
             "Data"@it ;
-        :sourceTerm "Datum" ;
         sh:description "Datum, ab dem der Seuchenstatus gültig ist"@de,
             "Date from which the status is valid"@en,
             "Date à partir de laquelle le statut est valable"@fr,
@@ -760,7 +718,6 @@
             "Local unit"@en,
             "Unité locale"@fr,
             "Unità locale"@it ;
-        :sourceTerm "Örtliche Einheit" ;
         :animalTracingTerm "LocalUnitPublicResponse.bvdState", "LocalUnitPublicResponse.footRotState" ;
         sh:description "BUR-Nummer der örtlichen Einheit"@de,
             "BUR number of the local unit"@en,
@@ -785,7 +742,6 @@
         "Disease information recorded for an individual animal. In addition to the individual epizootic status, relevant vaccinations are recorded as well."@en,
         "Une information épizootique enregistrée sur un animal individuel. Outre le statut épizootique individuel, les vaccinations pertinentes sont également enregistrées."@fr,
         "Un'informazione epizootica registrata su un animale singolo. Oltre allo stato epizootico individuale, vengono registrate anche le vaccinazioni rilevanti."@it ;
-    :sourceTerm "Gesundheitsstatus Einzeltier" ;
     :animalTracingTerm "CattleDetailV1DiseasesResponse" ;
     sh:targetClass :AnimalHealthStatus ;
     sh:property
@@ -795,7 +751,6 @@
             "Type"@en,
             "Type"@fr,
             "Tipo"@it ;
-        :sourceTerm "Typ" ;
         sh:description "z. B. Seuchenstatus, Impfstatus, Risikostatus"@de,
             "e.g. epizootic, vaccination or risk status"@en,
             "p. ex. statut épizootique, vaccinal ou de risque"@fr,
@@ -810,7 +765,6 @@
             "Status"@en,
             "Statut"@fr,
             "Stato"@it ;
-        :sourceTerm "Status" ;
         sh:path :epizooticStatus ;
         sh:class :AnimalEpizooticStatus ;
         sh:maxCount 1 ;
@@ -821,7 +775,6 @@
             "Date"@en,
             "Date"@fr,
             "Data"@it ;
-        :sourceTerm "Datum" ;
         sh:description "Datum, ab dem der Seuchenstatus gültig ist oder das Impfdatum"@de,
             "Date from which the status is valid, or the date of vaccination"@en,
             "Date à partir de laquelle le statut est valable, ou la date de vaccination"@fr,
@@ -836,7 +789,6 @@
             "Animal ID"@en,
             "ID de l'animal"@fr,
             "ID dell'animale"@it ;
-        :sourceTerm "Tier-ID" ;
         :animalTracingTerm "CattleDetailV1Response.eartagNumber" ;
         sh:path :animal ;
         sh:class :Animal ;

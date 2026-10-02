@@ -52,7 +52,7 @@ von der **rechtlichen Einheit** spricht, nicht vom Tierhaltenden. eCH-0108 führ
 die Verbindung als optionales Merkmal `mainUid` der Stammdaten der örtlichen
 Einheit.
 
-**Kodiert als** `:animalKeeper 0..1 :AnimalKeeper` ohne `:sourceTerm`.
+**Kodiert als** `:animalKeeper 0..1 :AnimalKeeper`, ohne Zeile im Objektkatalog.
 
 **Konsequenz** Soll stattdessen `:LocalUnit → :LegalUnit [1..1]` modelliert
 werden, was Kapitel 3.1.2 wörtlich entspricht?
@@ -264,8 +264,9 @@ Quell-URL, Titel und Version der abgerufenen Spezifikation und das Abrufdatum.
 
 > `[LS7]` «Mapping muss noch gemacht werden»
 
-**Kodiert als** `:sourceTerm`, `:animalTracingTerm` und `:echTerm` auf jeder
-Klasse, jeder Eigenschaft und jedem Wertebereichskonzept.
+**Kodiert als** `:animalTracingTerm` und `:echTerm` auf jeder Klasse, jeder
+Eigenschaft und jedem Wertebereichskonzept; die Benennung des Hilfsmittels ist
+das deutsche Label.
 
 ### C3. openAPI oder technische Servicebeschreibung?
 
