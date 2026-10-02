@@ -2,85 +2,505 @@
   {
     "objectID": "en/index.html",
     "href": "en/index.html",
-    "title": "eCH-0309 Template Quarto Document",
+    "title": "Auxiliary document: animal movement data",
     "section": "",
     "text": "This document uses a gender-neutral formulation when referring to persons. This is based on the guidelines (German) of the Federal Chancellery. Depending on the situation, paired forms (citizens), gender-abstract forms (insured person), gender-neutral forms (insured person) or paraphrases with-out personal reference are used. The generic masculine (citizen) is not permitted. Full forms are used in continuous texts, i.e. in texts consisting of formulated sentences. Short forms can be used in ab-breviated text passages, namely in tables. The short form is used with a slash but without an ellipsis (referent). Gender asterisks and similar spellings are not used."
   },
   {
     "objectID": "en/index.html#sec-status",
     "href": "en/index.html#sec-status",
-    "title": "eCH-0309 Template Quarto Document",
+    "title": "Auxiliary document: animal movement data",
     "section": "1.1 Status",
-    "text": "1.1 Status\nApproved: This document was approved by the Experts’ Committee. It has normative power for the defined field of application in the determined scope of application."
+    "text": "1.1 Status\nIn progress: Use is permitted only within the technical group and the Experts’ Committee."
   },
   {
     "objectID": "en/index.html#sec-scope-of-application",
     "href": "en/index.html#sec-scope-of-application",
-    "title": "eCH-0309 Template Quarto Document",
-    "section": "1.2 Scope of application",
-    "text": "1.2 Scope of application\nThe information in this chapter should provide the reader with a brief overview of what this standard is intended for. Information about the following matters may be helpful here."
+    "title": "Auxiliary document: animal movement data",
+    "section": "1.2 Field of application",
+    "text": "1.2 Field of application\nThis document describes the data of the animal movement database (TVD) semantically, so that specialists without in-depth IT knowledge can also gain a better understanding of the data."
   },
   {
-    "objectID": "en/index.html#sec-example-subheading",
-    "href": "en/index.html#sec-example-subheading",
-    "title": "eCH-0309 Template Quarto Document",
-    "section": "1.3 We can have sub-headings",
-    "text": "1.3 We can have sub-headings\nAnd write some text.\n\n1.3.1 Also sub-sub-headings\nAnd write some more text. Maybe even with a pretty image.\n\n\n\n\n\n\nFigure 1: Always add some text to describe what the image shows.\n\n\n\nWhen displaying diagrams, try to write them in Mermaid JS straight away; this makes changes in the future or translations straightforward."
+    "objectID": "en/index.html#sec-animal-movement-reporting",
+    "href": "en/index.html#sec-animal-movement-reporting",
+    "title": "Auxiliary document: animal movement data",
+    "section": "1.3 Animal movement reporting in Switzerland",
+    "text": "1.3 Animal movement reporting in Switzerland\nIn the 1990s, Swiss agriculture and the food industry were severely challenged by the animal disease BSE. When the realisation that the disease could be transmitted from animals to humans was confirmed in 1996, this caused great uncertainty. Expectations regarding the safety of food of animal origin rose as a result, as did awareness of the importance of food control. The approach «from stable to table» became established. Risk-based surveillance, seamless traceability of farm animals, control of animal movements, the obligation to declare origin and quality controls throughout the production and processing chain have formed the basis for a high standard of food safety ever since.\nThe BSE experience led to the establishment of a national animal movement database (TVD) in 1999. Article 7a and Articles 13–15 of the Animal Diseases Act and Title 2, Sections 1, 1a and 2a of the Animal Diseases Ordinance set out the basic legal provisions on the identification/marking and the registration of farm animals as well as the associated reporting obligations. They follow European legislation on the same subject (Regulation (EU) 2016/429 on transmissible animal diseases; Delegated Regulation (EU) 2019/2035 on establishments keeping terrestrial animals and hatcheries, and on traceability).\nWhile only cattle were subject to reporting from 1999, pigs and equids followed from 2011, although pigs are to this day not reported as individual animals. From 2014 and 2020 respectively, the obligation to report to the TVD also applied to small ruminants (sheep and goats). At the beginning, in 2014, this concerned only the slaughterhouses. Since 2014 there has also been an obligation to report poultry. Since January 2020, keepers of small ruminants have been included in individual animal reporting as well. The identification and marking of cloven-hoofed animals with ear tags, the individual registration of cattle, sheep and goats in the TVD, and the reporting of animal arrivals, animal departures (an animal leaves a holding alive), births, imports, exports, slaughter, on-farm slaughter and death (an animal is deregistered as no longer living) are mandatory for all animal keepers in Switzerland.\nThe TVD is part of a system landscape spanning agriculture, veterinary affairs and food safety. The central entry point is the Agate portal, with the agricultural policy information system AGIS at its centre.\n\nThe Ordinance on Identitas AG and the animal movement database (IdTVD-V) further sets out the content relating to animal movements, the tasks of Identitas AG and the rights of access to the data. The importance of identifying/marking farm animals goes far beyond the subject of animal disease and therefore also found its way into agricultural legislation (Agriculture Act LwG, Articles 165g, 177 and 185) and various associated ordinances. The animal movement data have become an indispensable component in implementing agricultural policy measures, for example animal-related direct payments, the determination of nutrient flows or agri-environmental monitoring. The data also serve as a basis for the structural survey of Swiss agriculture and for agricultural statistics in general.\nAnimal movement reporting quickly became established along the entire food value chain as well. Programmes with animal welfare, traceability and origin commitments rely on it. The variety of animal information from animal movement reporting is also reflected in the publicly available datasets of the Tierstatistik open data platform.\nThe technical interface description in this document is based on the technical service description AnimalTracing v1.32 and on the openAPI specification v. x.xx."
+  },
+  {
+    "objectID": "en/index.html#sec-references",
+    "href": "en/index.html#sec-references",
+    "title": "Auxiliary document: animal movement data",
+    "section": "1.4 References",
+    "text": "1.4 References\nInterfaces: AnimalTracing API, technical service description AnimalTracing\nNB: the names of the classes described in chapter 3 do not match the ServiceOperations in AnimalTracing, because the semantic description is intended to provide an overview of the data content and is more detailed than the service description."
+  },
+  {
+    "objectID": "en/index.html#sec-nodeshape-animalkeepershape",
+    "href": "en/index.html#sec-nodeshape-animalkeepershape",
+    "title": "Auxiliary document: animal movement data",
+    "section": "2.1 Animal keeper",
+    "text": "2.1 Animal keeper\nA farm manager (Bewirtschafter) is a legal unit as defined in eCH-0108 that bears the business risk for a farm (LBV Art. 2). The animal keeper is a form of farm manager that keeps animals (LBV Art. 11a) and therefore requires a local unit (animal holding). Responsibility for reporting lies with the animal keeper for all animal categories except equids; for equids it lies with the owner (chapter 3.1.1 of the tool). The attributes are described in eCH-0261, chapters 3.1 and 3.2.\nTarget Class: :AnimalKeeper"
+  },
+  {
+    "objectID": "en/index.html#sec-nodeshape-equidshape",
+    "href": "en/index.html#sec-nodeshape-equidshape",
+    "title": "Auxiliary document: animal movement data",
+    "section": "2.2 Equid",
+    "text": "2.2 Equid\nSubclass of the class individual animal for animals of the equid genus (horse, mule, hinny, donkey). All attributes of the class individual animal also apply to equids; this class describes only the additional, equid-specific information. For equids, responsibility for reporting lies with the owner rather than with the animal keeper. An owner is the legal unit that owns equids; the term is used for equid owners only (chapter 3.1.1 of the tool).\nTarget Class: :Equid\n\n\n\nTable 1: properties Equid\n\n\n\n\n\n\n\n\n\n\n\nDescription\nPath\nType\nCard.\n\n\n\n\nOwner: The legal unit that owns the equid. For equids, responsibility for reporting lies with the owner rather than with the animal keeper (chapter 3.1.1 of the tool).\n:owner\n:LegalUnit\n1..1\n\n\nWithers class\n:withersClass\n:EquidWithersClass\n1..1"
+  },
+  {
+    "objectID": "en/index.html#sec-nodeshape-groupnotificationshape",
+    "href": "en/index.html#sec-nodeshape-groupnotificationshape",
+    "title": "Auxiliary document: animal movement data",
+    "section": "2.3 Group notification",
+    "text": "2.3 Group notification\nAn event concerning a group of animals that cannot be identified individually. Group notifications are recorded for animals of the categories pigs and poultry; the individuals of such a group are therefore not known. Events are reported by the natural persons of the responsible legal unit, the animal keeper. They comprise housing notifications for poultry, movement notifications for pigs, and slaughter notifications for pigs (by head) and poultry groups (in kg). This class has no counterpart in the AnimalTracing openAPI specification, because pigs and poultry are not covered there.\nTarget Class: :GroupNotification\n\n\n\nTable 2: properties Group notification\n\n\n\n\n\n\n\n\n\n\n\nDescription\nPath\nType\nCard.\n\n\n\n\nLocal unit: BUR number of the local unit\n:localUnit\n:LocalUnit\n1..1\n\n\nOrigin: BUR number of the local unit the animal comes from\n:originLocalUnit\n:LocalUnit\n0..1\n\n\nID: Unique identifier of the movement, assigned by the system.\n:eventIdentifier\nxsd:string\n1..1\n\n\nGenus\n:genus\n:Genus\n1..1\n\n\nGroup information: Group information must be given for housing notifications of poultry\n:groupInformation\nxsd:string\n0..1\n\n\nNotification type\n:notificationType\n:NotificationType\n1..1\n\n\nEvent date: Date on which the event took place\n:eventDate\nxsd:date\n1..1\n\n\nNotification date: Date on which the event was reported\n:notificationDate\nxsd:date\n1..1\n\n\nNumber: Number of animals moved in one movement (pigs/poultry)\n:count\nxsd:integer\n0..1\n\n\nWeight: Total weight in kg of the animal group for slaughter notifications of poultry\n:weight\nxsd:integer\n0..1\n\n\nType of use: Type of use of the animal group (for individual animals it is held on the class «Einzeltier»)\n:typeOfUse\n:AnimalTypeOfUse\n0..1\n\n\nAge: For housing notifications of poultry the age must be given in weeks\n:age\nxsd:integer\n0..1"
+  },
+  {
+    "objectID": "en/index.html#sec-nodeshape-localunithealthstatusshape",
+    "href": "en/index.html#sec-nodeshape-localunithealthstatusshape",
+    "title": "Auxiliary document: animal movement data",
+    "section": "2.4 Health status of a local unit",
+    "text": "2.4 Health status of a local unit\nWhere animal disease events are of national significance, it is essential that animal keepers are informed about movement bans and disease status, so that the risk of spread through animal movements can be minimised. Disease information recorded for a local unit. In addition to the epizootic status of a local unit, vaccination, risk and laboratory results can also be represented. The AnimalTracing openAPI specification has no dedicated class for this; there the corresponding information is held as attributes of the local unit.\nTarget Class: :LocalUnitHealthStatus\n\n\n\nTable 3: properties Health status of a local unit\n\n\n\n\n\n\n\n\n\n\n\nDescription\nPath\nType\nCard.\n\n\n\n\nLocal unit: BUR number of the local unit\n:localUnit\n:LocalUnit\n1..1\n\n\nType: e.g. epizootic, vaccination or risk status\n:healthStatusType\n:HealthStatusType\n0..1\n\n\nStatus\n:epizooticStatus\n:LocalUnitEpizooticStatus\n0..1\n\n\nDate: Date from which the status is valid\n:validFrom\nxsd:date\n0..1"
+  },
+  {
+    "objectID": "en/index.html#sec-nodeshape-animalhealthstatusshape",
+    "href": "en/index.html#sec-nodeshape-animalhealthstatusshape",
+    "title": "Auxiliary document: animal movement data",
+    "section": "2.5 Health status of an individual animal",
+    "text": "2.5 Health status of an individual animal\nDisease information recorded for an individual animal. In addition to the individual epizootic status, relevant vaccinations are recorded as well.\nTarget Class: :AnimalHealthStatus\n\n\n\nTable 4: properties Health status of an individual animal\n\n\n\n\n\n\n\n\n\n\n\nDescription\nPath\nType\nCard.\n\n\n\n\nAnimal ID: A health status of an individual animal refers to exactly one individual animal.\n:animal\n:Animal\n1..1\n\n\nType: e.g. epizootic, vaccination or risk status\n:healthStatusType\n:HealthStatusType\n0..1\n\n\nStatus\n:epizooticStatus\n:AnimalEpizooticStatus\n0..1\n\n\nDate: Date from which the status is valid, or the date of vaccination\n:validFrom\nxsd:date\n0..1"
+  },
+  {
+    "objectID": "en/index.html#sec-nodeshape-animalshape",
+    "href": "en/index.html#sec-nodeshape-animalshape",
+    "title": "Auxiliary document: animal movement data",
+    "section": "2.6 Individual animal",
+    "text": "2.6 Individual animal\nAn individually identified farm animal. In the animal movement database, animals of the categories cattle, sheep, goats and equids are recorded as individual animals; they are uniquely identified by their ear tag number, or by the UELN in the case of equids. No individual animals are kept for pigs and poultry, only group notifications.\nTarget Class: :Animal\n\n\n\nTable 5: properties Individual animal\n\n\n\n\n\n\n\n\n\n\n\nDescription\nPath\nType\nCard.\n\n\n\n\nMother: An individual animal has at most one mother animal.\n:mother\n:Animal\n0..1\n\n\nFather: An individual animal has at most one father animal.\n:father\n:Animal\n0..1\n\n\nIdentifier: Ear tag number, or UELN for equids\n:identifier\nxsd:string\n1..1\n\n\nGenus\n:genus\n:Genus\n1..1\n\n\nGender\n:gender\n:Gender\n0..1\n\n\nDate of birth\n:dateOfBirth\nxsd:date\n0..1\n\n\nDate of death\n:dateOfDeath\nxsd:date\n0..1\n\n\nAnimal history state\n:animalHistoryState\n:AnimalHistoryState\n1..1\n\n\nType of use\n:typeOfUse\n:AnimalTypeOfUse\n0..1\n\n\nCastrated\n:castrated\nxsd:boolean\n0..1"
+  },
+  {
+    "objectID": "en/index.html#sec-nodeshape-animalnotificationshape",
+    "href": "en/index.html#sec-nodeshape-animalnotificationshape",
+    "title": "Auxiliary document: animal movement data",
+    "section": "2.7 Individual animal notification",
+    "text": "2.7 Individual animal notification\nAn event concerning an individual animal. Events comprise movement notifications, notifications of basic data, changes to individual attributes of the basic data as well as final notifications. A notification always refers to the local unit at which the event took place and may in addition state the local unit of origin. Events are reported by the authorised persons, stating the animal holding to which the notification refers; for equids they are reported by the authorised persons of the responsible equid owner.\nTarget Class: :AnimalNotification\n\n\n\nTable 6: properties Individual animal notification\n\n\n\n\n\n\n\n\n\n\n\nDescription\nPath\nType\nCard.\n\n\n\n\nIdentifier: An individual animal notification refers to exactly one individual animal.\n:animal\n:Animal\n1..1\n\n\nLocal unit: BUR number of the local unit to which the notification refers\n:localUnit\n:LocalUnit\n1..1\n\n\nOrigin: BUR number of the local unit the animal comes from\n:originLocalUnit\n:LocalUnit\n0..1\n\n\nID: Unique identifier of the movement, assigned by the system.\n:eventIdentifier\nxsd:string\n1..1\n\n\nGenus\n:genus\n:Genus\n1..1\n\n\nNotification type\n:notificationType\n:NotificationType\n1..1\n\n\nEvent date: Date on which the event took place\n:eventDate\nxsd:date\n1..1\n\n\nNotification date: Date on which the event was reported\n:notificationDate\nxsd:date\n1..1"
+  },
+  {
+    "objectID": "en/index.html#sec-nodeshape-legalunitshape",
+    "href": "en/index.html#sec-nodeshape-legalunitshape",
+    "title": "Auxiliary document: animal movement data",
+    "section": "2.8 Legal unit",
+    "text": "2.8 Legal unit\nA legal unit as defined in eCH-0108 is a legal entity (e.g. a public limited company or a limited liability company), a partnership (e.g. a general partnership) or a self-employed natural person that is subject to the federal act on the business identification number (UIDG) and has an entry in the UID register. It identifies, for example, the taxable entity for the tax authorities or the person liable for social insurance contributions. The legal unit is identified by its UID. Only where the enterprise is a «sole proprietorship» is the farm manager at the same time a natural person. The master system for this data is the FSO’s UID register; the agricultural information system obtains the data from that register through an interface. The animal keeper and the equid owner are the two forms of legal unit that occur in this Hilfsmittel (chapter 3.1.1 of the tool). The attributes are described in eCH-0261, chapters 3.1 and 3.2, and in eCH-0108, chapter 3.1.\nTarget Class: :LegalUnit"
+  },
+  {
+    "objectID": "en/index.html#sec-nodeshape-localunitshape",
+    "href": "en/index.html#sec-nodeshape-localunitshape",
+    "title": "Auxiliary document: animal movement data",
+    "section": "2.9 Local unit",
+    "text": "2.9 Local unit\nA local unit as defined in eCH-0108 is a facility at a given location where an economic activity is carried out. A local unit has a BUR number and is always assigned to a legal unit (or enterprise). The local unit is identified by its BUR number. A local unit may consist of one or more buildings. The EGID assigned to the BUR number refers to «the centre» of the local unit, that is, its main building. In the TVD, local units are called «animal holdings» and are additionally identified by their TVD number. This definition is taken from eCH-0108, chapter 1.5; the agriculture-specific additions are described in eCH-0261, chapters 3.3 and 3.4.\nTarget Class: :LocalUnit\n\n\n\nTable 7: properties Local unit\n\n\n\n\n\n\n\n\n\n\n\nDescription\nPath\nType\nCard.\n\n\n\n\nAnimal keeper: Assignment of the local unit to the animal keeper. According to eCH-0108, chapter 1.5, a local unit is always assigned to a legal unit (or enterprise); the master data of the local unit carries the optional attribute «mainUid» holding the UID of the main legal unit. Because the object catalogue treats the animal keeper only as a special form of the legal unit, this assignment is not mandatory.\n:animalKeeper\n:AnimalKeeper\n0..1"
+  },
+  {
+    "objectID": "en/index.html#sec-codelist-animalhealthstatus",
+    "href": "en/index.html#sec-codelist-animalhealthstatus",
+    "title": "Auxiliary document: animal movement data",
+    "section": "3.1 Health status of an individual animal",
+    "text": "3.1 Health status of an individual animal\n\n\n\nTable 8: Values of the code list Health status of an individual animal\n\n\n\n\n\n\n\n\n\n\nValue\nDesignation\nDescription\n\n\n\n\nBlocked\nBlocked\nType: epizootic status\n\n\nFree\nFree\nType: epizootic status\n\n\nNotTested\nNot tested\nType: epizootic status\n\n\nVaccinated\nVaccinated\nType: vaccination status"
+  },
+  {
+    "objectID": "en/index.html#sec-codelist-animalhistorystate",
+    "href": "en/index.html#sec-codelist-animalhistorystate",
+    "title": "Auxiliary document: animal movement data",
+    "section": "3.2 Animal history state",
+    "text": "3.2 Animal history state\n\n\n\nTable 9: Values of the code list Animal history state\n\n\n\n\n\n\n\n\n\n\nValue\nDesignation\nDescription\n\n\n\n\nLost\nLost\n\n\n\nNotDefined\nNot defined\n\n\n\nNotOk\nNot ok\n\n\n\nOk\nOk\n\n\n\nTemporaryOk\nTemporary ok"
+  },
+  {
+    "objectID": "en/index.html#sec-codelist-animaltypeofuse",
+    "href": "en/index.html#sec-codelist-animaltypeofuse",
+    "title": "Auxiliary document: animal movement data",
+    "section": "3.3 Type of use (cattle, sheep, goats)",
+    "text": "3.3 Type of use (cattle, sheep, goats)\n\n\n\nTable 10: Values of the code list Type of use (cattle, sheep, goats)\n\n\n\n\n\n\n\n\n\n\nValue\nDesignation\nDescription\n\n\n\n\nMilk\nMilk\nMilchkühe, -schafe und -ziegen\n\n\nOther\nOther"
+  },
+  {
+    "objectID": "en/index.html#sec-codelist-equidtypeofusage",
+    "href": "en/index.html#sec-codelist-equidtypeofusage",
+    "title": "Auxiliary document: animal movement data",
+    "section": "3.4 Type of use (equids)",
+    "text": "3.4 Type of use (equids)\n\n\n\nTable 11: Values of the code list Type of use (equids)\n\n\n\n\n\n\n\n\n\n\nValue\nDesignation\nDescription\n\n\n\n\nCompanionAnimal\nCompanion animal\n\n\n\nFarmAnimal\nFarm animal"
+  },
+  {
+    "objectID": "en/index.html#sec-codelist-equidwithersclass",
+    "href": "en/index.html#sec-codelist-equidwithersclass",
+    "title": "Auxiliary document: animal movement data",
+    "section": "3.5 Withers class",
+    "text": "3.5 Withers class\n\n\n\nTable 12: Values of the code list Withers class\n\n\n\n\n\n\n\n\n\n\nValue\nDesignation\nDescription\n\n\n\n\nGreaterThan148cm\nWithers height above 148 cm\n\n\n\nLessOrEqualThan148cm\nWithers height up to 148 cm"
+  },
+  {
+    "objectID": "en/index.html#sec-codelist-gender",
+    "href": "en/index.html#sec-codelist-gender",
+    "title": "Auxiliary document: animal movement data",
+    "section": "3.6 Gender",
+    "text": "3.6 Gender\n\n\n\nTable 13: Values of the code list Gender\n\n\n\n\n\n\n\n\n\n\nValue\nDesignation\nDescription\n\n\n\n\nFemale\nFemale\n\n\n\nMale\nMale"
+  },
+  {
+    "objectID": "en/index.html#sec-codelist-genus",
+    "href": "en/index.html#sec-codelist-genus",
+    "title": "Auxiliary document: animal movement data",
+    "section": "3.7 Genus",
+    "text": "3.7 Genus\n\n\n\nTable 14: Values of the code list Genus\n\n\n\n\n\n\n\n\n\n\nValue\nDesignation\nDescription\n\n\n\n\nCamelid\nCamelid\nNeuweltkameliden\n\n\nCattle\nCattle\nTiere der Rindergattung (Bos) und Wasserbüffel (Bubalus bubalis)\n\n\nEquid\nEquid\nTiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel)\n\n\nGame\nGame\nWild in Gehegen\n\n\nGoat\nGoat\n\n\n\nPig\nPig\n\n\n\nPoultry\nPoultry\n\n\n\nSheep\nSheep"
+  },
+  {
+    "objectID": "en/index.html#sec-codelist-healthstatustype",
+    "href": "en/index.html#sec-codelist-healthstatustype",
+    "title": "Auxiliary document: animal movement data",
+    "section": "3.8 Health status type",
+    "text": "3.8 Health status type\n\n\n\nTable 15: Values of the code list Health status type\n\n\n\n\n\n\n\n\n\n\nValue\nDesignation\nDescription\n\n\n\n\nEpizooticStatus\nEpizootic status\n\n\n\nLaboratoryResult\nLaboratory result\n\n\n\nRiskStatus\nRisk status\n\n\n\nVaccinationStatus\nVaccination status"
+  },
+  {
+    "objectID": "en/index.html#sec-codelist-localunithealthstatus",
+    "href": "en/index.html#sec-codelist-localunithealthstatus",
+    "title": "Auxiliary document: animal movement data",
+    "section": "3.9 Health status of a local unit",
+    "text": "3.9 Health status of a local unit\n\n\n\nTable 16: Values of the code list Health status of a local unit\n\n\n\n\n\n\n\n\n\n\nValue\nDesignation\nDescription\n\n\n\n\nBlocked\nBlocked\nType: epizootic status\n\n\nFree\nFree\nType: epizootic status\n\n\nHigh\nHigh\nType: risk status\n\n\nLow\nLow\nType: risk status\n\n\nMedium\nMedium\nType: risk status\n\n\nNegative\nNegative\nType: laboratory result\n\n\nNotTested\nNot tested\nType: epizootic status\n\n\nPositive\nPositive\nType: laboratory result"
+  },
+  {
+    "objectID": "en/index.html#sec-codelist-notificationtype",
+    "href": "en/index.html#sec-codelist-notificationtype",
+    "title": "Auxiliary document: animal movement data",
+    "section": "3.10 Notification type",
+    "text": "3.10 Notification type\n\n\n\nTable 17: Values of the code list Notification type\n\n\n\n\n\n\n\n\n\n\nValue\nDesignation\nDescription\n\n\n\n\nArrival\nArrival\nNot for equids\n\n\nBirth\nBirth\n\n\n\nDayStay\nDay stay\nNot for equids\n\n\nDeathBirth\nStillbirth\nNot for equids\n\n\nDeceased\nDeath\nFor equids: euthanasia\n\n\nExport\nExport\nFor equids: transfer of ownership abroad\n\n\nFirstRegistration\nFirst registration\n\n\n\nImport\nImport\n\n\n\nImportAfterExport\nImport after export\nNot for equids\n\n\nLeaving\nDeparture\nNot for equids\n\n\nLocationChange\nChange of location\nFor equids only\n\n\nOnFarmSlaughter\nOn-farm slaughter\nNot for equids\n\n\nSlaughter\nSlaughter"
   },
   {
     "objectID": "de/index.html",
     "href": "de/index.html",
-    "title": "eCH-0309 Quarto-Dokument als Vorlage",
+    "title": "Hilfsmittel Tierverkehrsdaten",
     "section": "",
     "text": "Im vorliegenden Dokument wird bei der Bezeichnung von Personen eine geschlechtsneutrale Formulierung verwendet. Basis bildet der Leitfaden der Bundeskanzlei. Je nach Situation kommen Paarformen (Bürgerinnen und Bürger), geschlechtsabstrakte Formen (versicherte Person), geschlechtsneutrale Formen (Versicherte) oder Umschreibungen ohne Personenbezug zum Einsatz. Das generische Maskulin (Bürger) ist nicht zulässig. Vollformen werden in fortlaufenden Texten verwendet, also in Texten, die aus ausformulierten Sätzen bestehen. In verknappten Textpassagen, namentlich in Tabellen, können Kurzformen verwendet werden. Dabei wird die Kurzform mit Schrägstrich, aber ohne Auslassungsstrich verwendet (Referent/in). Genderstern und ähnliche Schreibweisen werden nicht verwendet."
   },
   {
     "objectID": "de/index.html#sec-status",
     "href": "de/index.html#sec-status",
-    "title": "eCH-0309 Quarto-Dokument als Vorlage",
+    "title": "Hilfsmittel Tierverkehrsdaten",
     "section": "1.1 Status",
-    "text": "1.1 Status\nIn Arbeit"
+    "text": "1.1 Status\nIn Arbeit: Der Gebrauch ist nur innerhalb der Fachgruppe, bzw. im Expertenausschuss zugelassen."
   },
   {
     "objectID": "de/index.html#sec-scope-of-application",
     "href": "de/index.html#sec-scope-of-application",
-    "title": "eCH-0309 Quarto-Dokument als Vorlage",
-    "section": "1.2 Geltungsbereich",
-    "text": "1.2 Geltungsbereich\nDie Angaben in diesem Kapitel sollen dem Leser einen raschen Überblick geben, wofür dieser Standard gedacht ist. Hinweise zu folgenden Sachverhalten können dabei hilfreich sein."
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "1.2 Anwendungsgebiet",
+    "text": "1.2 Anwendungsgebiet\nDas vorliegende Dokument beschreibt die Daten der Tierverkehrsdatenbank (TVD) semantisch, um auch Fachpersonen ohne vertiefte IT-Kenntnisse ein besseres Verständnis der Daten zu ermöglichen."
   },
   {
-    "objectID": "de/index.html#sec-example-subheading",
-    "href": "de/index.html#sec-example-subheading",
-    "title": "eCH-0309 Quarto-Dokument als Vorlage",
-    "section": "1.3 Wir können Untertitel haben",
-    "text": "1.3 Wir können Untertitel haben\nUnd etwas Text schreiben.\n\n1.3.1 Auch Unter-Unterüberschriften\nUnd noch mehr Text schreiben. Vielleicht sogar mit einem schönen Bild.\n\n\n\n\n\n\nAbbildung 1: Fügen Sie immer etwas Text hinzu, um zu beschreiben, was das Bild zeigt.\n\n\n\nBei der Darstellung von Diagrammen sollte versucht werden, diese direkt in Mermaid JS zu erstellen; dies macht zukünftige Änderungen oder Übersetzungen sehr einfach."
+    "objectID": "de/index.html#sec-animal-movement-reporting",
+    "href": "de/index.html#sec-animal-movement-reporting",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "1.3 Das Tiermeldewesen in der Schweiz",
+    "text": "1.3 Das Tiermeldewesen in der Schweiz\nDie Land- und Ernährungswirtschaft in der Schweiz wurde in den 1990er Jahren stark durch die Tierseuche «BSE» herausgefordert. Als sich 1996 die Erkenntnis der Übertragbarkeit der Krankheit vom Tier auf den Menschen erhärtete, führte dies zu grosser Verunsicherung. In der Folge stiegen die Erwartungen an die Sicherheit von tierischen Lebensmitteln und das Bewusstsein für die Bedeutung der Lebensmittelkontrolle. Der Ansatz «vom Stall bis auf den Teller» etablierte sich. Die risikobasierte Überwachung, die lückenlose Rückverfolgbarkeit der Nutztiere, die Kontrolle des Tierverkehrs, die Pflicht zur Herkunftsdeklaration sowie Qualitätskontrollen in der gesamten Produktions- und Verarbeitungskette bilden seither die Basis für einen hohen Standard in der Lebensmittelsicherheit.\nDie Erfahrung BSE führte 1999 zum Aufbau einer nationalen Tierverkehrsdatenbank (TVD). In Artikel 7a sowie 13–15 des Tierseuchengesetzes und in Titel 2, Abschnitt 1, 1a und 2a der Tierseuchenverordnung sind die grundlegenden gesetzlichen Ausführungen zur Identifizierung/Kennzeichnung und der Registrierung von Nutztieren sowie die zugehörigen Meldepflichten formuliert. Diese orientieren sich an der europäischen Gesetzgebung zur selben Thematik (Verordnung (EU) 2016/429 zu Tierseuchen; Delegierte Verordnung (EU) 2019/2035 über Betriebe, in denen Landtiere gehalten werden, und für Brütereien sowie zur Rückverfolgbarkeit).\nWaren ab 1999 vorerst Rinder meldepflichtig, folgten ab 2011 die Schweine und Equiden, wenn auch die Schweine bis heute nicht in Form von Einzeltiermeldungen. Ab 2014, respektive 2020 galt die Meldepflicht in die TVD dann auch für Kleinwiederkäuer (Schafe und Ziegen). Zu Beginn, 2014, betraf diese nur die Schlachtbetriebe. Seit 2014 besteht auch die Meldepflicht für Geflügel. Seit dem Januar 2020 sind auch die Tierhaltenden von Kleinwiederkäuern in das Meldewesen der Einzeltiere eingebunden. Die Identifizierung und Kennzeichnung der Klauentiere mit Ohrmarken, die Einzeltierregistrierung von Rindern, Schafen und Ziegen in der TVD, sowie die Meldung von Tierzugängen, Tierabgängen (Tier verlässt eine Tierhaltung lebend), Geburten, Einfuhr, Ausfuhr, Schlachtung, Hofschlachtung und Verendung (Tier wird als nicht mehr lebend abgemeldet), sind für alle Tierhaltenden in der Schweiz obligatorisch.\nDie TVD ist Teil einer Systemlandschaft der Bereiche Landwirtschaft, Veterinärwesen und Lebensmittelsicherheit. Die zentrale Eingangspforte bildet dabei das Portal Agate, mit dem Agrarpolitischen Informationssystem AGIS im Zentrum.\n\nIn der Verordnung über die Identitas AG und die Tierverkehrsdatenbank (IdTVD-V) werden Inhalte zum Tierverkehr und Aufgaben der Identitas AG sowie die Zugriffsrechte auf die Daten weiter ausgeführt. Die Bedeutung der Identifizierung/Kennzeichnung von Nutztieren geht weit über die Seuchenthematik hinaus und fand deshalb auch Eingang in die landwirtschaftliche Gesetzgebung (Landwirtschaftsgesetz LwG Artikel 165g, 177 und 185) und diverse zugehörige Verordnungen. Die Daten aus dem Tierverkehr entwickelten sich zu einem unverzichtbaren Bestandteil in der Umsetzung agrarpolitischer Massnahmen, beispielsweise der tierbezogenen Direktzahlungen, der Bestimmung der Nährstoffflüsse oder des Agrarumweltmonitorings. Weiter dienen die Daten auch als Grundlage für die Strukturerhebung der Landwirtschaft in der Schweiz und generell der landwirtschaftlichen Statistik.\nRasch etablierte sich das Tiermeldewesen auch entlang der gesamten Lebensmittelwertschöpfungskette. Programme mit Tierwohl-, Rückverfolgbarkeits- und Herkunftsversprechen stützen sich darauf ab. Die Vielfalt der Tierinformation aus dem Meldewesen des Tierverkehrs spiegelt sich auch in den öffentlich verfügbaren Datensätzen der Open Data Plattform Tierstatistik.\nDie technische Schnittstellenbeschreibung in diesem Dokument basiert auf der technischen Servicebeschreibung AnimalTracing v1.32, sowie der openAPI-Spezifikation v. x.xx."
+  },
+  {
+    "objectID": "de/index.html#sec-references",
+    "href": "de/index.html#sec-references",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "1.4 Verweise",
+    "text": "1.4 Verweise\nSchnittstellen: AnimalTracing API, Technische Servicebeschreibung AnimalTracing\nNB: die Namen der im Kapitel 3 beschriebenen Klassen stimmen nicht mit den ServiceOperations in AnimalTracing überein, da die semantische Beschreibung einen Überblick über die Dateninhalte verschaffen soll und gegenüber der Servicebeschreibung einen tieferen Detaillierungsgrad aufweist."
+  },
+  {
+    "objectID": "de/index.html#sec-nodeshape-animalshape",
+    "href": "de/index.html#sec-nodeshape-animalshape",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "2.1 Einzeltier",
+    "text": "2.1 Einzeltier\nEin einzeln identifiziertes Nutztier. In der Tierverkehrsdatenbank werden Tiere der Kategorien Rinder, Schafe, Ziegen und Equiden als Einzeltiere erfasst; sie werden über die Ohrmarkennummer, bei Equiden über die UELN, eindeutig identifiziert. Für Schweine und Geflügel werden keine Einzeltiere geführt, sondern ausschliesslich Gruppenmeldungen.\nZielklasse: :Animal\n\n\n\nTabelle 1: Eigenschaften Einzeltier\n\n\n\n\n\n\n\n\n\n\n\nBeschreibung\nPfad\nTyp\nKard.\n\n\n\n\nIdentifikation Mutter: Ein Einzeltier hat höchstens ein Muttertier.\n:mother\n:Animal\n0..1\n\n\nIdentifikation Vater: Ein Einzeltier hat höchstens ein Vatertier.\n:father\n:Animal\n0..1\n\n\nIdentifikator: Ohrmarkennummer, bei Equiden UELN\n:identifier\nxsd:string\n1..1\n\n\nNutztierart\n:genus\n:Genus\n1..1\n\n\nGeschlecht\n:gender\n:Gender\n0..1\n\n\nGeburtsdatum\n:dateOfBirth\nxsd:date\n0..1\n\n\nTodesdatum\n:dateOfDeath\nxsd:date\n0..1\n\n\nTiergeschichteStatus\n:animalHistoryState\n:AnimalHistoryState\n1..1\n\n\nZweck\n:typeOfUse\n:AnimalTypeOfUse\n0..1\n\n\nKastriert\n:castrated\nxsd:boolean\n0..1"
+  },
+  {
+    "objectID": "de/index.html#sec-nodeshape-equidshape",
+    "href": "de/index.html#sec-nodeshape-equidshape",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "2.2 Equide",
+    "text": "2.2 Equide\nSubklasse der Klasse Einzeltier für Tiere der Gattung Equiden (Pferd, Maultier, Maulesel, Esel). Alle Attribute der Klasse Einzeltier gelten auch für Equiden; diese Klasse beschreibt ausschliesslich die zusätzlichen, equidenspezifischen Angaben. Die Verantwortung für das Meldewesen liegt bei Equiden nicht beim Tierhaltenden, sondern bei der Eigentümerin oder beim Eigentümer. Ein Eigentümer ist die rechtliche Einheit, in deren Eigentum Equiden sind; der Begriff wird nur für Equideneigentümer geführt (Kapitel 3.1.1 des Hilfsmittels).\nZielklasse: :Equid\n\n\n\nTabelle 2: Eigenschaften Equide\n\n\n\n\n\n\n\n\n\n\n\nBeschreibung\nPfad\nTyp\nKard.\n\n\n\n\nEigentümer oder Eigentümerin: Die rechtliche Einheit, in deren Eigentum der Equide steht. Bei Equiden liegt die Verantwortung für das Meldewesen beim Eigentümer und nicht beim Tierhaltenden (Kapitel 3.1.1 des Hilfsmittels).\n:owner\n:LegalUnit\n1..1\n\n\nGrössenkategorie\n:withersClass\n:EquidWithersClass\n1..1"
+  },
+  {
+    "objectID": "de/index.html#sec-nodeshape-animalhealthstatusshape",
+    "href": "de/index.html#sec-nodeshape-animalhealthstatusshape",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "2.3 Gesundheitsstatus Einzeltier",
+    "text": "2.3 Gesundheitsstatus Einzeltier\nEine Seucheninformation, die auf einem Einzeltier erfasst ist. Zusätzlich zum individuellen Seuchenstatus werden damit auch relevante Impfungen erfasst.\nZielklasse: :AnimalHealthStatus\n\n\n\nTabelle 3: Eigenschaften Gesundheitsstatus Einzeltier\n\n\n\n\n\n\n\n\n\n\n\nBeschreibung\nPfad\nTyp\nKard.\n\n\n\n\nTier-ID: Ein Gesundheitsstatus Einzeltier bezieht sich auf genau ein Einzeltier.\n:animal\n:Animal\n1..1\n\n\nTyp: z. B. Seuchenstatus, Impfstatus, Risikostatus\n:healthStatusType\n:HealthStatusType\n0..1\n\n\nStatus\n:epizooticStatus\n:AnimalEpizooticStatus\n0..1\n\n\nDatum: Datum, ab dem der Seuchenstatus gültig ist oder das Impfdatum\n:validFrom\nxsd:date\n0..1"
+  },
+  {
+    "objectID": "de/index.html#sec-nodeshape-localunithealthstatusshape",
+    "href": "de/index.html#sec-nodeshape-localunithealthstatusshape",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "2.4 Gesundheitsstatus Standort",
+    "text": "2.4 Gesundheitsstatus Standort\nBei Seuchengeschehen von nationaler Bedeutung ist es entscheidend, dass Tierhaltende über Sperren und Seuchenstatus informiert sind; so kann ein Ausbreitungsrisiko durch den Tierverkehr minimiert werden. Eine Seucheninformation, die auf einer örtlichen Einheit erfasst ist. Neben dem Seuchenstatus einer örtlichen Einheit können auch Impf-, Risiko- und Laborergebnisse abgebildet werden. In der openAPI-Spezifikation von AnimalTracing besteht dafür keine eigene Klasse; die entsprechenden Angaben sind dort Attribute der örtlichen Einheit.\nZielklasse: :LocalUnitHealthStatus\n\n\n\nTabelle 4: Eigenschaften Gesundheitsstatus Standort\n\n\n\n\n\n\n\n\n\n\n\nBeschreibung\nPfad\nTyp\nKard.\n\n\n\n\nÖrtliche Einheit: BUR-Nummer der örtlichen Einheit\n:localUnit\n:LocalUnit\n1..1\n\n\nTyp: z. B. Seuchenstatus, Impfstatus, Risikostatus\n:healthStatusType\n:HealthStatusType\n0..1\n\n\nStatus\n:epizooticStatus\n:LocalUnitEpizooticStatus\n0..1\n\n\nDatum: Datum, ab dem der Seuchenstatus gültig ist\n:validFrom\nxsd:date\n0..1"
+  },
+  {
+    "objectID": "de/index.html#sec-nodeshape-groupnotificationshape",
+    "href": "de/index.html#sec-nodeshape-groupnotificationshape",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "2.5 Gruppenmeldung",
+    "text": "2.5 Gruppenmeldung\nEin Ereignis für eine nicht eindeutig identifizierbare Tiergruppe. Gruppenmeldungen werden für Tiere der Kategorien Schweine und Geflügel erfasst; die Individuen einer Tiergruppe sind deshalb nicht bekannt. Die Ereignisse werden durch die natürlichen Personen der verantwortlichen rechtlichen Einheit Tierhaltender gemeldet. Sie umfassen Einstallungsmeldungen bei Geflügel, Bewegungsmeldungen bei Schweinen sowie Schlachtungsmeldungen von Schweinen (in Stück) und Geflügelgruppen (in kg). Für diese Klasse besteht in der openAPI-Spezifikation von AnimalTracing kein Gegenstück, da Schweine und Geflügel dort nicht abgebildet sind.\nZielklasse: :GroupNotification\n\n\n\nTabelle 5: Eigenschaften Gruppenmeldung\n\n\n\n\n\n\n\n\n\n\n\nBeschreibung\nPfad\nTyp\nKard.\n\n\n\n\nÖrtliche Einheit: BUR-Nummer der örtlichen Einheit\n:localUnit\n:LocalUnit\n1..1\n\n\nHerkunft: BUR-Nummer der örtlichen Einheit von der das Tier kommt\n:originLocalUnit\n:LocalUnit\n0..1\n\n\nID: Eindeutiger Identifikator der Bewegung, der durch das System vergeben wird.\n:eventIdentifier\nxsd:string\n1..1\n\n\nNutztierart\n:genus\n:Genus\n1..1\n\n\nGruppeninformation: Bei Einstallungsmeldungen von Geflügel ist eine Gruppeninformation anzugeben\n:groupInformation\nxsd:string\n0..1\n\n\nMeldungstyp\n:notificationType\n:NotificationType\n1..1\n\n\nEreignisdatum: Datum, an dem das Ereignis stattgefunden hat\n:eventDate\nxsd:date\n1..1\n\n\nMeldedatum: Datum, an dem das Ereignis gemeldet wurde\n:notificationDate\nxsd:date\n1..1\n\n\nAnzahl: Anzahl Tiere, die in einer Bewegung verstellt wurden (Schweine/Geflügel)\n:count\nxsd:integer\n0..1\n\n\nGewicht: Gesamtgewicht in kg der Tiergruppe bei Schlachtungsmeldungen von Geflügel\n:weight\nxsd:integer\n0..1\n\n\nZweck: Nutzungsart der Tiergruppe (bei Einzeltieren wird die Nutzungsart auf der Klasse «Einzeltier» geführt)\n:typeOfUse\n:AnimalTypeOfUse\n0..1\n\n\nAlter: Bei Einstallungsmeldungen von Geflügel ist das Alter in Wochen anzugeben\n:age\nxsd:integer\n0..1"
+  },
+  {
+    "objectID": "de/index.html#sec-nodeshape-animalnotificationshape",
+    "href": "de/index.html#sec-nodeshape-animalnotificationshape",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "2.6 Meldung Einzeltier",
+    "text": "2.6 Meldung Einzeltier\nEin Ereignis, das ein Einzeltier betrifft. Als Ereignisse gelten Bewegungsmeldungen, Meldungen von Grunddaten, Änderungen einzelner Attribute der Grunddaten sowie finale Meldungen. Eine Meldung bezieht sich immer auf die örtliche Einheit, auf welcher das Ereignis stattgefunden hat, und kann zusätzlich die örtliche Einheit der Herkunft angeben. Die Ereignisse werden durch die berechtigten Personen gemeldet mit Angabe der Tierhaltung, auf die sich die Meldung bezieht; bei Equiden werden sie durch die berechtigten Personen des verantwortlichen Equideneigentümers gemeldet.\nZielklasse: :AnimalNotification\n\n\n\nTabelle 6: Eigenschaften Meldung Einzeltier\n\n\n\n\n\n\n\n\n\n\n\nBeschreibung\nPfad\nTyp\nKard.\n\n\n\n\nIdentifikator: Eine Meldung Einzeltier bezieht sich auf genau ein Einzeltier.\n:animal\n:Animal\n1..1\n\n\nÖrtliche Einheit: BUR-Nummer der örtlichen Einheit, auf die sich die Meldung bezieht\n:localUnit\n:LocalUnit\n1..1\n\n\nHerkunft: BUR-Nummer der örtlichen Einheit von der das Tier kommt\n:originLocalUnit\n:LocalUnit\n0..1\n\n\nID: Eindeutiger Identifikator der Bewegung, der durch das System vergeben wird.\n:eventIdentifier\nxsd:string\n1..1\n\n\nNutztierart\n:genus\n:Genus\n1..1\n\n\nMeldungstyp\n:notificationType\n:NotificationType\n1..1\n\n\nEreignisdatum: Datum, an dem das Ereignis stattgefunden hat\n:eventDate\nxsd:date\n1..1\n\n\nMeldedatum: Datum, an dem das Ereignis gemeldet wurde\n:notificationDate\nxsd:date\n1..1"
+  },
+  {
+    "objectID": "de/index.html#sec-nodeshape-legalunitshape",
+    "href": "de/index.html#sec-nodeshape-legalunitshape",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "2.7 Rechtliche Einheit",
+    "text": "2.7 Rechtliche Einheit\nDie rechtliche Einheit nach eCH-0108 ist eine juristische Person (z.B. Aktiengesellschaft, GmbH), eine Personengesellschaft (z.B. Kollektivgesellschaft) oder eine selbstständigerwerbende natürliche Person, die dem Bundesgesetz über die Unternehmens-Identifikationsnummer (UIDG) unterstellt ist und einen Eintrag im UID-Register aufweist. Sie identifiziert z.B. das Steuersubjekt für Steuerbehörden oder die beitragspflichtige Person für Sozialversicherungsbeiträge. Die rechtliche Einheit wird mit der UID identifiziert. Nur wenn das Unternehmen ein «Einzelunternehmen» ist, ist der Bewirtschafter zugleich eine natürliche Person. Das Mastersystem für diese Daten ist das UID-Register des BFS; das landwirtschaftliche Informationssystem bezieht die Daten aus diesem Register über eine Schnittstelle. Der Tierhaltende und der Equideneigentümer sind die beiden Ausprägungen der rechtlichen Einheit, die in diesem Hilfsmittel vorkommen (Kapitel 3.1.1 des Hilfsmittels). Die Attribute sind in eCH-0261, Kapitel 3.1 und 3.2, sowie in eCH-0108, Kapitel 3.1, beschrieben.\nZielklasse: :LegalUnit"
+  },
+  {
+    "objectID": "de/index.html#sec-nodeshape-animalkeepershape",
+    "href": "de/index.html#sec-nodeshape-animalkeepershape",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "2.8 Tierhaltender",
+    "text": "2.8 Tierhaltender\nEin Bewirtschafter ist eine rechtliche Einheit nach eCH-0108, die das Geschäftsrisiko für einen Betrieb trägt (LBV Art. 2). Der Tierhaltende ist eine Form des Bewirtschafters, der Tiere hält (LBV Art. 11a); er braucht somit eine örtliche Einheit (Tierhaltung). Die Verantwortung für das Meldewesen obliegt dem Tierhaltenden für alle Tierkategorien mit Ausnahme der Equiden; bei Equiden liegt sie beim Eigentümer oder bei der Eigentümerin (Kapitel 3.1.1 des Hilfsmittels). Die Attribute sind in eCH-0261, Kapitel 3.1 und 3.2, beschrieben.\nZielklasse: :AnimalKeeper"
+  },
+  {
+    "objectID": "de/index.html#sec-nodeshape-localunitshape",
+    "href": "de/index.html#sec-nodeshape-localunitshape",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "2.9 Örtliche Einheit",
+    "text": "2.9 Örtliche Einheit\nEine örtliche Einheit nach eCH-0108 ist eine Einrichtung an einem bestimmten Ort, an welcher eine wirtschaftliche Tätigkeit ausgeübt wird. Eine örtliche Einheit hat eine BUR-Nummer und ist immer einer rechtlichen Einheit (bzw. einem Unternehmen) zugeordnet. Die örtliche Einheit wird über die BUR-Nummer identifiziert. Die örtliche Einheit kann aus einem oder mehreren Gebäuden bestehen. Die der BUR-Nummer zugewiesene EGID bezieht sich auf «das Zentrum» der örtlichen Einheit, resp. das Hauptgebäude. In der TVD werden die örtlichen Einheiten «Tierhaltungen» genannt und sind zusätzlich über die TVD-Nummer identifiziert. Diese Definition stammt aus eCH-0108, Kapitel 1.5; die agrarspezifischen Ergänzungen sind in eCH-0261, Kapitel 3.3 und 3.4, beschrieben.\nZielklasse: :LocalUnit\n\n\n\nTabelle 7: Eigenschaften Örtliche Einheit\n\n\n\n\n\n\n\n\n\n\n\nBeschreibung\nPfad\nTyp\nKard.\n\n\n\n\nTierhaltender: Zuordnung der örtlichen Einheit zum Tierhaltenden. Nach eCH-0108, Kapitel 1.5, ist eine örtliche Einheit immer einer rechtlichen Einheit (bzw. einem Unternehmen) zugeordnet; die Stammdaten der örtlichen Einheit führen dafür das optionale Merkmal «mainUid» mit der UID der rechtlichen Haupteinheit. Da der Tierhaltende nach dem Objektkatalog nur eine Sonderform der rechtlichen Einheit ist, ist diese Zuordnung nicht zwingend.\n:animalKeeper\n:AnimalKeeper\n0..1"
+  },
+  {
+    "objectID": "de/index.html#sec-codelist-animalhealthstatus",
+    "href": "de/index.html#sec-codelist-animalhealthstatus",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "3.1 Seuchenstatus Einzeltier",
+    "text": "3.1 Seuchenstatus Einzeltier\n\n\n\nTabelle 8: Werte des Wertebereichs Seuchenstatus Einzeltier\n\n\n\n\n\n\n\n\n\n\nWert\nBezeichnung\nBeschreibung\n\n\n\n\nBlocked\ngesperrt\nTyp: Seuchenstatus\n\n\nFree\nfrei\nTyp: Seuchenstatus\n\n\nNotTested\nNicht getestet\nTyp: Seuchenstatus\n\n\nVaccinated\ngeimpft\nTyp: Impfstatus"
+  },
+  {
+    "objectID": "de/index.html#sec-codelist-animalhistorystate",
+    "href": "de/index.html#sec-codelist-animalhistorystate",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "3.2 Tiergeschichtestatus",
+    "text": "3.2 Tiergeschichtestatus\n\n\n\nTabelle 9: Werte des Wertebereichs Tiergeschichtestatus\n\n\n\n\n\n\n\n\n\n\nWert\nBezeichnung\nBeschreibung\n\n\n\n\nLost\nVerschollen\n\n\n\nNotDefined\nNicht definiert\n\n\n\nNotOk\nFehlerhaft\n\n\n\nOk\nOK\n\n\n\nTemporaryOk\nTemporär OK"
+  },
+  {
+    "objectID": "de/index.html#sec-codelist-animaltypeofuse",
+    "href": "de/index.html#sec-codelist-animaltypeofuse",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "3.3 Zweck (Rinder, Schafe, Ziegen)",
+    "text": "3.3 Zweck (Rinder, Schafe, Ziegen)\n\n\n\nTabelle 10: Werte des Wertebereichs Zweck (Rinder, Schafe, Ziegen)\n\n\n\n\n\n\n\n\n\n\nWert\nBezeichnung\nBeschreibung\n\n\n\n\nMilk\nMilch\nMilchkühe, -schafe und -ziegen\n\n\nOther\nAndere"
+  },
+  {
+    "objectID": "de/index.html#sec-codelist-equidtypeofusage",
+    "href": "de/index.html#sec-codelist-equidtypeofusage",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "3.4 Zweck (Equiden)",
+    "text": "3.4 Zweck (Equiden)\n\n\n\nTabelle 11: Werte des Wertebereichs Zweck (Equiden)\n\n\n\n\n\n\n\n\n\n\nWert\nBezeichnung\nBeschreibung\n\n\n\n\nCompanionAnimal\nHeimtier\n\n\n\nFarmAnimal\nNutztier"
+  },
+  {
+    "objectID": "de/index.html#sec-codelist-equidwithersclass",
+    "href": "de/index.html#sec-codelist-equidwithersclass",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "3.5 Grössenkategorie",
+    "text": "3.5 Grössenkategorie\n\n\n\nTabelle 12: Werte des Wertebereichs Grössenkategorie\n\n\n\n\n\n\n\n\n\n\nWert\nBezeichnung\nBeschreibung\n\n\n\n\nGreaterThan148cm\nWiderristhöhe über 148 cm\n\n\n\nLessOrEqualThan148cm\nWiderristhöhe bis 148 cm"
+  },
+  {
+    "objectID": "de/index.html#sec-codelist-gender",
+    "href": "de/index.html#sec-codelist-gender",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "3.6 Geschlecht",
+    "text": "3.6 Geschlecht\n\n\n\nTabelle 13: Werte des Wertebereichs Geschlecht\n\n\n\n\n\n\n\n\n\n\nWert\nBezeichnung\nBeschreibung\n\n\n\n\nFemale\nWeiblich\n\n\n\nMale\nMännlich"
+  },
+  {
+    "objectID": "de/index.html#sec-codelist-genus",
+    "href": "de/index.html#sec-codelist-genus",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "3.7 Nutztierart",
+    "text": "3.7 Nutztierart\n\n\n\nTabelle 14: Werte des Wertebereichs Nutztierart\n\n\n\n\n\n\n\n\n\n\nWert\nBezeichnung\nBeschreibung\n\n\n\n\nCamelid\nKameliden\nNeuweltkameliden\n\n\nCattle\nRindvieh\nTiere der Rindergattung (Bos) und Wasserbüffel (Bubalus bubalis)\n\n\nEquid\nEquiden\nTiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel)\n\n\nGame\nWild\nWild in Gehegen\n\n\nGoat\nZiegen\n\n\n\nPig\nSchweine\n\n\n\nPoultry\nGeflügel\n\n\n\nSheep\nSchafe"
+  },
+  {
+    "objectID": "de/index.html#sec-codelist-healthstatustype",
+    "href": "de/index.html#sec-codelist-healthstatustype",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "3.8 Typ Gesundheitsstatus",
+    "text": "3.8 Typ Gesundheitsstatus\n\n\n\nTabelle 15: Werte des Wertebereichs Typ Gesundheitsstatus\n\n\n\n\n\n\n\n\n\n\nWert\nBezeichnung\nBeschreibung\n\n\n\n\nEpizooticStatus\nSeuchenstatus\n\n\n\nLaboratoryResult\nLaborergebnis\n\n\n\nRiskStatus\nRisikostatus\n\n\n\nVaccinationStatus\nImpfstatus"
+  },
+  {
+    "objectID": "de/index.html#sec-codelist-localunithealthstatus",
+    "href": "de/index.html#sec-codelist-localunithealthstatus",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "3.9 Seuchenstatus örtliche Einheit",
+    "text": "3.9 Seuchenstatus örtliche Einheit\n\n\n\nTabelle 16: Werte des Wertebereichs Seuchenstatus örtliche Einheit\n\n\n\n\n\n\n\n\n\n\nWert\nBezeichnung\nBeschreibung\n\n\n\n\nBlocked\ngesperrt\nTyp: Seuchenstatus\n\n\nFree\nfrei\nTyp: Seuchenstatus\n\n\nHigh\nHoch\nTyp: Risikostatus\n\n\nLow\nTief\nTyp: Risikostatus\n\n\nMedium\nMittel\nTyp: Risikostatus\n\n\nNegative\nnegativ\nTyp: Laborergebnis\n\n\nNotTested\nNicht getestet\nTyp: Seuchenstatus\n\n\nPositive\npositiv\nTyp: Laborergebnis"
+  },
+  {
+    "objectID": "de/index.html#sec-codelist-notificationtype",
+    "href": "de/index.html#sec-codelist-notificationtype",
+    "title": "Hilfsmittel Tierverkehrsdaten",
+    "section": "3.10 Bewegungstyp",
+    "text": "3.10 Bewegungstyp\n\n\n\nTabelle 17: Werte des Wertebereichs Bewegungstyp\n\n\n\n\n\n\n\n\n\n\nWert\nBezeichnung\nBeschreibung\n\n\n\n\nArrival\nZugang\nNicht für Equiden\n\n\nBirth\nGeburt\n\n\n\nDayStay\nTagesaufenthalt\nNicht für Equiden\n\n\nDeathBirth\nTotgeburt\nNicht für Equiden\n\n\nDeceased\nVerendung\nBei Equiden: Euthanasierung\n\n\nExport\nAusfuhr\nBei Equiden: Eigentumsabgabe ins Ausland\n\n\nFirstRegistration\nErstregistrierung\n\n\n\nImport\nEinfuhr\n\n\n\nImportAfterExport\nEinfuhr nach Ausfuhr\nNicht für Equiden\n\n\nLeaving\nAbgang\nNicht für Equiden\n\n\nLocationChange\nStandortwechsel\nNur für Equiden\n\n\nOnFarmSlaughter\nHofschlachtung\nNicht für Equiden\n\n\nSlaughter\nSchlachtung"
   },
   {
     "objectID": "fr/index.html",
     "href": "fr/index.html",
-    "title": "Modèle de document Quarto eCH-0309",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
     "section": "",
     "text": "Dans le présent document, les désignations de personnes sont formulées de manière épicène (neutre du point de vue du genre). Le guide de la Chancellerie fédérale sert de base. Selon la situation, on utilise des formulations paires (citoyennes et citoyens), des formes abstraites (personne assurée), des formes neutres ou des périphrases sans référence à la personne. L’usage du masculin générique n’est pas autorisé. Les formes complètes sont employées dans le texte continu, c’est-à-dire dans les textes composés de phrases rédigées. Dans les passages de texte raccourcis, notamment dans les tableaux, des formes abrégées peuvent être utilisées. La forme abrégée s’utilise alors avec une barre oblique, mais sans trait d’omission (rapporteur/euse). L’astérisque de genre et les typographies similaires ne sont pas utilisés."
   },
   {
     "objectID": "fr/index.html#sec-status",
     "href": "fr/index.html#sec-status",
-    "title": "Modèle de document Quarto eCH-0309",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
     "section": "1.1 Statut",
-    "text": "1.1 Statut\nApprouvé : Ce document a été approuvé par le comité d’experts. Il a force normative pour le domaine d’application défini et dans le champ d’application déterminé."
+    "text": "1.1 Statut\nEn cours : L’utilisation n’est autorisée qu’au sein du groupe spécialisé et du comité d’experts."
   },
   {
     "objectID": "fr/index.html#sec-scope-of-application",
     "href": "fr/index.html#sec-scope-of-application",
-    "title": "Modèle de document Quarto eCH-0309",
-    "section": "1.2 Champ d’application",
-    "text": "1.2 Champ d’application\nLes informations de ce chapitre doivent donner au lecteur un aperçu rapide de ce à quoi ce standard est destiné. Des indications sur les éléments suivants peuvent s’avérer utiles."
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "1.2 Domaine d’application",
+    "text": "1.2 Domaine d’application\nLe présent document décrit sémantiquement les données de la banque de données sur le trafic des animaux (BDTA), afin de permettre également aux spécialistes sans connaissances informatiques approfondies de mieux comprendre ces données."
   },
   {
-    "objectID": "fr/index.html#sec-example-subheading",
-    "href": "fr/index.html#sec-example-subheading",
-    "title": "Modèle de document Quarto eCH-0309",
-    "section": "1.3 Nous pouvons avoir des sous-titres",
-    "text": "1.3 Nous pouvons avoir des sous-titres\nEt écrire un peu de texte.\n\n1.3.1 Et aussi des sous-sous-titres\nEt écrire encore plus de texte. Peut-être même avec une belle image.\n\n\n\n\n\n\nFigure 1: Ajoutez toujours du texte pour décrire ce que montre l’image.\n\n\n\nLors de la présentation de diagrammes, essayez de les créer directement dans Mermaid JS ; cela facilite grandement les modifications futures ou les traductions."
+    "objectID": "fr/index.html#sec-animal-movement-reporting",
+    "href": "fr/index.html#sec-animal-movement-reporting",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "1.3 La notification du trafic des animaux en Suisse",
+    "text": "1.3 La notification du trafic des animaux en Suisse\nDans les années 1990, l’agriculture et l’industrie alimentaire suisses ont été fortement mises à l’épreuve par l’épizootie «ESB». Lorsque la transmissibilité de la maladie de l’animal à l’être humain s’est confirmée en 1996, cela a provoqué une grande incertitude. Les attentes en matière de sécurité des denrées alimentaires d’origine animale ont augmenté en conséquence, de même que la conscience de l’importance du contrôle des denrées alimentaires. L’approche «de l’étable à la table» s’est imposée. La surveillance basée sur les risques, la traçabilité sans faille des animaux de rente, le contrôle du trafic des animaux, l’obligation de déclarer la provenance ainsi que les contrôles de qualité tout au long de la chaîne de production et de transformation constituent depuis lors la base d’un niveau élevé de sécurité alimentaire.\nL’expérience de l’ESB a conduit en 1999 à la création d’une banque de données nationale sur le trafic des animaux (BDTA). L’article 7a ainsi que les articles 13 à 15 de la loi sur les épizooties et le titre 2, sections 1, 1a et 2a de l’ordonnance sur les épizooties énoncent les dispositions légales fondamentales relatives à l’identification/au marquage et à l’enregistrement des animaux de rente ainsi qu’aux obligations d’annonce correspondantes. Elles s’alignent sur la législation européenne en la matière (règlement (UE) 2016/429 sur les maladies animales transmissibles; règlement délégué (UE) 2019/2035 concernant les établissements détenant des animaux terrestres et les couvoirs ainsi que la traçabilité).\nSi seuls les bovins étaient soumis à l’obligation d’annonce à partir de 1999, les porcs et les équidés ont suivi dès 2011, même si les porcs ne font aujourd’hui encore pas l’objet d’annonces par animal individuel. À partir de 2014, respectivement de 2020, l’obligation d’annonce à la BDTA s’est également appliquée aux petits ruminants (moutons et chèvres). Au début, en 2014, elle ne concernait que les abattoirs. Depuis 2014, il existe également une obligation d’annonce pour la volaille. Depuis janvier 2020, les détenteurs de petits ruminants sont eux aussi intégrés dans le système d’annonce des animaux individuels. L’identification et le marquage des animaux à onglons au moyen de marques auriculaires, l’enregistrement individuel des bovins, des moutons et des chèvres dans la BDTA, ainsi que l’annonce des entrées, des sorties (l’animal quitte vivant une unité d’élevage), des naissances, des importations, des exportations, des abattages, des abattages à la ferme et des morts (l’animal est désannoncé comme n’étant plus vivant) sont obligatoires pour tous les détenteurs d’animaux en Suisse.\nLa BDTA fait partie d’un paysage systémique regroupant l’agriculture, les affaires vétérinaires et la sécurité alimentaire. Le portail Agate en constitue la porte d’entrée centrale, avec au cœur le système d’information sur la politique agricole AGIS.\n\nL’ordonnance sur Identitas SA et la banque de données sur le trafic des animaux (OId-BDTA) précise les contenus relatifs au trafic des animaux, les tâches d’Identitas SA ainsi que les droits d’accès aux données. L’importance de l’identification/du marquage des animaux de rente dépasse largement la problématique des épizooties et a donc également trouvé sa place dans la législation agricole (loi sur l’agriculture LAgr, art. 165g, 177 et 185) et dans diverses ordonnances associées. Les données issues du trafic des animaux sont devenues un élément indispensable de la mise en œuvre des mesures de politique agricole, par exemple les paiements directs liés aux animaux, la détermination des flux d’éléments nutritifs ou le monitoring agroenvironnemental. Ces données servent en outre de base au relevé des structures de l’agriculture suisse et, plus généralement, à la statistique agricole.\nLe système d’annonce du trafic des animaux s’est rapidement imposé tout au long de la chaîne de valeur alimentaire. Les programmes assortis de promesses en matière de bien-être animal, de traçabilité et de provenance s’y appuient. La diversité des informations sur les animaux issues du système d’annonce du trafic des animaux se reflète également dans les jeux de données publiquement disponibles de la plateforme Open Data Tierstatistik.\nLa description technique des interfaces figurant dans le présent document se fonde sur la description technique de service AnimalTracing v1.32 ainsi que sur la spécification openAPI v. x.xx."
+  },
+  {
+    "objectID": "fr/index.html#sec-references",
+    "href": "fr/index.html#sec-references",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "1.4 Renvois",
+    "text": "1.4 Renvois\nInterfaces: AnimalTracing API, description technique de service AnimalTracing\nNB: les noms des classes décrites au chapitre 3 ne correspondent pas aux ServiceOperations d’AnimalTracing, car la description sémantique doit donner une vue d’ensemble du contenu des données et présente un degré de détail plus fin que la description de service."
+  },
+  {
+    "objectID": "fr/index.html#sec-nodeshape-animalshape",
+    "href": "fr/index.html#sec-nodeshape-animalshape",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "2.1 Animal individuel",
+    "text": "2.1 Animal individuel\nUn animal de rente identifié individuellement. Dans la banque de données sur le trafic des animaux, les animaux des catégories bovins, ovins, caprins et équidés sont enregistrés comme animaux individuels ; ils sont identifiés de manière univoque par leur numéro de marque auriculaire, ou par l’UELN pour les équidés. Aucun animal individuel n’est tenu pour les porcs et la volaille, mais uniquement des notifications de groupe.\nClasse cible: :Animal\n\n\n\nTable 1: propriétés Animal individuel\n\n\n\n\n\n\n\n\n\n\n\nDescription\nChemin\nType\nCard.\n\n\n\n\nMère: Un animal individuel a au plus une mère.\n:mother\n:Animal\n0..1\n\n\nPère: Un animal individuel a au plus un père.\n:father\n:Animal\n0..1\n\n\nIdentifiant: Numéro de marque auriculaire, UELN pour les équidés\n:identifier\nxsd:string\n1..1\n\n\nEspèce d’animal de rente\n:genus\n:Genus\n1..1\n\n\nSexe\n:gender\n:Gender\n0..1\n\n\nDate de naissance\n:dateOfBirth\nxsd:date\n0..1\n\n\nDate de mort\n:dateOfDeath\nxsd:date\n0..1\n\n\nStatut de l’historique de l’animal\n:animalHistoryState\n:AnimalHistoryState\n1..1\n\n\nType d’utilisation\n:typeOfUse\n:AnimalTypeOfUse\n0..1\n\n\nCastré\n:castrated\nxsd:boolean\n0..1"
+  },
+  {
+    "objectID": "fr/index.html#sec-nodeshape-animalkeepershape",
+    "href": "fr/index.html#sec-nodeshape-animalkeepershape",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "2.2 Détenteur d’animaux",
+    "text": "2.2 Détenteur d’animaux\nUn exploitant est une unité juridique au sens de l’eCH-0108 qui assume le risque économique d’une exploitation (OTerm art. 2). Le détenteur d’animaux est une forme d’exploitant qui détient des animaux (OTerm art. 11a) ; il lui faut donc une unité locale (unité d’élevage). La responsabilité des notifications incombe au détenteur d’animaux pour toutes les catégories d’animaux à l’exception des équidés ; pour les équidés, elle incombe au propriétaire ou à la propriétaire (chapitre 3.1.1 de l’outil). Les attributs sont décrits dans l’eCH-0261, chapitres 3.1 et 3.2.\nClasse cible: :AnimalKeeper"
+  },
+  {
+    "objectID": "fr/index.html#sec-nodeshape-animalnotificationshape",
+    "href": "fr/index.html#sec-nodeshape-animalnotificationshape",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "2.3 Notification d’animal individuel",
+    "text": "2.3 Notification d’animal individuel\nUn événement concernant un animal individuel. Sont considérées comme événements les notifications de mouvement, les notifications de données de base, les modifications d’attributs individuels des données de base ainsi que les notifications finales. Une notification se rapporte toujours à l’unité locale où l’événement a eu lieu et peut en outre indiquer l’unité locale de provenance. Les événements sont annoncés par les personnes autorisées, avec indication de l’unité d’élevage à laquelle la notification se rapporte ; pour les équidés, ils sont annoncés par les personnes autorisées du propriétaire d’équidés responsable.\nClasse cible: :AnimalNotification\n\n\n\nTable 2: propriétés Notification d’animal individuel\n\n\n\n\n\n\n\n\n\n\n\nDescription\nChemin\nType\nCard.\n\n\n\n\nIdentifiant: Une notification d’animal individuel se rapporte à exactement un animal individuel.\n:animal\n:Animal\n1..1\n\n\nUnité locale: Numéro REE de l’unité locale à laquelle se rapporte la notification\n:localUnit\n:LocalUnit\n1..1\n\n\nProvenance: Numéro REE de l’unité locale d’où provient l’animal\n:originLocalUnit\n:LocalUnit\n0..1\n\n\nID: Identifiant univoque du mouvement, attribué par le système.\n:eventIdentifier\nxsd:string\n1..1\n\n\nEspèce d’animal de rente\n:genus\n:Genus\n1..1\n\n\nType de mouvement\n:notificationType\n:NotificationType\n1..1\n\n\nDate de l’événement: Date à laquelle l’événement a eu lieu\n:eventDate\nxsd:date\n1..1\n\n\nDate d’annonce: Date à laquelle l’événement a été annoncé\n:notificationDate\nxsd:date\n1..1"
+  },
+  {
+    "objectID": "fr/index.html#sec-nodeshape-groupnotificationshape",
+    "href": "fr/index.html#sec-nodeshape-groupnotificationshape",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "2.4 Notification de groupe",
+    "text": "2.4 Notification de groupe\nUn événement concernant un groupe d’animaux qui ne peuvent pas être identifiés individuellement. Les notifications de groupe sont enregistrées pour les animaux des catégories porcs et volaille ; les individus d’un tel groupe ne sont donc pas connus. Les événements sont annoncés par les personnes physiques de l’unité juridique responsable, le détenteur d’animaux. Ils comprennent les annonces de mise en place pour la volaille, les annonces de mouvement pour les porcs ainsi que les annonces d’abattage de porcs (en têtes) et de groupes de volaille (en kg). Cette classe n’a pas d’équivalent dans la spécification openAPI d’AnimalTracing, car les porcs et la volaille n’y sont pas représentés.\nClasse cible: :GroupNotification\n\n\n\nTable 3: propriétés Notification de groupe\n\n\n\n\n\n\n\n\n\n\n\nDescription\nChemin\nType\nCard.\n\n\n\n\nUnité locale: Numéro REE de l’unité locale\n:localUnit\n:LocalUnit\n1..1\n\n\nProvenance: Numéro REE de l’unité locale d’où provient l’animal\n:originLocalUnit\n:LocalUnit\n0..1\n\n\nID: Identifiant univoque du mouvement, attribué par le système.\n:eventIdentifier\nxsd:string\n1..1\n\n\nEspèce d’animal de rente\n:genus\n:Genus\n1..1\n\n\nInformation de groupe: Une information de groupe doit être indiquée pour les annonces de mise en place de volaille\n:groupInformation\nxsd:string\n0..1\n\n\nType de mouvement\n:notificationType\n:NotificationType\n1..1\n\n\nDate de l’événement: Date à laquelle l’événement a eu lieu\n:eventDate\nxsd:date\n1..1\n\n\nDate d’annonce: Date à laquelle l’événement a été annoncé\n:notificationDate\nxsd:date\n1..1\n\n\nNombre: Nombre d’animaux déplacés lors d’un mouvement (porcs/volaille)\n:count\nxsd:integer\n0..1\n\n\nPoids: Poids total en kg du groupe d’animaux pour les annonces d’abattage de volaille\n:weight\nxsd:integer\n0..1\n\n\nType d’utilisation: Type d’utilisation du groupe d’animaux (pour les animaux individuels il figure sur la classe «Einzeltier»)\n:typeOfUse\n:AnimalTypeOfUse\n0..1\n\n\nÂge: Pour les annonces de mise en place de volaille, l’âge doit être indiqué en semaines\n:age\nxsd:integer\n0..1"
+  },
+  {
+    "objectID": "fr/index.html#sec-nodeshape-legalunitshape",
+    "href": "fr/index.html#sec-nodeshape-legalunitshape",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "2.5 Unité juridique",
+    "text": "2.5 Unité juridique\nL’unité juridique au sens de l’eCH-0108 est une personne morale (p. ex. société anonyme, Sàrl), une société de personnes (p. ex. société en nom collectif) ou une personne physique exerçant une activité indépendante qui est soumise à la loi fédérale sur le numéro d’identification des entreprises (LIDE) et qui est inscrite au registre IDE. Elle identifie par exemple le sujet fiscal pour les autorités fiscales ou la personne assujettie aux cotisations d’assurances sociales. L’unité juridique est identifiée par son IDE. Ce n’est que lorsque l’entreprise est une «entreprise individuelle» que l’exploitant est en même temps une personne physique. Le système maître de ces données est le registre IDE de l’OFS ; le système d’information agricole obtient les données de ce registre via une interface. Le détenteur d’animaux et le propriétaire d’équidés sont les deux formes d’unité juridique qui apparaissent dans le présent Hilfsmittel (chapitre 3.1.1 de l’outil). Les attributs sont décrits dans l’eCH-0261, chapitres 3.1 et 3.2, ainsi que dans l’eCH-0108, chapitre 3.1.\nClasse cible: :LegalUnit"
+  },
+  {
+    "objectID": "fr/index.html#sec-nodeshape-localunitshape",
+    "href": "fr/index.html#sec-nodeshape-localunitshape",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "2.6 Unité locale",
+    "text": "2.6 Unité locale\nUne unité locale au sens de l’eCH-0108 est une installation située en un lieu déterminé où s’exerce une activité économique. Une unité locale possède un numéro REE et est toujours rattachée à une unité juridique (ou entreprise). L’unité locale est identifiée par son numéro REE. Une unité locale peut se composer d’un ou de plusieurs bâtiments. L’EGID attribué au numéro REE se rapporte au «centre» de l’unité locale, respectivement à son bâtiment principal. Dans la BDTA, les unités locales sont appelées «unités d’élevage» et sont en outre identifiées par leur numéro BDTA. Cette définition est tirée de l’eCH-0108, chapitre 1.5 ; les compléments spécifiques à l’agriculture sont décrits dans l’eCH-0261, chapitres 3.3 et 3.4.\nClasse cible: :LocalUnit\n\n\n\nTable 4: propriétés Unité locale\n\n\n\n\n\n\n\n\n\n\n\nDescription\nChemin\nType\nCard.\n\n\n\n\nDétenteur d’animaux: Rattachement de l’unité locale au détenteur d’animaux. Selon l’eCH-0108, chapitre 1.5, une unité locale est toujours rattachée à une unité juridique (ou entreprise) ; les données de base de l’unité locale comportent à cet effet l’attribut facultatif «mainUid» contenant l’IDE de l’unité juridique principale. Le détenteur d’animaux n’étant, selon le catalogue d’objets, qu’une forme particulière de l’unité juridique, ce rattachement n’est pas obligatoire.\n:animalKeeper\n:AnimalKeeper\n0..1"
+  },
+  {
+    "objectID": "fr/index.html#sec-nodeshape-equidshape",
+    "href": "fr/index.html#sec-nodeshape-equidshape",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "2.7 Équidé",
+    "text": "2.7 Équidé\nSous-classe de la classe animal individuel pour les animaux du genre équidé (cheval, mulet, bardot, âne). Tous les attributs de la classe animal individuel s’appliquent également aux équidés ; cette classe ne décrit que les informations supplémentaires propres aux équidés. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d’animaux. Un propriétaire est l’unité juridique qui détient des équidés en propriété ; le terme n’est utilisé que pour les propriétaires d’équidés (chapitre 3.1.1 de l’outil).\nClasse cible: :Equid\n\n\n\nTable 5: propriétés Équidé\n\n\n\n\n\n\n\n\n\n\n\nDescription\nChemin\nType\nCard.\n\n\n\n\nPropriétaire: L’unité juridique qui détient l’équidé en propriété. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d’animaux (chapitre 3.1.1 de l’outil).\n:owner\n:LegalUnit\n1..1\n\n\nCatégorie de taille\n:withersClass\n:EquidWithersClass\n1..1"
+  },
+  {
+    "objectID": "fr/index.html#sec-nodeshape-animalhealthstatusshape",
+    "href": "fr/index.html#sec-nodeshape-animalhealthstatusshape",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "2.8 État sanitaire de l’animal individuel",
+    "text": "2.8 État sanitaire de l’animal individuel\nUne information épizootique enregistrée sur un animal individuel. Outre le statut épizootique individuel, les vaccinations pertinentes sont également enregistrées.\nClasse cible: :AnimalHealthStatus\n\n\n\nTable 6: propriétés État sanitaire de l’animal individuel\n\n\n\n\n\n\n\n\n\n\n\nDescription\nChemin\nType\nCard.\n\n\n\n\nID de l’animal: Un état sanitaire de l’animal individuel se rapporte à exactement un animal individuel.\n:animal\n:Animal\n1..1\n\n\nType: p. ex. statut épizootique, vaccinal ou de risque\n:healthStatusType\n:HealthStatusType\n0..1\n\n\nStatut\n:epizooticStatus\n:AnimalEpizooticStatus\n0..1\n\n\nDate: Date à partir de laquelle le statut est valable, ou la date de vaccination\n:validFrom\nxsd:date\n0..1"
+  },
+  {
+    "objectID": "fr/index.html#sec-nodeshape-localunithealthstatusshape",
+    "href": "fr/index.html#sec-nodeshape-localunithealthstatusshape",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "2.9 État sanitaire de l’unité locale",
+    "text": "2.9 État sanitaire de l’unité locale\nLorsque des épizooties revêtent une importance nationale, il est essentiel que les détenteurs d’animaux soient informés des interdictions de déplacement et du statut épizootique, afin de minimiser le risque de propagation par le trafic des animaux. Une information épizootique enregistrée sur une unité locale. Outre le statut épizootique d’une unité locale, les résultats de vaccination, de risque et de laboratoire peuvent également être représentés. La spécification openAPI d’AnimalTracing ne prévoit pas de classe distincte à cet effet ; les informations correspondantes y sont des attributs de l’unité locale.\nClasse cible: :LocalUnitHealthStatus\n\n\n\nTable 7: propriétés État sanitaire de l’unité locale\n\n\n\n\n\n\n\n\n\n\n\nDescription\nChemin\nType\nCard.\n\n\n\n\nUnité locale: Numéro REE de l’unité locale\n:localUnit\n:LocalUnit\n1..1\n\n\nType: p. ex. statut épizootique, vaccinal ou de risque\n:healthStatusType\n:HealthStatusType\n0..1\n\n\nStatut\n:epizooticStatus\n:LocalUnitEpizooticStatus\n0..1\n\n\nDate: Date à partir de laquelle le statut est valable\n:validFrom\nxsd:date\n0..1"
+  },
+  {
+    "objectID": "fr/index.html#sec-codelist-animalhealthstatus",
+    "href": "fr/index.html#sec-codelist-animalhealthstatus",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "3.1 État sanitaire de l’animal individuel",
+    "text": "3.1 État sanitaire de l’animal individuel\n\n\n\nTable 8: Valeurs du domaine de valeurs État sanitaire de l’animal individuel\n\n\n\n\n\n\n\n\n\n\nValeur\nDésignation\nDescription\n\n\n\n\nBlocked\nBloqué\nType : statut épizootique\n\n\nFree\nLibre\nType : statut épizootique\n\n\nNotTested\nNon testé\nType : statut épizootique\n\n\nVaccinated\nVacciné\nType : statut vaccinal"
+  },
+  {
+    "objectID": "fr/index.html#sec-codelist-animalhistorystate",
+    "href": "fr/index.html#sec-codelist-animalhistorystate",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "3.2 Statut de l’historique de l’animal",
+    "text": "3.2 Statut de l’historique de l’animal\n\n\n\nTable 9: Valeurs du domaine de valeurs Statut de l’historique de l’animal\n\n\n\n\n\n\n\n\n\n\nValeur\nDésignation\nDescription\n\n\n\n\nLost\nVerschollen\n\n\n\nNotDefined\nNicht definiert\n\n\n\nNotOk\nFehlerhaft\n\n\n\nOk\nOK\n\n\n\nTemporaryOk\nTemporär OK"
+  },
+  {
+    "objectID": "fr/index.html#sec-codelist-animaltypeofuse",
+    "href": "fr/index.html#sec-codelist-animaltypeofuse",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "3.3 Type d’utilisation (bovins, ovins, caprins)",
+    "text": "3.3 Type d’utilisation (bovins, ovins, caprins)\n\n\n\nTable 10: Valeurs du domaine de valeurs Type d’utilisation (bovins, ovins, caprins)\n\n\n\n\n\n\n\n\n\n\nValeur\nDésignation\nDescription\n\n\n\n\nMilk\nMilch\nMilchkühe, -schafe und -ziegen\n\n\nOther\nAndere"
+  },
+  {
+    "objectID": "fr/index.html#sec-codelist-equidtypeofusage",
+    "href": "fr/index.html#sec-codelist-equidtypeofusage",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "3.4 Type d’utilisation (équidés)",
+    "text": "3.4 Type d’utilisation (équidés)\n\n\n\nTable 11: Valeurs du domaine de valeurs Type d’utilisation (équidés)\n\n\n\n\n\n\n\n\n\n\nValeur\nDésignation\nDescription\n\n\n\n\nCompanionAnimal\nHeimtier\n\n\n\nFarmAnimal\nNutztier"
+  },
+  {
+    "objectID": "fr/index.html#sec-codelist-equidwithersclass",
+    "href": "fr/index.html#sec-codelist-equidwithersclass",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "3.5 Catégorie de taille",
+    "text": "3.5 Catégorie de taille\n\n\n\nTable 12: Valeurs du domaine de valeurs Catégorie de taille\n\n\n\n\n\n\n\n\n\n\nValeur\nDésignation\nDescription\n\n\n\n\nGreaterThan148cm\nHauteur au garrot supérieure à 148 cm\n\n\n\nLessOrEqualThan148cm\nHauteur au garrot jusqu’à 148 cm"
+  },
+  {
+    "objectID": "fr/index.html#sec-codelist-gender",
+    "href": "fr/index.html#sec-codelist-gender",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "3.6 Sexe",
+    "text": "3.6 Sexe\n\n\n\nTable 13: Valeurs du domaine de valeurs Sexe\n\n\n\n\n\n\n\n\n\n\nValeur\nDésignation\nDescription\n\n\n\n\nFemale\nWeiblich\n\n\n\nMale\nMännlich"
+  },
+  {
+    "objectID": "fr/index.html#sec-codelist-genus",
+    "href": "fr/index.html#sec-codelist-genus",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "3.7 Espèce d’animal de rente",
+    "text": "3.7 Espèce d’animal de rente\n\n\n\nTable 14: Valeurs du domaine de valeurs Espèce d’animal de rente\n\n\n\n\n\n\n\n\n\n\nValeur\nDésignation\nDescription\n\n\n\n\nCamelid\nKameliden\nNeuweltkameliden\n\n\nCattle\nRindvieh\nTiere der Rindergattung (Bos) und Wasserbüffel (Bubalus bubalis)\n\n\nEquid\nEquiden\nTiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel)\n\n\nGame\nWild\nWild in Gehegen\n\n\nGoat\nZiegen\n\n\n\nPig\nSchweine\n\n\n\nPoultry\nGeflügel\n\n\n\nSheep\nSchafe"
+  },
+  {
+    "objectID": "fr/index.html#sec-codelist-healthstatustype",
+    "href": "fr/index.html#sec-codelist-healthstatustype",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "3.8 Type d’état sanitaire",
+    "text": "3.8 Type d’état sanitaire\n\n\n\nTable 15: Valeurs du domaine de valeurs Type d’état sanitaire\n\n\n\n\n\n\n\n\n\n\nValeur\nDésignation\nDescription\n\n\n\n\nEpizooticStatus\nStatut épizootique\n\n\n\nLaboratoryResult\nRésultat de laboratoire\n\n\n\nRiskStatus\nStatut de risque\n\n\n\nVaccinationStatus\nStatut vaccinal"
+  },
+  {
+    "objectID": "fr/index.html#sec-codelist-localunithealthstatus",
+    "href": "fr/index.html#sec-codelist-localunithealthstatus",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "3.9 État sanitaire de l’unité locale",
+    "text": "3.9 État sanitaire de l’unité locale\n\n\n\nTable 16: Valeurs du domaine de valeurs État sanitaire de l’unité locale\n\n\n\n\n\n\n\n\n\n\nValeur\nDésignation\nDescription\n\n\n\n\nBlocked\nBloqué\nType : statut épizootique\n\n\nFree\nLibre\nType : statut épizootique\n\n\nHigh\nÉlevé\nType : statut de risque\n\n\nLow\nFaible\nType : statut de risque\n\n\nMedium\nMoyen\nType : statut de risque\n\n\nNegative\nNégatif\nType : résultat de laboratoire\n\n\nNotTested\nNon testé\nType : statut épizootique\n\n\nPositive\nPositif\nType : résultat de laboratoire"
+  },
+  {
+    "objectID": "fr/index.html#sec-codelist-notificationtype",
+    "href": "fr/index.html#sec-codelist-notificationtype",
+    "title": "Document auxiliaire : données sur le trafic des animaux",
+    "section": "3.10 Type de mouvement",
+    "text": "3.10 Type de mouvement\n\n\n\nTable 17: Valeurs du domaine de valeurs Type de mouvement\n\n\n\n\n\n\n\n\n\n\nValeur\nDésignation\nDescription\n\n\n\n\nArrival\nEntrée\nPas pour les équidés\n\n\nBirth\nNaissance\n\n\n\nDayStay\nSéjour à la journée\nPas pour les équidés\n\n\nDeathBirth\nMortinaissance\nPas pour les équidés\n\n\nDeceased\nMort\nPour les équidés : euthanasie\n\n\nExport\nExportation\nPour les équidés : cession de propriété à l’étranger\n\n\nFirstRegistration\nPremier enregistrement\n\n\n\nImport\nImportation\n\n\n\nImportAfterExport\nImportation après exportation\nPas pour les équidés\n\n\nLeaving\nSortie\nPas pour les équidés\n\n\nLocationChange\nChangement de lieu\nUniquement pour les équidés\n\n\nOnFarmSlaughter\nAbattage à la ferme\nPas pour les équidés\n\n\nSlaughter\nAbattage"
   }
 ]

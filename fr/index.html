@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Modèle de document Quarto eCH-0309 – eCH-0309 Version 1.0.0 (Working Draft)</title>
+<title>Document auxiliaire : données sur le trafic des animaux – eCH-0309 Version 1.0.0 (Working Draft)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,41 +25,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -100,7 +65,10 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2b00583592e815700529758077e730d0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-1f8d4a1018e3d80cd5e6419dd02652f1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -203,15 +171,38 @@ div.csl-indent {
   <li><a href="#sec-introduction" id="toc-sec-introduction" class="nav-link" data-scroll-target="#sec-introduction"><span class="header-section-number">1</span> Introduction</a>
   <ul class="collapse">
   <li><a href="#sec-status" id="toc-sec-status" class="nav-link" data-scroll-target="#sec-status"><span class="header-section-number">1.1</span> Statut</a></li>
-  <li><a href="#sec-scope-of-application" id="toc-sec-scope-of-application" class="nav-link" data-scroll-target="#sec-scope-of-application"><span class="header-section-number">1.2</span> Champ d’application</a></li>
-  <li><a href="#sec-example-subheading" id="toc-sec-example-subheading" class="nav-link" data-scroll-target="#sec-example-subheading"><span class="header-section-number">1.3</span> Nous pouvons avoir des sous-titres</a></li>
+  <li><a href="#sec-scope-of-application" id="toc-sec-scope-of-application" class="nav-link" data-scroll-target="#sec-scope-of-application"><span class="header-section-number">1.2</span> Domaine d’application</a></li>
+  <li><a href="#sec-animal-movement-reporting" id="toc-sec-animal-movement-reporting" class="nav-link" data-scroll-target="#sec-animal-movement-reporting"><span class="header-section-number">1.3</span> La notification du trafic des animaux en Suisse</a></li>
+  <li><a href="#sec-references" id="toc-sec-references" class="nav-link" data-scroll-target="#sec-references"><span class="header-section-number">1.4</span> Renvois</a></li>
   </ul></li>
-  <li><a href="#sec-technical-notes" id="toc-sec-technical-notes" class="nav-link" data-scroll-target="#sec-technical-notes"><span class="header-section-number">2</span> Notes techniques</a></li>
-  <li><a href="#sec-data-model" id="toc-sec-data-model" class="nav-link" data-scroll-target="#sec-data-model"><span class="header-section-number">3</span> Modèle de données</a></li>
-  <li><a href="#sec-data-retrieval" id="toc-sec-data-retrieval" class="nav-link" data-scroll-target="#sec-data-retrieval"><span class="header-section-number">4</span> Accès aux données</a></li>
-  <li><a href="#sec-safety-consideration" id="toc-sec-safety-consideration" class="nav-link" data-scroll-target="#sec-safety-consideration"><span class="header-section-number">5</span> Considérations de sécurité</a></li>
-  <li><a href="#sec-disclaimer" id="toc-sec-disclaimer" class="nav-link" data-scroll-target="#sec-disclaimer"><span class="header-section-number">6</span> Clause de non-responsabilité</a></li>
-  <li><a href="#sec-copyrights" id="toc-sec-copyrights" class="nav-link" data-scroll-target="#sec-copyrights"><span class="header-section-number">7</span> Droits d’auteur</a></li>
+  <li><a href="#sec-data-model" id="toc-sec-data-model" class="nav-link" data-scroll-target="#sec-data-model"><span class="header-section-number">2</span> Modèle de données</a>
+  <ul class="collapse">
+  <li><a href="#sec-nodeshape-animalshape" id="toc-sec-nodeshape-animalshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalshape"><span class="header-section-number">2.1</span> Animal individuel</a></li>
+  <li><a href="#sec-nodeshape-animalkeepershape" id="toc-sec-nodeshape-animalkeepershape" class="nav-link" data-scroll-target="#sec-nodeshape-animalkeepershape"><span class="header-section-number">2.2</span> Détenteur d’animaux</a></li>
+  <li><a href="#sec-nodeshape-animalnotificationshape" id="toc-sec-nodeshape-animalnotificationshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalnotificationshape"><span class="header-section-number">2.3</span> Notification d’animal individuel</a></li>
+  <li><a href="#sec-nodeshape-groupnotificationshape" id="toc-sec-nodeshape-groupnotificationshape" class="nav-link" data-scroll-target="#sec-nodeshape-groupnotificationshape"><span class="header-section-number">2.4</span> Notification de groupe</a></li>
+  <li><a href="#sec-nodeshape-legalunitshape" id="toc-sec-nodeshape-legalunitshape" class="nav-link" data-scroll-target="#sec-nodeshape-legalunitshape"><span class="header-section-number">2.5</span> Unité juridique</a></li>
+  <li><a href="#sec-nodeshape-localunitshape" id="toc-sec-nodeshape-localunitshape" class="nav-link" data-scroll-target="#sec-nodeshape-localunitshape"><span class="header-section-number">2.6</span> Unité locale</a></li>
+  <li><a href="#sec-nodeshape-equidshape" id="toc-sec-nodeshape-equidshape" class="nav-link" data-scroll-target="#sec-nodeshape-equidshape"><span class="header-section-number">2.7</span> Équidé</a></li>
+  <li><a href="#sec-nodeshape-animalhealthstatusshape" id="toc-sec-nodeshape-animalhealthstatusshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalhealthstatusshape"><span class="header-section-number">2.8</span> État sanitaire de l’animal individuel</a></li>
+  <li><a href="#sec-nodeshape-localunithealthstatusshape" id="toc-sec-nodeshape-localunithealthstatusshape" class="nav-link" data-scroll-target="#sec-nodeshape-localunithealthstatusshape"><span class="header-section-number">2.9</span> État sanitaire de l’unité locale</a></li>
+  </ul></li>
+  <li><a href="#sec-code-lists" id="toc-sec-code-lists" class="nav-link" data-scroll-target="#sec-code-lists"><span class="header-section-number">3</span> Domaines de valeurs</a>
+  <ul class="collapse">
+  <li><a href="#sec-codelist-animalhealthstatus" id="toc-sec-codelist-animalhealthstatus" class="nav-link" data-scroll-target="#sec-codelist-animalhealthstatus"><span class="header-section-number">3.1</span> État sanitaire de l’animal individuel</a></li>
+  <li><a href="#sec-codelist-animalhistorystate" id="toc-sec-codelist-animalhistorystate" class="nav-link" data-scroll-target="#sec-codelist-animalhistorystate"><span class="header-section-number">3.2</span> Statut de l’historique de l’animal</a></li>
+  <li><a href="#sec-codelist-animaltypeofuse" id="toc-sec-codelist-animaltypeofuse" class="nav-link" data-scroll-target="#sec-codelist-animaltypeofuse"><span class="header-section-number">3.3</span> Type d’utilisation (bovins, ovins, caprins)</a></li>
+  <li><a href="#sec-codelist-equidtypeofusage" id="toc-sec-codelist-equidtypeofusage" class="nav-link" data-scroll-target="#sec-codelist-equidtypeofusage"><span class="header-section-number">3.4</span> Type d’utilisation (équidés)</a></li>
+  <li><a href="#sec-codelist-equidwithersclass" id="toc-sec-codelist-equidwithersclass" class="nav-link" data-scroll-target="#sec-codelist-equidwithersclass"><span class="header-section-number">3.5</span> Catégorie de taille</a></li>
+  <li><a href="#sec-codelist-gender" id="toc-sec-codelist-gender" class="nav-link" data-scroll-target="#sec-codelist-gender"><span class="header-section-number">3.6</span> Sexe</a></li>
+  <li><a href="#sec-codelist-genus" id="toc-sec-codelist-genus" class="nav-link" data-scroll-target="#sec-codelist-genus"><span class="header-section-number">3.7</span> Espèce d’animal de rente</a></li>
+  <li><a href="#sec-codelist-healthstatustype" id="toc-sec-codelist-healthstatustype" class="nav-link" data-scroll-target="#sec-codelist-healthstatustype"><span class="header-section-number">3.8</span> Type d’état sanitaire</a></li>
+  <li><a href="#sec-codelist-localunithealthstatus" id="toc-sec-codelist-localunithealthstatus" class="nav-link" data-scroll-target="#sec-codelist-localunithealthstatus"><span class="header-section-number">3.9</span> État sanitaire de l’unité locale</a></li>
+  <li><a href="#sec-codelist-notificationtype" id="toc-sec-codelist-notificationtype" class="nav-link" data-scroll-target="#sec-codelist-notificationtype"><span class="header-section-number">3.10</span> Type de mouvement</a></li>
+  </ul></li>
+  <li><a href="#sec-safety-consideration" id="toc-sec-safety-consideration" class="nav-link" data-scroll-target="#sec-safety-consideration"><span class="header-section-number">4</span> Considérations de sécurité</a></li>
+  <li><a href="#sec-disclaimer" id="toc-sec-disclaimer" class="nav-link" data-scroll-target="#sec-disclaimer"><span class="header-section-number">5</span> Clause de non-responsabilité</a></li>
+  <li><a href="#sec-copyrights" id="toc-sec-copyrights" class="nav-link" data-scroll-target="#sec-copyrights"><span class="header-section-number">6</span> Droits d’auteur</a></li>
   
   
   
@@ -226,7 +217,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Modèle de document Quarto eCH-0309</h1>
+<h1 class="title">Document auxiliaire : données sur le trafic des animaux</h1>
 </div>
 
 
@@ -237,7 +228,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">21 septembre 2026</p>
+      <p class="date">2 octobre 2026</p>
     </div>
   </div>
   
@@ -247,7 +238,7 @@ div.csl-indent {
 <div>
   <div class="abstract">
     <div class="block-title">Résumé</div>
-    Bref résumé de l’objectif de ce document
+    Le présent document décrit sémantiquement les données de la banque de données sur le trafic des animaux (BDTA), afin de permettre également aux spécialistes sans connaissances informatiques approfondies de mieux comprendre ces données.
   </div>
 </div>
 
@@ -263,81 +254,1069 @@ div.csl-indent {
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <section id="sec-status" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec-status"><span class="header-section-number">1.1</span> Statut</h2>
-<p>Approuvé : Ce document a été approuvé par le comité d’experts. Il a force normative pour le domaine d’application défini et dans le champ d’application déterminé.</p>
+<p>En cours : L’utilisation n’est autorisée qu’au sein du groupe spécialisé et du comité d’experts.</p>
 </section>
 <section id="sec-scope-of-application" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="sec-scope-of-application"><span class="header-section-number">1.2</span> Champ d’application</h2>
-<p>Les informations de ce chapitre doivent donner au lecteur un aperçu rapide de ce à quoi ce standard est destiné. Des indications sur les éléments suivants peuvent s’avérer utiles.</p>
+<h2 data-number="1.2" class="anchored" data-anchor-id="sec-scope-of-application"><span class="header-section-number">1.2</span> Domaine d’application</h2>
+<p>Le présent document décrit sémantiquement les données de la banque de données sur le trafic des animaux (BDTA), afin de permettre également aux spécialistes sans connaissances informatiques approfondies de mieux comprendre ces données.</p>
 </section>
-<section id="sec-example-subheading" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="sec-example-subheading"><span class="header-section-number">1.3</span> Nous pouvons avoir des sous-titres</h2>
-<p>Et écrire un peu de texte.</p>
-<section id="sec-example-subsubheading" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="sec-example-subsubheading"><span class="header-section-number">1.3.1</span> Et aussi des sous-sous-titres</h3>
-<p>Et écrire encore plus de texte. Peut-être même avec une belle image.</p>
-<div id="fig-example" class="quarto-float quarto-figure quarto-figure-center anchored">
+<section id="sec-animal-movement-reporting" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-animal-movement-reporting"><span class="header-section-number">1.3</span> La notification du trafic des animaux en Suisse</h2>
+<p>Dans les années 1990, l’agriculture et l’industrie alimentaire suisses ont été fortement mises à l’épreuve par l’épizootie «ESB». Lorsque la transmissibilité de la maladie de l’animal à l’être humain s’est confirmée en 1996, cela a provoqué une grande incertitude. Les attentes en matière de sécurité des denrées alimentaires d’origine animale ont augmenté en conséquence, de même que la conscience de l’importance du contrôle des denrées alimentaires. L’approche «de l’étable à la table» s’est imposée. La surveillance basée sur les risques, la traçabilité sans faille des animaux de rente, le contrôle du trafic des animaux, l’obligation de déclarer la provenance ainsi que les contrôles de qualité tout au long de la chaîne de production et de transformation constituent depuis lors la base d’un niveau élevé de sécurité alimentaire.</p>
+<p>L’expérience de l’ESB a conduit en 1999 à la création d’une banque de données nationale sur le trafic des animaux (BDTA). L’article 7a ainsi que les articles 13 à 15 de la loi sur les épizooties et le titre 2, sections 1, 1a et 2a de l’ordonnance sur les épizooties énoncent les dispositions légales fondamentales relatives à l’identification/au marquage et à l’enregistrement des animaux de rente ainsi qu’aux obligations d’annonce correspondantes. Elles s’alignent sur la législation européenne en la matière (règlement (UE) 2016/429 sur les maladies animales transmissibles; règlement délégué (UE) 2019/2035 concernant les établissements détenant des animaux terrestres et les couvoirs ainsi que la traçabilité).</p>
+<p>Si seuls les bovins étaient soumis à l’obligation d’annonce à partir de 1999, les porcs et les équidés ont suivi dès 2011, même si les porcs ne font aujourd’hui encore pas l’objet d’annonces par animal individuel. À partir de 2014, respectivement de 2020, l’obligation d’annonce à la BDTA s’est également appliquée aux petits ruminants (moutons et chèvres). Au début, en 2014, elle ne concernait que les abattoirs. Depuis 2014, il existe également une obligation d’annonce pour la volaille. Depuis janvier 2020, les détenteurs de petits ruminants sont eux aussi intégrés dans le système d’annonce des animaux individuels. L’identification et le marquage des animaux à onglons au moyen de marques auriculaires, l’enregistrement individuel des bovins, des moutons et des chèvres dans la BDTA, ainsi que l’annonce des entrées, des sorties (l’animal quitte vivant une unité d’élevage), des naissances, des importations, des exportations, des abattages, des abattages à la ferme et des morts (l’animal est désannoncé comme n’étant plus vivant) sont obligatoires pour tous les détenteurs d’animaux en Suisse.</p>
+<p>La BDTA fait partie d’un paysage systémique regroupant l’agriculture, les affaires vétérinaires et la sécurité alimentaire. Le portail Agate en constitue la porte d’entrée centrale, avec au cœur le système d’information sur la politique agricole AGIS.</p>
+<!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
+<p>L’ordonnance sur Identitas SA et la banque de données sur le trafic des animaux (OId-BDTA) précise les contenus relatifs au trafic des animaux, les tâches d’Identitas SA ainsi que les droits d’accès aux données. L’importance de l’identification/du marquage des animaux de rente dépasse largement la problématique des épizooties et a donc également trouvé sa place dans la législation agricole (loi sur l’agriculture LAgr, art. 165g, 177 et 185) et dans diverses ordonnances associées. Les données issues du trafic des animaux sont devenues un élément indispensable de la mise en œuvre des mesures de politique agricole, par exemple les paiements directs liés aux animaux, la détermination des flux d’éléments nutritifs ou le monitoring agroenvironnemental. Ces données servent en outre de base au relevé des structures de l’agriculture suisse et, plus généralement, à la statistique agricole.</p>
+<p>Le système d’annonce du trafic des animaux s’est rapidement imposé tout au long de la chaîne de valeur alimentaire. Les programmes assortis de promesses en matière de bien-être animal, de traçabilité et de provenance s’y appuient. La diversité des informations sur les animaux issues du système d’annonce du trafic des animaux se reflète également dans les jeux de données publiquement disponibles de la plateforme Open Data Tierstatistik.</p>
+<p>La description technique des interfaces figurant dans le présent document se fonde sur la description technique de service AnimalTracing v1.32 ainsi que sur la spécification openAPI v. x.xx.</p>
+</section>
+<section id="sec-references" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="sec-references"><span class="header-section-number">1.4</span> Renvois</h2>
+<p>Interfaces: AnimalTracing API, description technique de service AnimalTracing</p>
+<p>NB: les noms des classes décrites au chapitre 3 ne correspondent pas aux ServiceOperations d’AnimalTracing, car la description sémantique doit donner une vue d’ensemble du contenu des données et présente un degré de détail plus fin que la description de service.</p>
+</section>
+</section>
+<section id="sec-data-model" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Modèle de données</h1>
+<div id="fig-uml" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://fastly.picsum.photos/id/653/536/354.jpg?hmac=3InR8I5KmwbdkPHehlM8BMPd_BDHG_RWZkxt_IkeQGY" class="img-fluid figure-img">
+<div aria-describedby="fig-uml-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="../assets/img/uml.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Diagramme UML du modèle de données eCH-0309."><img src="../assets/img/uml.png" class="img-fluid figure-img" style="width:100.0%"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Ajoutez toujours du texte pour décrire ce que montre l’image.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-uml-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Diagramme UML du modèle de données eCH-0309.
 </figcaption>
 </figure>
 </div>
-<p>Lors de la présentation de diagrammes, essayez de les créer directement dans Mermaid JS ; cela facilite grandement les modifications futures ou les traductions.</p>
+<section id="sec-nodeshape-animalshape" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-nodeshape-animalshape"><span class="header-section-number">2.1</span> Animal individuel</h2>
+<p>Un animal de rente identifié individuellement. Dans la banque de données sur le trafic des animaux, les animaux des catégories bovins, ovins, caprins et équidés sont enregistrés comme animaux individuels ; ils sont identifiés de manière univoque par leur numéro de marque auriculaire, ou par l’UELN pour les équidés. Aucun animal individuel n’est tenu pour les porcs et la volaille, mais uniquement des notifications de groupe.</p>
+<p><strong>Classe cible:</strong> <code>:Animal</code></p>
+<div id="tbl-nodeshape-animalshape" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[40,25,25,10]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nodeshape-animalshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: propriétés Animal individuel
+</figcaption>
+<div aria-describedby="tbl-nodeshape-animalshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Chemin</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: right;">Card.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Mère</strong>: Un animal individuel a au plus une mère.</td>
+<td style="text-align: left;"><code>:mother</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-animalshape"><code>:Animal</code></a></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Père</strong>: Un animal individuel a au plus un père.</td>
+<td style="text-align: left;"><code>:father</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-animalshape"><code>:Animal</code></a></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Identifiant</strong>: Numéro de marque auriculaire, UELN pour les équidés</td>
+<td style="text-align: left;"><code>:identifier</code></td>
+<td style="text-align: left;"><code>xsd:string</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Espèce d’animal de rente</strong></td>
+<td style="text-align: left;"><code>:genus</code></td>
+<td style="text-align: left;"><code>:Genus</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sexe</strong></td>
+<td style="text-align: left;"><code>:gender</code></td>
+<td style="text-align: left;"><code>:Gender</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Date de naissance</strong></td>
+<td style="text-align: left;"><code>:dateOfBirth</code></td>
+<td style="text-align: left;"><code>xsd:date</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Date de mort</strong></td>
+<td style="text-align: left;"><code>:dateOfDeath</code></td>
+<td style="text-align: left;"><code>xsd:date</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Statut de l’historique de l’animal</strong></td>
+<td style="text-align: left;"><code>:animalHistoryState</code></td>
+<td style="text-align: left;"><code>:AnimalHistoryState</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Type d’utilisation</strong></td>
+<td style="text-align: left;"><code>:typeOfUse</code></td>
+<td style="text-align: left;"><code>:AnimalTypeOfUse</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Castré</strong></td>
+<td style="text-align: left;"><code>:castrated</code></td>
+<td style="text-align: left;"><code>xsd:boolean</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-nodeshape-animalkeepershape" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-nodeshape-animalkeepershape"><span class="header-section-number">2.2</span> Détenteur d’animaux</h2>
+<p>Un exploitant est une unité juridique au sens de l’eCH-0108 qui assume le risque économique d’une exploitation (OTerm art. 2). Le détenteur d’animaux est une forme d’exploitant qui détient des animaux (OTerm art. 11a) ; il lui faut donc une unité locale (unité d’élevage). La responsabilité des notifications incombe au détenteur d’animaux pour toutes les catégories d’animaux à l’exception des équidés ; pour les équidés, elle incombe au propriétaire ou à la propriétaire (chapitre 3.1.1 de l’outil). Les attributs sont décrits dans l’<a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf">eCH-0261</a>, chapitres 3.1 et 3.2.</p>
+<p><strong>Classe cible:</strong> <code>:AnimalKeeper</code></p>
+</section>
+<section id="sec-nodeshape-animalnotificationshape" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-nodeshape-animalnotificationshape"><span class="header-section-number">2.3</span> Notification d’animal individuel</h2>
+<p>Un événement concernant un animal individuel. Sont considérées comme événements les notifications de mouvement, les notifications de données de base, les modifications d’attributs individuels des données de base ainsi que les notifications finales. Une notification se rapporte toujours à l’unité locale où l’événement a eu lieu et peut en outre indiquer l’unité locale de provenance. Les événements sont annoncés par les personnes autorisées, avec indication de l’unité d’élevage à laquelle la notification se rapporte ; pour les équidés, ils sont annoncés par les personnes autorisées du propriétaire d’équidés responsable.</p>
+<p><strong>Classe cible:</strong> <code>:AnimalNotification</code></p>
+<div id="tbl-nodeshape-animalnotificationshape" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[40,25,25,10]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nodeshape-animalnotificationshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: propriétés Notification d’animal individuel
+</figcaption>
+<div aria-describedby="tbl-nodeshape-animalnotificationshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Chemin</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: right;">Card.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Identifiant</strong>: Une notification d’animal individuel se rapporte à exactement un animal individuel.</td>
+<td style="text-align: left;"><code>:animal</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-animalshape"><code>:Animal</code></a></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Unité locale</strong>: Numéro REE de l’unité locale à laquelle se rapporte la notification</td>
+<td style="text-align: left;"><code>:localUnit</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-localunitshape"><code>:LocalUnit</code></a></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Provenance</strong>: Numéro REE de l’unité locale d’où provient l’animal</td>
+<td style="text-align: left;"><code>:originLocalUnit</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-localunitshape"><code>:LocalUnit</code></a></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>ID</strong>: Identifiant univoque du mouvement, attribué par le système.</td>
+<td style="text-align: left;"><code>:eventIdentifier</code></td>
+<td style="text-align: left;"><code>xsd:string</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Espèce d’animal de rente</strong></td>
+<td style="text-align: left;"><code>:genus</code></td>
+<td style="text-align: left;"><code>:Genus</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Type de mouvement</strong></td>
+<td style="text-align: left;"><code>:notificationType</code></td>
+<td style="text-align: left;"><code>:NotificationType</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Date de l’événement</strong>: Date à laquelle l’événement a eu lieu</td>
+<td style="text-align: left;"><code>:eventDate</code></td>
+<td style="text-align: left;"><code>xsd:date</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Date d’annonce</strong>: Date à laquelle l’événement a été annoncé</td>
+<td style="text-align: left;"><code>:notificationDate</code></td>
+<td style="text-align: left;"><code>xsd:date</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-nodeshape-groupnotificationshape" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-nodeshape-groupnotificationshape"><span class="header-section-number">2.4</span> Notification de groupe</h2>
+<p>Un événement concernant un groupe d’animaux qui ne peuvent pas être identifiés individuellement. Les notifications de groupe sont enregistrées pour les animaux des catégories porcs et volaille ; les individus d’un tel groupe ne sont donc pas connus. Les événements sont annoncés par les personnes physiques de l’unité juridique responsable, le détenteur d’animaux. Ils comprennent les annonces de mise en place pour la volaille, les annonces de mouvement pour les porcs ainsi que les annonces d’abattage de porcs (en têtes) et de groupes de volaille (en kg). Cette classe n’a pas d’équivalent dans la spécification openAPI d’AnimalTracing, car les porcs et la volaille n’y sont pas représentés.</p>
+<p><strong>Classe cible:</strong> <code>:GroupNotification</code></p>
+<div id="tbl-nodeshape-groupnotificationshape" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[40,25,25,10]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nodeshape-groupnotificationshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: propriétés Notification de groupe
+</figcaption>
+<div aria-describedby="tbl-nodeshape-groupnotificationshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Chemin</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: right;">Card.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Unité locale</strong>: Numéro REE de l’unité locale</td>
+<td style="text-align: left;"><code>:localUnit</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-localunitshape"><code>:LocalUnit</code></a></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Provenance</strong>: Numéro REE de l’unité locale d’où provient l’animal</td>
+<td style="text-align: left;"><code>:originLocalUnit</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-localunitshape"><code>:LocalUnit</code></a></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>ID</strong>: Identifiant univoque du mouvement, attribué par le système.</td>
+<td style="text-align: left;"><code>:eventIdentifier</code></td>
+<td style="text-align: left;"><code>xsd:string</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Espèce d’animal de rente</strong></td>
+<td style="text-align: left;"><code>:genus</code></td>
+<td style="text-align: left;"><code>:Genus</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Information de groupe</strong>: Une information de groupe doit être indiquée pour les annonces de mise en place de volaille</td>
+<td style="text-align: left;"><code>:groupInformation</code></td>
+<td style="text-align: left;"><code>xsd:string</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Type de mouvement</strong></td>
+<td style="text-align: left;"><code>:notificationType</code></td>
+<td style="text-align: left;"><code>:NotificationType</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Date de l’événement</strong>: Date à laquelle l’événement a eu lieu</td>
+<td style="text-align: left;"><code>:eventDate</code></td>
+<td style="text-align: left;"><code>xsd:date</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Date d’annonce</strong>: Date à laquelle l’événement a été annoncé</td>
+<td style="text-align: left;"><code>:notificationDate</code></td>
+<td style="text-align: left;"><code>xsd:date</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Nombre</strong>: Nombre d’animaux déplacés lors d’un mouvement (porcs/volaille)</td>
+<td style="text-align: left;"><code>:count</code></td>
+<td style="text-align: left;"><code>xsd:integer</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Poids</strong>: Poids total en kg du groupe d’animaux pour les annonces d’abattage de volaille</td>
+<td style="text-align: left;"><code>:weight</code></td>
+<td style="text-align: left;"><code>xsd:integer</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Type d’utilisation</strong>: Type d’utilisation du groupe d’animaux (pour les animaux individuels il figure sur la classe «Einzeltier»)</td>
+<td style="text-align: left;"><code>:typeOfUse</code></td>
+<td style="text-align: left;"><code>:AnimalTypeOfUse</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Âge</strong>: Pour les annonces de mise en place de volaille, l’âge doit être indiqué en semaines</td>
+<td style="text-align: left;"><code>:age</code></td>
+<td style="text-align: left;"><code>xsd:integer</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-nodeshape-legalunitshape" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-nodeshape-legalunitshape"><span class="header-section-number">2.5</span> Unité juridique</h2>
+<p>L’unité juridique au sens de l’eCH-0108 est une personne morale (p.&nbsp;ex. société anonyme, Sàrl), une société de personnes (p.&nbsp;ex. société en nom collectif) ou une personne physique exerçant une activité indépendante qui est soumise à la loi fédérale sur le numéro d’identification des entreprises (LIDE) et qui est inscrite au registre IDE. Elle identifie par exemple le sujet fiscal pour les autorités fiscales ou la personne assujettie aux cotisations d’assurances sociales. L’unité juridique est identifiée par son IDE. Ce n’est que lorsque l’entreprise est une «entreprise individuelle» que l’exploitant est en même temps une personne physique. Le système maître de ces données est le registre IDE de l’OFS ; le système d’information agricole obtient les données de ce registre via une interface. Le détenteur d’animaux et le propriétaire d’équidés sont les deux formes d’unité juridique qui apparaissent dans le présent Hilfsmittel (chapitre 3.1.1 de l’outil). Les attributs sont décrits dans l’<a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf">eCH-0261</a>, chapitres 3.1 et 3.2, ainsi que dans l’<a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf">eCH-0108</a>, chapitre 3.1.</p>
+<p><strong>Classe cible:</strong> <code>:LegalUnit</code></p>
+</section>
+<section id="sec-nodeshape-localunitshape" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-nodeshape-localunitshape"><span class="header-section-number">2.6</span> Unité locale</h2>
+<p>Une unité locale au sens de l’eCH-0108 est une installation située en un lieu déterminé où s’exerce une activité économique. Une unité locale possède un numéro REE et est toujours rattachée à une unité juridique (ou entreprise). L’unité locale est identifiée par son numéro REE. Une unité locale peut se composer d’un ou de plusieurs bâtiments. L’EGID attribué au numéro REE se rapporte au «centre» de l’unité locale, respectivement à son bâtiment principal. Dans la BDTA, les unités locales sont appelées «unités d’élevage» et sont en outre identifiées par leur numéro BDTA. Cette définition est tirée de l’<a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf">eCH-0108</a>, chapitre 1.5 ; les compléments spécifiques à l’agriculture sont décrits dans l’<a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf">eCH-0261</a>, chapitres 3.3 et 3.4.</p>
+<p><strong>Classe cible:</strong> <code>:LocalUnit</code></p>
+<div id="tbl-nodeshape-localunitshape" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[40,25,25,10]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nodeshape-localunitshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: propriétés Unité locale
+</figcaption>
+<div aria-describedby="tbl-nodeshape-localunitshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Chemin</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: right;">Card.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Détenteur d’animaux</strong>: Rattachement de l’unité locale au détenteur d’animaux. Selon l’eCH-0108, chapitre 1.5, une unité locale est toujours rattachée à une unité juridique (ou entreprise) ; les données de base de l’unité locale comportent à cet effet l’attribut facultatif «mainUid» contenant l’IDE de l’unité juridique principale. Le détenteur d’animaux n’étant, selon le catalogue d’objets, qu’une forme particulière de l’unité juridique, ce rattachement n’est pas obligatoire.</td>
+<td style="text-align: left;"><code>:animalKeeper</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-animalkeepershape"><code>:AnimalKeeper</code></a></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-nodeshape-equidshape" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="sec-nodeshape-equidshape"><span class="header-section-number">2.7</span> Équidé</h2>
+<p>Sous-classe de la classe animal individuel pour les animaux du genre équidé (cheval, mulet, bardot, âne). Tous les attributs de la classe animal individuel s’appliquent également aux équidés ; cette classe ne décrit que les informations supplémentaires propres aux équidés. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d’animaux. Un propriétaire est l’unité juridique qui détient des équidés en propriété ; le terme n’est utilisé que pour les propriétaires d’équidés (chapitre 3.1.1 de l’outil).</p>
+<p><strong>Classe cible:</strong> <code>:Equid</code></p>
+<div id="tbl-nodeshape-equidshape" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[40,25,25,10]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nodeshape-equidshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: propriétés Équidé
+</figcaption>
+<div aria-describedby="tbl-nodeshape-equidshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Chemin</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: right;">Card.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Propriétaire</strong>: L’unité juridique qui détient l’équidé en propriété. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d’animaux (chapitre 3.1.1 de l’outil).</td>
+<td style="text-align: left;"><code>:owner</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-legalunitshape"><code>:LegalUnit</code></a></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Catégorie de taille</strong></td>
+<td style="text-align: left;"><code>:withersClass</code></td>
+<td style="text-align: left;"><code>:EquidWithersClass</code></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-nodeshape-animalhealthstatusshape" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="sec-nodeshape-animalhealthstatusshape"><span class="header-section-number">2.8</span> État sanitaire de l’animal individuel</h2>
+<p>Une information épizootique enregistrée sur un animal individuel. Outre le statut épizootique individuel, les vaccinations pertinentes sont également enregistrées.</p>
+<p><strong>Classe cible:</strong> <code>:AnimalHealthStatus</code></p>
+<div id="tbl-nodeshape-animalhealthstatusshape" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[40,25,25,10]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nodeshape-animalhealthstatusshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: propriétés État sanitaire de l’animal individuel
+</figcaption>
+<div aria-describedby="tbl-nodeshape-animalhealthstatusshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Chemin</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: right;">Card.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>ID de l’animal</strong>: Un état sanitaire de l’animal individuel se rapporte à exactement un animal individuel.</td>
+<td style="text-align: left;"><code>:animal</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-animalshape"><code>:Animal</code></a></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Type</strong>: p.&nbsp;ex. statut épizootique, vaccinal ou de risque</td>
+<td style="text-align: left;"><code>:healthStatusType</code></td>
+<td style="text-align: left;"><code>:HealthStatusType</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Statut</strong></td>
+<td style="text-align: left;"><code>:epizooticStatus</code></td>
+<td style="text-align: left;"><code>:AnimalEpizooticStatus</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Date</strong>: Date à partir de laquelle le statut est valable, ou la date de vaccination</td>
+<td style="text-align: left;"><code>:validFrom</code></td>
+<td style="text-align: left;"><code>xsd:date</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-nodeshape-localunithealthstatusshape" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="sec-nodeshape-localunithealthstatusshape"><span class="header-section-number">2.9</span> État sanitaire de l’unité locale</h2>
+<p>Lorsque des épizooties revêtent une importance nationale, il est essentiel que les détenteurs d’animaux soient informés des interdictions de déplacement et du statut épizootique, afin de minimiser le risque de propagation par le trafic des animaux. Une information épizootique enregistrée sur une unité locale. Outre le statut épizootique d’une unité locale, les résultats de vaccination, de risque et de laboratoire peuvent également être représentés. La spécification openAPI d’AnimalTracing ne prévoit pas de classe distincte à cet effet ; les informations correspondantes y sont des attributs de l’unité locale.</p>
+<p><strong>Classe cible:</strong> <code>:LocalUnitHealthStatus</code></p>
+<div id="tbl-nodeshape-localunithealthstatusshape" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[40,25,25,10]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nodeshape-localunithealthstatusshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7: propriétés État sanitaire de l’unité locale
+</figcaption>
+<div aria-describedby="tbl-nodeshape-localunithealthstatusshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Chemin</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: right;">Card.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Unité locale</strong>: Numéro REE de l’unité locale</td>
+<td style="text-align: left;"><code>:localUnit</code></td>
+<td style="text-align: left;"><a href="#sec-nodeshape-localunitshape"><code>:LocalUnit</code></a></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Type</strong>: p.&nbsp;ex. statut épizootique, vaccinal ou de risque</td>
+<td style="text-align: left;"><code>:healthStatusType</code></td>
+<td style="text-align: left;"><code>:HealthStatusType</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Statut</strong></td>
+<td style="text-align: left;"><code>:epizooticStatus</code></td>
+<td style="text-align: left;"><code>:LocalUnitEpizooticStatus</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Date</strong>: Date à partir de laquelle le statut est valable</td>
+<td style="text-align: left;"><code>:validFrom</code></td>
+<td style="text-align: left;"><code>xsd:date</code></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 </section>
 </section>
+<section id="sec-code-lists" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Domaines de valeurs</h1>
+<p>Pour une partie de ces domaines de valeurs, aucune désignation française ou italienne n’est encore disponible ; les désignations sont indiquées en allemand et en anglais, telles que les sources les fournissent. (<a href="https://test-03-tvd-api-at.identitas.ch/open-api/v1.0">https://test-03-tvd-api-at.identitas.ch/open-api/v1.0</a>, 2026-09-24)</p>
+<section id="sec-codelist-animalhealthstatus" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-codelist-animalhealthstatus"><span class="header-section-number">3.1</span> État sanitaire de l’animal individuel</h2>
+<div id="tbl-codelist-animalhealthstatus" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-animalhealthstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8: Valeurs du domaine de valeurs État sanitaire de l’animal individuel
+</figcaption>
+<div aria-describedby="tbl-codelist-animalhealthstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Désignation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>Blocked</code></td>
+<td style="text-align: left;">Bloqué</td>
+<td style="text-align: left;">Type : statut épizootique</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Free</code></td>
+<td style="text-align: left;">Libre</td>
+<td style="text-align: left;">Type : statut épizootique</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>NotTested</code></td>
+<td style="text-align: left;">Non testé</td>
+<td style="text-align: left;">Type : statut épizootique</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Vaccinated</code></td>
+<td style="text-align: left;">Vacciné</td>
+<td style="text-align: left;">Type : statut vaccinal</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 </section>
-<section id="sec-technical-notes" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Notes techniques</h1>
-<p>Nous utilisons l’interface en ligne de commande (CLI) ROBOT dans notre projet <span class="citation" data-cites="jackson2019robot">(<a href="#ref-jackson2019robot" role="doc-biblioref">Jackson et al. 2019</a>)</span>, en particulier pour sa capacité à exécuter le raisonneur HermiT <span class="citation" data-cites="glimm2014hermit">(<a href="#ref-glimm2014hermit" role="doc-biblioref">Glimm et al. 2014</a>)</span>.</p>
+<section id="sec-codelist-animalhistorystate" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-codelist-animalhistorystate"><span class="header-section-number">3.2</span> Statut de l’historique de l’animal</h2>
+<div id="tbl-codelist-animalhistorystate" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-animalhistorystate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9: Valeurs du domaine de valeurs Statut de l’historique de l’animal
+</figcaption>
+<div aria-describedby="tbl-codelist-animalhistorystate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Désignation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>Lost</code></td>
+<td style="text-align: left;">Verschollen</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>NotDefined</code></td>
+<td style="text-align: left;">Nicht definiert</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>NotOk</code></td>
+<td style="text-align: left;">Fehlerhaft</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Ok</code></td>
+<td style="text-align: left;">OK</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>TemporaryOk</code></td>
+<td style="text-align: left;">Temporär OK</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 </section>
-<section id="sec-data-model" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Modèle de données</h1>
+<section id="sec-codelist-animaltypeofuse" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-codelist-animaltypeofuse"><span class="header-section-number">3.3</span> Type d’utilisation (bovins, ovins, caprins)</h2>
+<div id="tbl-codelist-animaltypeofuse" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-animaltypeofuse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10: Valeurs du domaine de valeurs Type d’utilisation (bovins, ovins, caprins)
+</figcaption>
+<div aria-describedby="tbl-codelist-animaltypeofuse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Désignation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>Milk</code></td>
+<td style="text-align: left;">Milch</td>
+<td style="text-align: left;">Milchkühe, -schafe und -ziegen</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Other</code></td>
+<td style="text-align: left;">Andere</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 </section>
-<section id="sec-data-retrieval" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Accès aux données</h1>
-<p>Les données de base et de référence qui sous-tendent ce document sont disponibles sous forme de <em>Linked Data</em>.</p>
-<p>La base technologique de cette approche est le Resource Description Framework <span class="citation" data-cites="cyganiak2014rdf11">(RDF, <a href="#ref-cyganiak2014rdf11" role="doc-biblioref">Cyganiak et al. 2014</a>)</span>, un standard central du World Wide Web Consortium (W3C) pour la modélisation des structures de données sur le Web. En RDF, les informations ne sont pas représentées dans des tableaux classiques, mais sous forme de graphes interconnectés. Chaque déclaration est constituée de ce que l’on appelle un triplet (sujet, prédicat, objet). Cette structure permet une description des ressources et de leurs relations mutuelles qui soit lisible par machine, interopérable et univoque à travers différents systèmes.</p>
-<p>Pour le stockage et la publication de ces données RDF, on utilise <a href="https://lindas.admin.ch/">LINDAS</a> (Linked Data Service), le service officiel de Linked Data de l’administration fédérale suisse. LINDAS fait office de <em>Triple Store</em>, une base de données orientée graphe spécialisée et optimisée pour le stockage et l’interrogation efficaces de triplets RDF, qui met les données publiquement à disposition via une interface standardisée.</p>
-<p>Le chapitre suivant fournit des instructions minimales sur la façon dont les données peuvent être interrogées et extraites de LINDAS.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode rq code-with-copy"><code class="sourceCode sparql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">BASE</span> <span class="st">&lt;https://agriculture.ld.admin.ch/eCH-1234/2/&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">PREFIX</span> schema: <span class="st">&lt;http://schema.org/&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="op">{</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ?genre a <span class="st">&lt;Genre&gt;</span> <span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        schema:name ?name <span class="op">.</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Les données sous-jacentes elles-mêmes sont gérées sur GitHub sous forme de fichiers Turtle.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode ttl code-with-copy"><code class="sourceCode turtle"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">@base</span> <span class="bu">&lt;https://agriculture.ld.admin.ch/eCH-1234/2/&gt;</span> <span class="op">.</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">@prefix</span> <span class="dt">genre:</span> <span class="bu">&lt;https://agriculture.ld.admin.ch/eCH-1234/2/genre/&gt;</span> <span class="op">.</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">@prefix</span> <span class="dt">schema:</span> <span class="bu">&lt;http://schema.org/&gt;</span> <span class="op">.</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">genre:1</span> <span class="kw">a</span> <span class="bu">&lt;Genre&gt;</span> <span class="op">;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">schema:name</span> <span class="st">"Rock"</span> <span class="op">.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dt">genre:2</span> <span class="kw">a</span> <span class="bu">&lt;Genre&gt;</span> <span class="op">;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">schema:name</span> <span class="st">"Jazz"</span> <span class="op">.</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="dt">genre:3</span> <span class="kw">a</span> <span class="bu">&lt;Genre&gt;</span> <span class="op">;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">schema:name</span> <span class="st">"Metal"</span> <span class="op">;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">schema:partOf</span> <span class="dt">genre:1</span> <span class="op">.</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="sec-codelist-equidtypeofusage" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-codelist-equidtypeofusage"><span class="header-section-number">3.4</span> Type d’utilisation (équidés)</h2>
+<div id="tbl-codelist-equidtypeofusage" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-equidtypeofusage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11: Valeurs du domaine de valeurs Type d’utilisation (équidés)
+</figcaption>
+<div aria-describedby="tbl-codelist-equidtypeofusage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Désignation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>CompanionAnimal</code></td>
+<td style="text-align: left;">Heimtier</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>FarmAnimal</code></td>
+<td style="text-align: left;">Nutztier</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 </section>
-<section id="sec-safety-consideration" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Considérations de sécurité</h1>
+<section id="sec-codelist-equidwithersclass" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-codelist-equidwithersclass"><span class="header-section-number">3.5</span> Catégorie de taille</h2>
+<div id="tbl-codelist-equidwithersclass" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-equidwithersclass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12: Valeurs du domaine de valeurs Catégorie de taille
+</figcaption>
+<div aria-describedby="tbl-codelist-equidwithersclass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Désignation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>GreaterThan148cm</code></td>
+<td style="text-align: left;">Hauteur au garrot supérieure à 148 cm</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>LessOrEqualThan148cm</code></td>
+<td style="text-align: left;">Hauteur au garrot jusqu’à 148 cm</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-codelist-gender" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-codelist-gender"><span class="header-section-number">3.6</span> Sexe</h2>
+<div id="tbl-codelist-gender" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;13: Valeurs du domaine de valeurs Sexe
+</figcaption>
+<div aria-describedby="tbl-codelist-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Désignation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>Female</code></td>
+<td style="text-align: left;">Weiblich</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Male</code></td>
+<td style="text-align: left;">Männlich</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-codelist-genus" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-codelist-genus"><span class="header-section-number">3.7</span> Espèce d’animal de rente</h2>
+<div id="tbl-codelist-genus" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-genus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;14: Valeurs du domaine de valeurs Espèce d’animal de rente
+</figcaption>
+<div aria-describedby="tbl-codelist-genus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Désignation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>Camelid</code></td>
+<td style="text-align: left;">Kameliden</td>
+<td style="text-align: left;">Neuweltkameliden</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Cattle</code></td>
+<td style="text-align: left;">Rindvieh</td>
+<td style="text-align: left;">Tiere der Rindergattung (Bos) und Wasserbüffel (Bubalus bubalis)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Equid</code></td>
+<td style="text-align: left;">Equiden</td>
+<td style="text-align: left;">Tiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Game</code></td>
+<td style="text-align: left;">Wild</td>
+<td style="text-align: left;">Wild in Gehegen</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Goat</code></td>
+<td style="text-align: left;">Ziegen</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Pig</code></td>
+<td style="text-align: left;">Schweine</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Poultry</code></td>
+<td style="text-align: left;">Geflügel</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Sheep</code></td>
+<td style="text-align: left;">Schafe</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-codelist-healthstatustype" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="sec-codelist-healthstatustype"><span class="header-section-number">3.8</span> Type d’état sanitaire</h2>
+<div id="tbl-codelist-healthstatustype" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-healthstatustype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;15: Valeurs du domaine de valeurs Type d’état sanitaire
+</figcaption>
+<div aria-describedby="tbl-codelist-healthstatustype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Désignation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>EpizooticStatus</code></td>
+<td style="text-align: left;">Statut épizootique</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>LaboratoryResult</code></td>
+<td style="text-align: left;">Résultat de laboratoire</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>RiskStatus</code></td>
+<td style="text-align: left;">Statut de risque</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>VaccinationStatus</code></td>
+<td style="text-align: left;">Statut vaccinal</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-codelist-localunithealthstatus" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="sec-codelist-localunithealthstatus"><span class="header-section-number">3.9</span> État sanitaire de l’unité locale</h2>
+<div id="tbl-codelist-localunithealthstatus" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-localunithealthstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;16: Valeurs du domaine de valeurs État sanitaire de l’unité locale
+</figcaption>
+<div aria-describedby="tbl-codelist-localunithealthstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Désignation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>Blocked</code></td>
+<td style="text-align: left;">Bloqué</td>
+<td style="text-align: left;">Type : statut épizootique</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Free</code></td>
+<td style="text-align: left;">Libre</td>
+<td style="text-align: left;">Type : statut épizootique</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>High</code></td>
+<td style="text-align: left;">Élevé</td>
+<td style="text-align: left;">Type : statut de risque</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Low</code></td>
+<td style="text-align: left;">Faible</td>
+<td style="text-align: left;">Type : statut de risque</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Medium</code></td>
+<td style="text-align: left;">Moyen</td>
+<td style="text-align: left;">Type : statut de risque</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Negative</code></td>
+<td style="text-align: left;">Négatif</td>
+<td style="text-align: left;">Type : résultat de laboratoire</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>NotTested</code></td>
+<td style="text-align: left;">Non testé</td>
+<td style="text-align: left;">Type : statut épizootique</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Positive</code></td>
+<td style="text-align: left;">Positif</td>
+<td style="text-align: left;">Type : résultat de laboratoire</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-codelist-notificationtype" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="sec-codelist-notificationtype"><span class="header-section-number">3.10</span> Type de mouvement</h2>
+<div id="tbl-codelist-notificationtype" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-notificationtype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;17: Valeurs du domaine de valeurs Type de mouvement
+</figcaption>
+<div aria-describedby="tbl-codelist-notificationtype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Valeur</th>
+<th style="text-align: left;">Désignation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>Arrival</code></td>
+<td style="text-align: left;">Entrée</td>
+<td style="text-align: left;">Pas pour les équidés</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Birth</code></td>
+<td style="text-align: left;">Naissance</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>DayStay</code></td>
+<td style="text-align: left;">Séjour à la journée</td>
+<td style="text-align: left;">Pas pour les équidés</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>DeathBirth</code></td>
+<td style="text-align: left;">Mortinaissance</td>
+<td style="text-align: left;">Pas pour les équidés</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Deceased</code></td>
+<td style="text-align: left;">Mort</td>
+<td style="text-align: left;">Pour les équidés : euthanasie</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Export</code></td>
+<td style="text-align: left;">Exportation</td>
+<td style="text-align: left;">Pour les équidés : cession de propriété à l’étranger</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>FirstRegistration</code></td>
+<td style="text-align: left;">Premier enregistrement</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Import</code></td>
+<td style="text-align: left;">Importation</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>ImportAfterExport</code></td>
+<td style="text-align: left;">Importation après exportation</td>
+<td style="text-align: left;">Pas pour les équidés</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Leaving</code></td>
+<td style="text-align: left;">Sortie</td>
+<td style="text-align: left;">Pas pour les équidés</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>LocationChange</code></td>
+<td style="text-align: left;">Changement de lieu</td>
+<td style="text-align: left;">Uniquement pour les équidés</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>OnFarmSlaughter</code></td>
+<td style="text-align: left;">Abattage à la ferme</td>
+<td style="text-align: left;">Pas pour les équidés</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Slaughter</code></td>
+<td style="text-align: left;">Abattage</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="sec-safety-consideration" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Considérations de sécurité</h1>
 <p>Informations sur les bases légales expressément déterminantes ou remarque indiquant que les bases légales pertinentes doivent être respectées lors de la mise en œuvre.</p>
 </section>
-<section id="sec-disclaimer" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Clause de non-responsabilité</h1>
+<section id="sec-disclaimer" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Clause de non-responsabilité</h1>
 <p>Les standards eCH que l’association eCH met gratuitement à la disposition de l’utilisateur ou qui font référence à eCH n’ont que le statut de recommandations. L’association eCH décline toute responsabilité pour les décisions ou mesures prises par l’utilisateur sur la base de ces documents. Il incombe à l’utilisateur de vérifier lui-même les documents avant de les utiliser et, si nécessaire, de demander des conseils professionnels. Les standards eCH ne peuvent et ne doivent pas remplacer les conseils techniques, organisationnels ou juridiques dans un cas individuel.</p>
 <p>Les documents, procédures, méthodes, produits et standards auxquels il est fait référence dans les standards eCH sont potentiellement protégés par des droits de marque, d’auteur ou de brevet. Il est de la responsabilité exclusive de l’utilisateur d’obtenir les licences nécessaires auprès des ayants droit et/ou des organisations.</p>
 <p>Bien que l’association eCH ait apporté le soin nécessaire à l’élaboration des standards eCH, elle ne peut garantir ni assurer que les informations et documents fournis sont actuels, complets, exacts ou exempts d’erreurs. eCH se réserve le droit de modifier le contenu de ses standards à tout moment et sans préavis.</p>
 <p>Toute responsabilité pour les dommages causés par l’utilisation des standards eCH par l’utilisateur est exclue dans les limites autorisées par la loi.</p>
 </section>
-<section id="sec-copyrights" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Droits d’auteur</h1>
+<section id="sec-copyrights" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Droits d’auteur</h1>
 <p>Les personnes qui élaborent les standards eCH restent propriétaires de leurs droits de propriété intellectuelle. Ces personnes s’engagent toutefois à mettre leurs droits de propriété intellectuelle ou d’autres droits sur des droits de propriété intellectuelle de tiers, dans la mesure du possible, à la disposition des groupes d’experts concernés et de l’association eCH, et ce gratuitement et pour une utilisation ainsi qu’un développement ultérieur illimités dans le cadre du but de l’association.</p>
 <p>Les standards élaborés par les groupes d’experts peuvent être utilisés, diffusés et développés gratuitement et de manière illimitée en mentionnant le nom de l’auteur respectif d’eCH.</p>
 <p>Les standards eCH sont entièrement documentés et libres de toute restriction de droit de licence et/ou de brevet. La documentation correspondante peut être demandée gratuitement. Ces dispositions ne s’appliquent toutefois qu’aux standards élaborés par eCH, et non aux standards ou produits de tiers qui font référence aux standards eCH. Les standards contiennent les références correspondantes aux droits de tiers.</p>
@@ -349,27 +1328,19 @@ Figure&nbsp;1: Ajoutez toujours du texte pour décrire ce que montre l’image.
 
 
 
-<div id="quarto-appendix" class="default"><section id="sec-appendix-a" class="level1 appendix" data-number="8"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">8</span> Annexe A - Références</h2><div class="quarto-appendix-contents">
+<div id="quarto-appendix" class="default"><section id="sec-appendix-a" class="level1 appendix" data-number="7"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">7</span> Annexe A - Références</h2><div class="quarto-appendix-contents">
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-cyganiak2014rdf11" class="csl-entry" role="listitem">
-Cyganiak, Richard, David Wood, et Markus Lanthaler. 2014. <em><span>RDF</span> 1.1 Concepts and Abstract Syntax</em>. W3C Recommendation. World Wide Web Consortium (W3C). <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a>.
-</div>
-<div id="ref-glimm2014hermit" class="csl-entry" role="listitem">
-Glimm, Birte, Ian Horrocks, Boris Motik, Giorgos Stoilos, et Zhe Wang. 2014. <span>«&nbsp;HermiT: an OWL 2 reasoner&nbsp;»</span>. <em>Journal of automated reasoning</em> 53 (3): 245‑69.
-</div>
-<div id="ref-jackson2019robot" class="csl-entry" role="listitem">
-Jackson, Rebecca C, James P Balhoff, Eric Douglass, Nomi L Harris, Christopher J Mungall, et James A Overton. 2019. <span>«&nbsp;ROBOT: a tool for automating ontology workflows&nbsp;»</span>. <em>BMC bioinformatics</em> 20 (1): 407. <a href="https://doi.org/10.1186/s12859-019-3002-3">https://doi.org/10.1186/s12859-019-3002-3</a>.
-</div>
-</div>
-</div></section><section id="sec-appendix-b" class="level1 appendix" data-number="9"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">9</span> Annexe B - Collaboration et Vérification</h2><div class="quarto-appendix-contents">
+<div id="refs" role="list">
 
-</div></section><section id="sec-appendix-c" class="level1 appendix" data-number="10"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">10</span> Annexe C - Abréviations et glossaire</h2><div class="quarto-appendix-contents">
+</div>
+</div></section><section id="sec-appendix-b" class="level1 appendix" data-number="8"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">8</span> Annexe B - Collaboration et Vérification</h2><div class="quarto-appendix-contents">
+
+</div></section><section id="sec-appendix-c" class="level1 appendix" data-number="9"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">9</span> Annexe C - Abréviations et glossaire</h2><div class="quarto-appendix-contents">
 
 <div id="tbl-glossary" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[20,25,55]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glossary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Glossaire de la norme eCH-0309
+Table&nbsp;18: Glossaire de l’eCH-0309
 </figcaption>
 <div aria-describedby="tbl-glossary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -387,14 +1358,34 @@ Table&nbsp;1: Glossaire de la norme eCH-0309
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/term/animalHolding"><code>term:animalHolding</code></a></td>
+<td style="text-align: left;"><strong>Unité d’élevage</strong></td>
+<td style="text-align: left;">Dans la banque de données sur le trafic des animaux, les unités locales sont appelées «unités d’élevage»; elles sont en outre identifiées par leur numéro BDTA.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/term/farmManager"><code>term:farmManager</code></a></td>
+<td style="text-align: left;"><strong>Exploitant</strong></td>
+<td style="text-align: left;">Une unité juridique qui assume le risque économique d’une exploitation (OTerm art. 2). Le détenteur d’animaux est une forme d’exploitant qui détient des animaux (OTerm art. 11a).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/term/homeHolding"><code>term:homeHolding</code></a></td>
+<td style="text-align: left;"><strong>Exploitation de référence</strong></td>
+<td style="text-align: left;">Pour les bovins, une exploitation de référence peut être enregistrée afin de représenter l’appartenance des animaux à une unité d’élevage lorsqu’un animal se trouve sur une autre unité locale.</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/term/lindas"><code>term:lindas</code></a></td>
 <td style="text-align: left;"><strong>Linked Data Service</strong> (LINDAS)</td>
 <td style="text-align: left;">Le service officiel de données liées de l’administration fédérale suisse, fonctionnant comme un triple store (magasin de triplets).</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/term/rdf"><code>term:rdf</code></a></td>
 <td style="text-align: left;"><strong>Resource Description Framework</strong> (RDF)</td>
 <td style="text-align: left;">Une norme centrale du World Wide Web Consortium (W3C) pour la modélisation des structures de données sur le Web. Les informations ne sont pas représentées dans des tableaux classiques, mais sous forme de graphes interconnectés.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/term/reportingPerson"><code>term:reportingPerson</code></a></td>
+<td style="text-align: left;"><strong>Personne déclarante</strong></td>
+<td style="text-align: left;">La personne ou les personnes qui effectuent les annonces pour une unité d’élevage ou pour un propriétaire d’équidés.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/term/triple"><code>term:triple</code></a></td>
@@ -407,11 +1398,11 @@ Table&nbsp;1: Glossaire de la norme eCH-0309
 </div>
 </figure>
 </div>
-</div></section><section id="sec-appendix-d" class="level1 appendix" data-number="11"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">11</span> Annexe D - Modifications par rapport à la version précédente</h2><div class="quarto-appendix-contents">
+</div></section><section id="sec-appendix-d" class="level1 appendix" data-number="10"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">10</span> Annexe D - Modifications par rapport à la version précédente</h2><div class="quarto-appendix-contents">
 
-</div></section><section id="sec-appendix-e" class="level1 appendix" data-number="12"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">12</span> Annexe E - Table des illustrations</h2><div class="quarto-appendix-contents">
+</div></section><section id="sec-appendix-e" class="level1 appendix" data-number="11"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">11</span> Annexe E - Table des illustrations</h2><div class="quarto-appendix-contents">
 
-</div></section><section id="sec-appendix-f" class="level1 appendix" data-number="13"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">13</span> Annexe F - Liste des tableaux</h2><div class="quarto-appendix-contents">
+</div></section><section id="sec-appendix-f" class="level1 appendix" data-number="12"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">12</span> Annexe F - Liste des tableaux</h2><div class="quarto-appendix-contents">
 
 
 
@@ -817,8 +1808,40 @@ Table&nbsp;1: Glossaire de la norme eCH-0309
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="hhttps://github.com/blw-ofag-ufag/eCH-0309/blob/main/docs/fr/index.qmd" class="toc-action"><i class="bi bi-github"></i>Voir la source</a></li><li><a href="hhttps://github.com/blw-ofag-ufag/eCH-0309/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="hhttps://github.com/blw-ofag-ufag/eCH-0309/blob/main/docs/fr/index.qmd" class="toc-action"><i class="bi bi-github"></i>Voir la source</a></li><li><a href="hhttps://github.com/blw-ofag-ufag/eCH-0309/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></div></div></footer></body></html>
+</body></html>
