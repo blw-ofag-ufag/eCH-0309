@@ -15,8 +15,9 @@ aus der openAPI-Spezifikation der TVD generiert.
 
 ## Offene Fragen
 
-Fragen, die mit der Fachgruppe zu klären sind, sammelt
-[OPEN-QUESTIONS.md](OPEN-QUESTIONS.md) – zusammen mit den noch offenen
-Prüfkommentaren aus dem Word-Dokument und dem Hinweis, wo die jeweilige
-Entscheidung im Repository kodiert ist.
+Fragen, die mit der Fachgruppe zu klären sind, sind als Issues erfasst – je eine
+Frage, mit dem zugehörigen Prüfkommentar aus dem Word-Dokument und dem Hinweis,
+wo die Entscheidung im Repository kodiert ist. Sie tragen die Label
+[`data model`](../../issues?q=is%3Aissue+is%3Aopen+label%3A%22data+model%22) und
+[`documentation`](../../issues?q=is%3Aissue+is%3Aopen+label%3Adocumentation).
 

@@ -65,8 +65,8 @@
 # one in eCH-0108 or eCH-0261; a missing annotation means that source has no
 # counterpart, which the rdfs:comment then says.
 #
-# Points still to be settled with the Fachgruppe are collected in
-# OPEN-QUESTIONS.md, not here.
+# Points still to be settled with the Fachgruppe are tracked as issues, not
+# recorded here.
 # ==============================================================================
 
 :LegalUnitShape a sh:NodeShape ;
@@ -135,7 +135,7 @@
             "Détenteur d'animaux"@fr,
             "Detentore di animali"@it ;
         # Not an Objektkatalog row: the catalogue's «örtliche Einheit» block
-        # refers to eCH-0261 for every attribute. See also A3 in OPEN-QUESTIONS.md.
+        # refers to eCH-0261 for every attribute. See also issue #12.
         :animalTracingTerm "LocalUnitOwnResponse.mainUid" ;
         :echTerm "eCH-0108:localUnitMasterDataType/mainUid" ;
         sh:description "Zuordnung der örtlichen Einheit zum Tierhaltenden. Nach eCH-0108, Kapitel 1.5, ist eine örtliche Einheit immer einer rechtlichen Einheit (bzw. einem Unternehmen) zugeordnet; die Stammdaten der örtlichen Einheit führen dafür das optionale Merkmal «mainUid» mit der UID der rechtlichen Haupteinheit. Da der Tierhaltende nach dem Objektkatalog nur eine Sonderform der rechtlichen Einheit ist, ist diese Zuordnung nicht zwingend."@de,
@@ -291,8 +291,8 @@
 
 # :owner follows the Objektkatalog's cardinality of 1. Whether an equid owner
 # is always a UID-registered rechtliche Einheit is disputed by review comment
-# [SB14]; A1 in OPEN-QUESTIONS.md sets out the five sources and what changes
-# if the comment is upheld.
+# [SB14]; issue #13 sets out the five sources and what changes if the comment
+# is upheld.
 
 :EquidShape a sh:NodeShape ;
     rdfs:label "Equide"@de,
