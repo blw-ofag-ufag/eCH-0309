@@ -17,6 +17,12 @@ VENV_PIP         := $(VENV_BIN)/pip
 PYSHACL          := $(VENV_BIN)/pyshacl
 PYTEST           := $(VENV_BIN)/pytest -p no:cacheprovider # suppress cache
 ROBOT            := java -jar $(VENV_BIN)/robot.jar
+SHACL_PLAY_VERSION := 0.12.2
+SHACL_PLAY_JAR     := $(VENV_BIN)/shacl-play-app.jar
+PLANTUML_VERSION   := 1.2024.3
+PLANTUML_JAR       := $(VENV_BIN)/plantuml.jar
+VENV_JAVA_DIR      := $(VENV)/java17
+JAVA17             := $(VENV_JAVA_DIR)/jdk-17.0.2/bin/java
 
 # Inputs
 ONTO             := src/rdf/ontology/model.owl.ttl
@@ -33,6 +39,10 @@ INFERRED_DATA    := $(RDF_DIR)/02-inferred.ttl
 PROCESSED_DATA   := $(RDF_DIR)/03-processed.ttl
 SHACL_REPORT     := $(RDF_DIR)/04-shacl-report.ttl
 DOCS_DIR         := docs
+IMG_DIR          := $(BUILD_DIR)/img
+UML_PUML         := $(IMG_DIR)/uml.puml
+DOCS_IMG_DIR     := $(DOCS_DIR)/assets/img
+DOCS_UML_PNG     := $(DOCS_IMG_DIR)/uml.png
 
 # Logs
 LOG_DIR          := $(BUILD_DIR)/log
@@ -41,6 +51,7 @@ INFER_LOG        := $(LOG_DIR)/02-infer.log
 QUERY_LOG        := $(LOG_DIR)/03-query.log
 SHACL_LOG        := $(LOG_DIR)/04-shacl.log
 QUARTO_LOG       := $(LOG_DIR)/05-quarto.log
+SHACL_PLAY_LOG   := $(LOG_DIR)/06-shacl-play.log
 
 # Colors for logging
 RED              := \033[0;31m
@@ -48,7 +59,7 @@ GREY             := \033[0;90m
 BOLD       := \033[1;37m
 NC               := \033[0m
 
-.PHONY: all robot test docs clean check-python venv install-dependencies setup build delete publish generate-shacl-docs generate-glossary-docs
+.PHONY: all robot test docs clean check-python venv install-dependencies setup build delete publish generate-shacl-docs generate-glossary-docs generate-code-list-docs
 
 # Default target
 all: test docs
@@ -84,7 +95,25 @@ $(VENV_BIN)/robot.jar: | $(VENV_PYTHON)
 
 robot: $(VENV_BIN)/robot.jar
 
-# 5. Full setup
+# 5. Install SHACL Play
+$(SHACL_PLAY_JAR): | $(VENV_PYTHON)
+	@printf "$(BOLD)[*] Downloading SHACL Play...$(NC)\n"
+	@printf "$(GREY)"; curl -sLf https://github.com/sparna-git/shacl-play/releases/download/$(SHACL_PLAY_VERSION)/shacl-play-app-$(SHACL_PLAY_VERSION)-onejar.jar -o $(SHACL_PLAY_JAR) || \
+	(printf "$(NC)\n$(RED)ERROR: Download failed. Check the version/URL.$(NC)\n" && rm -f $(SHACL_PLAY_JAR) && exit 1); printf "$(NC)"
+
+# 6. Install PlantUML (for root-free pure Java rendering)
+$(PLANTUML_JAR): | $(VENV_PYTHON)
+	@printf "$(BOLD)[*] Downloading PlantUML...$(NC)\n"
+	@printf "$(GREY)"; curl -sLf https://github.com/plantuml/plantuml/releases/download/v$(PLANTUML_VERSION)/plantuml-$(PLANTUML_VERSION).jar -o $(PLANTUML_JAR) || \
+	(printf "$(NC)\n$(RED)ERROR: Download failed. Check the version/URL.$(NC)\n" && rm -f $(PLANTUML_JAR) && exit 1); printf "$(NC)"
+
+# 7. Install local Java 17 for SHACL Play and PlantUML
+$(JAVA17): | $(VENV)
+	@printf "$(BOLD)[*] Downloading portable Java 17...$(NC)\n"
+	@printf "$(GREY)"; mkdir -p $(VENV_JAVA_DIR); \
+	curl -sL https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz | tar -xz -C $(VENV_JAVA_DIR) || { printf "$(NC)"; exit 1; }; printf "$(NC)"
+
+# 8. Full setup
 setup: install-dependencies robot
 	@printf "$(BOLD)[*] Setup complete.$(NC)\n"
 
@@ -93,7 +122,7 @@ setup: install-dependencies robot
 # ==============================================================================
 
 # 1. Set up directories
-$(RDF_DIR) $(LOG_DIR):
+$(RDF_DIR) $(LOG_DIR) $(IMG_DIR):
 	@mkdir -p $@
 
 # 2. Fetch, Query, and Transform source data sequentially
@@ -169,6 +198,21 @@ build: $(PROCESSED_DATA)
 # BUILD DOCUMENTATION
 # ==============================================================================
 
+$(DOCS_UML_PNG): $(SHAPES) $(ONTO) src/rdf/data/code_lists.skos.ttl src/python/utils/patch_uml_diagram.py | $(IMG_DIR) $(LOG_DIR) $(SHACL_PLAY_JAR) $(PLANTUML_JAR) $(JAVA17)
+	@mkdir -p $(DOCS_IMG_DIR)
+	@printf "$(BOLD)[*] Extracting UML structure via SHACL Play...$(NC)\n"
+	@printf "$(GREY)"; \
+	$(JAVA17) -jar $(SHACL_PLAY_JAR) draw -i $(SHAPES) -o $(UML_PUML) > $(SHACL_PLAY_LOG) 2>&1 || { printf "$(NC)\n$(RED)ERROR: SHACL Play failed. See log below:$(NC)\n$(GREY)"; cat $(SHACL_PLAY_LOG); printf "$(NC)\n"; exit 1; }; \
+	test -f shacl-play-app.log && mv shacl-play-app.log $(LOG_DIR)/ 2>/dev/null || true; \
+	printf "$(NC)"
+	@printf "$(BOLD)[*] Rendering PNG with PlantUML (Pure Java Smetana engine)...$(NC)\n"
+	@printf "$(GREY)"; \
+	awk '/@startuml/{print;print "!pragma layout smetana";next} /^remove @unlinked/{next} 1' $(UML_PUML) > $(UML_PUML).tmp && mv $(UML_PUML).tmp $(UML_PUML); \
+	$(VENV_PYTHON) src/python/utils/patch_uml_diagram.py -i $(UML_PUML) -o $(ONTO) -c src/rdf/data/code_lists.skos.ttl || { printf "$(NC)"; exit 1; }; \
+	$(JAVA17) -jar $(PLANTUML_JAR) -tpng $(UML_PUML) -o $(shell cd $(IMG_DIR) && pwd) || { printf "$(NC)"; exit 1; }; \
+	cp $(IMG_DIR)/uml.png $(DOCS_UML_PNG); \
+	printf "$(NC)"
+
 generate-shacl-docs: $(SHAPES) $(PREFIXES) src/python/utils/generate_shacl_docs.py | $(VENV)/.requirements-installed.stamp
 	@printf "$(BOLD)[*] Generating SHACL documentation...$(NC)\n"
 	@printf "$(GREY)"; \
@@ -181,7 +225,13 @@ generate-glossary-docs: src/rdf/data/glossary.skos.ttl $(PREFIXES) src/python/ut
 	$(VENV_PYTHON) src/python/utils/generate_glossary_docs.py -i src/rdf/data/glossary.skos.ttl -d $(DOCS_DIR) -p $(PREFIXES) || { printf "$(NC)"; exit 1; }; \
 	printf "$(NC)"
 
-docs: $(SHACL_REPORT) generate-shacl-docs generate-glossary-docs
+generate-code-list-docs: src/rdf/data/code_lists.skos.ttl $(PREFIXES) src/python/utils/generate_code_list_docs.py | $(VENV)/.requirements-installed.stamp
+	@printf "$(BOLD)[*] Generating code list documentation...$(NC)\n"
+	@printf "$(GREY)"; \
+	$(VENV_PYTHON) src/python/utils/generate_code_list_docs.py -i src/rdf/data/code_lists.skos.ttl -d $(DOCS_DIR) -p $(PREFIXES) || { printf "$(NC)"; exit 1; }; \
+	printf "$(NC)"
+
+docs: $(SHACL_REPORT) generate-shacl-docs generate-glossary-docs generate-code-list-docs $(DOCS_UML_PNG)
 	@printf "$(BOLD)[*] Rendering documentation with Quarto...$(NC)\n"
 	@printf "$(GREY)"; \
 	quarto render docs > $(QUARTO_LOG) 2>&1 || { printf "$(NC)\n$(RED)ERROR: Quarto rendering failed. See log below:$(NC)\n$(GREY)"; cat $(QUARTO_LOG); printf "$(NC)\n"; exit 1; }; \
@@ -239,4 +289,4 @@ publish: test delete
 
 clean:
 	@printf "$(BOLD)[*] Cleaning build artifacts...$(NC)\n"
-	@rm -rf $(BUILD_DIR) $(VENV) .quarto docs/.quarto tests/__pycache__ docs/index_files docs/*/entities.md docs/*/glossary.md
+	@rm -rf $(BUILD_DIR) $(VENV) .quarto docs/.quarto tests/__pycache__ docs/index_files docs/*/entities.md docs/*/glossary.md docs/*/code-lists.md

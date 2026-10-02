@@ -1,0 +1,106 @@
+# ==============================================================================
+# NON-NORMATIVE EXAMPLE GRAPH
+#
+# This file exercises every class and every association of
+# src/rdf/shapes/model.shacl.ttl so that the shapes are actually validated by
+# tests/test_model.py.
+#
+# It deliberately lives under tests/ and NOT under src/rdf/data/: the Makefile
+# merges src/rdf/data/*.ttl into build/rdf/03-processed.ttl, which `make
+# publish` uploads to LINDAS. Nothing here is part of the Hilfsmittel, so nothing
+# here may be published.
+#
+# The identifiers are fictitious.
+# ==============================================================================
+
+@prefix :              <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix xsd:           <http://www.w3.org/2001/XMLSchema#> .
+@prefix animalkeeper:  <https://agriculture.ld.admin.ch/eCH-0309/1/animalkeeper/> .
+@prefix localunit:     <https://agriculture.ld.admin.ch/eCH-0309/1/localunit/> .
+@prefix animal:        <https://agriculture.ld.admin.ch/eCH-0309/1/animal/> .
+@prefix notification:  <https://agriculture.ld.admin.ch/eCH-0309/1/notification/> .
+@prefix healthstatus:  <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatus/> .
+@prefix legalunit:     <https://agriculture.ld.admin.ch/eCH-0309/1/legalunit/> .
+@prefix genus:         <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
+@prefix animalhistorystate: <https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
+@prefix notificationtype: <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
+@prefix equidwithersclass: <https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
+
+# A keeper with two holdings. The keeper satisfies the sh:sparql constraint on
+# :AnimalKeeperShape only because at least one local unit points back at it.
+animalkeeper:1 a :AnimalKeeper .
+
+localunit:1 a :LocalUnit ;
+    :animalKeeper animalkeeper:1 .
+
+localunit:2 a :LocalUnit ;
+    :animalKeeper animalkeeper:1 .
+
+# Three individual animals plus one equid.
+animal:1 a :Animal ;
+    :identifier "CH000000000001" ;
+    :genus genus:Cattle ;
+    :animalHistoryState animalhistorystate:Ok .
+
+animal:2 a :Animal ;
+    :identifier "CH000000000002" ;
+    :genus genus:Cattle ;
+    :animalHistoryState animalhistorystate:Ok .
+
+animal:3 a :Animal ;
+    :identifier "CH000000000003" ;
+    :genus genus:Cattle ;
+    :animalHistoryState animalhistorystate:Ok ;
+    :mother animal:1 ;
+    :father animal:2 .
+
+# The equid's owner is a plain legal unit: chapter 3.1.1 makes the owner, not
+# the keeper, responsible for reporting equids.
+legalunit:1 a :LegalUnit .
+
+animal:4 a :Equid ;
+    :identifier "CH000000000004" ;
+    :genus genus:Equid ;
+    :animalHistoryState animalhistorystate:Ok ;
+    :withersClass equidwithersclass:GreaterThan148cm ;
+    :owner legalunit:1 .
+
+# Second load-bearing assertion: :owner requires sh:class :LegalUnit, but
+# animalkeeper:1 is typed :AnimalKeeper only. This conforms only as long as
+# :AnimalKeeper rdfs:subClassOf :LegalUnit is in scope.
+animal:5 a :Equid ;
+    :identifier "CH000000000005" ;
+    :genus genus:Equid ;
+    :animalHistoryState animalhistorystate:Ok ;
+    :withersClass equidwithersclass:GreaterThan148cm ;
+    :owner animalkeeper:1 .
+
+# A move of animal:3 from localunit:1 to localunit:2, and a group notification
+# for a herd of pigs or poultry on localunit:1.
+notification:1 a :AnimalNotification ;
+    :eventIdentifier "1" ;
+    :genus genus:Cattle ;
+    :notificationType notificationtype:Arrival ;
+    :eventDate "2026-03-01"^^xsd:date ;
+    :notificationDate "2026-03-02"^^xsd:date ;
+    :animal animal:3 ;
+    :localUnit localunit:2 ;
+    :originLocalUnit localunit:1 .
+
+notification:2 a :GroupNotification ;
+    :eventIdentifier "2" ;
+    :genus genus:Pig ;
+    :notificationType notificationtype:Arrival ;
+    :eventDate "2026-03-01"^^xsd:date ;
+    :notificationDate "2026-03-02"^^xsd:date ;
+    :localUnit localunit:1 .
+
+healthstatus:1 a :LocalUnitHealthStatus ;
+    :localUnit localunit:1 .
+
+# Load-bearing assertion: :animal requires sh:class :Animal, but animal:4 is
+# typed :Equid only. sh:class traverses rdfs:subClassOf*, so this conforms only
+# as long as :Equid rdfs:subClassOf :Animal is in scope -- it breaks the moment
+# the specialization is dropped from src/rdf/ontology/model.owl.ttl.
+healthstatus:2 a :AnimalHealthStatus ;
+    :animal animal:4 .

@@ -5,6 +5,16 @@
 
 # Project-specific namespaces/qnames
 @prefix :                <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix genus:          <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
+@prefix gender:         <https://agriculture.ld.admin.ch/eCH-0309/1/gender/> .
+@prefix animaltypeofuse:<https://agriculture.ld.admin.ch/eCH-0309/1/animaltypeofuse/> .
+@prefix equidtypeofusage:<https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/> .
+@prefix animalhistorystate:<https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
+@prefix equidwithersclass:<https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
+@prefix notificationtype:<https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
+@prefix healthstatustype:<https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/> .
+@prefix localunithealthstatus:<https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/> .
+@prefix animalhealthstatus:<https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/> .
 
 # LINDAS-specific namespaces/qnames
 @prefix org:             <https://register.ld.admin.ch/opendataswiss/org/> .

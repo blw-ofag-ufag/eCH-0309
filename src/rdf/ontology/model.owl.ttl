@@ -4,3 +4,120 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix schema: <http://schema.org/> .
 
+# ==============================================================================
+# CLASSES
+# ==============================================================================
+
+:LegalUnit a owl:Class .
+
+:AnimalKeeper a owl:Class ;
+    rdfs:subClassOf :LegalUnit .
+
+:LocalUnit a owl:Class .
+
+:Animal a owl:Class .
+
+:Equid a owl:Class ;
+    rdfs:subClassOf :Animal .
+
+:AnimalNotification a owl:Class .
+
+:GroupNotification a owl:Class .
+
+:LocalUnitHealthStatus a owl:Class .
+
+:AnimalHealthStatus a owl:Class .
+
+# ==============================================================================
+# CODE LIST CLASSES
+# ==============================================================================
+
+:Genus a owl:Class .
+
+:Gender a owl:Class .
+
+:AnimalTypeOfUse a owl:Class .
+
+:EquidTypeOfUsage a owl:Class .
+
+:AnimalHistoryState a owl:Class .
+
+:EquidWithersClass a owl:Class .
+
+:NotificationType a owl:Class .
+
+:HealthStatusType a owl:Class .
+
+:LocalUnitEpizooticStatus a owl:Class .
+
+:AnimalEpizooticStatus a owl:Class .
+
+# ==============================================================================
+# OBJECT PROPERTIES
+# ==============================================================================
+
+:animalKeeper a owl:ObjectProperty .
+
+:localUnit a owl:ObjectProperty .
+
+:originLocalUnit a owl:ObjectProperty .
+
+:animal a owl:ObjectProperty .
+
+:mother a owl:ObjectProperty .
+
+:father a owl:ObjectProperty .
+
+:owner a owl:ObjectProperty .
+
+:genus a owl:ObjectProperty .
+
+:gender a owl:ObjectProperty .
+
+:animalHistoryState a owl:ObjectProperty .
+
+:typeOfUse a owl:ObjectProperty .
+
+:withersClass a owl:ObjectProperty .
+
+:notificationType a owl:ObjectProperty .
+
+:healthStatusType a owl:ObjectProperty .
+
+:epizooticStatus a owl:ObjectProperty .
+
+# ==============================================================================
+# ANNOTATION PROPERTIES
+# ==============================================================================
+
+:animalTracingTerm a owl:AnnotationProperty .
+
+:echTerm a owl:AnnotationProperty .
+
+# ==============================================================================
+# DATATYPE PROPERTIES
+# ==============================================================================
+
+:identifier a owl:DatatypeProperty .
+
+:eventIdentifier a owl:DatatypeProperty .
+
+:dateOfBirth a owl:DatatypeProperty .
+
+:dateOfDeath a owl:DatatypeProperty .
+
+:castrated a owl:DatatypeProperty .
+
+:groupInformation a owl:DatatypeProperty .
+
+:eventDate a owl:DatatypeProperty .
+
+:notificationDate a owl:DatatypeProperty .
+
+:count a owl:DatatypeProperty .
+
+:weight a owl:DatatypeProperty .
+
+:age a owl:DatatypeProperty .
+
+:validFrom a owl:DatatypeProperty .
