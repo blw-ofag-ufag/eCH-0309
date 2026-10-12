@@ -14,7 +14,7 @@
 # GLOSSARY METADATA
 # ==============================================================================
 
-:glossary a skos:ConceptScheme ;
+term:ConceptScheme a skos:ConceptScheme ;
     schema:name "Glossar des Hilfsmittels eCH-0309"@de,
         "Glossary of eCH-0309"@en,
         "Glossaire de l'eCH-0309"@fr .
@@ -23,9 +23,9 @@
 # GLOSSARY TERMS
 # ==============================================================================
 
-term:lindas a skos:Concept ;
-    skos:inScheme :glossary ;
-    skos:topConceptOf :glossary ;
+term:LINDAS a skos:Concept ;
+    skos:inScheme term:ConceptScheme ;
+    skos:topConceptOf term:ConceptScheme ;
     schema:name "Linked Data Service"@de,
         "Linked Data Service"@en,
         "Linked Data Service"@fr ;
@@ -36,9 +36,9 @@ term:lindas a skos:Concept ;
         "The official Linked Data service of the Swiss Federal Administration, acting as a triple store."@en,
         "Le service officiel de données liées de l'administration fédérale suisse, fonctionnant comme un triple store (magasin de triplets)."@fr .
 
-term:rdf a skos:Concept ;
-    skos:inScheme :glossary ;
-    skos:topConceptOf :glossary ;
+term:RDF a skos:Concept ;
+    skos:inScheme term:ConceptScheme ;
+    skos:topConceptOf term:ConceptScheme ;
     schema:name "Resource Description Framework"@de,
         "Resource Description Framework"@en,
         "Resource Description Framework"@fr ;
@@ -49,9 +49,9 @@ term:rdf a skos:Concept ;
         "A central standard of the World Wide Web Consortium (W3C) for modeling data structures on the Web. Information is represented as networked graphs rather than in traditional tables."@en,
         "Une norme centrale du World Wide Web Consortium (W3C) pour la modélisation des structures de données sur le Web. Les informations ne sont pas représentées dans des tableaux classiques, mais sous forme de graphes interconnectés."@fr .
 
-term:triple a skos:Concept ;
-    skos:inScheme :glossary ;
-    skos:broader term:rdf ;
+term:Triple a skos:Concept ;
+    skos:inScheme term:ConceptScheme ;
+    skos:broader term:RDF ;
     schema:name "Tripel"@de,
         "Triple"@en,
         "Triplet"@fr ;
@@ -71,9 +71,9 @@ term:triple a skos:Concept ;
 # keine Sprache bevorzugt; die Benennungen stehen in schema:name je Sprache.
 # ==============================================================================
 
-term:farmManager a skos:Concept ;
-    skos:inScheme :glossary ;
-    skos:topConceptOf :glossary ;
+term:FarmManager a skos:Concept ;
+    skos:inScheme term:ConceptScheme ;
+    skos:topConceptOf term:ConceptScheme ;
     schema:name "Bewirtschafter"@de,
         "Farm manager"@en,
         "Exploitant"@fr ;
@@ -81,9 +81,9 @@ term:farmManager a skos:Concept ;
         "A legal unit that bears the business risk for a farm (LBV Art. 2). The animal keeper is a form of farm manager that keeps animals (LBV Art. 11a)."@en,
         "Une unité juridique qui assume le risque économique d'une exploitation (OTerm art. 2). Le détenteur d'animaux est une forme d'exploitant qui détient des animaux (OTerm art. 11a)."@fr .
 
-term:reportingPerson a skos:Concept ;
-    skos:inScheme :glossary ;
-    skos:topConceptOf :glossary ;
+term:ReportingPerson a skos:Concept ;
+    skos:inScheme term:ConceptScheme ;
+    skos:topConceptOf term:ConceptScheme ;
     schema:name "Meldende Person"@de,
         "Reporting person"@en,
         "Personne déclarante"@fr ;
@@ -91,9 +91,9 @@ term:reportingPerson a skos:Concept ;
         "The person or persons who make notifications for an animal holding or for an equid owner."@en,
         "La personne ou les personnes qui effectuent les annonces pour une unité d'élevage ou pour un propriétaire d'équidés."@fr .
 
-term:homeHolding a skos:Concept ;
-    skos:inScheme :glossary ;
-    skos:topConceptOf :glossary ;
+term:HomeHolding a skos:Concept ;
+    skos:inScheme term:ConceptScheme ;
+    skos:topConceptOf term:ConceptScheme ;
     schema:name "Stammbetrieb"@de,
         "Home holding"@en,
         "Exploitation de référence"@fr ;
@@ -101,9 +101,9 @@ term:homeHolding a skos:Concept ;
         "For cattle, a home holding can be recorded in order to represent an animal's affiliation to an animal holding while the animal is located on another local unit."@en,
         "Pour les bovins, une exploitation de référence peut être enregistrée afin de représenter l'appartenance des animaux à une unité d'élevage lorsqu'un animal se trouve sur une autre unité locale."@fr .
 
-term:animalHolding a skos:Concept ;
-    skos:inScheme :glossary ;
-    skos:topConceptOf :glossary ;
+term:AnimalHolding a skos:Concept ;
+    skos:inScheme term:ConceptScheme ;
+    skos:topConceptOf term:ConceptScheme ;
     schema:name "Tierhaltung"@de,
         "Animal holding"@en,
         "Unité d'élevage"@fr ;

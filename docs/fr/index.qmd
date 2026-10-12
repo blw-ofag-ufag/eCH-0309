@@ -44,6 +44,12 @@ Interfaces: AnimalTracing API, description technique de service AnimalTracing
 
 NB: les noms des classes décrites au chapitre 3 ne correspondent pas aux ServiceOperations d'AnimalTracing, car la description sémantique doit donner une vue d'ensemble du contenu des données et présente un degré de détail plus fin que la description de service.
 
+# Espaces de noms {#sec-namespaces}
+
+Le @tbl-namespaces énumère les préfixes et les espaces de noms utilisés dans ce document. Un préfixe tient lieu d'une IRI d'espace de noms, le début commun des IRI d'un vocabulaire. La spécification Turtle décrit comment ces [*prefixed names*](https://www.w3.org/TR/turtle/#prefixed-name) sont résolus [@Turtle].
+
+{{< include namespaces.md >}}
+
 # Modèle de données {#sec-data-model}
 
 ![Diagramme UML du modèle de données eCH-0309.](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
