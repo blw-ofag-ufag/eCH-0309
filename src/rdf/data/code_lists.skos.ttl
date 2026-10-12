@@ -22,6 +22,7 @@
 # ==============================================================================
 
 @prefix :                <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix codelist:        <https://agriculture.ld.admin.ch/eCH-0309/1/codelist/> .
 @prefix genus:                  <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
 @prefix gender:                 <https://agriculture.ld.admin.ch/eCH-0309/1/gender/> .
 @prefix animaltypeofuse:        <https://agriculture.ld.admin.ch/eCH-0309/1/animaltypeofuse/> .
@@ -43,7 +44,7 @@
 # SCHEME METADATA
 # ==============================================================================
 
-:codeLists a skos:Collection ;
+codelist:Collection a skos:Collection ;
     schema:name "Wertebereiche der Tierverkehrsdaten"@de,
         "Code lists of the animal movement data"@en ;
     dcterms:source "https://test-03-tvd-api-at.identitas.ch/open-api/v1.0" ;
