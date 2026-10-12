@@ -96,25 +96,7 @@
         "Un gestore è un'unità giuridica ai sensi dell'eCH-0108 che si assume il rischio aziendale di un'azienda (OTerm art. 2). Il detentore di animali è una forma di gestore che detiene animali (OTerm art. 11a); necessita quindi di un'unità locale (detenzione di animali). La responsabilità delle notifiche spetta al detentore di animali per tutte le categorie di animali ad eccezione degli equidi; per gli equidi spetta al proprietario o alla proprietaria (capitolo 3.1.1 dello strumento). Gli attributi sono descritti nell'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), capitoli 3.1 e 3.2."@it ;
     :animalTracingTerm "LegalUnitOrganisationResponse", "LegalUnitPersonResponse", "FarmManagerV1Response" ;
     :echTerm "eCH-0108:legalUnitMasterDataType", "eCH-0261:legalUnitType" ;
-    sh:targetClass :AnimalKeeper ;
-    sh:sparql [
-        a sh:SPARQLConstraint ;
-        sh:description "Ein Tierhaltender braucht mindestens eine örtliche Einheit (Kapitel 3.1.1 des Hilfsmittels). Diese Regel ist der Semantikbeschreibung entnommen, nicht dem Objektkatalog."@de,
-            "An animal keeper requires at least one local unit (chapter 3.1.1 of the tool). This rule is taken from the semantic description, not from the object catalogue."@en,
-            "Un détenteur d'animaux a besoin d'au moins une unité locale (chapitre 3.1.1 de l'outil). Cette règle provient de la description sémantique et non du catalogue d'objets."@fr,
-            "Un detentore di animali necessita di almeno un'unità locale (capitolo 3.1.1 dello strumento). Questa regola è tratta dalla descrizione semantica e non dal catalogo degli oggetti."@it ;
-        sh:message "Ein Tierhaltender muss mindestens einer örtlichen Einheit zugeordnet sein."@de,
-            "An animal keeper must be assigned to at least one local unit."@en,
-            "Un détenteur d'animaux doit être rattaché à au moins une unité locale."@fr,
-            "Un detentore di animali deve essere assegnato ad almeno un'unità locale."@it ;
-        sh:prefixes : ;
-        sh:select """
-            SELECT $this
-            WHERE {
-                FILTER NOT EXISTS { ?localUnit :animalKeeper $this . }
-            }
-        """ ;
-    ] .
+    sh:targetClass :AnimalKeeper .
 
 :LocalUnitShape a sh:NodeShape ;
     rdfs:label "Örtliche Einheit"@de,
