@@ -1,6 +1,6 @@
 # Auxiliary document: animal movement data
 
-October 2, 2026
+October 12, 2026
 
 - [Note](#sec-note)
 - [<span class="toc-section-number">1</span>
@@ -12,65 +12,67 @@ October 2, 2026
     reporting in Switzerland](#sec-animal-movement-reporting)
   - [<span class="toc-section-number">1.4</span>
     References](#sec-references)
-- [<span class="toc-section-number">2</span> Data
+- [<span class="toc-section-number">2</span>
+  Namespaces](#sec-namespaces)
+- [<span class="toc-section-number">3</span> Data
   Model](#sec-data-model)
-  - [<span class="toc-section-number">2.1</span> Animal
+  - [<span class="toc-section-number">3.1</span> Animal
     keeper](#sec-nodeshape-animalkeepershape)
-  - [<span class="toc-section-number">2.2</span>
+  - [<span class="toc-section-number">3.2</span>
     Equid](#sec-nodeshape-equidshape)
-  - [<span class="toc-section-number">2.3</span> Group
+  - [<span class="toc-section-number">3.3</span> Group
     notification](#sec-nodeshape-groupnotificationshape)
-  - [<span class="toc-section-number">2.4</span> Health status of a
+  - [<span class="toc-section-number">3.4</span> Health status of a
     local unit](#sec-nodeshape-localunithealthstatusshape)
-  - [<span class="toc-section-number">2.5</span> Health status of an
+  - [<span class="toc-section-number">3.5</span> Health status of an
     individual animal](#sec-nodeshape-animalhealthstatusshape)
-  - [<span class="toc-section-number">2.6</span> Individual
+  - [<span class="toc-section-number">3.6</span> Individual
     animal](#sec-nodeshape-animalshape)
-  - [<span class="toc-section-number">2.7</span> Individual animal
+  - [<span class="toc-section-number">3.7</span> Individual animal
     notification](#sec-nodeshape-animalnotificationshape)
-  - [<span class="toc-section-number">2.8</span> Legal
+  - [<span class="toc-section-number">3.8</span> Legal
     unit](#sec-nodeshape-legalunitshape)
-  - [<span class="toc-section-number">2.9</span> Local
+  - [<span class="toc-section-number">3.9</span> Local
     unit](#sec-nodeshape-localunitshape)
-- [<span class="toc-section-number">3</span> Code
+- [<span class="toc-section-number">4</span> Code
   lists](#sec-code-lists)
-  - [<span class="toc-section-number">3.1</span> Health status of an
+  - [<span class="toc-section-number">4.1</span> Health status of an
     individual animal](#sec-codelist-animalhealthstatus)
-  - [<span class="toc-section-number">3.2</span> Animal history
+  - [<span class="toc-section-number">4.2</span> Animal history
     state](#sec-codelist-animalhistorystate)
-  - [<span class="toc-section-number">3.3</span> Type of use (cattle,
+  - [<span class="toc-section-number">4.3</span> Type of use (cattle,
     sheep, goats)](#sec-codelist-animaltypeofuse)
-  - [<span class="toc-section-number">3.4</span> Type of use
+  - [<span class="toc-section-number">4.4</span> Type of use
     (equids)](#sec-codelist-equidtypeofusage)
-  - [<span class="toc-section-number">3.5</span> Withers
+  - [<span class="toc-section-number">4.5</span> Withers
     class](#sec-codelist-equidwithersclass)
-  - [<span class="toc-section-number">3.6</span>
+  - [<span class="toc-section-number">4.6</span>
     Gender](#sec-codelist-gender)
-  - [<span class="toc-section-number">3.7</span>
+  - [<span class="toc-section-number">4.7</span>
     Genus](#sec-codelist-genus)
-  - [<span class="toc-section-number">3.8</span> Health status
+  - [<span class="toc-section-number">4.8</span> Health status
     type](#sec-codelist-healthstatustype)
-  - [<span class="toc-section-number">3.9</span> Health status of a
+  - [<span class="toc-section-number">4.9</span> Health status of a
     local unit](#sec-codelist-localunithealthstatus)
-  - [<span class="toc-section-number">3.10</span> Notification
+  - [<span class="toc-section-number">4.10</span> Notification
     type](#sec-codelist-notificationtype)
-- [<span class="toc-section-number">4</span> Safety
+- [<span class="toc-section-number">5</span> Safety
   considerations](#sec-safety-consideration)
-- [<span class="toc-section-number">5</span>
-  Disclaimer](#sec-disclaimer)
 - [<span class="toc-section-number">6</span>
+  Disclaimer](#sec-disclaimer)
+- [<span class="toc-section-number">7</span>
   Copyrights](#sec-copyrights)
-- [<span class="toc-section-number">7</span> Annex A -
+- [<span class="toc-section-number">8</span> Annex A -
   References](#sec-appendix-a)
-- [<span class="toc-section-number">8</span> Annex B - Cooperation and
+- [<span class="toc-section-number">9</span> Annex B - Cooperation and
   Verification](#sec-appendix-b)
-- [<span class="toc-section-number">9</span> Annex C - Abbreviations and
-  Glossary](#sec-appendix-c)
-- [<span class="toc-section-number">10</span> Annex D - Changes in
+- [<span class="toc-section-number">10</span> Annex C - Abbreviations
+  and Glossary](#sec-appendix-c)
+- [<span class="toc-section-number">11</span> Annex D - Changes in
   comparison to previous version](#sec-appendix-d)
-- [<span class="toc-section-number">11</span> Annex E - Table of
+- [<span class="toc-section-number">12</span> Annex E - Table of
   figures](#sec-appendix-e)
-- [<span class="toc-section-number">12</span> Annex F - Table of
+- [<span class="toc-section-number">13</span> Annex F - Table of
   tables](#sec-appendix-f)
 
 # Note
@@ -175,6 +177,27 @@ ServiceOperations in AnimalTracing, because the semantic description is
 intended to provide an overview of the data content and is more detailed
 than the service description.
 
+# Namespaces
+
+<a href="#tbl-namespaces" class="quarto-xref">Table 1</a> lists the
+prefixes and namespaces used in this document. A prefix stands for a
+namespace IRI, the common beginning of the IRIs of a vocabulary. The
+Turtle specification describes how such [*prefixed
+names*](https://www.w3.org/TR/turtle/#prefixed-name) are resolved
+\[Turtle\].
+
+<div id="tbl-namespaces">
+
+Table 1: Namespaces used in eCH-0309 – Auxiliary document: animal
+movement data.
+
+| Prefix | Namespace                                   |
+|:-------|:--------------------------------------------|
+| :      | https://agriculture.ld.admin.ch/eCH-0309/1/ |
+| xsd:   | http://www.w3.org/2001/XMLSchema#           |
+
+</div>
+
 # Data Model
 
 <div id="fig-uml">
@@ -198,7 +221,34 @@ The attributes are described in
 [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf),
 chapters 3.1 and 3.2.
 
-**Target Class:** `:AnimalKeeper`
+### Overview
+
+<div class="ech-facts">
+
+Shape  
+[:AnimalKeeperShape](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeperShape)
+
+Target class  
+[:AnimalKeeper](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeper)
+
+Closed  
+No (further properties are allowed)
+
+Data access  
+None (transactional data, not part of the published graph)
+
+</div>
+
+### Rules (SPARQL)
+
+#### An animal keeper requires at least one local unit (chapter 3.1.1 of the tool). This rule is taken from the semantic description, not from the object catalogue.
+
+``` sparql
+SELECT $this
+WHERE {
+    FILTER NOT EXISTS { ?localUnit :animalKeeper $this . }
+}
+```
 
 ## Equid
 
@@ -210,18 +260,62 @@ lies with the owner rather than with the animal keeper. An owner is the
 legal unit that owns equids; the term is used for equid owners only
 (chapter 3.1.1 of the tool).
 
-**Target Class:** `:Equid`
+### Overview
 
-<div id="tbl-nodeshape-equidshape">
+<div class="ech-facts">
 
-Table 1: properties Equid
+Shape  
+[:EquidShape](https://agriculture.ld.admin.ch/eCH-0309/1/EquidShape)
 
-| Description | Path | Type | Card. |
-|:---|:---|:---|---:|
-| **Owner**: The legal unit that owns the equid. For equids, responsibility for reporting lies with the owner rather than with the animal keeper (chapter 3.1.1 of the tool). | `:owner` | [`:LegalUnit`](#sec-nodeshape-legalunitshape) | 1..1 |
-| **Withers class** | `:withersClass` | `:EquidWithersClass` | 1..1 |
+Target class  
+[:Equid](https://agriculture.ld.admin.ch/eCH-0309/1/Equid)
+
+Closed  
+No (further properties are allowed)
+
+Data access  
+None (transactional data, not part of the published graph)
 
 </div>
+
+### Properties
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 47%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Cardinality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Owner</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/owner">:owner</a>): The
+legal unit that owns the equid. For equids, responsibility for reporting
+lies with the owner rather than with the animal keeper (chapter 3.1.1 of
+the tool).</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-legalunitshape">Legal unit</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Withers class</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/withersClass">:withersClass</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidWithersClass">:EquidWithersClass</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+</tbody>
+</table>
 
 ## Group notification
 
@@ -235,28 +329,161 @@ slaughter notifications for pigs (by head) and poultry groups (in kg).
 This class has no counterpart in the AnimalTracing openAPI
 specification, because pigs and poultry are not covered there.
 
-**Target Class:** `:GroupNotification`
+### Overview
 
-<div id="tbl-nodeshape-groupnotificationshape">
+<div class="ech-facts">
 
-Table 2: properties Group notification
+Shape  
+[:GroupNotificationShape](https://agriculture.ld.admin.ch/eCH-0309/1/GroupNotificationShape)
 
-| Description | Path | Type | Card. |
-|:---|:---|:---|---:|
-| **Local unit**: BUR number of the local unit | `:localUnit` | [`:LocalUnit`](#sec-nodeshape-localunitshape) | 1..1 |
-| **Origin**: BUR number of the local unit the animal comes from | `:originLocalUnit` | [`:LocalUnit`](#sec-nodeshape-localunitshape) | 0..1 |
-| **ID**: Unique identifier of the movement, assigned by the system. | `:eventIdentifier` | `xsd:string` | 1..1 |
-| **Genus** | `:genus` | `:Genus` | 1..1 |
-| **Group information**: Group information must be given for housing notifications of poultry | `:groupInformation` | `xsd:string` | 0..1 |
-| **Notification type** | `:notificationType` | `:NotificationType` | 1..1 |
-| **Event date**: Date on which the event took place | `:eventDate` | `xsd:date` | 1..1 |
-| **Notification date**: Date on which the event was reported | `:notificationDate` | `xsd:date` | 1..1 |
-| **Number**: Number of animals moved in one movement (pigs/poultry) | `:count` | `xsd:integer` | 0..1 |
-| **Weight**: Total weight in kg of the animal group for slaughter notifications of poultry | `:weight` | `xsd:integer` | 0..1 |
-| **Type of use**: Type of use of the animal group (for individual animals it is held on the class «Einzeltier») | `:typeOfUse` | `:AnimalTypeOfUse` | 0..1 |
-| **Age**: For housing notifications of poultry the age must be given in weeks | `:age` | `xsd:integer` | 0..1 |
+Target class  
+[:GroupNotification](https://agriculture.ld.admin.ch/eCH-0309/1/GroupNotification)
+
+Closed  
+No (further properties are allowed)
+
+Data access  
+None (transactional data, not part of the published graph)
 
 </div>
+
+### Properties
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 44%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Cardinality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Local unit</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>):
+BUR number of the local unit</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-localunitshape">Local unit</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Origin</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/originLocalUnit">:originLocalUnit</a>):
+BUR number of the local unit the animal comes from</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-localunitshape">Local unit</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ID</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/eventIdentifier">:eventIdentifier</a>):
+Unique identifier of the movement, assigned by the system.</td>
+<td style="text-align: left;"><ul>
+<li>Type: Text (<a
+href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Genus</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/genus">:genus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/Genus">:Genus</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Group information</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/groupInformation">:groupInformation</a>):
+Group information must be given for housing notifications of
+poultry</td>
+<td style="text-align: left;"><ul>
+<li>Type: Text (<a
+href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Notification type</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationType">:notificationType</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/NotificationType">:NotificationType</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Event date</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/eventDate">:eventDate</a>):
+Date on which the event took place</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Notification date</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationDate">:notificationDate</a>):
+Date on which the event was reported</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Number</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/count">:count</a>):
+Number of animals moved in one movement (pigs/poultry)</td>
+<td style="text-align: left;"><ul>
+<li>Type: Integer (<a
+href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Weight</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/weight">:weight</a>):
+Total weight in kg of the animal group for slaughter notifications of
+poultry</td>
+<td style="text-align: left;"><ul>
+<li>Type: Integer (<a
+href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type of use</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfUse">:typeOfUse</a>):
+Type of use of the animal group (for individual animals it is held on
+the class «Einzeltier»)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalTypeOfUse">:AnimalTypeOfUse</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Age</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): For
+housing notifications of poultry the age must be given in weeks</td>
+<td style="text-align: left;"><ul>
+<li>Type: Integer (<a
+href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
 
 ## Health status of a local unit
 
@@ -269,20 +496,80 @@ laboratory results can also be represented. The AnimalTracing openAPI
 specification has no dedicated class for this; there the corresponding
 information is held as attributes of the local unit.
 
-**Target Class:** `:LocalUnitHealthStatus`
+### Overview
 
-<div id="tbl-nodeshape-localunithealthstatusshape">
+<div class="ech-facts">
 
-Table 3: properties Health status of a local unit
+Shape  
+[:LocalUnitHealthStatusShape](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatusShape)
 
-| Description | Path | Type | Card. |
-|:---|:---|:---|---:|
-| **Local unit**: BUR number of the local unit | `:localUnit` | [`:LocalUnit`](#sec-nodeshape-localunitshape) | 1..1 |
-| **Type**: e.g. epizootic, vaccination or risk status | `:healthStatusType` | `:HealthStatusType` | 0..1 |
-| **Status** | `:epizooticStatus` | `:LocalUnitEpizooticStatus` | 0..1 |
-| **Date**: Date from which the status is valid | `:validFrom` | `xsd:date` | 0..1 |
+Target class  
+[:LocalUnitHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatus)
+
+Closed  
+No (further properties are allowed)
+
+Data access  
+None (transactional data, not part of the published graph)
 
 </div>
+
+### Properties
+
+<table style="width:100%;">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 49%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Cardinality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Local unit</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>):
+BUR number of the local unit</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-localunitshape">Local unit</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>):
+e.g. epizootic, vaccination or risk status</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/HealthStatusType">:HealthStatusType</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Status</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitEpizooticStatus">:LocalUnitEpizooticStatus</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Date</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>):
+Date from which the status is valid</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
 
 ## Health status of an individual animal
 
@@ -290,20 +577,82 @@ Disease information recorded for an individual animal. In addition to
 the individual epizootic status, relevant vaccinations are recorded as
 well.
 
-**Target Class:** `:AnimalHealthStatus`
+### Overview
 
-<div id="tbl-nodeshape-animalhealthstatusshape">
+<div class="ech-facts">
 
-Table 4: properties Health status of an individual animal
+Shape  
+[:AnimalHealthStatusShape](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatusShape)
 
-| Description | Path | Type | Card. |
-|:---|:---|:---|---:|
-| **Animal ID**: A health status of an individual animal refers to exactly one individual animal. | `:animal` | [`:Animal`](#sec-nodeshape-animalshape) | 1..1 |
-| **Type**: e.g. epizootic, vaccination or risk status | `:healthStatusType` | `:HealthStatusType` | 0..1 |
-| **Status** | `:epizooticStatus` | `:AnimalEpizooticStatus` | 0..1 |
-| **Date**: Date from which the status is valid, or the date of vaccination | `:validFrom` | `xsd:date` | 0..1 |
+Target class  
+[:AnimalHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatus)
+
+Closed  
+No (further properties are allowed)
+
+Data access  
+None (transactional data, not part of the published graph)
 
 </div>
+
+### Properties
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 47%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Cardinality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Animal ID</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/animal">:animal</a>): A
+health status of an individual animal refers to exactly one individual
+animal.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-animalshape">Individual
+animal</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>):
+e.g. epizootic, vaccination or risk status</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/HealthStatusType">:HealthStatusType</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Status</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalEpizooticStatus">:AnimalEpizooticStatus</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Date</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>):
+Date from which the status is valid, or the date of vaccination</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
 
 ## Individual animal
 
@@ -313,26 +662,136 @@ as individual animals; they are uniquely identified by their ear tag
 number, or by the UELN in the case of equids. No individual animals are
 kept for pigs and poultry, only group notifications.
 
-**Target Class:** `:Animal`
+### Overview
 
-<div id="tbl-nodeshape-animalshape">
+<div class="ech-facts">
 
-Table 5: properties Individual animal
+Shape  
+[:AnimalShape](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalShape)
 
-| Description | Path | Type | Card. |
-|:---|:---|:---|---:|
-| **Mother**: An individual animal has at most one mother animal. | `:mother` | [`:Animal`](#sec-nodeshape-animalshape) | 0..1 |
-| **Father**: An individual animal has at most one father animal. | `:father` | [`:Animal`](#sec-nodeshape-animalshape) | 0..1 |
-| **Identifier**: Ear tag number, or UELN for equids | `:identifier` | `xsd:string` | 1..1 |
-| **Genus** | `:genus` | `:Genus` | 1..1 |
-| **Gender** | `:gender` | `:Gender` | 0..1 |
-| **Date of birth** | `:dateOfBirth` | `xsd:date` | 0..1 |
-| **Date of death** | `:dateOfDeath` | `xsd:date` | 0..1 |
-| **Animal history state** | `:animalHistoryState` | `:AnimalHistoryState` | 1..1 |
-| **Type of use** | `:typeOfUse` | `:AnimalTypeOfUse` | 0..1 |
-| **Castrated** | `:castrated` | `xsd:boolean` | 0..1 |
+Target class  
+[:Animal](https://agriculture.ld.admin.ch/eCH-0309/1/Animal)
+
+Closed  
+No (further properties are allowed)
+
+Data access  
+None (transactional data, not part of the published graph)
 
 </div>
+
+### Properties
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 45%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Cardinality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Mother</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/mother">:mother</a>):
+An individual animal has at most one mother animal.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-animalshape">Individual
+animal</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Father</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/father">:father</a>):
+An individual animal has at most one father animal.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-animalshape">Individual
+animal</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Identifier</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/identifier">:identifier</a>):
+Ear tag number, or UELN for equids</td>
+<td style="text-align: left;"><ul>
+<li>Type: Text (<a
+href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
+<li>Length: ≤ 15 characters</li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Genus</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/genus">:genus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/Genus">:Genus</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Gender</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/gender">:gender</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/Gender">:Gender</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Date of birth</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/dateOfBirth">:dateOfBirth</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Date of death</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/dateOfDeath">:dateOfDeath</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Animal history state</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/animalHistoryState">:animalHistoryState</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHistoryState">:AnimalHistoryState</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type of use</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfUse">:typeOfUse</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalTypeOfUse">:AnimalTypeOfUse</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Castrated</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/castrated">:castrated</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: Boolean (<a
+href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
 
 ## Individual animal notification
 
@@ -345,24 +804,119 @@ reported by the authorised persons, stating the animal holding to which
 the notification refers; for equids they are reported by the authorised
 persons of the responsible equid owner.
 
-**Target Class:** `:AnimalNotification`
+### Overview
 
-<div id="tbl-nodeshape-animalnotificationshape">
+<div class="ech-facts">
 
-Table 6: properties Individual animal notification
+Shape  
+[:AnimalNotificationShape](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalNotificationShape)
 
-| Description | Path | Type | Card. |
-|:---|:---|:---|---:|
-| **Identifier**: An individual animal notification refers to exactly one individual animal. | `:animal` | [`:Animal`](#sec-nodeshape-animalshape) | 1..1 |
-| **Local unit**: BUR number of the local unit to which the notification refers | `:localUnit` | [`:LocalUnit`](#sec-nodeshape-localunitshape) | 1..1 |
-| **Origin**: BUR number of the local unit the animal comes from | `:originLocalUnit` | [`:LocalUnit`](#sec-nodeshape-localunitshape) | 0..1 |
-| **ID**: Unique identifier of the movement, assigned by the system. | `:eventIdentifier` | `xsd:string` | 1..1 |
-| **Genus** | `:genus` | `:Genus` | 1..1 |
-| **Notification type** | `:notificationType` | `:NotificationType` | 1..1 |
-| **Event date**: Date on which the event took place | `:eventDate` | `xsd:date` | 1..1 |
-| **Notification date**: Date on which the event was reported | `:notificationDate` | `xsd:date` | 1..1 |
+Target class  
+[:AnimalNotification](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalNotification)
+
+Closed  
+No (further properties are allowed)
+
+Data access  
+None (transactional data, not part of the published graph)
 
 </div>
+
+### Properties
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 44%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Cardinality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Identifier</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/animal">:animal</a>):
+An individual animal notification refers to exactly one individual
+animal.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-animalshape">Individual
+animal</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Local unit</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>):
+BUR number of the local unit to which the notification refers</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-localunitshape">Local unit</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Origin</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/originLocalUnit">:originLocalUnit</a>):
+BUR number of the local unit the animal comes from</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-localunitshape">Local unit</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ID</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/eventIdentifier">:eventIdentifier</a>):
+Unique identifier of the movement, assigned by the system.</td>
+<td style="text-align: left;"><ul>
+<li>Type: Text (<a
+href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Genus</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/genus">:genus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/Genus">:Genus</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Notification type</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationType">:notificationType</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/NotificationType">:NotificationType</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Event date</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/eventDate">:eventDate</a>):
+Date on which the event took place</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Notification date</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationDate">:notificationDate</a>):
+Date on which the event was reported</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+</tbody>
+</table>
 
 ## Legal unit
 
@@ -384,7 +938,23 @@ chapters 3.1 and 3.2, and in
 [eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf),
 chapter 3.1.
 
-**Target Class:** `:LegalUnit`
+### Overview
+
+<div class="ech-facts">
+
+Shape  
+[:LegalUnitShape](https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnitShape)
+
+Target class  
+[:LegalUnit](https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnit)
+
+Closed  
+No (further properties are allowed)
+
+Data access  
+None (transactional data, not part of the published graph)
+
+</div>
 
 ## Local unit
 
@@ -401,17 +971,57 @@ chapter 1.5; the agriculture-specific additions are described in
 [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf),
 chapters 3.3 and 3.4.
 
-**Target Class:** `:LocalUnit`
+### Overview
 
-<div id="tbl-nodeshape-localunitshape">
+<div class="ech-facts">
 
-Table 7: properties Local unit
+Shape  
+[:LocalUnitShape](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitShape)
 
-| Description | Path | Type | Card. |
-|:---|:---|:---|---:|
-| **Animal keeper**: Assignment of the local unit to the animal keeper. According to eCH-0108, chapter 1.5, a local unit is always assigned to a legal unit (or enterprise); the master data of the local unit carries the optional attribute «mainUid» holding the UID of the main legal unit. Because the object catalogue treats the animal keeper only as a special form of the legal unit, this assignment is not mandatory. | `:animalKeeper` | [`:AnimalKeeper`](#sec-nodeshape-animalkeepershape) | 0..1 |
+Target class  
+[:LocalUnit](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnit)
+
+Closed  
+No (further properties are allowed)
+
+Data access  
+None (transactional data, not part of the published graph)
 
 </div>
+
+### Properties
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 56%" />
+<col style="width: 32%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Cardinality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Animal keeper</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/animalKeeper">:animalKeeper</a>):
+Assignment of the local unit to the animal keeper. According to
+eCH-0108, chapter 1.5, a local unit is always assigned to a legal unit
+(or enterprise); the master data of the local unit carries the optional
+attribute «mainUid» holding the UID of the main legal unit. Because the
+object catalogue treats the animal keeper only as a special form of the
+legal unit, this assignment is not mandatory.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-animalkeepershape">Animal
+keeper</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
 
 # Code lists
 
@@ -424,7 +1034,7 @@ as provided by the sources.
 
 <div id="tbl-codelist-animalhealthstatus">
 
-Table 8: Values of the code list Health status of an individual animal
+Table 2: Values of the code list Health status of an individual animal
 
 | Value        | Designation | Description              |
 |:-------------|:------------|:-------------------------|
@@ -439,7 +1049,7 @@ Table 8: Values of the code list Health status of an individual animal
 
 <div id="tbl-codelist-animalhistorystate">
 
-Table 9: Values of the code list Animal history state
+Table 3: Values of the code list Animal history state
 
 | Value         | Designation  | Description |
 |:--------------|:-------------|:------------|
@@ -455,7 +1065,7 @@ Table 9: Values of the code list Animal history state
 
 <div id="tbl-codelist-animaltypeofuse">
 
-Table 10: Values of the code list Type of use (cattle, sheep, goats)
+Table 4: Values of the code list Type of use (cattle, sheep, goats)
 
 | Value   | Designation | Description                    |
 |:--------|:------------|:-------------------------------|
@@ -468,7 +1078,7 @@ Table 10: Values of the code list Type of use (cattle, sheep, goats)
 
 <div id="tbl-codelist-equidtypeofusage">
 
-Table 11: Values of the code list Type of use (equids)
+Table 5: Values of the code list Type of use (equids)
 
 | Value             | Designation      | Description |
 |:------------------|:-----------------|:------------|
@@ -481,7 +1091,7 @@ Table 11: Values of the code list Type of use (equids)
 
 <div id="tbl-codelist-equidwithersclass">
 
-Table 12: Values of the code list Withers class
+Table 6: Values of the code list Withers class
 
 | Value                  | Designation                 | Description |
 |:-----------------------|:----------------------------|:------------|
@@ -494,7 +1104,7 @@ Table 12: Values of the code list Withers class
 
 <div id="tbl-codelist-gender">
 
-Table 13: Values of the code list Gender
+Table 7: Values of the code list Gender
 
 | Value    | Designation | Description |
 |:---------|:------------|:------------|
@@ -507,7 +1117,7 @@ Table 13: Values of the code list Gender
 
 <div id="tbl-codelist-genus">
 
-Table 14: Values of the code list Genus
+Table 8: Values of the code list Genus
 
 | Value | Designation | Description |
 |:---|:---|:---|
@@ -526,7 +1136,7 @@ Table 14: Values of the code list Genus
 
 <div id="tbl-codelist-healthstatustype">
 
-Table 15: Values of the code list Health status type
+Table 9: Values of the code list Health status type
 
 | Value               | Designation        | Description |
 |:--------------------|:-------------------|:------------|
@@ -541,7 +1151,7 @@ Table 15: Values of the code list Health status type
 
 <div id="tbl-codelist-localunithealthstatus">
 
-Table 16: Values of the code list Health status of a local unit
+Table 10: Values of the code list Health status of a local unit
 
 | Value       | Designation | Description             |
 |:------------|:------------|:------------------------|
@@ -560,7 +1170,7 @@ Table 16: Values of the code list Health status of a local unit
 
 <div id="tbl-codelist-notificationtype">
 
-Table 17: Values of the code list Notification type
+Table 11: Values of the code list Notification type
 
 | Value | Designation | Description |
 |:---|:---|:---|
@@ -635,7 +1245,17 @@ references to third party rights.
 
 # Annex A - References
 
-<div id="refs">
+<div id="refs" class="references csl-bib-body">
+
+<div id="ref-Turtle" class="csl-entry">
+
+<span class="csl-left-margin">\[Turtle\]
+</span><span class="csl-right-inline">Beckett, David ; Berners-Lee,
+Tim ; Prud’hommeaux, Eric ; Carothers, Gavin: *[RDF 1.1 Turtle – Terse
+RDF Triple Language](https://www.w3.org/TR/turtle/)* (W3C
+Recommendation) : World Wide Web Consortium (W3C), 2014</span>
+
+</div>
 
 </div>
 
@@ -645,57 +1265,50 @@ references to third party rights.
 
 <div id="tbl-glossary">
 
-Table 18: Glossary of eCH-0309
+Table 12: Glossary of eCH-0309
 
 <table>
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 25%" />
-<col style="width: 55%" />
+<col style="width: 35%" />
+<col style="width: 65%" />
 </colgroup>
 <thead>
 <tr>
-<th style="text-align: left;">IRI</th>
 <th style="text-align: left;">Term</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/term/animalHolding"><code>term:animalHolding</code></a></td>
 <td style="text-align: left;"><strong>Animal holding</strong></td>
 <td style="text-align: left;">In the animal movement database, local
 units are called «animal holdings»; they are additionally identified by
 their TVD number.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/term/farmManager"><code>term:farmManager</code></a></td>
 <td style="text-align: left;"><strong>Farm manager</strong></td>
 <td style="text-align: left;">A legal unit that bears the business risk
 for a farm (LBV Art. 2). The animal keeper is a form of farm manager
 that keeps animals (LBV Art. 11a).</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/term/homeHolding"><code>term:homeHolding</code></a></td>
 <td style="text-align: left;"><strong>Home holding</strong></td>
 <td style="text-align: left;">For cattle, a home holding can be recorded
 in order to represent an animal’s affiliation to an animal holding while
 the animal is located on another local unit.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/term/lindas"><code>term:lindas</code></a></td>
 <td style="text-align: left;"><strong>Linked Data Service</strong>
 (LINDAS)</td>
 <td style="text-align: left;">The official Linked Data service of the
 Swiss Federal Administration, acting as a triple store.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/term/rdf"><code>term:rdf</code></a></td>
+<td style="text-align: left;"><strong>Reporting person</strong></td>
+<td style="text-align: left;">The person or persons who make
+notifications for an animal holding or for an equid owner.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><strong>Resource Description
 Framework</strong> (RDF)</td>
 <td style="text-align: left;">A central standard of the World Wide Web
@@ -703,20 +1316,10 @@ Consortium (W3C) for modeling data structures on the Web. Information is
 represented as networked graphs rather than in traditional tables.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/term/reportingPerson"><code>term:reportingPerson</code></a></td>
-<td style="text-align: left;"><strong>Reporting person</strong></td>
-<td style="text-align: left;">The person or persons who make
-notifications for an animal holding or for an equid owner.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/term/triple"><code>term:triple</code></a></td>
 <td style="text-align: left;"><strong>Triple</strong></td>
 <td style="text-align: left;"><p>The basic structure of a statement in
 RDF, consisting of a subject, predicate, and object.</p>
-<p><em>broader</em>: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/term/rdf"><code>term:rdf</code></a></p></td>
+<p><em>Broader</em>: Resource Description Framework</p></td>
 </tr>
 </tbody>
 </table>
