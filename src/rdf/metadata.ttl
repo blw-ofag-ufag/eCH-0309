@@ -1,0 +1,57 @@
+# ==============================================================================
+# GRAPH METADATA
+# ==============================================================================
+#
+# Describes the named graph on LINDAS as a dataset (schema.org, DCAT, VoID),
+# so that it can be found on LINDAS and opendata.swiss. The subject is the
+# IRI of the named graph (ech.graph in docs/_ech.yml, GRAPH in .env).
+#
+# The modification date (schema:dateModified, dcterms:modified) is not kept
+# here: `make publish` sets it automatically when the content of the graph
+# differs from the one currently on LINDAS (src/python/utils/graph_metadata.py).
+
+@prefix dcat:            <http://www.w3.org/ns/dcat#> .
+@prefix dcat:            <http://www.w3.org/ns/dcat#> .
+@prefix dcterms:         <http://purl.org/dc/terms/> .
+@prefix schema:          <http://schema.org/> .
+@prefix vcard:           <http://www.w3.org/2006/vcard/ns#> .
+@prefix void:            <http://rdfs.org/ns/void#> .
+@prefix xsd:             <http://www.w3.org/2001/XMLSchema#> .
+@prefix org:             <https://register.ld.admin.ch/opendataswiss/org/> .
+@prefix theme:           <https://register.ld.admin.ch/opendataswiss/category/> .
+@prefix status:          <https://ld.admin.ch/vocabulary/CreativeWorkStatus/> .
+@prefix tou:             <https://ld.admin.ch/vocabulary/TermsOfUse/> .
+@prefix frequency:       <https://publications.europa.eu/resource/authority/frequency/> .
+
+<https://lindas.admin.ch/foag/ech/0309/1> a void:Dataset,
+        dcat:Dataset,
+        schema:Dataset ;
+    schema:name
+        "eCH-0309 Tierverkehrsdaten"@de,
+        "eCH-0309 Animal movement data"@en,
+        "eCH-0309 Données sur le trafic des animaux"@fr,
+        "eCH-0309 Dati sul traffico di animali"@it ;
+    schema:description
+        "Daten des Hilfsmittels eCH-0309: das semantische Datenmodell der Tierverkehrsdatenbank (TVD) mit seinen Klassen, Attributen und Beziehungen sowie den zugehörigen Wertebereichen als Linked Data."@de,
+        "Data of the eCH-0309 auxiliary document: the semantic data model of the Swiss animal movement database (TVD) with its classes, attributes and relationships, together with the associated code lists, as linked data."@en,
+        "Données du document auxiliaire eCH-0309: le modèle de données sémantique de la banque de données sur le trafic des animaux (BDTA) avec ses classes, attributs et relations ainsi que les domaines de valeurs associés, sous forme de données liées."@fr,
+        "Dati del documento ausiliario eCH-0309: il modello di dati semantico della banca dati sul traffico di animali (BDTA) con le sue classi, i suoi attributi e le sue relazioni nonché i domini di valori associati, come linked data."@it ;
+    dcterms:issued "2026-10-12"^^xsd:date ;
+    schema:dateCreated "2026-10-12"^^xsd:date ;
+    schema:datePublished "2026-10-12"^^xsd:date ;
+    schema:creativeWorkStatus status:Draft ;
+    schema:creator org:bundesamt-fur-landwirtschaft-blw ;
+    schema:publisher org:bundesamt-fur-landwirtschaft-blw ;
+    dcat:contactPoint [
+        a vcard:Organization ;
+        vcard:fn "Bundesamt für Landwirtschaft BLW" ;
+        vcard:hasEmail <mailto:agridata.ch@blw.admin.ch>
+    ] ;
+    dcterms:rights tou:Open-Use ;
+    dcterms:license tou:Open-Use ;
+    dcat:landingPage <https://blw-ofag-ufag.github.io/eCH-0309/> ;
+    dcat:theme theme:agriculture, theme:administration ;
+    dcterms:language "de" ;
+    dcterms:accrualPeriodicity frequency:ANNUAL ;
+    dcat:keyword "Linked Data"@de, "Landwirtschaft"@de, "Tierverkehr"@de, "Tierverkehrsdatenbank"@de, "Nutztiere"@de, "Tierseuchen"@de,
+        "Linked Data"@en, "Agriculture"@en, "Animal movement"@en, "Livestock"@en .
