@@ -231,7 +231,7 @@
             "Statut de l'historique de l'animal"@fr,
             "Stato della storia dell'animale"@it ;
         :animalTracingTerm "EnumAnimalHistoryState" ;
-        sh:path :animalHistoryState ;
+        sh:path :historyState ;
         sh:class :AnimalHistoryState ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -362,7 +362,7 @@
             "Unique identifier of the movement, assigned by the system."@en,
             "Identifiant univoque du mouvement, attribué par le système."@fr,
             "Identificatore univoco del movimento, attribuito dal sistema."@it ;
-        sh:path :eventIdentifier ;
+        sh:path :id ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -497,7 +497,7 @@
             "Unique identifier of the movement, assigned by the system."@en,
             "Identifiant univoque du mouvement, attribué par le système."@fr,
             "Identificatore univoco del movimento, attribuito dal sistema."@it ;
-        sh:path :eventIdentifier ;
+        sh:path :id ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;
         sh:maxCount 1 ;

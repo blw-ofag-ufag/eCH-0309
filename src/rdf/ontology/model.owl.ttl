@@ -74,7 +74,7 @@
 
 :gender a owl:ObjectProperty .
 
-:animalHistoryState a owl:ObjectProperty .
+:historyState a owl:ObjectProperty .
 
 :typeOfUse a owl:ObjectProperty .
 
@@ -100,7 +100,7 @@
 
 :identifier a owl:DatatypeProperty .
 
-:eventIdentifier a owl:DatatypeProperty .
+:id a owl:DatatypeProperty .
 
 :dateOfBirth a owl:DatatypeProperty .
 
