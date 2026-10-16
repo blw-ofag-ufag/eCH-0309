@@ -71,6 +71,8 @@ Schnittstellen: AnimalTracing API, Technische Servicebeschreibung AnimalTracing
 
 ![UML-Diagramm des Datenmodells von eCH-0309.](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
 
+@fig-uml zeigt die Klassen des Datenmodells und ihre Beziehungen. Jedes Rechteck ist eine Klasse, die Zeilen darin sind ihre Attribute; die eckigen Klammern geben an, wie viele Werte zulässig sind, von der Mindest- bis zur Höchstzahl — `[1..1]` bedeutet genau einen Wert, `[0..1]` höchstens einen. Ein Pfeil führt zu der Klasse, auf die verwiesen wird, und trägt den Namen der Beziehung; mehrere Beziehungen zwischen denselben Klassen teilen sich einen Pfeil. Die Linie mit dem Dreieck verbindet eine Klasse mit ihrer Oberklasse, auf die das Dreieck zeigt: Ein Equide ist ein Einzeltier und hat zusätzlich zu den gezeigten alle Attribute des Einzeltiers, die im Diagramm nicht wiederholt werden. Attribute mit einem Wertebereich sind wie alle übrigen dargestellt; die zulässigen Werte stehen in @sec-code-lists. Datentypen und Beschreibungen führt das Diagramm nicht auf, sie folgen in den Abschnitten zu den einzelnen Klassen.
+
 {{< include entities.md >}}
 
 # Wertebereiche {#sec-code-lists}

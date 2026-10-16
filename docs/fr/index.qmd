@@ -71,6 +71,8 @@ Le @tbl-namespaces énumère les préfixes et les espaces de noms utilisés dans
 
 ![Diagramme UML du modèle de données eCH-0309.](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
 
+La @fig-uml présente les classes du modèle de données et leurs relations. Chaque rectangle est une classe, les lignes qu'il contient sont ses attributs; les crochets indiquent le nombre de valeurs admises, du minimum au maximum — `[1..1]` signifie exactement une valeur, `[0..1]` au plus une. Une flèche mène à la classe vers laquelle le renvoi est fait et porte le nom de la relation; plusieurs relations entre les deux mêmes classes se partagent une flèche. La ligne munie d'un triangle relie une classe à sa classe supérieure, vers laquelle le triangle pointe: un équidé est un animal individuel et possède, outre les attributs représentés, tous les attributs de l'animal individuel, qui ne sont pas répétés dans le diagramme. Les attributs assortis d'un domaine de valeurs sont représentés comme tous les autres; les valeurs admises figurent au @sec-code-lists. Le diagramme n'indique ni les types de données ni les descriptions: celles-ci suivent dans les sections consacrées aux différentes classes.
+
 {{< include entities.md >}}
 
 # Domaines de valeurs {#sec-code-lists}

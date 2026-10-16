@@ -71,6 +71,8 @@ Interfaces: AnimalTracing API, technical service description AnimalTracing
 
 ![UML diagram of the eCH-0309 data model.](../assets/img/uml.png){#fig-uml width="100%" .lightbox}
 
+@fig-uml shows the classes of the data model and their relationships. Each rectangle is a class and the lines inside it are its attributes; the square brackets state how many values are permitted, from the minimum to the maximum — `[1..1]` means exactly one value, `[0..1]` at most one. An arrow leads to the class being referred to and carries the name of the relationship; several relationships between the same two classes share one arrow. The line with the triangle connects a class to its superclass, at which the triangle points: an equid is an individual animal and has, in addition to the attributes shown, all attributes of the individual animal, which are not repeated in the diagram. Attributes with a code list are drawn like all the others; the permitted values are given in @sec-code-lists. The diagram states neither datatypes nor descriptions; those follow in the sections on the individual classes.
+
 {{< include entities.md >}}
 
 # Code lists {#sec-code-lists}
