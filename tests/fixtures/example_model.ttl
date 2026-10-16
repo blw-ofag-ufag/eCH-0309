@@ -24,6 +24,8 @@
 @prefix genus:         <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
 @prefix animalhistorystate: <https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
 @prefix notificationtype: <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
+@prefix equidnotificationstate: <https://agriculture.ld.admin.ch/eCH-0309/1/equidnotificationstate/> .
+@prefix equidtypeofusage: <https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/> .
 @prefix equidwithersclass: <https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
 
 # A keeper with two holdings. The keeper satisfies the sh:sparql constraint on
@@ -40,17 +42,17 @@ localunit:2 a :LocalUnit ;
 animal:1 a :Animal ;
     :identifier "CH000000000001" ;
     :genus genus:Cattle ;
-    :animalHistoryState animalhistorystate:Ok .
+    :historyState animalhistorystate:Ok .
 
 animal:2 a :Animal ;
     :identifier "CH000000000002" ;
     :genus genus:Cattle ;
-    :animalHistoryState animalhistorystate:Ok .
+    :historyState animalhistorystate:Ok .
 
 animal:3 a :Animal ;
     :identifier "CH000000000003" ;
     :genus genus:Cattle ;
-    :animalHistoryState animalhistorystate:Ok ;
+    :historyState animalhistorystate:Ok ;
     :mother animal:1 ;
     :father animal:2 .
 
@@ -61,7 +63,8 @@ legalunit:1 a :LegalUnit .
 animal:4 a :Equid ;
     :identifier "CH000000000004" ;
     :genus genus:Equid ;
-    :animalHistoryState animalhistorystate:Ok ;
+    :notificationState equidnotificationstate:Ok ;
+    :typeOfEquidUsage equidtypeofusage:FarmAnimal ;
     :withersClass equidwithersclass:GreaterThan148cm ;
     :owner legalunit:1 .
 
@@ -71,14 +74,15 @@ animal:4 a :Equid ;
 animal:5 a :Equid ;
     :identifier "CH000000000005" ;
     :genus genus:Equid ;
-    :animalHistoryState animalhistorystate:Ok ;
+    :notificationState equidnotificationstate:Ok ;
+    :typeOfEquidUsage equidtypeofusage:FarmAnimal ;
     :withersClass equidwithersclass:GreaterThan148cm ;
     :owner animalkeeper:1 .
 
 # A move of animal:3 from localunit:1 to localunit:2, and a group notification
 # for a herd of pigs or poultry on localunit:1.
 notification:1 a :AnimalNotification ;
-    :eventIdentifier "1" ;
+    :id "1" ;
     :genus genus:Cattle ;
     :notificationType notificationtype:Arrival ;
     :eventDate "2026-03-01"^^xsd:date ;
@@ -88,7 +92,7 @@ notification:1 a :AnimalNotification ;
     :originLocalUnit localunit:1 .
 
 notification:2 a :GroupNotification ;
-    :eventIdentifier "2" ;
+    :id "2" ;
     :genus genus:Pig ;
     :notificationType notificationtype:Arrival ;
     :eventDate "2026-03-01"^^xsd:date ;

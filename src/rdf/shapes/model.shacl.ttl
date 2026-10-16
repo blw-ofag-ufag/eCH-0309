@@ -231,9 +231,12 @@
             "Statut de l'historique de l'animal"@fr,
             "Stato della storia dell'animale"@it ;
         :animalTracingTerm "EnumAnimalHistoryState" ;
-        sh:path :animalHistoryState ;
+        sh:description "Status der Tiergeschichte zum Abfragedatum. Nicht relevant für Equiden; der Objektkatalog führt das Attribut deshalb mit Kardinalität 1, die Pflicht gilt aber nur für die übrigen Einzeltiere."@de,
+            "State of the animal history at the date of the query. Not relevant for equids; the object catalogue therefore gives the attribute a cardinality of 1, but the obligation applies only to the remaining individual animals."@en,
+            "Statut de l'historique de l'animal à la date de la requête. Non pertinent pour les équidés ; le catalogue d'objets attribue donc à l'attribut une cardinalité de 1, mais l'obligation ne vaut que pour les autres animaux individuels."@fr,
+            "Stato della storia dell'animale alla data della richiesta. Non rilevante per gli equidi; il catalogo degli oggetti attribuisce quindi all'attributo una cardinalità di 1, ma l'obbligo vale solo per gli altri animali singoli."@it ;
+        sh:path :historyState ;
         sh:class :AnimalHistoryState ;
-        sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
     [
@@ -253,7 +256,11 @@
             "Castrated"@en,
             "Castré"@fr,
             "Castrato"@it ;
-        :animalTracingTerm "CattleDetailV1Response.isCastrated" ;
+        :animalTracingTerm "CattleDetailV1Response.isCastrated", "EquidDetailsV1EquidResponse.isCastrated" ;
+        sh:description "Der Objektkatalog bezeichnet das Attribut als für Equiden nicht vorhanden, die openAPI führt es aber auch auf den Equiden-Antworten; die Abweichung ist mit Issue #45 bei Identitas angefragt."@de,
+            "The object catalogue describes the attribute as absent for equids, but the openAPI carries it on the equid responses as well; issue #45 puts the discrepancy to Identitas."@en,
+            "Le catalogue d'objets décrit l'attribut comme absent pour les équidés, mais l'openAPI le porte également sur les réponses relatives aux équidés ; l'écart fait l'objet de l'issue #45 auprès d'Identitas."@fr,
+            "Il catalogo degli oggetti descrive l'attributo come assente per gli equidi, ma l'openAPI lo riporta anche nelle risposte relative agli equidi; la divergenza è oggetto dell'issue #45 presso Identitas."@it ;
         sh:path :castrated ;
         sh:datatype xsd:boolean ;
         sh:maxCount 1 ;
@@ -287,6 +294,25 @@
             "An individual animal has at most one father animal."@en,
             "Un animal individuel a au plus un père."@fr,
             "Un animale singolo ha al massimo un padre."@it ;
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:description "Der Objektkatalog führt den TiergeschichteStatus mit Kardinalität 1, bezeichnet ihn für Equiden aber als nicht relevant. Die Pflicht gilt deshalb für jedes Einzeltier ausser den Equiden."@de,
+            "The object catalogue gives the animal history state a cardinality of 1 but notes that it is not relevant for equids. The obligation therefore applies to every individual animal except equids."@en,
+            "Le catalogue d'objets attribue au statut de l'historique de l'animal une cardinalité de 1, tout en précisant qu'il n'est pas pertinent pour les équidés. L'obligation s'applique donc à tout animal individuel à l'exception des équidés."@fr,
+            "Il catalogo degli oggetti attribuisce allo stato della storia dell'animale una cardinalità di 1, precisando però che non è rilevante per gli equidi. L'obbligo vale quindi per ogni animale singolo tranne gli equidi."@it ;
+        sh:message "Jedes Einzeltier ausser den Equiden braucht einen TiergeschichteStatus."@de,
+            "Every individual animal except equids requires an animal history state."@en,
+            "Tout animal individuel, à l'exception des équidés, doit avoir un statut de l'historique de l'animal."@fr,
+            "Ogni animale singolo, tranne gli equidi, necessita di uno stato della storia dell'animale."@it ;
+        sh:prefixes : ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS { $this a :Equid . }
+                FILTER NOT EXISTS { $this :historyState ?state . }
+            }
+        """ ;
     ] .
 
 # :owner follows the Objektkatalog's cardinality of 1. Whether an equid owner
@@ -305,6 +331,82 @@
         "Sottoclasse della classe animale singolo per gli animali del genere equide (cavallo, mulo, bardotto, asino). Tutti gli attributi della classe animale singolo si applicano anche agli equidi; questa classe descrive esclusivamente le informazioni aggiuntive specifiche degli equidi. Per gli equidi la responsabilità delle notifiche spetta al proprietario e non al detentore di animali. Un proprietario è l'unità giuridica che ha in proprietà degli equidi; il termine è usato solo per i proprietari di equidi (capitolo 3.1.1 dello strumento)."@it ;
     :animalTracingTerm "EquidDetailsEquidResponse", "EquidDetailsPublicEquidResponse" ;
     sh:targetClass :Equid ;
+    sh:property
+    [
+        sh:order 3 ;
+        sh:name "Meldestatus"@de,
+            "Notification state"@en,
+            "Statut d'annonce"@fr,
+            "Stato di notifica"@it ;
+        :animalTracingTerm "EnumEquidNotificationState" ;
+        sh:description "Equiden führen anstelle des TiergeschichteStatus einen eigenen Meldestatus."@de,
+            "Equids carry a notification state of their own instead of the animal history state."@en,
+            "Les équidés portent un statut d'annonce propre au lieu du statut de l'historique de l'animal."@fr,
+            "Gli equidi hanno uno stato di notifica proprio invece dello stato della storia dell'animale."@it ;
+        sh:path :notificationState ;
+        sh:class :EquidNotificationState ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 4 ;
+        sh:name "Zweck"@de,
+            "Type of use"@en,
+            "Type d'utilisation"@fr,
+            "Tipo di utilizzo"@it ;
+        :animalTracingTerm "EquidTypeOfUsage" ;
+        sh:description "Equiden verwenden einen eigenen Wertebereich: Heimtier oder Nutztier."@de,
+            "Equids use a code list of their own: companion animal or farm animal."@en,
+            "Les équidés utilisent un domaine de valeurs propre: animal de compagnie ou animal de rente."@fr,
+            "Gli equidi utilizzano un dominio di valori proprio: animale da compagnia o animale da reddito."@it ;
+        sh:path :typeOfEquidUsage ;
+        sh:class :EquidTypeOfUsage ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    # Attributes of «Einzeltier» that do not apply to equids. The Objektkatalog
+    # exempts the TiergeschichteStatus itself. The father contradicts it and is
+    # put to Identitas as issue #45. The type of use is not dropped but replaced,
+    # by the equid-specific one above.
+    [
+        sh:order 90 ;
+        sh:name "Identifikation Vater"@de,
+            "Father"@en,
+            "Père"@fr,
+            "Padre"@it ;
+        sh:description "Equiden führen keinen Vater: die openAPI kennt für sie nur die Mutter und die genetische Mutter. Der Objektkatalog nennt im Attribut dagegen die UELN des Vatertiers; die Abweichung ist mit Issue #45 bei Identitas angefragt."@de,
+            "Equids have no father: the openAPI knows only the mother and the genetic mother for them. The object catalogue, by contrast, names the UELN of the father animal in the attribute; issue #45 puts the discrepancy to Identitas."@en,
+            "Les équidés n'ont pas de père: l'openAPI ne connaît pour eux que la mère et la mère génétique. Le catalogue d'objets mentionne en revanche l'UELN du père dans l'attribut ; l'écart fait l'objet de l'issue #45 auprès d'Identitas."@fr,
+            "Gli equidi non hanno un padre: l'openAPI conosce per loro solo la madre e la madre genetica. Il catalogo degli oggetti menziona invece l'UELN del padre nell'attributo; la divergenza è oggetto dell'issue #45 presso Identitas."@it ;
+        sh:path :father ;
+        sh:maxCount 0 ;
+    ],
+    [
+        sh:order 91 ;
+        sh:name "TiergeschichteStatus"@de,
+            "Animal history state"@en,
+            "Statut de l'historique de l'animal"@fr,
+            "Stato della storia dell'animale"@it ;
+        sh:description "Im Objektkatalog als «nicht relevant für Equiden» bezeichnet; an seine Stelle tritt der Meldestatus."@de,
+            "Described in the object catalogue as not relevant for equids; the notification state takes its place."@en,
+            "Désigné dans le catalogue d'objets comme non pertinent pour les équidés; le statut d'annonce prend sa place."@fr,
+            "Indicato nel catalogo degli oggetti come non rilevante per gli equidi; al suo posto subentra lo stato di notifica."@it ;
+        sh:path :historyState ;
+        sh:maxCount 0 ;
+    ],
+    [
+        sh:order 92 ;
+        sh:name "Zweck (Nutztiere)"@de,
+            "Type of use (livestock)"@en,
+            "Type d'utilisation (animaux de rente)"@fr,
+            "Tipo di utilizzo (animali da reddito)"@it ;
+        sh:description "Gilt nicht für Equiden; an seine Stelle tritt der equidenspezifische Zweck."@de,
+            "Does not apply to equids; the equid-specific type of use takes its place."@en,
+            "Ne s'applique pas aux équidés; le type d'utilisation propre aux équidés prend sa place."@fr,
+            "Non si applica agli equidi; al suo posto subentra il tipo di utilizzo specifico degli equidi."@it ;
+        sh:path :typeOfUse ;
+        sh:maxCount 0 ;
+    ] ;
     sh:property
     [
         sh:order 2 ;
@@ -362,7 +464,7 @@
             "Unique identifier of the movement, assigned by the system."@en,
             "Identifiant univoque du mouvement, attribué par le système."@fr,
             "Identificatore univoco del movimento, attribuito dal sistema."@it ;
-        sh:path :eventIdentifier ;
+        sh:path :id ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -497,7 +599,7 @@
             "Unique identifier of the movement, assigned by the system."@en,
             "Identifiant univoque du mouvement, attribué par le système."@fr,
             "Identificatore univoco del movimento, attribuito dal sistema."@it ;
-        sh:path :eventIdentifier ;
+        sh:path :id ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
