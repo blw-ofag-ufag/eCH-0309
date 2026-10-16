@@ -71,7 +71,7 @@ genus:Cattle a skos:Concept, :Genus ;
     skos:notation "Cattle" ;
     schema:name "Rindvieh"@de,
         "Cattle"@en ;
-    schema:description "Tiere der Rindergattung (Bos) und Wasserbüffel (Bubalus bubalis)"@de ;
+    schema:description "Tiere der Rindergattung (*Bos*) und Wasserbüffel (*Bubalus bubalis*)"@de ;
     :animalTracingTerm "EnumGenus.Cattle" .
 
 genus:Pig a skos:Concept, :Genus ;
