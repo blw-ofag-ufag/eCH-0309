@@ -18,18 +18,14 @@ TRANSLATIONS = {
         "facts_shape": "Shape",
         "facts_class": "Class",
         "facts_target": "Target class",
-        "facts_closed": "Closed",
-        "facts_closed_yes": "Yes (only the listed properties are allowed)",
-        "facts_closed_no": "No (further properties are allowed)",
         "facts_figures": "Key figures",
         "facts_figures_range": "{instances} instances with {min} to {max} triples each ({avg} on average)",
         "facts_figures_fixed": "{instances} instances with {min} triples each",
         "facts_open_data": "Data access",
         "facts_open_yes": "[SPARQL service]({link})",
-        "facts_open_no": "None (transactional data, not part of the published graph)",
         "section_overview": "Overview",
         "section_properties": "Properties",
-        "section_rules": "Rules (SPARQL)",
+        "section_rules": "Rules",
         "datatypes": {"string": "Text", "langString": "Language-tagged text", "date": "Date", "dateTime": "Date and time", "time": "Time", "gYear": "Year", "integer": "Integer", "int": "Integer", "long": "Integer", "nonNegativeInteger": "Non-negative integer", "positiveInteger": "Positive integer", "decimal": "Decimal number", "double": "Floating-point number", "float": "Floating-point number", "boolean": "Boolean", "anyURI": "URI", "duration": "Duration"},
         "ns_prefix": "Prefix",
         "ns_caption": "Namespaces used in {{< ech title >}}.",
@@ -59,18 +55,14 @@ TRANSLATIONS = {
         "facts_shape": "Shape",
         "facts_class": "Klasse",
         "facts_target": "Zielklasse",
-        "facts_closed": "Geschlossen",
-        "facts_closed_yes": "Ja (nur die aufgeführten Eigenschaften zulässig)",
-        "facts_closed_no": "Nein (weitere Eigenschaften zulässig)",
         "facts_figures": "Kennzahlen",
         "facts_figures_range": "{instances} Instanzen mit je {min} bis {max} Tripeln (im Mittel {avg})",
         "facts_figures_fixed": "{instances} Instanzen mit je {min} Tripeln",
         "facts_open_data": "Datenzugriff",
         "facts_open_yes": "[SPARQL-Dienst]({link})",
-        "facts_open_no": "Keiner (Transaktionsdaten, nicht Teil des publizierten Graphen)",
         "section_overview": "Übersicht",
         "section_properties": "Eigenschaften",
-        "section_rules": "Regeln (SPARQL)",
+        "section_rules": "Regeln",
         "datatypes": {"string": "Zeichenkette", "langString": "Sprachabhängiger Text", "date": "Datum", "dateTime": "Zeitpunkt", "time": "Uhrzeit", "gYear": "Jahr", "integer": "Ganzzahl", "int": "Ganzzahl", "long": "Ganzzahl", "nonNegativeInteger": "Nicht negative Ganzzahl", "positiveInteger": "Positive Ganzzahl", "decimal": "Dezimalzahl", "double": "Gleitkommazahl", "float": "Gleitkommazahl", "boolean": "Wahrheitswert", "anyURI": "URI", "duration": "Zeitdauer"},
         "ns_prefix": "Präfix",
         "ns_caption": "In {{< ech title >}} verwendete Namespaces.",
@@ -100,18 +92,14 @@ TRANSLATIONS = {
         "facts_shape": "Shape",
         "facts_class": "Classe",
         "facts_target": "Classe cible",
-        "facts_closed": "Fermée",
-        "facts_closed_yes": "Oui (seules les propriétés énumérées sont admises)",
-        "facts_closed_no": "Non (d'autres propriétés sont admises)",
         "facts_figures": "Chiffres clés",
         "facts_figures_range": "{instances} instances avec chacune {min} à {max} triplets ({avg} en moyenne)",
         "facts_figures_fixed": "{instances} instances avec chacune {min} triplets",
         "facts_open_data": "Accès aux données",
         "facts_open_yes": "[Service SPARQL]({link})",
-        "facts_open_no": "Aucun (données transactionnelles, ne faisant pas partie du graphe publié)",
         "section_overview": "Aperçu",
         "section_properties": "Propriétés",
-        "section_rules": "Règles (SPARQL)",
+        "section_rules": "Règles",
         "datatypes": {"string": "Chaîne de caractères", "langString": "Texte avec indication de langue", "date": "Date", "dateTime": "Date et heure", "time": "Heure", "gYear": "Année", "integer": "Nombre entier", "int": "Nombre entier", "long": "Nombre entier", "nonNegativeInteger": "Nombre entier non négatif", "positiveInteger": "Nombre entier positif", "decimal": "Nombre décimal", "double": "Nombre à virgule flottante", "float": "Nombre à virgule flottante", "boolean": "Booléen", "anyURI": "URI", "duration": "Durée"},
         "ns_prefix": "Préfixe",
         "ns_caption": "Espaces de noms utilisés dans {{< ech title >}}.",
@@ -141,18 +129,14 @@ TRANSLATIONS = {
         "facts_shape": "Shape",
         "facts_class": "Classe",
         "facts_target": "Classe di destinazione",
-        "facts_closed": "Chiusa",
-        "facts_closed_yes": "Sì (solo le proprietà elencate sono ammesse)",
-        "facts_closed_no": "No (altre proprietà sono ammesse)",
         "facts_figures": "Indicatori",
         "facts_figures_range": "{instances} istanze con {min}–{max} triple ciascuna ({avg} in media)",
         "facts_figures_fixed": "{instances} istanze con {min} triple ciascuna",
         "facts_open_data": "Accesso ai dati",
         "facts_open_yes": "[Servizio SPARQL]({link})",
-        "facts_open_no": "Nessuno (dati transazionali, non inclusi nel grafo pubblicato)",
         "section_overview": "Panoramica",
         "section_properties": "Proprietà",
-        "section_rules": "Regole (SPARQL)",
+        "section_rules": "Regole",
         "datatypes": {"string": "Stringa", "langString": "Testo con indicazione della lingua", "date": "Data", "dateTime": "Data e ora", "time": "Ora", "gYear": "Anno", "integer": "Numero intero", "int": "Numero intero", "long": "Numero intero", "nonNegativeInteger": "Numero intero non negativo", "positiveInteger": "Numero intero positivo", "decimal": "Numero decimale", "double": "Numero a virgola mobile", "float": "Numero a virgola mobile", "boolean": "Booleano", "anyURI": "URI", "duration": "Durata"},
         "ns_prefix": "Prefisso",
         "ns_caption": "Spazi dei nomi utilizzati in {{< ech title >}}.",
@@ -417,8 +401,6 @@ def fact_sheet(g, data, shape, target_class, properties, graph_iri, trans):
         facts = [(trans['facts_shape'], qname_link(g, shape))]
         if target_class is not None:
             facts.append((trans['facts_target'], qname_link(g, target_class)))
-    closed = g.value(shape, SH.closed)
-    facts.append((trans['facts_closed'], trans['facts_closed_yes'] if closed is not None and bool(closed.toPython()) else trans['facts_closed_no']))
     stats = class_statistics(data, target_class)
     if stats is not None:
         if stats['instances']:
@@ -428,8 +410,6 @@ def fact_sheet(g, data, shape, target_class, properties, graph_iri, trans):
             # comma-separated list of access points (more to come, e.g. i14y)
             access = [trans['facts_open_yes'].format(link=yasgui_link(g, target_class, properties, graph_iri))]
             facts.append((trans['facts_open_data'], ", ".join(access)))
-        else:
-            facts.append((trans['facts_open_data'], trans['facts_open_no']))
     lines = ["::: {.ech-facts}"]
     for key, value in facts:
         lines.append(f"{key}")
@@ -693,27 +673,25 @@ def main():
                 md_lines.extend(build_grid_table(headers, rows, [42, 44, 14], align=["left", "left", "right"]))
                 md_lines.append("")
 
-            # SPARQL rules: one subsection per rule with its description and query
+            # Rules a shape states in SPARQL, written out rather than printed
+            # as a query: the document addresses readers who do not read SPARQL,
+            # and the query stays in the shapes file for whoever implements it.
             rules = []
             for constraint in g.objects(shape, SH.sparql):
                 r_name = get_localized_value(g, constraint, [SH.name, RDFS.label], lang)
                 r_desc = get_localized_value(g, constraint, [DCTERMS.description, SH.description, SH.message], lang)
-                r_query = g.value(constraint, SH.select)
-                rules.append((r_name or r_desc or "", r_desc if r_name else None, str(r_query).strip("\n") if r_query else None))
+                if r_name or r_desc:
+                    rules.append((r_name or "", r_desc or ""))
             if rules:
                 md_lines.append(f"### {trans['section_rules']} {{#sec-{slug}-rules .unlisted}}")
                 md_lines.append("")
-                for index, (r_name, r_desc, r_query) in enumerate(sorted(rules, key=lambda r: r[0].lower()), start=1):
-                    md_lines.append(f"#### {sanitize_cell(r_name)} {{#sec-{slug}-rule-{index} .unlisted}}")
+                for index, (r_name, r_desc) in enumerate(
+                        sorted(rules, key=lambda r: (r[0] or r[1]).lower()), start=1):
+                    if r_name:
+                        md_lines.append(f"#### {sanitize_cell(r_name)} {{#sec-{slug}-rule-{index} .unlisted}}")
+                        md_lines.append("")
+                    md_lines.append(sanitize_cell(r_desc or r_name))
                     md_lines.append("")
-                    if r_desc:
-                        md_lines.append(sanitize_cell(r_desc))
-                        md_lines.append("")
-                    if r_query:
-                        md_lines.append("```sparql")
-                        md_lines.append(textwrap.dedent(r_query).strip())
-                        md_lines.append("```")
-                        md_lines.append("")
 
         output_path = docs_dir / lang / "entities.md"
         with open(output_path, "w", encoding="utf-8") as f:
