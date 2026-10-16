@@ -233,7 +233,6 @@
         :animalTracingTerm "EnumAnimalHistoryState" ;
         sh:path :historyState ;
         sh:class :AnimalHistoryState ;
-        sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
     [
@@ -305,6 +304,81 @@
         "Sottoclasse della classe animale singolo per gli animali del genere equide (cavallo, mulo, bardotto, asino). Tutti gli attributi della classe animale singolo si applicano anche agli equidi; questa classe descrive esclusivamente le informazioni aggiuntive specifiche degli equidi. Per gli equidi la responsabilità delle notifiche spetta al proprietario e non al detentore di animali. Un proprietario è l'unità giuridica che ha in proprietà degli equidi; il termine è usato solo per i proprietari di equidi (capitolo 3.1.1 dello strumento)."@it ;
     :animalTracingTerm "EquidDetailsEquidResponse", "EquidDetailsPublicEquidResponse" ;
     sh:targetClass :Equid ;
+    sh:property
+    [
+        sh:order 3 ;
+        sh:name "Meldestatus"@de,
+            "Notification state"@en,
+            "Statut d'annonce"@fr,
+            "Stato di notifica"@it ;
+        :animalTracingTerm "EnumEquidNotificationState" ;
+        sh:description "Equiden führen anstelle des TiergeschichteStatus einen eigenen Meldestatus."@de,
+            "Equids carry a notification state of their own instead of the animal history state."@en,
+            "Les équidés portent un statut d'annonce propre au lieu du statut de l'historique de l'animal."@fr,
+            "Gli equidi hanno uno stato di notifica proprio invece dello stato della storia dell'animale."@it ;
+        sh:path :notificationState ;
+        sh:class :EquidNotificationState ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 4 ;
+        sh:name "Zweck"@de,
+            "Type of use"@en,
+            "Type d'utilisation"@fr,
+            "Tipo di utilizzo"@it ;
+        :animalTracingTerm "EquidTypeOfUsage" ;
+        sh:description "Equiden verwenden einen eigenen Wertebereich: Heimtier oder Nutztier."@de,
+            "Equids use a code list of their own: companion animal or farm animal."@en,
+            "Les équidés utilisent un domaine de valeurs propre: animal de compagnie ou animal de rente."@fr,
+            "Gli equidi utilizzano un dominio di valori proprio: animale da compagnia o animale da reddito."@it ;
+        sh:path :typeOfEquidUsage ;
+        sh:class :EquidTypeOfUsage ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    # Attributes of «Einzeltier» that do not apply to equids. The Objektkatalog
+    # says the class's attributes apply to equids too, but neither the openAPI
+    # nor the TVD database carries these for them.
+    [
+        sh:order 90 ;
+        sh:name "Identifikation Vater"@de,
+            "Father"@en,
+            "Père"@fr,
+            "Padre"@it ;
+        sh:description "Equiden führen keinen Vater: die openAPI kennt für sie nur die Mutter und die genetische Mutter."@de,
+            "Equids have no father: the openAPI knows only the mother and the genetic mother for them."@en,
+            "Les équidés n'ont pas de père: l'openAPI ne connaît pour eux que la mère et la mère génétique."@fr,
+            "Gli equidi non hanno un padre: l'openAPI conosce per loro solo la madre e la madre genetica."@it ;
+        sh:path :father ;
+        sh:maxCount 0 ;
+    ],
+    [
+        sh:order 91 ;
+        sh:name "TiergeschichteStatus"@de,
+            "Animal history state"@en,
+            "Statut de l'historique de l'animal"@fr,
+            "Stato della storia dell'animale"@it ;
+        sh:description "Gilt nicht für Equiden; an seine Stelle tritt der Meldestatus."@de,
+            "Does not apply to equids; the notification state takes its place."@en,
+            "Ne s'applique pas aux équidés; le statut d'annonce prend sa place."@fr,
+            "Non si applica agli equidi; al suo posto subentra lo stato di notifica."@it ;
+        sh:path :historyState ;
+        sh:maxCount 0 ;
+    ],
+    [
+        sh:order 92 ;
+        sh:name "Zweck (Nutztiere)"@de,
+            "Type of use (livestock)"@en,
+            "Type d'utilisation (animaux de rente)"@fr,
+            "Tipo di utilizzo (animali da reddito)"@it ;
+        sh:description "Gilt nicht für Equiden; an seine Stelle tritt der equidenspezifische Zweck."@de,
+            "Does not apply to equids; the equid-specific type of use takes its place."@en,
+            "Ne s'applique pas aux équidés; le type d'utilisation propre aux équidés prend sa place."@fr,
+            "Non si applica agli equidi; al suo posto subentra il tipo di utilizzo specifico degli equidi."@it ;
+        sh:path :typeOfUse ;
+        sh:maxCount 0 ;
+    ] ;
     sh:property
     [
         sh:order 2 ;

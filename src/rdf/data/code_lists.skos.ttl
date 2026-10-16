@@ -28,6 +28,7 @@
 @prefix animaltypeofuse:        <https://agriculture.ld.admin.ch/eCH-0309/1/animaltypeofuse/> .
 @prefix equidtypeofusage:       <https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/> .
 @prefix animalhistorystate:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
+@prefix equidnotificationstate: <https://agriculture.ld.admin.ch/eCH-0309/1/equidnotificationstate/> .
 @prefix equidwithersclass:      <https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
 @prefix notificationtype:       <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
 @prefix healthstatustype:       <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/> .
@@ -709,3 +710,57 @@ animalhealthstatus:Vaccinated a skos:Concept, :AnimalEpizooticStatus ;
         "Type : statut vaccinal"@fr,
         "Tipo: stato vaccinale"@it ;
     :animalTracingTerm "EnumCattleLsdState.Vaccinated" .
+
+
+# ------------------------------------------------------------------------------
+# Meldestatus Equide -- openAPI EnumEquidNotificationState
+# Keine Wertebereichstabelle im Hilfsmittel; die Werte stammen allein aus der
+# openAPI, die Bezeichnungen sind daraus abgeleitet.
+# ------------------------------------------------------------------------------
+
+equidnotificationstate:ConceptScheme a skos:ConceptScheme ;
+    schema:name "Meldestatus Equide"@de,
+        "Equid notification state"@en,
+        "Statut d'annonce de l'équidé"@fr,
+        "Stato di notifica dell'equide"@it ;
+    :animalTracingTerm "EnumEquidNotificationState" .
+
+equidnotificationstate:Ok a skos:Concept, :EquidNotificationState ;
+    skos:inScheme equidnotificationstate:ConceptScheme ;
+    skos:topConceptOf equidnotificationstate:ConceptScheme ;
+    skos:notation "Ok" ;
+    schema:name "OK"@de,
+        "OK"@en,
+        "OK"@fr,
+        "OK"@it ;
+    :animalTracingTerm "EnumEquidNotificationState.Ok" .
+
+equidnotificationstate:LocationChangePending a skos:Concept, :EquidNotificationState ;
+    skos:inScheme equidnotificationstate:ConceptScheme ;
+    skos:topConceptOf equidnotificationstate:ConceptScheme ;
+    skos:notation "LocationChangePending" ;
+    schema:name "Standortwechsel hängig"@de,
+        "Change of location pending"@en,
+        "Changement de lieu en attente"@fr,
+        "Cambiamento di ubicazione in sospeso"@it ;
+    :animalTracingTerm "EnumEquidNotificationState.LocationChangePending" .
+
+equidnotificationstate:OwnershipAcquisitionPending a skos:Concept, :EquidNotificationState ;
+    skos:inScheme equidnotificationstate:ConceptScheme ;
+    skos:topConceptOf equidnotificationstate:ConceptScheme ;
+    skos:notation "OwnershipAcquisitionPending" ;
+    schema:name "Eigentumsübernahme hängig"@de,
+        "Transfer of ownership pending"@en,
+        "Reprise de propriété en attente"@fr,
+        "Acquisizione della proprietà in sospeso"@it ;
+    :animalTracingTerm "EnumEquidNotificationState.OwnershipAcquisitionPending" .
+
+equidnotificationstate:LocationChangeAndAcquisitionPending a skos:Concept, :EquidNotificationState ;
+    skos:inScheme equidnotificationstate:ConceptScheme ;
+    skos:topConceptOf equidnotificationstate:ConceptScheme ;
+    skos:notation "LocationChangeAndAcquisitionPending" ;
+    schema:name "Standortwechsel und Eigentumsübernahme hängig"@de,
+        "Change of location and transfer of ownership pending"@en,
+        "Changement de lieu et reprise de propriété en attente"@fr,
+        "Cambiamento di ubicazione e acquisizione della proprietà in sospeso"@it ;
+    :animalTracingTerm "EnumEquidNotificationState.LocationChangeAndAcquisitionPending" .

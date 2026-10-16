@@ -682,8 +682,8 @@ def main():
                     details.extend(describe_constraints(g, p["prop"], trans))
                     details_cell = "\n".join(f"- {label}: {value}" for label, value in details)
 
-                    min_c = str(p["minCount"]) if p["minCount"] else "0"
-                    max_c = str(p["maxCount"]) if p["maxCount"] else "*"
+                    min_c = str(p["minCount"]) if p["minCount"] is not None else "0"
+                    max_c = str(p["maxCount"]) if p["maxCount"] is not None else "*"
                     cardinality = f"{min_c}..{max_c}"
 
                     rows.append([display_name, details_cell, cardinality])

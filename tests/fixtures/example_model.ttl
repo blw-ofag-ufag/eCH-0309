@@ -24,6 +24,8 @@
 @prefix genus:         <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
 @prefix animalhistorystate: <https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
 @prefix notificationtype: <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
+@prefix equidnotificationstate: <https://agriculture.ld.admin.ch/eCH-0309/1/equidnotificationstate/> .
+@prefix equidtypeofusage: <https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/> .
 @prefix equidwithersclass: <https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
 
 # A keeper with two holdings. The keeper satisfies the sh:sparql constraint on
@@ -61,7 +63,8 @@ legalunit:1 a :LegalUnit .
 animal:4 a :Equid ;
     :identifier "CH000000000004" ;
     :genus genus:Equid ;
-    :historyState animalhistorystate:Ok ;
+    :notificationState equidnotificationstate:Ok ;
+    :typeOfEquidUsage equidtypeofusage:FarmAnimal ;
     :withersClass equidwithersclass:GreaterThan148cm ;
     :owner legalunit:1 .
 
@@ -71,7 +74,8 @@ animal:4 a :Equid ;
 animal:5 a :Equid ;
     :identifier "CH000000000005" ;
     :genus genus:Equid ;
-    :historyState animalhistorystate:Ok ;
+    :notificationState equidnotificationstate:Ok ;
+    :typeOfEquidUsage equidtypeofusage:FarmAnimal ;
     :withersClass equidwithersclass:GreaterThan148cm ;
     :owner animalkeeper:1 .
 
