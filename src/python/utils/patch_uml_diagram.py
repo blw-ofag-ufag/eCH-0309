@@ -57,6 +57,12 @@ MEMBER_RE = re.compile(r'^\s*(?P<property>\S+?)(?:<U\+00A0>|\s)+\[(?P<cardinalit
 ATTRIBUTE_LINE_RE = re.compile(
     r'^(?P<source>"[^"]+")\s*:\s*\+?(?P<property>\S+)\s*:\s*\S+\s*\[(?P<cardinality>[^\]]+)\]\s*$')
 TITLE_RE = re.compile(r'"[^"]*\((:[^)]+)\)"')
+# A box attribute, with or without the type that drop_attribute_types removes.
+# MEMBER_RE cannot stand in: it is anchored, and reads association labels only.
+BOX_MEMBER_RE = re.compile(
+    r'^"[^"]+"\s*:\s*\+?\S+(?:\s*:\s*\S+)?\s*\[(?P<cardinality>[^\]]+)\]\s*$')
+# The cardinality SHACL Play writes for a property shape with sh:maxCount 0.
+EXCLUDED = "0..0"
 
 
 def local_name(term):
@@ -166,6 +172,34 @@ def add_generalizations(lines, ontology):
     return patched
 
 
+def drop_excluded_attributes(lines):
+    """Drops members a shape excludes with sh:maxCount 0, which SHACL Play draws
+    as [0..0]. The tables keep them, so that the exclusion stays documented; the
+    diagram would only suggest the class has the attribute after all."""
+    kept = []
+    for line in lines:
+        match = ASSOCIATION_RE.match(line)
+        if match:
+            members = [part for part in match.group("label").split(LINE_BREAK)
+                       if (member := MEMBER_RE.match(part)) is None
+                       or member.group("cardinality").strip() != EXCLUDED]
+            if not members:
+                continue
+            # Rebuilt only when something went, so that every other association
+            # reaches the diagram with its spacing untouched.
+            if len(members) < len(match.group("label").split(LINE_BREAK)):
+                label = LINE_BREAK.join(members)
+                line = f'"{match.group("source")}" --> "{match.group("target")}" : {label}'
+            kept.append(line)
+            continue
+
+        member = BOX_MEMBER_RE.match(line)
+        if member and member.group("cardinality").strip() == EXCLUDED:
+            continue
+        kept.append(line)
+    return kept
+
+
 def drop_attribute_types(lines):
     """Leaves a box attribute as name and cardinality. The type is in the tables."""
     return [
@@ -200,6 +234,7 @@ def main():
     lines = promote_references(lines, domains)
     lines = demote_value_domains(lines, domains)
     lines = add_generalizations(lines, ontology)
+    lines = drop_excluded_attributes(lines)
     lines = drop_attribute_types(lines)
     lines = shorten_titles(lines)
 
