@@ -1,6 +1,6 @@
 # Auxiliary document: animal movement data
 
-October 12, 2026
+October 19, 2026
 
 - [Note](#sec-note)
 - [<span class="toc-section-number">1</span>
@@ -42,19 +42,21 @@ October 12, 2026
     state](#sec-codelist-animalhistorystate)
   - [<span class="toc-section-number">4.3</span> Type of use (cattle,
     sheep, goats)](#sec-codelist-animaltypeofuse)
-  - [<span class="toc-section-number">4.4</span> Type of use
+  - [<span class="toc-section-number">4.4</span> Equid notification
+    state](#sec-codelist-equidnotificationstate)
+  - [<span class="toc-section-number">4.5</span> Type of use
     (equids)](#sec-codelist-equidtypeofusage)
-  - [<span class="toc-section-number">4.5</span> Withers
+  - [<span class="toc-section-number">4.6</span> Withers
     class](#sec-codelist-equidwithersclass)
-  - [<span class="toc-section-number">4.6</span>
-    Gender](#sec-codelist-gender)
   - [<span class="toc-section-number">4.7</span>
+    Gender](#sec-codelist-gender)
+  - [<span class="toc-section-number">4.8</span>
     Genus](#sec-codelist-genus)
-  - [<span class="toc-section-number">4.8</span> Health status
+  - [<span class="toc-section-number">4.9</span> Health status
     type](#sec-codelist-healthstatustype)
-  - [<span class="toc-section-number">4.9</span> Health status of a
+  - [<span class="toc-section-number">4.10</span> Health status of a
     local unit](#sec-codelist-localunithealthstatus)
-  - [<span class="toc-section-number">4.10</span> Notification
+  - [<span class="toc-section-number">4.11</span> Notification
     type](#sec-codelist-notificationtype)
 - [<span class="toc-section-number">5</span> Safety
   considerations](#sec-safety-consideration)
@@ -112,56 +114,60 @@ importance of food control. The approach «from stable to table» became
 established. Risk-based surveillance, seamless traceability of farm
 animals, control of animal movements, the obligation to declare origin
 and quality controls throughout the production and processing chain have
-formed the basis for a high standard of food safety ever since.
+formed the basis for a high standard of food safety ever since[^1].
 
 The BSE experience led to the establishment of a national animal
 movement database (TVD) in 1999. Article 7a and Articles 13–15 of the
-Animal Diseases Act and Title 2, Sections 1, 1a and 2a of the Animal
-Diseases Ordinance set out the basic legal provisions on the
+Animal Diseases Act[^2] and Title 2, Sections 1, 1a and 2a of the Animal
+Diseases Ordinance[^3] set out the basic legal provisions on the
 identification/marking and the registration of farm animals as well as
 the associated reporting obligations. They follow European legislation
-on the same subject (Regulation (EU) 2016/429 on transmissible animal
-diseases; Delegated Regulation (EU) 2019/2035 on establishments keeping
-terrestrial animals and hatcheries, and on traceability).
+on the same subject[^4] (Regulation (EU) 2016/429 on transmissible
+animal diseases; Delegated Regulation (EU) 2019/2035 on establishments
+keeping terrestrial animals and hatcheries, and on traceability).
 
 While only cattle were subject to reporting from 1999, pigs and equids
 followed from 2011, although pigs are to this day not reported as
 individual animals. From 2014 and 2020 respectively, the obligation to
 report to the TVD also applied to small ruminants (sheep and goats). At
 the beginning, in 2014, this concerned only the slaughterhouses. Since
-2014 there has also been an obligation to report poultry. Since January
-2020, keepers of small ruminants have been included in individual animal
-reporting as well. The identification and marking of cloven-hoofed
-animals with ear tags, the individual registration of cattle, sheep and
-goats in the TVD, and the reporting of animal arrivals, animal
-departures (an animal leaves a holding alive), births, imports, exports,
-slaughter, on-farm slaughter and death (an animal is deregistered as no
-longer living) are mandatory for all animal keepers in Switzerland.
+2014 there has also been an obligation to report poultry[^5]. Since
+January 2020, keepers of small ruminants have been included in
+individual animal reporting as well.[^6] The identification and marking
+of cloven-hoofed animals with ear tags, the individual registration of
+cattle, sheep and goats in the TVD, and the reporting of animal
+arrivals, animal departures (an animal leaves a holding alive), births,
+imports, exports, slaughter, on-farm slaughter and death (an animal is
+deregistered as no longer living) are mandatory for all animal keepers
+in Switzerland[^7]. Reports are also subject to statutory reporting
+deadlines[^8].
 
 The TVD is part of a system landscape spanning agriculture, veterinary
-affairs and food safety. The central entry point is the Agate portal,
-with the agricultural policy information system AGIS at its centre.
+affairs and food safety. The central entry point is the Agate
+portal[^9], with the agricultural policy information system AGIS[^10] at
+its centre.
 
 <!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
 
-The Ordinance on Identitas AG and the animal movement database (IdTVD-V)
-further sets out the content relating to animal movements, the tasks of
-Identitas AG and the rights of access to the data. The importance of
-identifying/marking farm animals goes far beyond the subject of animal
-disease and therefore also found its way into agricultural legislation
-(Agriculture Act LwG, Articles 165g, 177 and 185) and various associated
-ordinances. The animal movement data have become an indispensable
-component in implementing agricultural policy measures, for example
-animal-related direct payments, the determination of nutrient flows or
-agri-environmental monitoring. The data also serve as a basis for the
-structural survey of Swiss agriculture and for agricultural statistics
-in general.
+The Ordinance on Identitas AG and the animal movement database[^11]
+(IdTVD-V) further sets out the content relating to animal movements, the
+tasks of Identitas AG and the rights of access to the data. The
+importance of identifying/marking farm animals goes far beyond the
+subject of animal disease and therefore also found its way into
+agricultural legislation[^12] (Agriculture Act LwG, Articles 165g, 177
+and 185) and various associated ordinances. The animal movement data
+have become an indispensable component in implementing agricultural
+policy measures, for example animal-related direct payments[^13], the
+determination of nutrient flows or agri-environmental monitoring[^14].
+The data also serve as a basis for the structural survey of Swiss
+agriculture[^15] and for agricultural statistics in general[^16].
 
 Animal movement reporting quickly became established along the entire
 food value chain as well. Programmes with animal welfare, traceability
-and origin commitments rely on it. The variety of animal information
-from animal movement reporting is also reflected in the publicly
-available datasets of the Tierstatistik open data platform.
+and origin commitments rely on it[^17]. The variety of animal
+information from animal movement reporting is also reflected in the
+publicly available datasets of the Tierstatistik open data
+platform[^18].
 
 The technical interface description in this document is based on the
 technical service description AnimalTracing v1.32 and on the openAPI
@@ -171,11 +177,6 @@ specification v. x.xx.
 
 Interfaces: AnimalTracing API, technical service description
 AnimalTracing
-
-NB: the names of the classes described in chapter 3 do not match the
-ServiceOperations in AnimalTracing, because the semantic description is
-intended to provide an overview of the data content and is more detailed
-than the service description.
 
 # Namespaces
 
@@ -209,6 +210,22 @@ Figure 1: UML diagram of the eCH-0309 data model.
 
 </div>
 
+<a href="#fig-uml" class="quarto-xref">Figure 1</a> shows the classes of
+the data model and their relationships. Each rectangle is a class and
+the lines inside it are its attributes; the square brackets state how
+many values are permitted, from the minimum to the maximum — `[1..1]`
+means exactly one value, `[0..1]` at most one. An arrow leads to the
+class being referred to and carries the name of the relationship;
+several relationships between the same two classes share one arrow. The
+line with the triangle connects a class to its superclass, at which the
+triangle points: an equid is an individual animal and has, in addition
+to the attributes shown, all attributes of the individual animal, which
+are not repeated in the diagram. Attributes with a code list are drawn
+like all the others; the permitted values are given in
+<a href="#sec-code-lists" class="quarto-xref">Section 4</a>. The diagram
+states neither datatypes nor descriptions; those follow in the sections
+on the individual classes.
+
 ## Animal keeper
 
 A farm manager (Bewirtschafter) is a legal unit as defined in eCH-0108
@@ -231,24 +248,13 @@ Shape
 Target class  
 [:AnimalKeeper](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeper)
 
-Closed  
-No (further properties are allowed)
-
-Data access  
-None (transactional data, not part of the published graph)
-
 </div>
 
-### Rules (SPARQL)
+### Rules
 
-#### An animal keeper requires at least one local unit (chapter 3.1.1 of the tool). This rule is taken from the semantic description, not from the object catalogue.
-
-``` sparql
-SELECT $this
-WHERE {
-    FILTER NOT EXISTS { ?localUnit :animalKeeper $this . }
-}
-```
+An animal keeper requires at least one local unit (chapter 3.1.1 of the
+tool). This rule is taken from the semantic description, not from the
+object catalogue.
 
 ## Equid
 
@@ -270,21 +276,15 @@ Shape
 Target class  
 [:Equid](https://agriculture.ld.admin.ch/eCH-0309/1/Equid)
 
-Closed  
-No (further properties are allowed)
-
-Data access  
-None (transactional data, not part of the published graph)
-
 </div>
 
 ### Properties
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 43%" />
+<col style="width: 44%" />
 <col style="width: 47%" />
-<col style="width: 8%" />
+<col style="width: 7%" />
 </colgroup>
 <thead>
 <tr>
@@ -314,6 +314,55 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidWithersClass">:EquidWither
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
+<tr>
+<td style="text-align: left;"><strong>Notification state</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationState">:notificationState</a>):
+Equids carry a notification state of their own instead of the animal
+history state.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidNotificationState">:EquidNotificationState</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type of use</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfEquidUsage">:typeOfEquidUsage</a>):
+Equids use a code list of their own: companion animal or farm
+animal.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidTypeOfUsage">:EquidTypeOfUsage</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Father</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/father">:father</a>):
+Equids have no father: the openAPI knows only the mother and the genetic
+mother for them. The object catalogue, by contrast, names the UELN of
+the father animal in the attribute; issue #45 puts the discrepancy to
+Identitas.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Animal history state</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>):
+Described in the object catalogue as not relevant for equids; the
+notification state takes its place.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type of use (livestock)</strong>
+(<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfUse">:typeOfUse</a>):
+Does not apply to equids; the equid-specific type of use takes its
+place.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
 </tbody>
 </table>
 
@@ -338,12 +387,6 @@ Shape
 
 Target class  
 [:GroupNotification](https://agriculture.ld.admin.ch/eCH-0309/1/GroupNotification)
-
-Closed  
-No (further properties are allowed)
-
-Data access  
-None (transactional data, not part of the published graph)
 
 </div>
 
@@ -383,8 +426,8 @@ BUR number of the local unit the animal comes from</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>ID</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/eventIdentifier">:eventIdentifier</a>):
-Unique identifier of the movement, assigned by the system.</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/id">:id</a>): Unique
+identifier of the movement, assigned by the system.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Text (<a
 href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
@@ -506,12 +549,6 @@ Shape
 Target class  
 [:LocalUnitHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatus)
 
-Closed  
-No (further properties are allowed)
-
-Data access  
-None (transactional data, not part of the published graph)
-
 </div>
 
 ### Properties
@@ -586,12 +623,6 @@ Shape
 
 Target class  
 [:AnimalHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatus)
-
-Closed  
-No (further properties are allowed)
-
-Data access  
-None (transactional data, not part of the published graph)
 
 </div>
 
@@ -672,21 +703,15 @@ Shape
 Target class  
 [:Animal](https://agriculture.ld.admin.ch/eCH-0309/1/Animal)
 
-Closed  
-No (further properties are allowed)
-
-Data access  
-None (transactional data, not part of the published graph)
-
 </div>
 
 ### Properties
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 46%" />
-<col style="width: 45%" />
-<col style="width: 7%" />
+<col style="width: 43%" />
+<col style="width: 48%" />
+<col style="width: 8%" />
 </colgroup>
 <thead>
 <tr>
@@ -765,12 +790,16 @@ href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Animal history state</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/animalHistoryState">:animalHistoryState</a>)</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>):
+State of the animal history at the date of the query. Not relevant for
+equids; the object catalogue therefore gives the attribute a cardinality
+of 1, but the obligation applies only to the remaining individual
+animals.</td>
 <td style="text-align: left;"><ul>
 <li>Type: <a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHistoryState">:AnimalHistoryState</a></li>
 </ul></td>
-<td style="text-align: right;">1..1</td>
+<td style="text-align: right;">0..1</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of use</strong> (<a
@@ -783,7 +812,10 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalTypeOfUse">:AnimalTypeOfU
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Castrated</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/castrated">:castrated</a>)</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/castrated">:castrated</a>):
+The object catalogue describes the attribute as absent for equids, but
+the openAPI carries it on the equid responses as well; issue #45 puts
+the discrepancy to Identitas.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Boolean (<a
 href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
@@ -792,6 +824,12 @@ href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
 </tr>
 </tbody>
 </table>
+
+### Rules
+
+The object catalogue gives the animal history state a cardinality of 1
+but notes that it is not relevant for equids. The obligation therefore
+applies to every individual animal except equids.
 
 ## Individual animal notification
 
@@ -813,12 +851,6 @@ Shape
 
 Target class  
 [:AnimalNotification](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalNotification)
-
-Closed  
-No (further properties are allowed)
-
-Data access  
-None (transactional data, not part of the published graph)
 
 </div>
 
@@ -869,8 +901,8 @@ BUR number of the local unit the animal comes from</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>ID</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/eventIdentifier">:eventIdentifier</a>):
-Unique identifier of the movement, assigned by the system.</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/id">:id</a>): Unique
+identifier of the movement, assigned by the system.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Text (<a
 href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
@@ -948,12 +980,6 @@ Shape
 Target class  
 [:LegalUnit](https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnit)
 
-Closed  
-No (further properties are allowed)
-
-Data access  
-None (transactional data, not part of the published graph)
-
 </div>
 
 ## Local unit
@@ -980,12 +1006,6 @@ Shape
 
 Target class  
 [:LocalUnit](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnit)
-
-Closed  
-No (further properties are allowed)
-
-Data access  
-None (transactional data, not part of the published graph)
 
 </div>
 
@@ -1074,11 +1094,26 @@ Table 4: Values of the code list Type of use (cattle, sheep, goats)
 
 </div>
 
+## Equid notification state
+
+<div id="tbl-codelist-equidnotificationstate">
+
+Table 5: Values of the code list Equid notification state
+
+| Value | Designation | Description |
+|:---|:---|:---|
+| `LocationChangeAndAcquisitionPending` | Change of location and transfer of ownership pending |  |
+| `LocationChangePending` | Change of location pending |  |
+| `Ok` | OK |  |
+| `OwnershipAcquisitionPending` | Transfer of ownership pending |  |
+
+</div>
+
 ## Type of use (equids)
 
 <div id="tbl-codelist-equidtypeofusage">
 
-Table 5: Values of the code list Type of use (equids)
+Table 6: Values of the code list Type of use (equids)
 
 | Value             | Designation      | Description |
 |:------------------|:-----------------|:------------|
@@ -1091,7 +1126,7 @@ Table 5: Values of the code list Type of use (equids)
 
 <div id="tbl-codelist-equidwithersclass">
 
-Table 6: Values of the code list Withers class
+Table 7: Values of the code list Withers class
 
 | Value                  | Designation                 | Description |
 |:-----------------------|:----------------------------|:------------|
@@ -1104,7 +1139,7 @@ Table 6: Values of the code list Withers class
 
 <div id="tbl-codelist-gender">
 
-Table 7: Values of the code list Gender
+Table 8: Values of the code list Gender
 
 | Value    | Designation | Description |
 |:---------|:------------|:------------|
@@ -1117,12 +1152,12 @@ Table 7: Values of the code list Gender
 
 <div id="tbl-codelist-genus">
 
-Table 8: Values of the code list Genus
+Table 9: Values of the code list Genus
 
 | Value | Designation | Description |
 |:---|:---|:---|
 | `Camelid` | Camelid | Neuweltkameliden |
-| `Cattle` | Cattle | Tiere der Rindergattung (Bos) und Wasserbüffel (Bubalus bubalis) |
+| `Cattle` | Cattle | Tiere der Rindergattung (*Bos*) und Wasserbüffel (*Bubalus bubalis*) |
 | `Equid` | Equid | Tiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel) |
 | `Game` | Game | Wild in Gehegen |
 | `Goat` | Goat |  |
@@ -1136,7 +1171,7 @@ Table 8: Values of the code list Genus
 
 <div id="tbl-codelist-healthstatustype">
 
-Table 9: Values of the code list Health status type
+Table 10: Values of the code list Health status type
 
 | Value               | Designation        | Description |
 |:--------------------|:-------------------|:------------|
@@ -1151,7 +1186,7 @@ Table 9: Values of the code list Health status type
 
 <div id="tbl-codelist-localunithealthstatus">
 
-Table 10: Values of the code list Health status of a local unit
+Table 11: Values of the code list Health status of a local unit
 
 | Value       | Designation | Description             |
 |:------------|:------------|:------------------------|
@@ -1170,7 +1205,7 @@ Table 10: Values of the code list Health status of a local unit
 
 <div id="tbl-codelist-notificationtype">
 
-Table 11: Values of the code list Notification type
+Table 12: Values of the code list Notification type
 
 | Value | Designation | Description |
 |:---|:---|:---|
@@ -1265,7 +1300,7 @@ Recommendation) : World Wide Web Consortium (W3C), 2014</span>
 
 <div id="tbl-glossary">
 
-Table 12: Glossary of eCH-0309
+Table 13: Glossary of eCH-0309
 
 <table>
 <colgroup>
@@ -1331,3 +1366,44 @@ RDF, consisting of a subject, predicate, and object.</p>
 # Annex E - Table of figures
 
 # Annex F - Table of tables
+
+[^1]: <https://www.news.admin.ch/de/nsb?id=57438>
+
+[^2]: <https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de>
+
+[^3]: <https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de>
+
+[^4]: <https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html>
+
+[^5]: <https://fedlex.data.admin.ch/eli/cc/2011/775>, Version 1.1.2014,
+    Seite 20
+
+[^6]: <https://www.fedlex.admin.ch/eli/cc/2021/751/de#annex_1/lvl_u1/lvl_2>
+
+[^7]: <https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_14>,
+    <https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_15_a>
+
+[^8]: <https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de#art_14>
+
+[^9]: <https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html>
+
+[^10]: <https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html>
+
+[^11]: <https://www.fedlex.admin.ch/eli/cc/2021/751/de>
+
+[^12]: <https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de>
+
+[^13]: <https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_7>,
+    <https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_8>,
+    <https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_9>
+
+[^14]: <https://www.blw.admin.ch/de/agrarumweltmonitoring>
+
+[^15]: <https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html>
+
+[^16]: <https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft>
+
+[^17]: <https://www.proviande.ch/de/herkunft>,
+    <https://www.identitas.ch/produkte/labelbase>
+
+[^18]: <https://tierstatistik.identitas.ch>

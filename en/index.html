@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-10-12">
+<meta name="dcterms.date" content="2026-10-19">
 
 <title>eCH-0309 – Auxiliary document: animal movement data – eCH-0309 Version 1.0.0 (Working Draft)</title>
 <style>
@@ -26,41 +26,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -402,13 +367,14 @@ div.csl-indent {
   <li><a href="#sec-codelist-animalhealthstatus" id="toc-sec-codelist-animalhealthstatus" class="nav-link" data-scroll-target="#sec-codelist-animalhealthstatus"><span class="header-section-number">4.1</span> Health status of an individual animal</a></li>
   <li><a href="#sec-codelist-animalhistorystate" id="toc-sec-codelist-animalhistorystate" class="nav-link" data-scroll-target="#sec-codelist-animalhistorystate"><span class="header-section-number">4.2</span> Animal history state</a></li>
   <li><a href="#sec-codelist-animaltypeofuse" id="toc-sec-codelist-animaltypeofuse" class="nav-link" data-scroll-target="#sec-codelist-animaltypeofuse"><span class="header-section-number">4.3</span> Type of use (cattle, sheep, goats)</a></li>
-  <li><a href="#sec-codelist-equidtypeofusage" id="toc-sec-codelist-equidtypeofusage" class="nav-link" data-scroll-target="#sec-codelist-equidtypeofusage"><span class="header-section-number">4.4</span> Type of use (equids)</a></li>
-  <li><a href="#sec-codelist-equidwithersclass" id="toc-sec-codelist-equidwithersclass" class="nav-link" data-scroll-target="#sec-codelist-equidwithersclass"><span class="header-section-number">4.5</span> Withers class</a></li>
-  <li><a href="#sec-codelist-gender" id="toc-sec-codelist-gender" class="nav-link" data-scroll-target="#sec-codelist-gender"><span class="header-section-number">4.6</span> Gender</a></li>
-  <li><a href="#sec-codelist-genus" id="toc-sec-codelist-genus" class="nav-link" data-scroll-target="#sec-codelist-genus"><span class="header-section-number">4.7</span> Genus</a></li>
-  <li><a href="#sec-codelist-healthstatustype" id="toc-sec-codelist-healthstatustype" class="nav-link" data-scroll-target="#sec-codelist-healthstatustype"><span class="header-section-number">4.8</span> Health status type</a></li>
-  <li><a href="#sec-codelist-localunithealthstatus" id="toc-sec-codelist-localunithealthstatus" class="nav-link" data-scroll-target="#sec-codelist-localunithealthstatus"><span class="header-section-number">4.9</span> Health status of a local unit</a></li>
-  <li><a href="#sec-codelist-notificationtype" id="toc-sec-codelist-notificationtype" class="nav-link" data-scroll-target="#sec-codelist-notificationtype"><span class="header-section-number">4.10</span> Notification type</a></li>
+  <li><a href="#sec-codelist-equidnotificationstate" id="toc-sec-codelist-equidnotificationstate" class="nav-link" data-scroll-target="#sec-codelist-equidnotificationstate"><span class="header-section-number">4.4</span> Equid notification state</a></li>
+  <li><a href="#sec-codelist-equidtypeofusage" id="toc-sec-codelist-equidtypeofusage" class="nav-link" data-scroll-target="#sec-codelist-equidtypeofusage"><span class="header-section-number">4.5</span> Type of use (equids)</a></li>
+  <li><a href="#sec-codelist-equidwithersclass" id="toc-sec-codelist-equidwithersclass" class="nav-link" data-scroll-target="#sec-codelist-equidwithersclass"><span class="header-section-number">4.6</span> Withers class</a></li>
+  <li><a href="#sec-codelist-gender" id="toc-sec-codelist-gender" class="nav-link" data-scroll-target="#sec-codelist-gender"><span class="header-section-number">4.7</span> Gender</a></li>
+  <li><a href="#sec-codelist-genus" id="toc-sec-codelist-genus" class="nav-link" data-scroll-target="#sec-codelist-genus"><span class="header-section-number">4.8</span> Genus</a></li>
+  <li><a href="#sec-codelist-healthstatustype" id="toc-sec-codelist-healthstatustype" class="nav-link" data-scroll-target="#sec-codelist-healthstatustype"><span class="header-section-number">4.9</span> Health status type</a></li>
+  <li><a href="#sec-codelist-localunithealthstatus" id="toc-sec-codelist-localunithealthstatus" class="nav-link" data-scroll-target="#sec-codelist-localunithealthstatus"><span class="header-section-number">4.10</span> Health status of a local unit</a></li>
+  <li><a href="#sec-codelist-notificationtype" id="toc-sec-codelist-notificationtype" class="nav-link" data-scroll-target="#sec-codelist-notificationtype"><span class="header-section-number">4.11</span> Notification type</a></li>
   </ul></li>
   <li><a href="#sec-safety-consideration" id="toc-sec-safety-consideration" class="nav-link" data-scroll-target="#sec-safety-consideration"><span class="header-section-number">5</span> Safety considerations</a></li>
   <li><a href="#sec-disclaimer" id="toc-sec-disclaimer" class="nav-link" data-scroll-target="#sec-disclaimer"><span class="header-section-number">6</span> Disclaimer</a></li>
@@ -423,7 +389,7 @@ div.csl-indent {
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-earmark-pdf"></i>PDF</a></li><li><a href="index.md"><i class="bi bi-markdown"></i>Markdown</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -480,7 +446,7 @@ div.csl-indent {
     <div>
     <dt>Date of issue</dt>
     <dd>
-                        <p>October 12, 2026</p>
+                        <p>October 19, 2026</p>
                       </dd>
   </div>
     <div>
@@ -538,7 +504,7 @@ div.csl-indent {
 <h1 class="unnumbered">Note</h1>
 <p>This document uses a gender-neutral formulation when referring to persons. This is based on the guidelines (German) of the Federal Chancellery. Depending on the situation, paired forms (citizens), gender-abstract forms (insured person), gender-neutral forms (insured person) or paraphrases with-out personal reference are used. The generic masculine (citizen) is not permitted. Full forms are used in continuous texts, i.e.&nbsp;in texts consisting of formulated sentences. Short forms can be used in ab-breviated text passages, namely in tables. The short form is used with a slash but without an ellipsis (referent). Gender asterisks and similar spellings are not used.</p>
 </section>
-<section id="sec-introduction" class="level1" data-number="1">
+<section id="sec-introduction" class="level1 page-columns page-full" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <section id="sec-status" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec-status"><span class="header-section-number">1.1</span> Status</h2>
@@ -548,21 +514,20 @@ div.csl-indent {
 <h2 data-number="1.2" class="anchored" data-anchor-id="sec-scope-of-application"><span class="header-section-number">1.2</span> Field of application</h2>
 <p>This document describes the data of the animal movement database (TVD) semantically, so that specialists without in-depth IT knowledge can also gain a better understanding of the data.</p>
 </section>
-<section id="sec-animal-movement-reporting" class="level2" data-number="1.3">
+<section id="sec-animal-movement-reporting" class="level2 page-columns page-full" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="sec-animal-movement-reporting"><span class="header-section-number">1.3</span> Animal movement reporting in Switzerland</h2>
-<p>In the 1990s, Swiss agriculture and the food industry were severely challenged by the animal disease BSE. When the realisation that the disease could be transmitted from animals to humans was confirmed in 1996, this caused great uncertainty. Expectations regarding the safety of food of animal origin rose as a result, as did awareness of the importance of food control. The approach «from stable to table» became established. Risk-based surveillance, seamless traceability of farm animals, control of animal movements, the obligation to declare origin and quality controls throughout the production and processing chain have formed the basis for a high standard of food safety ever since.</p>
-<p>The BSE experience led to the establishment of a national animal movement database (TVD) in 1999. Article 7a and Articles 13–15 of the Animal Diseases Act and Title 2, Sections 1, 1a and 2a of the Animal Diseases Ordinance set out the basic legal provisions on the identification/marking and the registration of farm animals as well as the associated reporting obligations. They follow European legislation on the same subject (Regulation (EU) 2016/429 on transmissible animal diseases; Delegated Regulation (EU) 2019/2035 on establishments keeping terrestrial animals and hatcheries, and on traceability).</p>
-<p>While only cattle were subject to reporting from 1999, pigs and equids followed from 2011, although pigs are to this day not reported as individual animals. From 2014 and 2020 respectively, the obligation to report to the TVD also applied to small ruminants (sheep and goats). At the beginning, in 2014, this concerned only the slaughterhouses. Since 2014 there has also been an obligation to report poultry. Since January 2020, keepers of small ruminants have been included in individual animal reporting as well. The identification and marking of cloven-hoofed animals with ear tags, the individual registration of cattle, sheep and goats in the TVD, and the reporting of animal arrivals, animal departures (an animal leaves a holding alive), births, imports, exports, slaughter, on-farm slaughter and death (an animal is deregistered as no longer living) are mandatory for all animal keepers in Switzerland.</p>
-<p>The TVD is part of a system landscape spanning agriculture, veterinary affairs and food safety. The central entry point is the Agate portal, with the agricultural policy information system AGIS at its centre.</p>
+<p>In the 1990s, Swiss agriculture and the food industry were severely challenged by the animal disease BSE. When the realisation that the disease could be transmitted from animals to humans was confirmed in 1996, this caused great uncertainty. Expectations regarding the safety of food of animal origin rose as a result, as did awareness of the importance of food control. The approach «from stable to table» became established. Risk-based surveillance, seamless traceability of farm animals, control of animal movements, the obligation to declare origin and quality controls throughout the production and processing chain have formed the basis for a high standard of food safety ever since<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;<a href="https://www.news.admin.ch/de/nsb?id=57438" class="uri">https://www.news.admin.ch/de/nsb?id=57438</a></p></div><div id="fn2"><p><sup>2</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de" class="uri">https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de</a></p></div><div id="fn3"><p><sup>3</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de" class="uri">https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de</a></p></div><div id="fn4"><p><sup>4</sup>&nbsp;<a href="https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html" class="uri">https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html</a></p></div></div><p>The BSE experience led to the establishment of a national animal movement database (TVD) in 1999. Article 7a and Articles 13–15 of the Animal Diseases Act<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and Title 2, Sections 1, 1a and 2a of the Animal Diseases Ordinance<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> set out the basic legal provisions on the identification/marking and the registration of farm animals as well as the associated reporting obligations. They follow European legislation on the same subject<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> (Regulation (EU) 2016/429 on transmissible animal diseases; Delegated Regulation (EU) 2019/2035 on establishments keeping terrestrial animals and hatcheries, and on traceability).</p>
+<p>While only cattle were subject to reporting from 1999, pigs and equids followed from 2011, although pigs are to this day not reported as individual animals. From 2014 and 2020 respectively, the obligation to report to the TVD also applied to small ruminants (sheep and goats). At the beginning, in 2014, this concerned only the slaughterhouses. Since 2014 there has also been an obligation to report poultry<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Since January 2020, keepers of small ruminants have been included in individual animal reporting as well.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> The identification and marking of cloven-hoofed animals with ear tags, the individual registration of cattle, sheep and goats in the TVD, and the reporting of animal arrivals, animal departures (an animal leaves a holding alive), births, imports, exports, slaughter, on-farm slaughter and death (an animal is deregistered as no longer living) are mandatory for all animal keepers in Switzerland<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. Reports are also subject to statutory reporting deadlines<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;<a href="https://fedlex.data.admin.ch/eli/cc/2011/775" class="uri">https://fedlex.data.admin.ch/eli/cc/2011/775</a>, Version 1.1.2014, Seite 20</p></div><div id="fn6"><p><sup>6</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/2021/751/de#annex_1/lvl_u1/lvl_2" class="uri">https://www.fedlex.admin.ch/eli/cc/2021/751/de#annex_1/lvl_u1/lvl_2</a></p></div><div id="fn7"><p><sup>7</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_14" class="uri">https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_14</a>, <a href="https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_15_a" class="uri">https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_15_a</a></p></div><div id="fn8"><p><sup>8</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de#art_14" class="uri">https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de#art_14</a></p></div><div id="fn9"><p><sup>9</sup>&nbsp;<a href="https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html" class="uri">https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html</a></p></div><div id="fn10"><p><sup>10</sup>&nbsp;<a href="https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html" class="uri">https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html</a></p></div></div><p>The TVD is part of a system landscape spanning agriculture, veterinary affairs and food safety. The central entry point is the Agate portal<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>, with the agricultural policy information system AGIS<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> at its centre.</p>
 <!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
-<p>The Ordinance on Identitas AG and the animal movement database (IdTVD-V) further sets out the content relating to animal movements, the tasks of Identitas AG and the rights of access to the data. The importance of identifying/marking farm animals goes far beyond the subject of animal disease and therefore also found its way into agricultural legislation (Agriculture Act LwG, Articles 165g, 177 and 185) and various associated ordinances. The animal movement data have become an indispensable component in implementing agricultural policy measures, for example animal-related direct payments, the determination of nutrient flows or agri-environmental monitoring. The data also serve as a basis for the structural survey of Swiss agriculture and for agricultural statistics in general.</p>
-<p>Animal movement reporting quickly became established along the entire food value chain as well. Programmes with animal welfare, traceability and origin commitments rely on it. The variety of animal information from animal movement reporting is also reflected in the publicly available datasets of the Tierstatistik open data platform.</p>
+<p>The Ordinance on Identitas AG and the animal movement database<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> (IdTVD-V) further sets out the content relating to animal movements, the tasks of Identitas AG and the rights of access to the data. The importance of identifying/marking farm animals goes far beyond the subject of animal disease and therefore also found its way into agricultural legislation<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> (Agriculture Act LwG, Articles 165g, 177 and 185) and various associated ordinances. The animal movement data have become an indispensable component in implementing agricultural policy measures, for example animal-related direct payments<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>, the determination of nutrient flows or agri-environmental monitoring<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>. The data also serve as a basis for the structural survey of Swiss agriculture<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a> and for agricultural statistics in general<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn11"><p><sup>11</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/2021/751/de" class="uri">https://www.fedlex.admin.ch/eli/cc/2021/751/de</a></p></div><div id="fn12"><p><sup>12</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de" class="uri">https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de</a></p></div><div id="fn13"><p><sup>13</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_7" class="uri">https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_7</a>, <a href="https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_8" class="uri">https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_8</a>, <a href="https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_9" class="uri">https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_9</a></p></div><div id="fn14"><p><sup>14</sup>&nbsp;<a href="https://www.blw.admin.ch/de/agrarumweltmonitoring" class="uri">https://www.blw.admin.ch/de/agrarumweltmonitoring</a></p></div><div id="fn15"><p><sup>15</sup>&nbsp;<a href="https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html" class="uri">https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html</a></p></div><div id="fn16"><p><sup>16</sup>&nbsp;<a href="https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft" class="uri">https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft</a></p></div><div id="fn17"><p><sup>17</sup>&nbsp;<a href="https://www.proviande.ch/de/herkunft" class="uri">https://www.proviande.ch/de/herkunft</a>, <a href="https://www.identitas.ch/produkte/labelbase" class="uri">https://www.identitas.ch/produkte/labelbase</a></p></div><div id="fn18"><p><sup>18</sup>&nbsp;<a href="https://tierstatistik.identitas.ch" class="uri">https://tierstatistik.identitas.ch</a></p></div></div><p>Animal movement reporting quickly became established along the entire food value chain as well. Programmes with animal welfare, traceability and origin commitments rely on it<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>. The variety of animal information from animal movement reporting is also reflected in the publicly available datasets of the Tierstatistik open data platform<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>.</p>
 <p>The technical interface description in this document is based on the technical service description AnimalTracing v1.32 and on the openAPI specification v. x.xx.</p>
 </section>
 <section id="sec-references" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="sec-references"><span class="header-section-number">1.4</span> References</h2>
 <p>Interfaces: AnimalTracing API, technical service description AnimalTracing</p>
-<p>NB: the names of the classes described in chapter 3 do not match the ServiceOperations in AnimalTracing, because the semantic description is intended to provide an overview of the data content and is more detailed than the service description.</p>
 </section>
 </section>
 <section id="sec-namespaces" class="level1" data-number="2">
@@ -612,6 +577,7 @@ div.csl-indent {
 </figcaption>
 </figure>
 </div>
+<p><a href="#fig-uml" class="quarto-xref">Figure&nbsp;1</a> shows the classes of the data model and their relationships. Each rectangle is a class and the lines inside it are its attributes; the square brackets state how many values are permitted, from the minimum to the maximum — <code>[1..1]</code> means exactly one value, <code>[0..1]</code> at most one. An arrow leads to the class being referred to and carries the name of the relationship; several relationships between the same two classes share one arrow. The line with the triangle connects a class to its superclass, at which the triangle points: an equid is an individual animal and has, in addition to the attributes shown, all attributes of the individual animal, which are not repeated in the diagram. Attributes with a code list are drawn like all the others; the permitted values are given in <a href="#sec-code-lists" class="quarto-xref">Section&nbsp;4</a>. The diagram states neither datatypes nor descriptions; those follow in the sections on the individual classes.</p>
 <section id="sec-nodeshape-animalkeepershape" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="sec-nodeshape-animalkeepershape"><span class="header-section-number">3.1</span> Animal keeper</h2>
 <p>A farm manager (Bewirtschafter) is a legal unit as defined in eCH-0108 that bears the business risk for a farm (LBV Art. 2). The animal keeper is a form of farm manager that keeps animals (LBV Art. 11a) and therefore requires a local unit (animal holding). Responsibility for reporting lies with the animal keeper for all animal categories except equids; for equids it lies with the owner (chapter 3.1.1 of the tool). The attributes are described in <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf">eCH-0261</a>, chapters 3.1 and 3.2.</p>
@@ -627,26 +593,12 @@ div.csl-indent {
 <dd>
 <a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeper">:AnimalKeeper</a>
 </dd>
-<dt>Closed</dt>
-<dd>
-No (further properties are allowed)
-</dd>
-<dt>Data access</dt>
-<dd>
-None (transactional data, not part of the published graph)
-</dd>
 </dl>
 </div>
 </section>
 <section id="sec-nodeshape-animalkeepershape-rules" class="level3 unlisted" data-number="3.1.2">
-<h3 class="unlisted anchored" data-number="3.1.2" data-anchor-id="sec-nodeshape-animalkeepershape-rules"><span class="header-section-number">3.1.2</span> Rules (SPARQL)</h3>
-<section id="sec-nodeshape-animalkeepershape-rule-1" class="level4 unlisted" data-number="3.1.2.1">
-<h4 class="unlisted anchored" data-number="3.1.2.1" data-anchor-id="sec-nodeshape-animalkeepershape-rule-1"><span class="header-section-number">3.1.2.1</span> An animal keeper requires at least one local unit (chapter 3.1.1 of the tool). This rule is taken from the semantic description, not from the object catalogue.</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource sparql number-lines code-with-copy"><code class="sourceCode sparql"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a><span class="kw">SELECT</span> $this</span>
-<span id="cb1-2"><a href="#cb1-2" aria-label="2"></a><span class="kw">WHERE</span> <span class="op">{</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-label="3"></a>    <span class="kw">FILTER</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> <span class="op">{</span> ?localUnit :animalKeeper $this <span class="op">.</span> <span class="op">}</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-label="4"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
+<h3 class="unlisted anchored" data-number="3.1.2" data-anchor-id="sec-nodeshape-animalkeepershape-rules"><span class="header-section-number">3.1.2</span> Rules</h3>
+<p>An animal keeper requires at least one local unit (chapter 3.1.1 of the tool). This rule is taken from the semantic description, not from the object catalogue.</p>
 </section>
 </section>
 <section id="sec-nodeshape-equidshape" class="level2" data-number="3.2">
@@ -664,14 +616,6 @@ None (transactional data, not part of the published graph)
 <dd>
 <a href="https://agriculture.ld.admin.ch/eCH-0309/1/Equid">:Equid</a>
 </dd>
-<dt>Closed</dt>
-<dd>
-No (further properties are allowed)
-</dd>
-<dt>Data access</dt>
-<dd>
-None (transactional data, not part of the published graph)
-</dd>
 </dl>
 </div>
 </section>
@@ -679,9 +623,9 @@ None (transactional data, not part of the published graph)
 <h3 class="unlisted anchored" data-number="3.2.2" data-anchor-id="sec-nodeshape-equidshape-properties"><span class="header-section-number">3.2.2</span> Properties</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 43%">
+<col style="width: 44%">
 <col style="width: 47%">
-<col style="width: 8%">
+<col style="width: 7%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -705,6 +649,35 @@ None (transactional data, not part of the published graph)
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Notification state</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationState">:notificationState</a>): Equids carry a notification state of their own instead of the animal history state.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidNotificationState">:EquidNotificationState</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Type of use</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfEquidUsage">:typeOfEquidUsage</a>): Equids use a code list of their own: companion animal or farm animal.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidTypeOfUsage">:EquidTypeOfUsage</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Father</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/father">:father</a>): Equids have no father: the openAPI knows only the mother and the genetic mother for them. The object catalogue, by contrast, names the UELN of the father animal in the attribute; issue #45 puts the discrepancy to Identitas.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Animal history state</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>): Described in the object catalogue as not relevant for equids; the notification state takes its place.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Type of use (livestock)</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfUse">:typeOfUse</a>): Does not apply to equids; the equid-specific type of use takes its place.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -723,14 +696,6 @@ None (transactional data, not part of the published graph)
 <dt>Target class</dt>
 <dd>
 <a href="https://agriculture.ld.admin.ch/eCH-0309/1/GroupNotification">:GroupNotification</a>
-</dd>
-<dt>Closed</dt>
-<dd>
-No (further properties are allowed)
-</dd>
-<dt>Data access</dt>
-<dd>
-None (transactional data, not part of the published graph)
 </dd>
 </dl>
 </div>
@@ -766,7 +731,7 @@ None (transactional data, not part of the published graph)
 <td style="text-align: right;">0..1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>ID</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/eventIdentifier">:eventIdentifier</a>): Unique identifier of the movement, assigned by the system.</td>
+<td style="text-align: left;"><strong>ID</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/id">:id</a>): Unique identifier of the movement, assigned by the system.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Text (<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
 </ul></td>
@@ -854,14 +819,6 @@ None (transactional data, not part of the published graph)
 <dd>
 <a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatus">:LocalUnitHealthStatus</a>
 </dd>
-<dt>Closed</dt>
-<dd>
-No (further properties are allowed)
-</dd>
-<dt>Data access</dt>
-<dd>
-None (transactional data, not part of the published graph)
-</dd>
 </dl>
 </div>
 </section>
@@ -927,14 +884,6 @@ None (transactional data, not part of the published graph)
 <dt>Target class</dt>
 <dd>
 <a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatus">:AnimalHealthStatus</a>
-</dd>
-<dt>Closed</dt>
-<dd>
-No (further properties are allowed)
-</dd>
-<dt>Data access</dt>
-<dd>
-None (transactional data, not part of the published graph)
 </dd>
 </dl>
 </div>
@@ -1002,14 +951,6 @@ None (transactional data, not part of the published graph)
 <dd>
 <a href="https://agriculture.ld.admin.ch/eCH-0309/1/Animal">:Animal</a>
 </dd>
-<dt>Closed</dt>
-<dd>
-No (further properties are allowed)
-</dd>
-<dt>Data access</dt>
-<dd>
-None (transactional data, not part of the published graph)
-</dd>
 </dl>
 </div>
 </section>
@@ -1017,9 +958,9 @@ None (transactional data, not part of the published graph)
 <h3 class="unlisted anchored" data-number="3.6.2" data-anchor-id="sec-nodeshape-animalshape-properties"><span class="header-section-number">3.6.2</span> Properties</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 46%">
-<col style="width: 45%">
-<col style="width: 7%">
+<col style="width: 43%">
+<col style="width: 48%">
+<col style="width: 8%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1080,11 +1021,11 @@ None (transactional data, not part of the published graph)
 <td style="text-align: right;">0..1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Animal history state</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/animalHistoryState">:animalHistoryState</a>)</td>
+<td style="text-align: left;"><strong>Animal history state</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>): State of the animal history at the date of the query. Not relevant for equids; the object catalogue therefore gives the attribute a cardinality of 1, but the obligation applies only to the remaining individual animals.</td>
 <td style="text-align: left;"><ul>
 <li>Type: <a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHistoryState">:AnimalHistoryState</a></li>
 </ul></td>
-<td style="text-align: right;">1..1</td>
+<td style="text-align: right;">0..1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Type of use</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfUse">:typeOfUse</a>)</td>
@@ -1094,7 +1035,7 @@ None (transactional data, not part of the published graph)
 <td style="text-align: right;">0..1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Castrated</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/castrated">:castrated</a>)</td>
+<td style="text-align: left;"><strong>Castrated</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/castrated">:castrated</a>): The object catalogue describes the attribute as absent for equids, but the openAPI carries it on the equid responses as well; issue #45 puts the discrepancy to Identitas.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Boolean (<a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
 </ul></td>
@@ -1102,6 +1043,10 @@ None (transactional data, not part of the published graph)
 </tr>
 </tbody>
 </table>
+</section>
+<section id="sec-nodeshape-animalshape-rules" class="level3 unlisted" data-number="3.6.3">
+<h3 class="unlisted anchored" data-number="3.6.3" data-anchor-id="sec-nodeshape-animalshape-rules"><span class="header-section-number">3.6.3</span> Rules</h3>
+<p>The object catalogue gives the animal history state a cardinality of 1 but notes that it is not relevant for equids. The obligation therefore applies to every individual animal except equids.</p>
 </section>
 </section>
 <section id="sec-nodeshape-animalnotificationshape" class="level2" data-number="3.7">
@@ -1118,14 +1063,6 @@ None (transactional data, not part of the published graph)
 <dt>Target class</dt>
 <dd>
 <a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalNotification">:AnimalNotification</a>
-</dd>
-<dt>Closed</dt>
-<dd>
-No (further properties are allowed)
-</dd>
-<dt>Data access</dt>
-<dd>
-None (transactional data, not part of the published graph)
 </dd>
 </dl>
 </div>
@@ -1168,7 +1105,7 @@ None (transactional data, not part of the published graph)
 <td style="text-align: right;">0..1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>ID</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/eventIdentifier">:eventIdentifier</a>): Unique identifier of the movement, assigned by the system.</td>
+<td style="text-align: left;"><strong>ID</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/id">:id</a>): Unique identifier of the movement, assigned by the system.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Text (<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
 </ul></td>
@@ -1221,14 +1158,6 @@ None (transactional data, not part of the published graph)
 <dd>
 <a href="https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnit">:LegalUnit</a>
 </dd>
-<dt>Closed</dt>
-<dd>
-No (further properties are allowed)
-</dd>
-<dt>Data access</dt>
-<dd>
-None (transactional data, not part of the published graph)
-</dd>
 </dl>
 </div>
 </section>
@@ -1247,14 +1176,6 @@ None (transactional data, not part of the published graph)
 <dt>Target class</dt>
 <dd>
 <a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnit">:LocalUnit</a>
-</dd>
-<dt>Closed</dt>
-<dd>
-No (further properties are allowed)
-</dd>
-<dt>Data access</dt>
-<dd>
-None (transactional data, not part of the published graph)
 </dd>
 </dl>
 </div>
@@ -1429,12 +1350,60 @@ None (transactional data, not part of the published graph)
 </figure>
 </div>
 </section>
-<section id="sec-codelist-equidtypeofusage" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="sec-codelist-equidtypeofusage"><span class="header-section-number">4.4</span> Type of use (equids)</h2>
+<section id="sec-codelist-equidnotificationstate" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-codelist-equidnotificationstate"><span class="header-section-number">4.4</span> Equid notification state</h2>
+<div id="tbl-codelist-equidnotificationstate" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-equidnotificationstate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;5:</strong> Values of the code list Equid notification state
+</figcaption>
+<div aria-describedby="tbl-codelist-equidnotificationstate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Value</th>
+<th style="text-align: left;">Designation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>LocationChangeAndAcquisitionPending</code></td>
+<td style="text-align: left;">Change of location and transfer of ownership pending</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>LocationChangePending</code></td>
+<td style="text-align: left;">Change of location pending</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>Ok</code></td>
+<td style="text-align: left;">OK</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>OwnershipAcquisitionPending</code></td>
+<td style="text-align: left;">Transfer of ownership pending</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-codelist-equidtypeofusage" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-codelist-equidtypeofusage"><span class="header-section-number">4.5</span> Type of use (equids)</h2>
 <div id="tbl-codelist-equidtypeofusage" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-equidtypeofusage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;5:</strong> Values of the code list Type of use (equids)
+<strong>Table&nbsp;6:</strong> Values of the code list Type of use (equids)
 </figcaption>
 <div aria-describedby="tbl-codelist-equidtypeofusage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1467,12 +1436,12 @@ None (transactional data, not part of the published graph)
 </figure>
 </div>
 </section>
-<section id="sec-codelist-equidwithersclass" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="sec-codelist-equidwithersclass"><span class="header-section-number">4.5</span> Withers class</h2>
+<section id="sec-codelist-equidwithersclass" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="sec-codelist-equidwithersclass"><span class="header-section-number">4.6</span> Withers class</h2>
 <div id="tbl-codelist-equidwithersclass" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-equidwithersclass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;6:</strong> Values of the code list Withers class
+<strong>Table&nbsp;7:</strong> Values of the code list Withers class
 </figcaption>
 <div aria-describedby="tbl-codelist-equidwithersclass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1505,12 +1474,12 @@ None (transactional data, not part of the published graph)
 </figure>
 </div>
 </section>
-<section id="sec-codelist-gender" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="sec-codelist-gender"><span class="header-section-number">4.6</span> Gender</h2>
+<section id="sec-codelist-gender" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="sec-codelist-gender"><span class="header-section-number">4.7</span> Gender</h2>
 <div id="tbl-codelist-gender" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;7:</strong> Values of the code list Gender
+<strong>Table&nbsp;8:</strong> Values of the code list Gender
 </figcaption>
 <div aria-describedby="tbl-codelist-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1543,12 +1512,12 @@ None (transactional data, not part of the published graph)
 </figure>
 </div>
 </section>
-<section id="sec-codelist-genus" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="sec-codelist-genus"><span class="header-section-number">4.7</span> Genus</h2>
+<section id="sec-codelist-genus" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="sec-codelist-genus"><span class="header-section-number">4.8</span> Genus</h2>
 <div id="tbl-codelist-genus" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-genus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;8:</strong> Values of the code list Genus
+<strong>Table&nbsp;9:</strong> Values of the code list Genus
 </figcaption>
 <div aria-describedby="tbl-codelist-genus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1573,7 +1542,7 @@ None (transactional data, not part of the published graph)
 <tr class="even">
 <td style="text-align: left;"><code>Cattle</code></td>
 <td style="text-align: left;">Cattle</td>
-<td style="text-align: left;">Tiere der Rindergattung (Bos) und Wasserbüffel (Bubalus bubalis)</td>
+<td style="text-align: left;">Tiere der Rindergattung (<em>Bos</em>) und Wasserbüffel (<em>Bubalus bubalis</em>)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><code>Equid</code></td>
@@ -1611,12 +1580,12 @@ None (transactional data, not part of the published graph)
 </figure>
 </div>
 </section>
-<section id="sec-codelist-healthstatustype" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="sec-codelist-healthstatustype"><span class="header-section-number">4.8</span> Health status type</h2>
+<section id="sec-codelist-healthstatustype" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="sec-codelist-healthstatustype"><span class="header-section-number">4.9</span> Health status type</h2>
 <div id="tbl-codelist-healthstatustype" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-healthstatustype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;9:</strong> Values of the code list Health status type
+<strong>Table&nbsp;10:</strong> Values of the code list Health status type
 </figcaption>
 <div aria-describedby="tbl-codelist-healthstatustype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1659,12 +1628,12 @@ None (transactional data, not part of the published graph)
 </figure>
 </div>
 </section>
-<section id="sec-codelist-localunithealthstatus" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="sec-codelist-localunithealthstatus"><span class="header-section-number">4.9</span> Health status of a local unit</h2>
+<section id="sec-codelist-localunithealthstatus" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="sec-codelist-localunithealthstatus"><span class="header-section-number">4.10</span> Health status of a local unit</h2>
 <div id="tbl-codelist-localunithealthstatus" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-localunithealthstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;10:</strong> Values of the code list Health status of a local unit
+<strong>Table&nbsp;11:</strong> Values of the code list Health status of a local unit
 </figcaption>
 <div aria-describedby="tbl-codelist-localunithealthstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1727,12 +1696,12 @@ None (transactional data, not part of the published graph)
 </figure>
 </div>
 </section>
-<section id="sec-codelist-notificationtype" class="level2" data-number="4.10">
-<h2 data-number="4.10" class="anchored" data-anchor-id="sec-codelist-notificationtype"><span class="header-section-number">4.10</span> Notification type</h2>
+<section id="sec-codelist-notificationtype" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="sec-codelist-notificationtype"><span class="header-section-number">4.11</span> Notification type</h2>
 <div id="tbl-codelist-notificationtype" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,30,45]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-notificationtype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;11:</strong> Values of the code list Notification type
+<strong>Table&nbsp;12:</strong> Values of the code list Notification type
 </figcaption>
 <div aria-describedby="tbl-codelist-notificationtype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1845,6 +1814,7 @@ None (transactional data, not part of the published graph)
 
 
 
+
 <div id="quarto-appendix" class="default"><section id="sec-appendix-a" class="level1 appendix" data-number="8"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">8</span> Annex A - References</h2><div class="quarto-appendix-contents">
 
 <div id="refs" class="references csl-bib-body" role="list">
@@ -1859,7 +1829,7 @@ None (transactional data, not part of the published graph)
 <div id="tbl-glossary" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[35,65]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glossary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;12:</strong> Glossary of eCH-0309
+<strong>Table&nbsp;13:</strong> Glossary of eCH-0309
 </figcaption>
 <div aria-describedby="tbl-glossary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">

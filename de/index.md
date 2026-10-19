@@ -1,6 +1,6 @@
 # Hilfsmittel Tierverkehrsdaten
 
-12. Oktober 2026
+19. Oktober 2026
 
 - [Hinweis](#sec-note)
 - [<span class="toc-section-number">1</span>
@@ -42,19 +42,21 @@
     Tiergeschichtestatus](#sec-codelist-animalhistorystate)
   - [<span class="toc-section-number">4.3</span> Zweck (Rinder, Schafe,
     Ziegen)](#sec-codelist-animaltypeofuse)
-  - [<span class="toc-section-number">4.4</span> Zweck
+  - [<span class="toc-section-number">4.4</span> Meldestatus
+    Equide](#sec-codelist-equidnotificationstate)
+  - [<span class="toc-section-number">4.5</span> Zweck
     (Equiden)](#sec-codelist-equidtypeofusage)
-  - [<span class="toc-section-number">4.5</span>
-    Grössenkategorie](#sec-codelist-equidwithersclass)
   - [<span class="toc-section-number">4.6</span>
-    Geschlecht](#sec-codelist-gender)
+    Grössenkategorie](#sec-codelist-equidwithersclass)
   - [<span class="toc-section-number">4.7</span>
+    Geschlecht](#sec-codelist-gender)
+  - [<span class="toc-section-number">4.8</span>
     Nutztierart](#sec-codelist-genus)
-  - [<span class="toc-section-number">4.8</span> Typ
+  - [<span class="toc-section-number">4.9</span> Typ
     Gesundheitsstatus](#sec-codelist-healthstatustype)
-  - [<span class="toc-section-number">4.9</span> Seuchenstatus örtliche
+  - [<span class="toc-section-number">4.10</span> Seuchenstatus örtliche
     Einheit](#sec-codelist-localunithealthstatus)
-  - [<span class="toc-section-number">4.10</span>
+  - [<span class="toc-section-number">4.11</span>
     Bewegungstyp](#sec-codelist-notificationtype)
 - [<span class="toc-section-number">5</span>
   Sicherheitsaspekte](#sec-safety-consideration)
@@ -116,61 +118,63 @@ risikobasierte Überwachung, die lückenlose Rückverfolgbarkeit der
 Nutztiere, die Kontrolle des Tierverkehrs, die Pflicht zur
 Herkunftsdeklaration sowie Qualitätskontrollen in der gesamten
 Produktions- und Verarbeitungskette bilden seither die Basis für einen
-hohen Standard in der Lebensmittelsicherheit.
+hohen Standard in der Lebensmittelsicherheit[^1].
 
 Die Erfahrung BSE führte 1999 zum Aufbau einer nationalen
 Tierverkehrsdatenbank (TVD). In Artikel 7a sowie 13–15 des
-Tierseuchengesetzes und in Titel 2, Abschnitt 1, 1a und 2a der
-Tierseuchenverordnung sind die grundlegenden gesetzlichen Ausführungen
-zur Identifizierung/Kennzeichnung und der Registrierung von Nutztieren
-sowie die zugehörigen Meldepflichten formuliert. Diese orientieren sich
-an der europäischen Gesetzgebung zur selben Thematik (Verordnung (EU)
-2016/429 zu Tierseuchen; Delegierte Verordnung (EU) 2019/2035 über
-Betriebe, in denen Landtiere gehalten werden, und für Brütereien sowie
-zur Rückverfolgbarkeit).
+Tierseuchengesetzes[^2] und in Titel 2, Abschnitt 1, 1a und 2a der
+Tierseuchenverordnung[^3] sind die grundlegenden gesetzlichen
+Ausführungen zur Identifizierung/Kennzeichnung und der Registrierung von
+Nutztieren sowie die zugehörigen Meldepflichten formuliert. Diese
+orientieren sich an der europäischen Gesetzgebung zur selben
+Thematik[^4] (Verordnung (EU) 2016/429 zu Tierseuchen; Delegierte
+Verordnung (EU) 2019/2035 über Betriebe, in denen Landtiere gehalten
+werden, und für Brütereien sowie zur Rückverfolgbarkeit).
 
 Waren ab 1999 vorerst Rinder meldepflichtig, folgten ab 2011 die
 Schweine und Equiden, wenn auch die Schweine bis heute nicht in Form von
 Einzeltiermeldungen. Ab 2014, respektive 2020 galt die Meldepflicht in
 die TVD dann auch für Kleinwiederkäuer (Schafe und Ziegen). Zu Beginn,
 2014, betraf diese nur die Schlachtbetriebe. Seit 2014 besteht auch die
-Meldepflicht für Geflügel. Seit dem Januar 2020 sind auch die
+Meldepflicht für Geflügel[^5]. Seit dem Januar 2020 sind auch die
 Tierhaltenden von Kleinwiederkäuern in das Meldewesen der Einzeltiere
-eingebunden. Die Identifizierung und Kennzeichnung der Klauentiere mit
-Ohrmarken, die Einzeltierregistrierung von Rindern, Schafen und Ziegen
-in der TVD, sowie die Meldung von Tierzugängen, Tierabgängen (Tier
-verlässt eine Tierhaltung lebend), Geburten, Einfuhr, Ausfuhr,
+eingebunden.[^6] Die Identifizierung und Kennzeichnung der Klauentiere
+mit Ohrmarken, die Einzeltierregistrierung von Rindern, Schafen und
+Ziegen in der TVD, sowie die Meldung von Tierzugängen, Tierabgängen
+(Tier verlässt eine Tierhaltung lebend), Geburten, Einfuhr, Ausfuhr,
 Schlachtung, Hofschlachtung und Verendung (Tier wird als nicht mehr
 lebend abgemeldet), sind für alle Tierhaltenden in der Schweiz
-obligatorisch.
+obligatorisch[^7]. Die Meldungen unterliegen zudem gesetzlichen
+Meldefristen[^8].
 
 Die TVD ist Teil einer Systemlandschaft der Bereiche Landwirtschaft,
 Veterinärwesen und Lebensmittelsicherheit. Die zentrale Eingangspforte
-bildet dabei das Portal Agate, mit dem Agrarpolitischen
-Informationssystem AGIS im Zentrum.
+bildet dabei das Portal Agate[^9], mit dem Agrarpolitischen
+Informationssystem AGIS[^10] im Zentrum.
 
 <!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
 
-In der Verordnung über die Identitas AG und die Tierverkehrsdatenbank
-(IdTVD-V) werden Inhalte zum Tierverkehr und Aufgaben der Identitas AG
-sowie die Zugriffsrechte auf die Daten weiter ausgeführt. Die Bedeutung
-der Identifizierung/Kennzeichnung von Nutztieren geht weit über die
-Seuchenthematik hinaus und fand deshalb auch Eingang in die
-landwirtschaftliche Gesetzgebung (Landwirtschaftsgesetz LwG Artikel
-165g, 177 und 185) und diverse zugehörige Verordnungen. Die Daten aus
-dem Tierverkehr entwickelten sich zu einem unverzichtbaren Bestandteil
-in der Umsetzung agrarpolitischer Massnahmen, beispielsweise der
-tierbezogenen Direktzahlungen, der Bestimmung der Nährstoffflüsse oder
-des Agrarumweltmonitorings. Weiter dienen die Daten auch als Grundlage
-für die Strukturerhebung der Landwirtschaft in der Schweiz und generell
-der landwirtschaftlichen Statistik.
+In der Verordnung über die Identitas AG und die
+Tierverkehrsdatenbank[^11] (IdTVD-V) werden Inhalte zum Tierverkehr und
+Aufgaben der Identitas AG sowie die Zugriffsrechte auf die Daten weiter
+ausgeführt. Die Bedeutung der Identifizierung/Kennzeichnung von
+Nutztieren geht weit über die Seuchenthematik hinaus und fand deshalb
+auch Eingang in die landwirtschaftliche Gesetzgebung[^12]
+(Landwirtschaftsgesetz LwG Artikel 165g, 177 und 185) und diverse
+zugehörige Verordnungen. Die Daten aus dem Tierverkehr entwickelten sich
+zu einem unverzichtbaren Bestandteil in der Umsetzung agrarpolitischer
+Massnahmen, beispielsweise der tierbezogenen Direktzahlungen[^13], der
+Bestimmung der Nährstoffflüsse oder des Agrarumweltmonitorings[^14].
+Weiter dienen die Daten auch als Grundlage für die Strukturerhebung der
+Landwirtschaft in der Schweiz[^15] und generell der landwirtschaftlichen
+Statistik[^16].
 
 Rasch etablierte sich das Tiermeldewesen auch entlang der gesamten
 Lebensmittelwertschöpfungskette. Programme mit Tierwohl-,
-Rückverfolgbarkeits- und Herkunftsversprechen stützen sich darauf ab.
-Die Vielfalt der Tierinformation aus dem Meldewesen des Tierverkehrs
-spiegelt sich auch in den öffentlich verfügbaren Datensätzen der Open
-Data Plattform Tierstatistik.
+Rückverfolgbarkeits- und Herkunftsversprechen stützen sich darauf
+ab[^17]. Die Vielfalt der Tierinformation aus dem Meldewesen des
+Tierverkehrs spiegelt sich auch in den öffentlich verfügbaren
+Datensätzen der Open Data Plattform Tierstatistik[^18].
 
 Die technische Schnittstellenbeschreibung in diesem Dokument basiert auf
 der technischen Servicebeschreibung AnimalTracing v1.32, sowie der
@@ -180,12 +184,6 @@ openAPI-Spezifikation v. x.xx.
 
 Schnittstellen: AnimalTracing API, Technische Servicebeschreibung
 AnimalTracing
-
-NB: die Namen der im Kapitel 3 beschriebenen Klassen stimmen nicht mit
-den ServiceOperations in AnimalTracing überein, da die semantische
-Beschreibung einen Überblick über die Dateninhalte verschaffen soll und
-gegenüber der Servicebeschreibung einen tieferen Detaillierungsgrad
-aufweist.
 
 # Namespaces
 
@@ -220,6 +218,22 @@ Abbildung 1: UML-Diagramm des Datenmodells von eCH-0309.
 
 </div>
 
+<a href="#fig-uml" class="quarto-xref">Abbildung 1</a> zeigt die Klassen
+des Datenmodells und ihre Beziehungen. Jedes Rechteck ist eine Klasse,
+die Zeilen darin sind ihre Attribute; die eckigen Klammern geben an, wie
+viele Werte zulässig sind, von der Mindest- bis zur Höchstzahl —
+`[1..1]` bedeutet genau einen Wert, `[0..1]` höchstens einen. Ein Pfeil
+führt zu der Klasse, auf die verwiesen wird, und trägt den Namen der
+Beziehung; mehrere Beziehungen zwischen denselben Klassen teilen sich
+einen Pfeil. Die Linie mit dem Dreieck verbindet eine Klasse mit ihrer
+Oberklasse, auf die das Dreieck zeigt: Ein Equide ist ein Einzeltier und
+hat zusätzlich zu den gezeigten alle Attribute des Einzeltiers, die im
+Diagramm nicht wiederholt werden. Attribute mit einem Wertebereich sind
+wie alle übrigen dargestellt; die zulässigen Werte stehen in
+<a href="#sec-code-lists" class="quarto-xref">Kapitel 4</a>. Datentypen
+und Beschreibungen führt das Diagramm nicht auf, sie folgen in den
+Abschnitten zu den einzelnen Klassen.
+
 ## Einzeltier
 
 Ein einzeln identifiziertes Nutztier. In der Tierverkehrsdatenbank
@@ -238,21 +252,15 @@ Shape
 Zielklasse  
 [:Animal](https://agriculture.ld.admin.ch/eCH-0309/1/Animal)
 
-Geschlossen  
-Nein (weitere Eigenschaften zulässig)
-
-Datenzugriff  
-Keiner (Transaktionsdaten, nicht Teil des publizierten Graphen)
-
 </div>
 
 ### Eigenschaften
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 46%" />
-<col style="width: 45%" />
-<col style="width: 7%" />
+<col style="width: 43%" />
+<col style="width: 48%" />
+<col style="width: 8%" />
 </colgroup>
 <thead>
 <tr>
@@ -329,12 +337,15 @@ href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>TiergeschichteStatus</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/animalHistoryState">:animalHistoryState</a>)</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>):
+Status der Tiergeschichte zum Abfragedatum. Nicht relevant für Equiden;
+der Objektkatalog führt das Attribut deshalb mit Kardinalität 1, die
+Pflicht gilt aber nur für die übrigen Einzeltiere.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHistoryState">:AnimalHistoryState</a></li>
 </ul></td>
-<td style="text-align: right;">1..1</td>
+<td style="text-align: right;">0..1</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Zweck</strong> (<a
@@ -347,7 +358,10 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalTypeOfUse">:AnimalTypeOfU
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Kastriert</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/castrated">:castrated</a>)</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/castrated">:castrated</a>):
+Der Objektkatalog bezeichnet das Attribut als für Equiden nicht
+vorhanden, die openAPI führt es aber auch auf den Equiden-Antworten; die
+Abweichung ist mit Issue #45 bei Identitas angefragt.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: Wahrheitswert (<a
 href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
@@ -356,6 +370,12 @@ href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
 </tr>
 </tbody>
 </table>
+
+### Regeln
+
+Der Objektkatalog führt den TiergeschichteStatus mit Kardinalität 1,
+bezeichnet ihn für Equiden aber als nicht relevant. Die Pflicht gilt
+deshalb für jedes Einzeltier ausser den Equiden.
 
 ## Equide
 
@@ -378,21 +398,15 @@ Shape
 Zielklasse  
 [:Equid](https://agriculture.ld.admin.ch/eCH-0309/1/Equid)
 
-Geschlossen  
-Nein (weitere Eigenschaften zulässig)
-
-Datenzugriff  
-Keiner (Transaktionsdaten, nicht Teil des publizierten Graphen)
-
 </div>
 
 ### Eigenschaften
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 43%" />
+<col style="width: 44%" />
 <col style="width: 47%" />
-<col style="width: 8%" />
+<col style="width: 7%" />
 </colgroup>
 <thead>
 <tr>
@@ -424,6 +438,54 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidWithersClass">:EquidWither
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
+<tr>
+<td style="text-align: left;"><strong>Meldestatus</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationState">:notificationState</a>):
+Equiden führen anstelle des TiergeschichteStatus einen eigenen
+Meldestatus.</td>
+<td style="text-align: left;"><ul>
+<li>Typ: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidNotificationState">:EquidNotificationState</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Zweck</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfEquidUsage">:typeOfEquidUsage</a>):
+Equiden verwenden einen eigenen Wertebereich: Heimtier oder
+Nutztier.</td>
+<td style="text-align: left;"><ul>
+<li>Typ: <a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidTypeOfUsage">:EquidTypeOfUsage</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Identifikation Vater</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/father">:father</a>):
+Equiden führen keinen Vater: die openAPI kennt für sie nur die Mutter
+und die genetische Mutter. Der Objektkatalog nennt im Attribut dagegen
+die UELN des Vatertiers; die Abweichung ist mit Issue #45 bei Identitas
+angefragt.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TiergeschichteStatus</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>):
+Im Objektkatalog als «nicht relevant für Equiden» bezeichnet; an seine
+Stelle tritt der Meldestatus.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Zweck (Nutztiere)</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfUse">:typeOfUse</a>):
+Gilt nicht für Equiden; an seine Stelle tritt der equidenspezifische
+Zweck.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
 </tbody>
 </table>
 
@@ -442,12 +504,6 @@ Shape
 
 Zielklasse  
 [:AnimalHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatus)
-
-Geschlossen  
-Nein (weitere Eigenschaften zulässig)
-
-Datenzugriff  
-Keiner (Transaktionsdaten, nicht Teil des publizierten Graphen)
 
 </div>
 
@@ -529,12 +585,6 @@ Shape
 
 Zielklasse  
 [:LocalUnitHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatus)
-
-Geschlossen  
-Nein (weitere Eigenschaften zulässig)
-
-Datenzugriff  
-Keiner (Transaktionsdaten, nicht Teil des publizierten Graphen)
 
 </div>
 
@@ -619,12 +669,6 @@ Shape
 Zielklasse  
 [:GroupNotification](https://agriculture.ld.admin.ch/eCH-0309/1/GroupNotification)
 
-Geschlossen  
-Nein (weitere Eigenschaften zulässig)
-
-Datenzugriff  
-Keiner (Transaktionsdaten, nicht Teil des publizierten Graphen)
-
 </div>
 
 ### Eigenschaften
@@ -665,7 +709,7 @@ Einheit</a></li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>ID</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/eventIdentifier">:eventIdentifier</a>):
+href="https://agriculture.ld.admin.ch/eCH-0309/1/id">:id</a>):
 Eindeutiger Identifikator der Bewegung, der durch das System vergeben
 wird.</td>
 <td style="text-align: left;"><ul>
@@ -792,12 +836,6 @@ Shape
 Zielklasse  
 [:AnimalNotification](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalNotification)
 
-Geschlossen  
-Nein (weitere Eigenschaften zulässig)
-
-Datenzugriff  
-Keiner (Transaktionsdaten, nicht Teil des publizierten Graphen)
-
 </div>
 
 ### Eigenschaften
@@ -847,7 +885,7 @@ Einheit</a></li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>ID</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/eventIdentifier">:eventIdentifier</a>):
+href="https://agriculture.ld.admin.ch/eCH-0309/1/id">:id</a>):
 Eindeutiger Identifikator der Bewegung, der durch das System vergeben
 wird.</td>
 <td style="text-align: left;"><ul>
@@ -929,12 +967,6 @@ Shape
 Zielklasse  
 [:LegalUnit](https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnit)
 
-Geschlossen  
-Nein (weitere Eigenschaften zulässig)
-
-Datenzugriff  
-Keiner (Transaktionsdaten, nicht Teil des publizierten Graphen)
-
 </div>
 
 ## Tierhaltender
@@ -959,24 +991,13 @@ Shape
 Zielklasse  
 [:AnimalKeeper](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeper)
 
-Geschlossen  
-Nein (weitere Eigenschaften zulässig)
-
-Datenzugriff  
-Keiner (Transaktionsdaten, nicht Teil des publizierten Graphen)
-
 </div>
 
-### Regeln (SPARQL)
+### Regeln
 
-#### Ein Tierhaltender braucht mindestens eine örtliche Einheit (Kapitel 3.1.1 des Hilfsmittels). Diese Regel ist der Semantikbeschreibung entnommen, nicht dem Objektkatalog.
-
-``` sparql
-SELECT $this
-WHERE {
-    FILTER NOT EXISTS { ?localUnit :animalKeeper $this . }
-}
-```
+Ein Tierhaltender braucht mindestens eine örtliche Einheit (Kapitel
+3.1.1 des Hilfsmittels). Diese Regel ist der Semantikbeschreibung
+entnommen, nicht dem Objektkatalog.
 
 ## Örtliche Einheit
 
@@ -1004,12 +1025,6 @@ Shape
 
 Zielklasse  
 [:LocalUnit](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnit)
-
-Geschlossen  
-Nein (weitere Eigenschaften zulässig)
-
-Datenzugriff  
-Keiner (Transaktionsdaten, nicht Teil des publizierten Graphen)
 
 </div>
 
@@ -1099,11 +1114,26 @@ Tabelle 4: Werte des Wertebereichs Zweck (Rinder, Schafe, Ziegen)
 
 </div>
 
+## Meldestatus Equide
+
+<div id="tbl-codelist-equidnotificationstate">
+
+Tabelle 5: Werte des Wertebereichs Meldestatus Equide
+
+| Wert | Bezeichnung | Beschreibung |
+|:---|:---|:---|
+| `LocationChangeAndAcquisitionPending` | Standortwechsel und Eigentumsübernahme hängig |  |
+| `LocationChangePending` | Standortwechsel hängig |  |
+| `Ok` | OK |  |
+| `OwnershipAcquisitionPending` | Eigentumsübernahme hängig |  |
+
+</div>
+
 ## Zweck (Equiden)
 
 <div id="tbl-codelist-equidtypeofusage">
 
-Tabelle 5: Werte des Wertebereichs Zweck (Equiden)
+Tabelle 6: Werte des Wertebereichs Zweck (Equiden)
 
 | Wert              | Bezeichnung | Beschreibung |
 |:------------------|:------------|:-------------|
@@ -1116,7 +1146,7 @@ Tabelle 5: Werte des Wertebereichs Zweck (Equiden)
 
 <div id="tbl-codelist-equidwithersclass">
 
-Tabelle 6: Werte des Wertebereichs Grössenkategorie
+Tabelle 7: Werte des Wertebereichs Grössenkategorie
 
 | Wert                   | Bezeichnung               | Beschreibung |
 |:-----------------------|:--------------------------|:-------------|
@@ -1129,7 +1159,7 @@ Tabelle 6: Werte des Wertebereichs Grössenkategorie
 
 <div id="tbl-codelist-gender">
 
-Tabelle 7: Werte des Wertebereichs Geschlecht
+Tabelle 8: Werte des Wertebereichs Geschlecht
 
 | Wert     | Bezeichnung | Beschreibung |
 |:---------|:------------|:-------------|
@@ -1142,12 +1172,12 @@ Tabelle 7: Werte des Wertebereichs Geschlecht
 
 <div id="tbl-codelist-genus">
 
-Tabelle 8: Werte des Wertebereichs Nutztierart
+Tabelle 9: Werte des Wertebereichs Nutztierart
 
 | Wert | Bezeichnung | Beschreibung |
 |:---|:---|:---|
 | `Camelid` | Kameliden | Neuweltkameliden |
-| `Cattle` | Rindvieh | Tiere der Rindergattung (Bos) und Wasserbüffel (Bubalus bubalis) |
+| `Cattle` | Rindvieh | Tiere der Rindergattung (*Bos*) und Wasserbüffel (*Bubalus bubalis*) |
 | `Equid` | Equiden | Tiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel) |
 | `Game` | Wild | Wild in Gehegen |
 | `Goat` | Ziegen |  |
@@ -1161,7 +1191,7 @@ Tabelle 8: Werte des Wertebereichs Nutztierart
 
 <div id="tbl-codelist-healthstatustype">
 
-Tabelle 9: Werte des Wertebereichs Typ Gesundheitsstatus
+Tabelle 10: Werte des Wertebereichs Typ Gesundheitsstatus
 
 | Wert                | Bezeichnung   | Beschreibung |
 |:--------------------|:--------------|:-------------|
@@ -1176,7 +1206,7 @@ Tabelle 9: Werte des Wertebereichs Typ Gesundheitsstatus
 
 <div id="tbl-codelist-localunithealthstatus">
 
-Tabelle 10: Werte des Wertebereichs Seuchenstatus örtliche Einheit
+Tabelle 11: Werte des Wertebereichs Seuchenstatus örtliche Einheit
 
 | Wert        | Bezeichnung    | Beschreibung       |
 |:------------|:---------------|:-------------------|
@@ -1195,7 +1225,7 @@ Tabelle 10: Werte des Wertebereichs Seuchenstatus örtliche Einheit
 
 <div id="tbl-codelist-notificationtype">
 
-Tabelle 11: Werte des Wertebereichs Bewegungstyp
+Tabelle 12: Werte des Wertebereichs Bewegungstyp
 
 | Wert | Bezeichnung | Beschreibung |
 |:---|:---|:---|
@@ -1292,7 +1322,7 @@ Recommendation) : World Wide Web Consortium (W3C), 2014</span>
 
 <div id="tbl-glossary">
 
-Tabelle 12: Glossar des Hilfsmittels eCH-0309
+Tabelle 13: Glossar des Hilfsmittels eCH-0309
 
 <table>
 <colgroup>
@@ -1360,3 +1390,44 @@ bestehend aus Subjekt, Prädikat und Objekt.</p>
 # Anhang E - Abbildungsverzeichnis
 
 # Anhang F - Tabellenverzeichnis
+
+[^1]: <https://www.news.admin.ch/de/nsb?id=57438>
+
+[^2]: <https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de>
+
+[^3]: <https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de>
+
+[^4]: <https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html>
+
+[^5]: <https://fedlex.data.admin.ch/eli/cc/2011/775>, Version 1.1.2014,
+    Seite 20
+
+[^6]: <https://www.fedlex.admin.ch/eli/cc/2021/751/de#annex_1/lvl_u1/lvl_2>
+
+[^7]: <https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_14>,
+    <https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_15_a>
+
+[^8]: <https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de#art_14>
+
+[^9]: <https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html>
+
+[^10]: <https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html>
+
+[^11]: <https://www.fedlex.admin.ch/eli/cc/2021/751/de>
+
+[^12]: <https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de>
+
+[^13]: <https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_7>,
+    <https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_8>,
+    <https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_9>
+
+[^14]: <https://www.blw.admin.ch/de/agrarumweltmonitoring>
+
+[^15]: <https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html>
+
+[^16]: <https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft>
+
+[^17]: <https://www.proviande.ch/de/herkunft>,
+    <https://www.identitas.ch/produkte/labelbase>
+
+[^18]: <https://tierstatistik.identitas.ch>
