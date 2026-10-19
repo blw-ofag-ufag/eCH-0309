@@ -11,6 +11,7 @@
 @prefix animaltypeofuse:<https://agriculture.ld.admin.ch/eCH-0309/1/animaltypeofuse/> .
 @prefix equidtypeofusage:<https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/> .
 @prefix animalhistorystate:<https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
+@prefix equidnotificationstate: <https://agriculture.ld.admin.ch/eCH-0309/1/equidnotificationstate/> .
 @prefix equidwithersclass:<https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
 @prefix notificationtype:<https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
 @prefix healthstatustype:<https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/> .

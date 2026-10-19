@@ -46,11 +46,6 @@ NOT_ADOPTED = {
     "EquidTypeOfUsage": {"Undefined": "nicht in Tabelle 3 aufgeführt"},
 }
 
-# :animalTracingTerm names AnimalTracing, which is the openAPI wherever it
-# carries a counterpart and the technical service description otherwise.
-SERVICE_DESCRIPTION_ONLY = {"BvdRisk"}
-
-
 @pytest.fixture(scope="module")
 def openapi():
     try:
@@ -97,8 +92,6 @@ def test_every_mapping_resolves(graph, members):
     unresolved = []
     for term in terms(graph):
         schema, _, value = term.partition(".")
-        if schema in SERVICE_DESCRIPTION_ONLY:
-            continue
         if schema not in members:
             unresolved.append(f"{term}: Schema «{schema}» gibt es nicht mehr")
         elif value and value not in members[schema]:
@@ -139,11 +132,3 @@ def test_values_declared_as_not_adopted_are_absent(graph):
              for value, reason in values.items()
              if f"{schema}.{value}" in present]
     assert not stale, "In NOT_ADOPTED begründet, aber trotzdem vorhanden:\n  " + "\n  ".join(stale)
-
-
-def test_the_service_description_exceptions_are_really_absent(members):
-    """BvdRisk is listed as service-description-only; fail if the openAPI gains it."""
-    gained = sorted(SERVICE_DESCRIPTION_ONLY & set(members))
-    assert not gained, (
-        "Die openAPI führt jetzt " + ", ".join(gained)
-        + " -- SERVICE_DESCRIPTION_ONLY kann entfallen.")
