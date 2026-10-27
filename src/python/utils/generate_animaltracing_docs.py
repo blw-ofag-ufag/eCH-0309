@@ -25,13 +25,13 @@ TRANSLATIONS = {
         "code_list": "Code list", "enum": "Enum of the interface",
         "enums_caption": "Enums of the TVD interface from which the code lists take their codes.",
         "code": "Code", "name": "Name", "counterparts": "TVD interface",
-        "caption": "Counterparts of the values of the code list {name} in the TVD interface.",
+        "caption": "Corresponding values of the code list {name} in the TVD interface.",
     },
     "de": {
         "code_list": "Wertebereich", "enum": "Enumeration der Schnittstelle",
         "enums_caption": "Enumerationen der TVD-Schnittstelle, aus denen die Wertebereiche ihre Codes beziehen.",
         "code": "Code", "name": "Name", "counterparts": "TVD-Schnittstelle",
-        "caption": "Gegenstücke der Werte des Wertebereichs {name} in der TVD-Schnittstelle.",
+        "caption": "Entsprechungen der Werte des Wertebereichs {name} in der TVD-Schnittstelle.",
     },
     "fr": {
         "code_list": "Domaine de valeurs", "enum": "Énumération de l'interface",
