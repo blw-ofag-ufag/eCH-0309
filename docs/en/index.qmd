@@ -117,9 +117,9 @@ These provisions shall apply to the standards prepared by eCH only, however, not
 
 # Annex D - Mapping to the TVD interface {#sec-appendix-d .appendix}
 
-The code lists take their codes from the TVD interface AnimalTracing (openAPI "TVD API Gateway Animal Tracing 1.0"). For the code lists in @tbl-animaltracing-enums, the code of a value is the member of the same name of an enum of the interface.
+For the code lists in @tbl-animaltracing-enums, the code of a value is the member of the same name of an enum of the TVD interface AnimalTracing.
 
-Notification type, health status type and the two epizootic status code lists, by contrast, come from the code list tables of this document. The interface holds the notification types per livestock species and the health statuses per disease in enums of their own, partly under other names. The following tables show which members of the interface correspond to a value; values without a corresponding value in the interface are not listed.
+For notification type, health status type and the two epizootic status code lists, the interface holds the notification types per livestock species and the health statuses per disease in enums of their own, partly under other names. The following tables show which members of the interface correspond to a value; values without a corresponding value in the interface are not listed.
 
 {{< include animaltracing.md >}}
 
