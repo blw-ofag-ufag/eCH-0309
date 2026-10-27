@@ -77,7 +77,7 @@ La @fig-uml présente les classes du modèle de données et leurs relations. Cha
 
 # Domaines de valeurs {#sec-code-lists}
 
-Les domaines de valeurs suivants définissent les valeurs admises pour les attributs correspondants du modèle de données (@sec-data-model). Chaque domaine de valeurs est modélisé comme `schema:CategoryCodeSet` et chacune de ses valeurs comme `schema:CategoryCode`. Le code d'une valeur est l'identifiant que l'interface de la BDTA utilise pour elle. Pour une partie des domaines de valeurs, aucune désignation française ou italienne n'est encore disponible ; elles sont indiquées en allemand et en anglais, telles que les sources les fournissent.
+Les domaines de valeurs suivants définissent les valeurs admises pour les attributs correspondants du modèle de données (@sec-data-model). Chaque domaine de valeurs est modélisé comme `schema:CategoryCodeSet` et chacune de ses valeurs comme `schema:CategoryCode`. Le code d'une valeur est l'identifiant que l'interface de la BDTA utilise pour elle.
 
 {{< include codelists.md >}}
 

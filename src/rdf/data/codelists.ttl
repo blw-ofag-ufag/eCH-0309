@@ -26,10 +26,12 @@
 # Four lists -- Bewegungstyp, Typ Gesundheitsstatus and the two Seuchenstatus
 # lists -- come from the Wertebereich tables of the Hilfsmittel alone: the
 # openAPI splits notification types per species and holds the health statuses as
-# a field per disease.
+# a field per disease. Where one of their values has a counterpart in the
+# openAPI, HILFSMITTEL_COUNTERPARTS in the test records it.
 #
-# French and Italian labels and most descriptions are still missing where the
-# sources provide none.
+# Where the sources define a value, its description follows them. The other
+# descriptions and the French and Italian designations were drafted for the
+# Fachgruppe to review (2026-10-27).
 # ==============================================================================
 
 @prefix codelist:               <https://agriculture.ld.admin.ch/eCH-0309/1/codelist/> .
@@ -58,6 +60,10 @@ codelist:Genus a schema:CategoryCodeSet ;
         "Genus"@en,
         "Espèce d'animal de rente"@fr,
         "Specie di animale da reddito"@it ;
+    schema:description "Nutztierarten, deren Tiere in der TVD registriert und deren Bewegungen gemeldet werden."@de,
+        "Livestock species whose animals are registered in the TVD and whose movements are notified."@en,
+        "Espèces d'animaux de rente dont les animaux sont enregistrés dans la BDTA et dont les mouvements sont annoncés."@fr,
+        "Specie di animali da reddito i cui animali sono registrati nella BDTA e i cui movimenti sono notificati."@it ;
     schema:hasCategoryCode genus:Cattle,
         genus:Pig,
         genus:Sheep,
@@ -71,53 +77,97 @@ genus:Cattle a schema:CategoryCode ;
     schema:inCodeSet codelist:Genus ;
     schema:codeValue "Cattle" ;
     schema:name "Rindvieh"@de,
-        "Cattle"@en ;
-    schema:description "Tiere der Rindergattung (*Bos*) und Wasserbüffel (*Bubalus bubalis*)"@de .
+        "Cattle"@en,
+        "Bovins"@fr,
+        "Bovini"@it ;
+    schema:description "Tiere der Rindergattung (*Bos*) und Wasserbüffel (*Bubalus bubalis*)"@de,
+        "Animals of the genus *Bos* and water buffalo (*Bubalus bubalis*)"@en,
+        "Animaux de l'espèce bovine (*Bos*) et buffles d'Asie (*Bubalus bubalis*)"@fr,
+        "Animali della specie bovina (*Bos*) e bufali d'acqua (*Bubalus bubalis*)"@it .
 
 genus:Pig a schema:CategoryCode ;
     schema:inCodeSet codelist:Genus ;
     schema:codeValue "Pig" ;
     schema:name "Schweine"@de,
-        "Pig"@en .
+        "Pig"@en,
+        "Porcs"@fr,
+        "Suini"@it ;
+    schema:description "Hausschweine"@de,
+        "Domestic pigs"@en,
+        "Porcs domestiques"@fr,
+        "Suini domestici"@it .
 
 genus:Sheep a schema:CategoryCode ;
     schema:inCodeSet codelist:Genus ;
     schema:codeValue "Sheep" ;
     schema:name "Schafe"@de,
-        "Sheep"@en .
+        "Sheep"@en,
+        "Ovins"@fr,
+        "Ovini"@it ;
+    schema:description "Hausschafe"@de,
+        "Domestic sheep"@en,
+        "Moutons domestiques"@fr,
+        "Ovini domestici"@it .
 
 genus:Goat a schema:CategoryCode ;
     schema:inCodeSet codelist:Genus ;
     schema:codeValue "Goat" ;
     schema:name "Ziegen"@de,
-        "Goat"@en .
+        "Goat"@en,
+        "Caprins"@fr,
+        "Caprini"@it ;
+    schema:description "Hausziegen"@de,
+        "Domestic goats"@en,
+        "Chèvres domestiques"@fr,
+        "Caprini domestici"@it .
 
 genus:Camelid a schema:CategoryCode ;
     schema:inCodeSet codelist:Genus ;
     schema:codeValue "Camelid" ;
     schema:name "Kameliden"@de,
-        "Camelid"@en ;
-    schema:description "Neuweltkameliden"@de .
+        "Camelid"@en,
+        "Camélidés"@fr,
+        "Camelidi"@it ;
+    schema:description "Neuweltkameliden"@de,
+        "New World camelids"@en,
+        "Camélidés du Nouveau Monde"@fr,
+        "Camelidi del Nuovo Mondo"@it .
 
 genus:Game a schema:CategoryCode ;
     schema:inCodeSet codelist:Genus ;
     schema:codeValue "Game" ;
     schema:name "Wild"@de,
-        "Game"@en ;
-    schema:description "Wild in Gehegen"@de .
+        "Game"@en,
+        "Gibier"@fr,
+        "Selvaggina"@it ;
+    schema:description "Wild in Gehegen"@de,
+        "Farmed game in enclosures"@en,
+        "Gibier détenu dans des enclos"@fr,
+        "Selvaggina tenuta in recinti"@it .
 
 genus:Equid a schema:CategoryCode ;
     schema:inCodeSet codelist:Genus ;
     schema:codeValue "Equid" ;
     schema:name "Equiden"@de,
-        "Equid"@en ;
-    schema:description "Tiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel)"@de .
+        "Equid"@en,
+        "Équidés"@fr,
+        "Equidi"@it ;
+    schema:description "Tiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel)"@de,
+        "Animals of the horse family (horse, mule, hinny, donkey)"@en,
+        "Animaux de l'espèce équine (cheval, mulet, bardot, âne)"@fr,
+        "Animali della specie equina (cavallo, mulo, bardotto, asino)"@it .
 
 genus:Poultry a schema:CategoryCode ;
     schema:inCodeSet codelist:Genus ;
     schema:codeValue "Poultry" ;
     schema:name "Geflügel"@de,
-        "Poultry"@en .
+        "Poultry"@en,
+        "Volaille"@fr,
+        "Pollame"@it ;
+    schema:description "Hausgeflügel, z. B. Hühner, Truthühner, Enten und Gänse"@de,
+        "Domestic poultry, e.g. chickens, turkeys, ducks and geese"@en,
+        "Volaille domestique, p. ex. poules, dindes, canards et oies"@fr,
+        "Pollame domestico, p. es. polli, tacchini, anatre e oche"@it .
 
 
 # ------------------------------------------------------------------------------
@@ -130,6 +180,10 @@ codelist:Gender a schema:CategoryCodeSet ;
         "Gender"@en,
         "Sexe"@fr,
         "Sesso"@it ;
+    schema:description "Geschlecht eines Einzeltiers."@de,
+        "Sex of an individual animal."@en,
+        "Sexe d'un animal individuel."@fr,
+        "Sesso di un singolo animale."@it ;
     schema:hasCategoryCode gender:Female,
         gender:Male .
 
@@ -137,13 +191,25 @@ gender:Female a schema:CategoryCode ;
     schema:inCodeSet codelist:Gender ;
     schema:codeValue "Female" ;
     schema:name "Weiblich"@de,
-        "Female"@en .
+        "Female"@en,
+        "Femelle"@fr,
+        "Femmina"@it ;
+    schema:description "Weibliches Tier"@de,
+        "Female animal"@en,
+        "Animal femelle"@fr,
+        "Animale femmina"@it .
 
 gender:Male a schema:CategoryCode ;
     schema:inCodeSet codelist:Gender ;
     schema:codeValue "Male" ;
     schema:name "Männlich"@de,
-        "Male"@en .
+        "Male"@en,
+        "Mâle"@fr,
+        "Maschio"@it ;
+    schema:description "Männliches Tier"@de,
+        "Male animal"@en,
+        "Animal mâle"@fr,
+        "Animale maschio"@it .
 
 
 # ------------------------------------------------------------------------------
@@ -156,6 +222,10 @@ codelist:AnimalTypeOfUse a schema:CategoryCodeSet ;
         "Type of use (cattle, sheep, goats)"@en,
         "Type d'utilisation (bovins, ovins, caprins)"@fr,
         "Tipo di utilizzo (bovini, ovini, caprini)"@it ;
+    schema:description "Nutzungsart von Rindern, Schafen und Ziegen."@de,
+        "Type of use of cattle, sheep and goats."@en,
+        "Type d'utilisation des bovins, ovins et caprins."@fr,
+        "Tipo di utilizzo di bovini, ovini e caprini."@it ;
     schema:hasCategoryCode animaltypeofuse:Other,
         animaltypeofuse:Milk .
 
@@ -163,14 +233,25 @@ animaltypeofuse:Other a schema:CategoryCode ;
     schema:inCodeSet codelist:AnimalTypeOfUse ;
     schema:codeValue "Other" ;
     schema:name "Andere"@de,
-        "Other"@en .
+        "Other"@en,
+        "Autre"@fr,
+        "Altro"@it ;
+    schema:description "Jede andere Nutzung als die Milchproduktion, z. B. Fleischproduktion"@de,
+        "Any use other than milk production, e.g. meat production"@en,
+        "Toute utilisation autre que la production laitière, p. ex. la production de viande"@fr,
+        "Qualsiasi utilizzo diverso dalla produzione di latte, p. es. la produzione di carne"@it .
 
 animaltypeofuse:Milk a schema:CategoryCode ;
     schema:inCodeSet codelist:AnimalTypeOfUse ;
     schema:codeValue "Milk" ;
     schema:name "Milch"@de,
-        "Milk"@en ;
-    schema:description "Milchkühe, -schafe und -ziegen"@de .
+        "Milk"@en,
+        "Lait"@fr,
+        "Latte"@it ;
+    schema:description "Milchkühe, -schafe und -ziegen"@de,
+        "Dairy cows, sheep and goats"@en,
+        "Vaches, brebis et chèvres laitières"@fr,
+        "Vacche, pecore e capre da latte"@it .
 
 
 # ------------------------------------------------------------------------------
@@ -183,6 +264,10 @@ codelist:EquidTypeOfUsage a schema:CategoryCodeSet ;
         "Type of use (equids)"@en,
         "Type d'utilisation (équidés)"@fr,
         "Tipo di utilizzo (equidi)"@it ;
+    schema:description "Verwendungszweck eines Equiden; er bestimmt, ob der Equide zur Lebensmittelgewinnung geschlachtet werden darf."@de,
+        "Type of use of an equid; it determines whether the equid may be slaughtered for food production."@en,
+        "Type d'utilisation d'un équidé ; il détermine si l'équidé peut être abattu pour la production de denrées alimentaires."@fr,
+        "Tipo di utilizzo di un equide; determina se l'equide può essere macellato per la produzione di derrate alimentari."@it ;
     schema:hasCategoryCode equidtypeofusage:CompanionAnimal,
         equidtypeofusage:FarmAnimal .
 
@@ -190,13 +275,25 @@ equidtypeofusage:CompanionAnimal a schema:CategoryCode ;
     schema:inCodeSet codelist:EquidTypeOfUsage ;
     schema:codeValue "CompanionAnimal" ;
     schema:name "Heimtier"@de,
-        "Companion animal"@en .
+        "Companion animal"@en,
+        "Animal de compagnie"@fr,
+        "Animale da compagnia"@it ;
+    schema:description "Equide, der nicht zur Lebensmittelgewinnung geschlachtet werden darf"@de,
+        "Equid that must not be slaughtered for food production"@en,
+        "Équidé qui ne peut pas être abattu pour la production de denrées alimentaires"@fr,
+        "Equide che non può essere macellato per la produzione di derrate alimentari"@it .
 
 equidtypeofusage:FarmAnimal a schema:CategoryCode ;
     schema:inCodeSet codelist:EquidTypeOfUsage ;
     schema:codeValue "FarmAnimal" ;
     schema:name "Nutztier"@de,
-        "Farm animal"@en .
+        "Farm animal"@en,
+        "Animal de rente"@fr,
+        "Animale da reddito"@it ;
+    schema:description "Equide, der zur Lebensmittelgewinnung geschlachtet werden darf"@de,
+        "Equid that may be slaughtered for food production"@en,
+        "Équidé qui peut être abattu pour la production de denrées alimentaires"@fr,
+        "Equide che può essere macellato per la produzione di derrate alimentari"@it .
 
 
 # ------------------------------------------------------------------------------
@@ -209,6 +306,10 @@ codelist:AnimalHistoryState a schema:CategoryCodeSet ;
         "Animal history state"@en,
         "Statut de l'historique de l'animal"@fr,
         "Stato della storia dell'animale"@it ;
+    schema:description "Status der Tiergeschichte eines Einzeltiers zum Abfragedatum. Nicht relevant für Equiden."@de,
+        "State of the history of an individual animal on the query date. Not relevant for equids."@en,
+        "Statut de l'historique d'un animal individuel à la date de la requête. Non pertinent pour les équidés."@fr,
+        "Stato della storia di un singolo animale alla data della richiesta. Non rilevante per gli equidi."@it ;
     schema:hasCategoryCode animalhistorystate:NotDefined,
         animalhistorystate:NotOk,
         animalhistorystate:TemporaryOk,
@@ -219,31 +320,61 @@ animalhistorystate:NotDefined a schema:CategoryCode ;
     schema:inCodeSet codelist:AnimalHistoryState ;
     schema:codeValue "NotDefined" ;
     schema:name "Nicht definiert"@de,
-        "Not defined"@en .
+        "Not defined"@en,
+        "Non défini"@fr,
+        "Non definito"@it ;
+    schema:description "Für die Tiergeschichte ist kein Status festgelegt"@de,
+        "No status has been set for the animal history"@en,
+        "Aucun statut n'est défini pour l'historique de l'animal"@fr,
+        "Per la storia dell'animale non è stato definito alcuno stato"@it .
 
 animalhistorystate:NotOk a schema:CategoryCode ;
     schema:inCodeSet codelist:AnimalHistoryState ;
     schema:codeValue "NotOk" ;
     schema:name "Fehlerhaft"@de,
-        "Not ok"@en .
+        "Not ok"@en,
+        "Erroné"@fr,
+        "Errato"@it ;
+    schema:description "Die Tiergeschichte enthält Fehler oder Lücken"@de,
+        "The animal history contains errors or gaps"@en,
+        "L'historique de l'animal contient des erreurs ou des lacunes"@fr,
+        "La storia dell'animale contiene errori o lacune"@it .
 
 animalhistorystate:TemporaryOk a schema:CategoryCode ;
     schema:inCodeSet codelist:AnimalHistoryState ;
     schema:codeValue "TemporaryOk" ;
     schema:name "Temporär OK"@de,
-        "Temporary ok"@en .
+        "Temporary ok"@en,
+        "Provisoirement OK"@fr,
+        "Provvisoriamente OK"@it ;
+    schema:description "Die Tiergeschichte gilt vorläufig als korrekt"@de,
+        "The animal history is provisionally considered correct"@en,
+        "L'historique de l'animal est provisoirement considéré comme correct"@fr,
+        "La storia dell'animale è considerata provvisoriamente corretta"@it .
 
 animalhistorystate:Ok a schema:CategoryCode ;
     schema:inCodeSet codelist:AnimalHistoryState ;
     schema:codeValue "Ok" ;
     schema:name "OK"@de,
-        "Ok"@en .
+        "Ok"@en,
+        "OK"@fr,
+        "OK"@it ;
+    schema:description "Die Tiergeschichte ist vollständig und korrekt"@de,
+        "The animal history is complete and correct"@en,
+        "L'historique de l'animal est complet et correct"@fr,
+        "La storia dell'animale è completa e corretta"@it .
 
 animalhistorystate:Lost a schema:CategoryCode ;
     schema:inCodeSet codelist:AnimalHistoryState ;
     schema:codeValue "Lost" ;
     schema:name "Verschollen"@de,
-        "Lost"@en .
+        "Lost"@en,
+        "Disparu"@fr,
+        "Disperso"@it ;
+    schema:description "Der Verbleib des Tiers ist unbekannt"@de,
+        "The whereabouts of the animal are unknown"@en,
+        "On ignore où se trouve l'animal"@fr,
+        "Non si sa dove si trovi l'animale"@it .
 
 
 # ------------------------------------------------------------------------------
@@ -256,6 +387,10 @@ codelist:EquidWithersClass a schema:CategoryCodeSet ;
         "Withers class"@en,
         "Catégorie de taille"@fr,
         "Categoria di grandezza"@it ;
+    schema:description "Einteilung der Equiden in zwei Kategorien nach ihrer Widerristhöhe."@de,
+        "Classification of equids into two categories by their height at the withers."@en,
+        "Classification des équidés en deux catégories selon leur hauteur au garrot."@fr,
+        "Suddivisione degli equidi in due categorie secondo la loro altezza al garrese."@it ;
     schema:hasCategoryCode equidwithersclass:LessOrEqualThan148cm,
         equidwithersclass:GreaterThan148cm .
 
@@ -265,7 +400,11 @@ equidwithersclass:LessOrEqualThan148cm a schema:CategoryCode ;
     schema:name "Widerristhöhe bis 148 cm"@de,
         "Withers height up to 148 cm"@en,
         "Hauteur au garrot jusqu'à 148 cm"@fr,
-        "Altezza al garrese fino a 148 cm"@it .
+        "Altezza al garrese fino a 148 cm"@it ;
+    schema:description "Equiden mit einer Widerristhöhe von höchstens 148 cm"@de,
+        "Equids with a height at the withers of at most 148 cm"@en,
+        "Équidés d'une hauteur au garrot de 148 cm au plus"@fr,
+        "Equidi con un'altezza al garrese di 148 cm al massimo"@it .
 
 equidwithersclass:GreaterThan148cm a schema:CategoryCode ;
     schema:inCodeSet codelist:EquidWithersClass ;
@@ -273,7 +412,11 @@ equidwithersclass:GreaterThan148cm a schema:CategoryCode ;
     schema:name "Widerristhöhe über 148 cm"@de,
         "Withers height above 148 cm"@en,
         "Hauteur au garrot supérieure à 148 cm"@fr,
-        "Altezza al garrese superiore a 148 cm"@it .
+        "Altezza al garrese superiore a 148 cm"@it ;
+    schema:description "Equiden mit einer Widerristhöhe von mehr als 148 cm"@de,
+        "Equids with a height at the withers of more than 148 cm"@en,
+        "Équidés d'une hauteur au garrot supérieure à 148 cm"@fr,
+        "Equidi con un'altezza al garrese superiore a 148 cm"@it .
 
 
 # ------------------------------------------------------------------------------
@@ -285,6 +428,10 @@ codelist:NotificationType a schema:CategoryCodeSet ;
         "Notification type"@en,
         "Type de mouvement"@fr,
         "Tipo di movimento"@it ;
+    schema:description "Art einer Meldung zu einem Einzeltier, z. B. eine Bewegung, eine Geburt oder eine Schlachtung."@de,
+        "Type of a notification about an individual animal, e.g. a movement, a birth or a slaughter."@en,
+        "Type d'une annonce concernant un animal individuel, p. ex. un mouvement, une naissance ou un abattage."@fr,
+        "Tipo di una notifica relativa a un singolo animale, p. es. un movimento, una nascita o una macellazione."@it ;
     schema:hasCategoryCode notificationtype:Birth,
         notificationtype:Arrival,
         notificationtype:Leaving,
@@ -305,7 +452,11 @@ notificationtype:Birth a schema:CategoryCode ;
     schema:name "Geburt"@de,
         "Birth"@en,
         "Naissance"@fr,
-        "Nascita"@it .
+        "Nascita"@it ;
+    schema:description "Lebendgeburt eines Tiers"@de,
+        "Live birth of an animal"@en,
+        "Naissance d'un animal vivant"@fr,
+        "Nascita di un animale vivo"@it .
 
 notificationtype:Arrival a schema:CategoryCode ;
     schema:inCodeSet codelist:NotificationType ;
@@ -337,7 +488,11 @@ notificationtype:Slaughter a schema:CategoryCode ;
     schema:name "Schlachtung"@de,
         "Slaughter"@en,
         "Abattage"@fr,
-        "Macellazione"@it .
+        "Macellazione"@it ;
+    schema:description "Schlachtung in einem Schlachtbetrieb"@de,
+        "Slaughter in a slaughterhouse"@en,
+        "Abattage dans un abattoir"@fr,
+        "Macellazione in un macello"@it .
 
 notificationtype:Deceased a schema:CategoryCode ;
     schema:inCodeSet codelist:NotificationType ;
@@ -357,7 +512,11 @@ notificationtype:Import a schema:CategoryCode ;
     schema:name "Einfuhr"@de,
         "Import"@en,
         "Importation"@fr,
-        "Importazione"@it .
+        "Importazione"@it ;
+    schema:description "Einfuhr eines Tiers aus dem Ausland"@de,
+        "Import of an animal from abroad"@en,
+        "Importation d'un animal en provenance de l'étranger"@fr,
+        "Importazione di un animale dall'estero"@it .
 
 notificationtype:Export a schema:CategoryCode ;
     schema:inCodeSet codelist:NotificationType ;
@@ -437,7 +596,11 @@ notificationtype:FirstRegistration a schema:CategoryCode ;
     schema:name "Erstregistrierung"@de,
         "First registration"@en,
         "Premier enregistrement"@fr,
-        "Prima registrazione"@it .
+        "Prima registrazione"@it ;
+    schema:description "Nur für Schafe und Ziegen"@de,
+        "For sheep and goats only"@en,
+        "Uniquement pour les ovins et les caprins"@fr,
+        "Solo per ovini e caprini"@it .
 
 
 # ------------------------------------------------------------------------------
@@ -449,6 +612,10 @@ codelist:HealthStatusType a schema:CategoryCodeSet ;
         "Health status type"@en,
         "Type d'état sanitaire"@fr,
         "Tipo di stato sanitario"@it ;
+    schema:description "Art eines Gesundheitsstatus einer örtlichen Einheit oder eines Einzeltiers."@de,
+        "Kind of health status of a local unit or an individual animal."@en,
+        "Type d'un état sanitaire d'une unité locale ou d'un animal individuel."@fr,
+        "Tipo di uno stato sanitario di un'unità locale o di un singolo animale."@it ;
     schema:hasCategoryCode healthstatustype:EpizooticStatus,
         healthstatustype:VaccinationStatus,
         healthstatustype:RiskStatus,
@@ -460,7 +627,11 @@ healthstatustype:EpizooticStatus a schema:CategoryCode ;
     schema:name "Seuchenstatus"@de,
         "Epizootic status"@en,
         "Statut épizootique"@fr,
-        "Stato epizootico"@it .
+        "Stato epizootico"@it ;
+    schema:description "Status bezüglich einer Tierseuche, z. B. gesperrt oder frei"@de,
+        "Status regarding an animal disease, e.g. blocked or free"@en,
+        "Statut relatif à une épizootie, p. ex. bloqué ou libre"@fr,
+        "Stato relativo a un'epizoozia, p. es. bloccato o libero"@it .
 
 healthstatustype:VaccinationStatus a schema:CategoryCode ;
     schema:inCodeSet codelist:HealthStatusType ;
@@ -468,7 +639,11 @@ healthstatustype:VaccinationStatus a schema:CategoryCode ;
     schema:name "Impfstatus"@de,
         "Vaccination status"@en,
         "Statut vaccinal"@fr,
-        "Stato vaccinale"@it .
+        "Stato vaccinale"@it ;
+    schema:description "Angabe, ob gegen eine Tierseuche geimpft wurde"@de,
+        "Whether vaccination against an animal disease has taken place"@en,
+        "Indique si une vaccination contre une épizootie a été effectuée"@fr,
+        "Indica se è stata eseguita una vaccinazione contro un'epizoozia"@it .
 
 healthstatustype:RiskStatus a schema:CategoryCode ;
     schema:inCodeSet codelist:HealthStatusType ;
@@ -476,7 +651,11 @@ healthstatustype:RiskStatus a schema:CategoryCode ;
     schema:name "Risikostatus"@de,
         "Risk status"@en,
         "Statut de risque"@fr,
-        "Stato di rischio"@it .
+        "Stato di rischio"@it ;
+    schema:description "Einstufung des Seuchenrisikos, z. B. hoch, mittel oder tief"@de,
+        "Rating of the disease risk, e.g. high, medium or low"@en,
+        "Classification du risque d'épizootie, p. ex. élevé, moyen ou faible"@fr,
+        "Classificazione del rischio di epizoozia, p. es. alto, medio o basso"@it .
 
 healthstatustype:LaboratoryResult a schema:CategoryCode ;
     schema:inCodeSet codelist:HealthStatusType ;
@@ -484,7 +663,11 @@ healthstatustype:LaboratoryResult a schema:CategoryCode ;
     schema:name "Laborergebnis"@de,
         "Laboratory result"@en,
         "Résultat de laboratoire"@fr,
-        "Risultato di laboratorio"@it .
+        "Risultato di laboratorio"@it ;
+    schema:description "Ergebnis einer Laboruntersuchung, z. B. positiv oder negativ"@de,
+        "Result of a laboratory test, e.g. positive or negative"@en,
+        "Résultat d'une analyse de laboratoire, p. ex. positif ou négatif"@fr,
+        "Risultato di un'analisi di laboratorio, p. es. positivo o negativo"@it .
 
 
 # ------------------------------------------------------------------------------
@@ -496,6 +679,10 @@ codelist:LocalUnitEpizooticStatus a schema:CategoryCodeSet ;
         "Health status of a local unit"@en,
         "État sanitaire de l'unité locale"@fr,
         "Stato sanitario dell'unità locale"@it ;
+    schema:description "Werte des Gesundheitsstatus einer örtlichen Einheit; ihr Typ steht in der Beschreibung."@de,
+        "Values of the health status of a local unit; their type is given in the description."@en,
+        "Valeurs de l'état sanitaire d'une unité locale ; leur type figure dans la description."@fr,
+        "Valori dello stato sanitario di un'unità locale; il loro tipo è indicato nella descrizione."@it ;
     schema:hasCategoryCode localunithealthstatus:Blocked,
         localunithealthstatus:Free,
         localunithealthstatus:NotTested,
@@ -611,6 +798,10 @@ codelist:AnimalEpizooticStatus a schema:CategoryCodeSet ;
         "Health status of an individual animal"@en,
         "État sanitaire de l'animal individuel"@fr,
         "Stato sanitario dell'animale singolo"@it ;
+    schema:description "Werte des Gesundheitsstatus eines Einzeltiers; ihr Typ steht in der Beschreibung."@de,
+        "Values of the health status of an individual animal; their type is given in the description."@en,
+        "Valeurs de l'état sanitaire d'un animal individuel ; leur type figure dans la description."@fr,
+        "Valori dello stato sanitario di un singolo animale; il loro tipo è indicato nella descrizione."@it ;
     schema:hasCategoryCode animalhealthstatus:Blocked,
         animalhealthstatus:Free,
         animalhealthstatus:NotTested,
@@ -676,6 +867,10 @@ codelist:EquidNotificationState a schema:CategoryCodeSet ;
         "Equid notification state"@en,
         "Statut d'annonce de l'équidé"@fr,
         "Stato di notifica dell'equide"@it ;
+    schema:description "Stand der Meldungen zu einem Equiden: ob ein Standortwechsel oder eine Eigentumsübernahme noch hängig ist."@de,
+        "State of the notifications about an equid: whether a change of location or a transfer of ownership is still pending."@en,
+        "État des annonces concernant un équidé : un changement de lieu ou une reprise de propriété est-il encore en attente."@fr,
+        "Stato delle notifiche relative a un equide: se un cambiamento di ubicazione o un'acquisizione della proprietà è ancora in sospeso."@it ;
     schema:hasCategoryCode equidnotificationstate:Ok,
         equidnotificationstate:LocationChangePending,
         equidnotificationstate:OwnershipAcquisitionPending,
@@ -687,7 +882,11 @@ equidnotificationstate:Ok a schema:CategoryCode ;
     schema:name "OK"@de,
         "OK"@en,
         "OK"@fr,
-        "OK"@it .
+        "OK"@it ;
+    schema:description "Für den Equiden ist keine Meldung hängig"@de,
+        "No notification is pending for the equid"@en,
+        "Aucune annonce n'est en attente pour l'équidé"@fr,
+        "Nessuna notifica è in sospeso per l'equide"@it .
 
 equidnotificationstate:LocationChangePending a schema:CategoryCode ;
     schema:inCodeSet codelist:EquidNotificationState ;
@@ -695,7 +894,11 @@ equidnotificationstate:LocationChangePending a schema:CategoryCode ;
     schema:name "Standortwechsel hängig"@de,
         "Change of location pending"@en,
         "Changement de lieu en attente"@fr,
-        "Cambiamento di ubicazione in sospeso"@it .
+        "Cambiamento di ubicazione in sospeso"@it ;
+    schema:description "Die Meldung eines Standortwechsels ist noch nicht abgeschlossen"@de,
+        "A notification of a change of location has not yet been completed"@en,
+        "L'annonce d'un changement de lieu n'est pas encore terminée"@fr,
+        "La notifica di un cambiamento di ubicazione non è ancora conclusa"@it .
 
 equidnotificationstate:OwnershipAcquisitionPending a schema:CategoryCode ;
     schema:inCodeSet codelist:EquidNotificationState ;
@@ -703,7 +906,11 @@ equidnotificationstate:OwnershipAcquisitionPending a schema:CategoryCode ;
     schema:name "Eigentumsübernahme hängig"@de,
         "Transfer of ownership pending"@en,
         "Reprise de propriété en attente"@fr,
-        "Acquisizione della proprietà in sospeso"@it .
+        "Acquisizione della proprietà in sospeso"@it ;
+    schema:description "Die Meldung einer Eigentumsübernahme ist noch nicht abgeschlossen"@de,
+        "A notification of a transfer of ownership has not yet been completed"@en,
+        "L'annonce d'une reprise de propriété n'est pas encore terminée"@fr,
+        "La notifica di un'acquisizione della proprietà non è ancora conclusa"@it .
 
 equidnotificationstate:LocationChangeAndAcquisitionPending a schema:CategoryCode ;
     schema:inCodeSet codelist:EquidNotificationState ;
@@ -712,4 +919,7 @@ equidnotificationstate:LocationChangeAndAcquisitionPending a schema:CategoryCode
         "Change of location and transfer of ownership pending"@en,
         "Changement de lieu et reprise de propriété en attente"@fr,
         "Cambiamento di ubicazione e acquisizione della proprietà in sospeso"@it ;
- .
+    schema:description "Die Meldungen eines Standortwechsels und einer Eigentumsübernahme sind noch nicht abgeschlossen"@de,
+        "Notifications of a change of location and of a transfer of ownership have not yet been completed"@en,
+        "Les annonces d'un changement de lieu et d'une reprise de propriété ne sont pas encore terminées"@fr,
+        "Le notifiche di un cambiamento di ubicazione e di un'acquisizione della proprietà non sono ancora concluse"@it .
