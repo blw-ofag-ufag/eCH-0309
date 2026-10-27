@@ -17,9 +17,10 @@
 **/.quarto/
 **/*.quarto_ipynb
 entities.md
+namespaces.md
+codelists.md
 glossary.md
 code-lists.md
-namespaces.md
 
 # Small tests and notes
 /test.*

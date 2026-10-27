@@ -25,8 +25,8 @@ PLANTUML_JAR       := $(VENV_BIN)/plantuml.jar
 VENV_JAVA_DIR      := $(VENV)/java17
 JAVA17             := $(VENV_JAVA_DIR)/jdk-17.0.2/bin/java
 RSCRIPT          ?= Rscript
-R_REQUIREMENTS   := $(wildcard $(R_DIR)/requirements.txt)
-R_STAMP          := $(if $(R_REQUIREMENTS),$(VENV)/.r-packages-installed.stamp)
+R_DESCRIPTION    := $(wildcard $(R_DIR)/DESCRIPTION)
+R_STAMP          := $(if $(R_DESCRIPTION),$(VENV)/.r-packages-installed.stamp)
 
 # Inputs
 ONTO             := src/rdf/ontology/model.owl.ttl
@@ -105,11 +105,13 @@ $(VENV)/.requirements-installed.stamp: $(PYTHON_DIR)/requirements.txt | $(VENV_P
 
 install-dependencies: $(VENV)/.requirements-installed.stamp
 
-# 4. Install R packages (the stamp is only defined if src/r/requirements.txt exists)
-$(VENV)/.r-packages-installed.stamp: $(R_REQUIREMENTS) $(R_DIR)/utils/install_packages.R | $(VENV_PYTHON)
+# 4. Install the R packages of src/r/DESCRIPTION and the system libraries they need
+#    with pak (the stamp is only defined if the DESCRIPTION file exists)
+$(VENV)/.r-packages-installed.stamp: $(R_DESCRIPTION) | $(VENV_PYTHON)
 	@command -v $(RSCRIPT) >/dev/null 2>&1 || \
 		(printf "$(RED)ERROR: R not found (Rscript). Install R or delete $(R_DIR)/ if the documentation does not use R.$(NC)\n"; exit 1)
-	@printf "$(GREY)"; $(RSCRIPT) $(R_DIR)/utils/install_packages.R $(R_REQUIREMENTS) || { printf "$(NC)"; exit 1; }; printf "$(NC)"
+	@printf "$(BOLD)[*] Installing R packages...$(NC)\n"
+	@printf "$(GREY)"; $(RSCRIPT) -e 'if (!requireNamespace("pak", quietly = TRUE)) install.packages("pak", repos = "https://cloud.r-project.org"); pak::local_install_deps("$(R_DIR)")' || { printf "$(NC)"; exit 1; }; printf "$(NC)"
 	@touch $@
 
 install-r-packages: $(R_STAMP)
@@ -242,7 +244,7 @@ generate-code-list-docs: src/rdf/data/code_lists.skos.ttl $(PREFIXES) src/python
 	$(VENV_PYTHON) src/python/utils/generate_code_list_docs.py -i src/rdf/data/code_lists.skos.ttl -d $(DOCS_DIR) -p $(PREFIXES) || { printf "$(NC)"; exit 1; }; \
 	printf "$(NC)"
 
-generate-shacl-docs: $(SHAPES) $(PREFIXES) $(PROCESSED_DATA) $(DOCS_DIR)/_ech.yml src/python/utils/generate_shacl_docs.py | $(VENV)/.requirements-installed.stamp ## Generate the data model pages from the SHACL shapes
+generate-shacl-docs: $(SHAPES) $(PREFIXES) $(PROCESSED_DATA) $(DOCS_DIR)/_ech.yml src/python/utils/generate_shacl_docs.py | $(VENV)/.requirements-installed.stamp ## Generate the data model and code list pages from the SHACL shapes and the graph
 	@printf "$(BOLD)[*] Generating SHACL documentation...$(NC)\n"
 	@printf "$(GREY)"; \
 	$(VENV_PYTHON) src/python/utils/generate_shacl_docs.py -i $(SHAPES) -d $(DOCS_DIR) -p $(PREFIXES) -g $(PROCESSED_DATA) -c $(DOCS_DIR)/_ech.yml || { printf "$(NC)"; exit 1; }; \
@@ -319,5 +321,5 @@ publish: test stamp-metadata delete ## Test, then replace the graph on LINDAS wi
 
 clean: ## Remove all build artifacts, caches, the virtual environment and generated pages
 	@printf "$(BOLD)[*] Cleaning build artifacts...$(NC)\n"
-	@rm -rf $(BUILD_DIR) $(VENV) docs/*/entities.md docs/*/glossary.md docs/*/code-lists.md docs/*/namespaces.md
+	@rm -rf $(BUILD_DIR) $(VENV) docs/*/codelists.md docs/*/code-lists.md docs/*/entities.md docs/*/glossary.md docs/*/namespaces.md
 	@find . -path ./.git -prune -o \( -name __pycache__ -o -name .pytest_cache -o -name .quarto -o -name '*_files' -o -name '*_cache' -o -name '*.quarto_ipynb' -o -name .Rhistory -o -name .RData \) -prune -exec rm -rf {} +
