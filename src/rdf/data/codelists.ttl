@@ -27,11 +27,11 @@
 # lists -- come from the Wertebereich tables of the Hilfsmittel alone: the
 # openAPI splits notification types per species and holds the health statuses as
 # a field per disease. Where one of their values has a counterpart in the
-# openAPI, HILFSMITTEL_COUNTERPARTS in the test records it.
+# openAPI, src/rdf/mappings/animaltracing.ttl records it.
 #
 # Where the sources define a value, its description follows them. The other
 # descriptions and the French and Italian designations were drafted for the
-# Fachgruppe to review (2026-10-27).
+# Fachgruppe to review (2026-10-27, issue #49).
 # ==============================================================================
 
 @prefix codelist:               <https://agriculture.ld.admin.ch/eCH-0309/1/codelist/> .
@@ -299,6 +299,7 @@ equidtypeofusage:FarmAnimal a schema:CategoryCode ;
 # ------------------------------------------------------------------------------
 # Tiergeschichtestatus -- openAPI EnumAnimalHistoryState
 # Hilfsmittel: Tabelle 7: Definition Wertebereich Tiergeschichtestatus
+# The value descriptions are drafts; their meaning is open in issue #46.
 # ------------------------------------------------------------------------------
 
 codelist:AnimalHistoryState a schema:CategoryCodeSet ;
@@ -379,7 +380,8 @@ animalhistorystate:Lost a schema:CategoryCode ;
 
 # ------------------------------------------------------------------------------
 # Grössenkategorie -- openAPI EnumEquidWithersClass
-# No Wertebereich table in the Hilfsmittel.
+# No Wertebereich table in the Hilfsmittel. Hilfsmittel and openAPI disagree
+# on where a height of exactly 148 cm belongs; open in issue #48.
 # ------------------------------------------------------------------------------
 
 codelist:EquidWithersClass a schema:CategoryCodeSet ;
@@ -859,7 +861,7 @@ animalhealthstatus:Vaccinated a schema:CategoryCode ;
 # ------------------------------------------------------------------------------
 # Meldestatus Equide -- openAPI EnumEquidNotificationState
 # Keine Wertebereichstabelle im Hilfsmittel; die Werte stammen allein aus der
-# openAPI, die Bezeichnungen sind daraus abgeleitet.
+# openAPI, die Bezeichnungen sind daraus abgeleitet. Bedeutung offen in #47.
 # ------------------------------------------------------------------------------
 
 codelist:EquidNotificationState a schema:CategoryCodeSet ;

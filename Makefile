@@ -64,7 +64,7 @@ GREY             := \033[0;90m
 BOLD       := \033[1;37m
 NC               := \033[0m
 
-.PHONY: all help robot test docs clean check-python venv install-dependencies install-r-packages setup build delete publish stamp-metadata generate-shacl-docs generate-glossary-docs
+.PHONY: all help robot test docs clean check-python venv install-dependencies install-r-packages setup build delete publish stamp-metadata generate-shacl-docs generate-glossary-docs generate-animaltracing-docs
 
 # Default target
 all: test docs ## Run the tests and build the documentation (default)
@@ -250,7 +250,13 @@ generate-glossary-docs: src/rdf/data/glossary.skos.ttl $(PREFIXES) src/python/ut
 	$(VENV_PYTHON) src/python/utils/generate_glossary_docs.py -i src/rdf/data/glossary.skos.ttl -d $(DOCS_DIR) -p $(PREFIXES) || { printf "$(NC)"; exit 1; }; \
 	printf "$(NC)"
 
-docs: $(SHACL_REPORT) generate-shacl-docs generate-glossary-docs $(DOCS_UML_PNG) $(R_STAMP) ## Generate the data model and glossary pages and render the documentation (website, PDF)
+generate-animaltracing-docs: src/rdf/data/codelists.ttl $(SHAPES) src/rdf/mappings/animaltracing.ttl src/python/utils/generate_animaltracing_docs.py src/python/utils/generate_shacl_docs.py | $(VENV)/.requirements-installed.stamp ## Generate the annex on the TVD interface from the code lists and their counterparts
+	@printf "$(BOLD)[*] Generating TVD interface annex...$(NC)\n"
+	@printf "$(GREY)"; \
+	$(VENV_PYTHON) src/python/utils/generate_animaltracing_docs.py -c src/rdf/data/codelists.ttl -s $(SHAPES) -m src/rdf/mappings/animaltracing.ttl -d $(DOCS_DIR) || { printf "$(NC)"; exit 1; }; \
+	printf "$(NC)"
+
+docs: $(SHACL_REPORT) generate-shacl-docs generate-glossary-docs generate-animaltracing-docs $(DOCS_UML_PNG) $(R_STAMP) ## Generate the data model and glossary pages and render the documentation (website, PDF)
 	@printf "$(BOLD)[*] Rendering documentation with Quarto...$(NC)\n"
 	@printf "$(GREY)"; \
 	quarto render docs > $(QUARTO_LOG) 2>&1 || { printf "$(NC)\n$(RED)ERROR: Quarto rendering failed. See log below:$(NC)\n$(GREY)"; cat $(QUARTO_LOG); printf "$(NC)\n"; exit 1; }; \
@@ -315,5 +321,5 @@ publish: test stamp-metadata delete ## Test, then replace the graph on LINDAS wi
 
 clean: ## Remove all build artifacts, caches, the virtual environment and generated pages
 	@printf "$(BOLD)[*] Cleaning build artifacts...$(NC)\n"
-	@rm -rf $(BUILD_DIR) $(VENV) docs/*/codelists.md docs/*/entities.md docs/*/glossary.md docs/*/namespaces.md
+	@rm -rf $(BUILD_DIR) $(VENV) docs/*/animaltracing.md docs/*/codelists.md docs/*/entities.md docs/*/glossary.md docs/*/namespaces.md
 	@find . -path ./.git -prune -o \( -name __pycache__ -o -name .pytest_cache -o -name .quarto -o -name '*_files' -o -name '*_cache' -o -name '*.quarto_ipynb' -o -name .Rhistory -o -name .RData \) -prune -exec rm -rf {} +

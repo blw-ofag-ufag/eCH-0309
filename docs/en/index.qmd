@@ -77,7 +77,7 @@ Interfaces: AnimalTracing API, technical service description AnimalTracing
 
 # Code lists {#sec-code-lists}
 
-The following code lists define the permitted values of the corresponding attributes of the data model (@sec-data-model). Each code list is modelled as a `schema:CategoryCodeSet` and each of its values as a `schema:CategoryCode`. The code of a value is the identifier the TVD interface uses for it.
+The following code lists define the permitted values of the corresponding attributes of the data model (@sec-data-model). Each code list is modelled as a `schema:CategoryCodeSet` and each of its values as a `schema:CategoryCode`. How the codes correspond to the enums of the TVD interface is shown in [Annex D](#sec-appendix-d).
 
 {{< include codelists.md >}}
 
@@ -115,8 +115,16 @@ These provisions shall apply to the standards prepared by eCH only, however, not
 
 {{< include glossary.md >}}
 
-# Annex D - Changes in comparison to previous version {#sec-appendix-d .appendix}
+# Annex D - Mapping to the TVD interface {#sec-appendix-d .appendix}
 
-# Annex E - Table of figures {#sec-appendix-e .appendix}
+The code lists take their codes from the TVD interface AnimalTracing (openAPI "TVD API Gateway Animal Tracing 1.0"). For the code lists in @tbl-animaltracing-enums, the code of a value is the member of the same name of an enum of the interface.
 
-# Annex F - Table of tables {#sec-appendix-f .appendix}
+Notification type, health status type and the two epizootic status code lists, by contrast, come from the code list tables of this document. The interface holds the notification types per livestock species and the health statuses per disease in enums of their own, partly under other names. The following tables show which members of the interface correspond to a value; values without a counterpart are not listed.
+
+{{< include animaltracing.md >}}
+
+# Annex E - Changes in comparison to previous version {#sec-appendix-e .appendix}
+
+# Annex F - Table of figures {#sec-appendix-f .appendix}
+
+# Annex G - Table of tables {#sec-appendix-g .appendix}

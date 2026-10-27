@@ -30,6 +30,7 @@ portable Java 17 into `venv/`. The rendered document then sits at
 | `src/rdf/ontology/model.owl.ttl` | Declarations only — classes, properties, taxonomy. All constraints live in the shapes |
 | `src/rdf/data/codelists.ttl` | The Wertebereiche as schema.org code lists, maintained by hand |
 | `src/rdf/data/glossary.skos.ttl` | The glossary for Anhang C |
+| `src/rdf/mappings/animaltracing.ttl` | The counterparts in the TVD interface of the values of the four code lists taken from the Hilfsmittel, for Anhang D |
 | `src/rdf/prefixes.ttl` | The binding prefix list; `tests/test_prefixes.py` enforces it everywhere |
 | `docs/de`, `docs/fr`, `docs/en` | One `index.qmd` each with the hand-written text; the other `.md` files are generated |
 | `src/python/utils/` | The generators, see below |
@@ -44,6 +45,7 @@ portable Java 17 into `venv/`. The rendered document then sits at
 |---|---|
 | `generate_shacl_docs.py` | `docs/*/entities.md` — the entity tables, from the shapes; `docs/*/codelists.md` — one table per code list, from the graph |
 | `generate_glossary_docs.py` | `docs/*/glossary.md` |
+| `generate_animaltracing_docs.py` | `docs/*/animaltracing.md` — the tables of Anhang D, from the shapes and `animaltracing.ttl` |
 | SHACL Play → PlantUML → `patch_uml_diagram.py` | `docs/assets/img/uml.png` — the class diagram |
 
 ## Contributing

@@ -77,7 +77,7 @@ La @fig-uml présente les classes du modèle de données et leurs relations. Cha
 
 # Domaines de valeurs {#sec-code-lists}
 
-Les domaines de valeurs suivants définissent les valeurs admises pour les attributs correspondants du modèle de données (@sec-data-model). Chaque domaine de valeurs est modélisé comme `schema:CategoryCodeSet` et chacune de ses valeurs comme `schema:CategoryCode`. Le code d'une valeur est l'identifiant que l'interface de la BDTA utilise pour elle.
+Les domaines de valeurs suivants définissent les valeurs admises pour les attributs correspondants du modèle de données (@sec-data-model). Chaque domaine de valeurs est modélisé comme `schema:CategoryCodeSet` et chacune de ses valeurs comme `schema:CategoryCode`. La correspondance entre les codes et les énumérations de l'interface de la BDTA figure à l'[annexe D](#sec-appendix-d).
 
 {{< include codelists.md >}}
 
@@ -115,8 +115,16 @@ Ces dispositions ne s'appliquent toutefois qu'aux standards élaborés par eCH, 
 
 {{< include glossary.md >}}
 
-# Annexe D - Modifications par rapport à la version précédente {#sec-appendix-d .appendix}
+# Annexe D - Correspondance avec l'interface de la BDTA {#sec-appendix-d .appendix}
 
-# Annexe E - Table des illustrations {#sec-appendix-e .appendix}
+Les domaines de valeurs tirent leurs codes de l'interface AnimalTracing de la BDTA (openAPI « TVD API Gateway Animal Tracing 1.0 »). Pour les domaines de valeurs du @tbl-animaltracing-enums, le code d'une valeur est l'élément du même nom d'une énumération de l'interface.
 
-# Annexe F - Liste des tableaux {#sec-appendix-f .appendix}
+Le type de mouvement, le type d'état sanitaire et les deux domaines de valeurs du statut épizootique proviennent en revanche des tableaux de domaines de valeurs du présent document. L'interface gère les types de mouvement par espèce d'animal de rente et les états sanitaires par épizootie dans des énumérations distinctes, en partie sous d'autres noms. Les tableaux suivants indiquent quels éléments de l'interface correspondent à une valeur ; les valeurs sans équivalent ne sont pas mentionnées.
+
+{{< include animaltracing.md >}}
+
+# Annexe E - Modifications par rapport à la version précédente {#sec-appendix-e .appendix}
+
+# Annexe F - Table des illustrations {#sec-appendix-f .appendix}
+
+# Annexe G - Liste des tableaux {#sec-appendix-g .appendix}

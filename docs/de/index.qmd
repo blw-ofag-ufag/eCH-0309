@@ -77,7 +77,7 @@ Schnittstellen: AnimalTracing API, Technische Servicebeschreibung AnimalTracing
 
 # Wertebereiche {#sec-code-lists}
 
-Die folgenden Wertebereiche legen die zulässigen Werte der entsprechenden Attribute des Datenmodells fest (@sec-data-model). Jeder Wertebereich ist als `schema:CategoryCodeSet` modelliert und jeder seiner Werte als `schema:CategoryCode`. Der Code eines Werts ist der Bezeichner, den die TVD-Schnittstelle für ihn verwendet.
+Die folgenden Wertebereiche legen die zulässigen Werte der entsprechenden Attribute des Datenmodells fest (@sec-data-model). Jeder Wertebereich ist als `schema:CategoryCodeSet` modelliert und jeder seiner Werte als `schema:CategoryCode`. Wie die Codes den Enumerationen der TVD-Schnittstelle entsprechen, zeigt [Anhang D](#sec-appendix-d).
 
 {{< include codelists.md >}}
 
@@ -115,8 +115,16 @@ Diese Bestimmungen gelten jedoch nur für die von eCH erarbeiteten Standards, ni
 
 {{< include glossary.md >}}
 
-# Anhang D - Änderungen gegenüber der Vorversion {#sec-appendix-d .appendix}
+# Anhang D - Abbildung auf die TVD-Schnittstelle {#sec-appendix-d .appendix}
 
-# Anhang E - Abbildungsverzeichnis {#sec-appendix-e .appendix}
+Die Wertebereiche beziehen ihre Codes aus der TVD-Schnittstelle AnimalTracing (openAPI «TVD API Gateway Animal Tracing 1.0»). Bei den Wertebereichen in @tbl-animaltracing-enums ist der Code eines Werts das gleichnamige Element einer Enumeration der Schnittstelle.
 
-# Anhang F - Tabellenverzeichnis {#sec-appendix-f .appendix}
+Bewegungstyp, Typ Gesundheitsstatus und die beiden Seuchenstatus-Wertebereiche stammen dagegen aus den Wertebereichstabellen dieses Hilfsmittels. Die Schnittstelle führt die Bewegungstypen je Nutztierart und die Gesundheitsstatus je Seuche in eigenen Enumerationen, teils unter anderem Namen. Die folgenden Tabellen zeigen, welche Elemente der Schnittstelle einem Wert entsprechen; Werte ohne Gegenstück sind nicht aufgeführt.
+
+{{< include animaltracing.md >}}
+
+# Anhang E - Änderungen gegenüber der Vorversion {#sec-appendix-e .appendix}
+
+# Anhang F - Abbildungsverzeichnis {#sec-appendix-f .appendix}
+
+# Anhang G - Tabellenverzeichnis {#sec-appendix-g .appendix}
