@@ -13,7 +13,10 @@ Only the lists derived from an enum are compared. A list says so through the
 data model: the property shape that restricts its values to the list names the
 enum with :animalTracingTerm, and the schema:codeValue of each of its values is
 the enum member. The other four lists take their values from the Wertebereich
-tables of the Hilfsmittel, so they are not meant to exhaust any enum.
+tables of the Hilfsmittel, so they are not meant to exhaust any enum. Where one
+of their values has a counterpart in the interface, under another name or in
+several enums, HILFSMITTEL_COUNTERPARTS records it, and the interface is checked
+to still carry it.
 
 The second direction is the one a generator cannot give you. A new value in the
 openAPI is a decision for the Fachgruppe, not something to import silently.
@@ -47,6 +50,39 @@ NOT_ADOPTED = {
     "EnumAnimalTypeOfUse": {"NotDefined": "nicht in Tabelle 3 aufgeführt"},
     "EquidTypeOfUsage": {"Undefined": "nicht in Tabelle 3 aufgeführt"},
 }
+
+# Values of the lists taken from the Hilfsmittel alone, with their counterparts
+# in the interface: an enum member as Schema.Member, or a whole schema. A value
+# without a counterpart, such as DayStay, is not listed.
+HILFSMITTEL_COUNTERPARTS = {
+    "notificationtype:Birth": ["EnumCattleNotificationType.Birth", "EnumSheepNotificationType.Birth",
+                               "EnumGoatNotificationType.Birth"],
+    "notificationtype:Arrival": ["EnumCattleNotificationType.Arrival", "EnumSheepNotificationType.Arrival",
+                                 "EnumGoatNotificationType.Arrival"],
+    "notificationtype:Leaving": ["EnumCattleNotificationType.Leaving", "EnumSheepNotificationType.Leaving",
+                                 "EnumGoatNotificationType.Leaving"],
+    "notificationtype:Slaughter": ["EnumCattleNotificationType.Slaughtering", "EnumSheepNotificationType.Slaughter",
+                                   "EnumGoatNotificationType.Slaughter"],
+    "notificationtype:Deceased": ["EnumCattleNotificationType.Deceased", "EnumSheepNotificationType.Deceased",
+                                  "EnumGoatNotificationType.Deceased"],
+    "notificationtype:Import": ["EnumCattleNotificationType.Import", "EnumSheepNotificationType.Import",
+                                "EnumGoatNotificationType.Import"],
+    "notificationtype:Export": ["EnumCattleNotificationType.Export", "EnumSheepNotificationType.Export",
+                                "EnumGoatNotificationType.Export"],
+    "notificationtype:OnFarmSlaughter": ["EnumCattleNotificationType.YardSlaughter",
+                                         "EnumSheepNotificationType.OnFarmSlaughter",
+                                         "EnumGoatNotificationType.OnFarmSlaughter"],
+    "notificationtype:DeathBirth": ["EnumCattleNotificationType.DeathBirth", "EnumSheepNotificationType.DeathBirth",
+                                    "EnumGoatNotificationType.DeathBirth"],
+    "notificationtype:FirstRegistration": ["EnumSheepNotificationType.FirstRegistration",
+                                           "EnumGoatNotificationType.FirstRegistration"],
+    "healthstatustype:EpizooticStatus": ["BvdState", "FootRotState"],
+    "localunithealthstatus:Blocked": ["FootRotState.Blocked", "BvdState.Blocked"],
+    "localunithealthstatus:Free": ["FootRotState.Free"],
+    "localunithealthstatus:NotTested": ["FootRotState.NotTested"],
+    "animalhealthstatus:Vaccinated": ["EnumCattleLsdState.Vaccinated"],
+}
+
 
 @pytest.fixture(scope="module")
 def openapi():
@@ -135,3 +171,27 @@ def test_every_enum_of_not_adopted_is_derived_from(derived):
     """A NOT_ADOPTED entry for an enum no list derives from would never be checked."""
     orphans = sorted(set(NOT_ADOPTED) - set(derived))
     assert not orphans, "Keine Liste leitet sich ab von: " + ", ".join(orphans)
+
+
+def test_hilfsmittel_counterparts_resolve(members):
+    """Each counterpart recorded for a Hilfsmittel value is still in the interface."""
+    unresolved = []
+    for value, counterparts in sorted(HILFSMITTEL_COUNTERPARTS.items()):
+        for counterpart in counterparts:
+            schema, _, member = counterpart.partition(".")
+            if schema not in members:
+                unresolved.append(f"{value}: Schema «{schema}» gibt es nicht mehr")
+            elif member and member not in members[schema]:
+                unresolved.append(f"{value}: «{member}» gibt es in {schema} nicht mehr")
+    assert not unresolved, "Die Schnittstelle hat sich geändert:\n  " + "\n  ".join(unresolved)
+
+
+def test_hilfsmittel_counterparts_name_existing_values():
+    """A key of HILFSMITTEL_COUNTERPARTS that is no value of a list is stale."""
+    if not CODE_LISTS.exists():
+        pytest.skip(f"Datei nicht gefunden: {CODE_LISTS}")
+    graph = Graph().parse(CODE_LISTS, format="turtle")
+    codes = set(graph.subjects(SCHEMA.inCodeSet, None))
+    stale = [value for value in sorted(HILFSMITTEL_COUNTERPARTS)
+             if graph.namespace_manager.expand_curie(value) not in codes]
+    assert not stale, "Kein Wert der Codelisten: " + ", ".join(stale)
