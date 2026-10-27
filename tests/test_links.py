@@ -53,7 +53,13 @@ def get_urls():
 @pytest.mark.parametrize("file_path, url", get_urls())
 def test_document_link(file_path, url):
     """Checks the HTTP status code of referenced external URLs with retries."""
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+    # An honest User-Agent and an explicit Accept. The spoofed browser string
+    # this used to send tripped the bot protection on news.admin.ch, and the
+    # missing Accept made the fedlex ELI endpoint answer 400 to every request.
+    req = urllib.request.Request(url, headers={
+        'User-Agent': 'eCH-0309-link-check/1.0 (+https://github.com/blw-ofag-ufag/eCH-0309)',
+        'Accept': '*/*',
+    })
     
     max_retries = 3
     delay_between_retries = 2

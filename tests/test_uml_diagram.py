@@ -149,3 +149,28 @@ def test_attribute_types_are_dropped(patch):
 def test_titles_are_shortened_to_the_target_class(patch):
     result = patch.shorten_titles([f"Class {ANIMAL} ", f'{ANIMAL} <|-- {EQUID} '])
     assert result == ['Class ":Animal" ', '":Animal" <|-- ":Equid" ']
+
+
+def test_excluded_attributes_are_dropped(patch):
+    """A shape that excludes an inherited attribute with sh:maxCount 0 must not
+    have it drawn on the box, where it would read as an attribute after all."""
+    result = patch.drop_excluded_attributes([
+        f'{EQUID} : :father  [0..0]  ',
+        f'{EQUID} : :withersClass : :EquidWithersClass [1..1] ',
+    ])
+    assert result == [f'{EQUID} : :withersClass : :EquidWithersClass [1..1] ']
+
+
+def test_excluded_members_leave_the_rest_of_an_association(patch):
+    result = patch.drop_excluded_attributes([
+        f'{EQUID} --> {ANIMAL} : :mother<U+00A0>[0..1] \\l:father<U+00A0>[0..0] ',
+    ])
+    assert result == [f'{EQUID} --> {ANIMAL} : :mother<U+00A0>[0..1] ']
+
+
+def test_an_association_of_only_excluded_members_is_dropped(patch):
+    result = patch.drop_excluded_attributes([
+        f'{EQUID} --> {ANIMAL} : :father<U+00A0>[0..0] ',
+        "@enduml",
+    ])
+    assert result == ["@enduml"]
