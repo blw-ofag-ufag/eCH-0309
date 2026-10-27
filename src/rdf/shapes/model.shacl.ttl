@@ -4,6 +4,7 @@
 
 # Project-specific namespaces/qnames
 @prefix :                <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix codelist:        <https://agriculture.ld.admin.ch/eCH-0309/1/codelist/> .
 
 
 # LINDAS-specific namespaces/qnames
@@ -169,7 +170,13 @@
             "Specie di animale da reddito"@it ;
         :animalTracingTerm "EnumGenus" ;
         sh:path :genus ;
-        sh:class :Genus ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:Genus ;
+            ]
+        ] ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
@@ -181,7 +188,13 @@
             "Sesso"@it ;
         :animalTracingTerm "EnumGender" ;
         sh:path :gender ;
-        sh:class :Gender ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:Gender ;
+            ]
+        ] ;
         sh:maxCount 1 ;
     ],
     [
@@ -218,7 +231,13 @@
             "Statut de l'historique de l'animal à la date de la requête. Non pertinent pour les équidés ; le catalogue d'objets attribue donc à l'attribut une cardinalité de 1, mais l'obligation ne vaut que pour les autres animaux individuels."@fr,
             "Stato della storia dell'animale alla data della richiesta. Non rilevante per gli equidi; il catalogo degli oggetti attribuisce quindi all'attributo una cardinalità di 1, ma l'obbligo vale solo per gli altri animali singoli."@it ;
         sh:path :historyState ;
-        sh:class :AnimalHistoryState ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:AnimalHistoryState ;
+            ]
+        ] ;
         sh:maxCount 1 ;
     ],
     [
@@ -229,7 +248,13 @@
             "Tipo di utilizzo"@it ;
         :animalTracingTerm "EnumAnimalTypeOfUse" ;
         sh:path :typeOfUse ;
-        sh:class :AnimalTypeOfUse ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:AnimalTypeOfUse ;
+            ]
+        ] ;
         sh:maxCount 1 ;
     ],
     [
@@ -326,7 +351,13 @@
             "Les équidés portent un statut d'annonce propre au lieu du statut de l'historique de l'animal."@fr,
             "Gli equidi hanno uno stato di notifica proprio invece dello stato della storia dell'animale."@it ;
         sh:path :notificationState ;
-        sh:class :EquidNotificationState ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:EquidNotificationState ;
+            ]
+        ] ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
@@ -342,7 +373,13 @@
             "Les équidés utilisent un domaine de valeurs propre: animal de compagnie ou animal de rente."@fr,
             "Gli equidi utilizzano un dominio di valori proprio: animale da compagnia o animale da reddito."@it ;
         sh:path :typeOfEquidUsage ;
-        sh:class :EquidTypeOfUsage ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:EquidTypeOfUsage ;
+            ]
+        ] ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
@@ -398,7 +435,13 @@
             "Categoria di grandezza"@it ;
         :animalTracingTerm "EnumEquidWithersClass" ;
         sh:path :withersClass ;
-        sh:class :EquidWithersClass ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:EquidWithersClass ;
+            ]
+        ] ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
@@ -459,7 +502,13 @@
             "Specie di animale da reddito"@it ;
         :animalTracingTerm "EnumGenus" ;
         sh:path :genus ;
-        sh:class :Genus ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:Genus ;
+            ]
+        ] ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
@@ -470,7 +519,13 @@
             "Type de mouvement"@fr,
             "Tipo di movimento"@it ;
         sh:path :notificationType ;
-        sh:class :NotificationType ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:NotificationType ;
+            ]
+        ] ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
@@ -594,7 +649,13 @@
             "Specie di animale da reddito"@it ;
         :animalTracingTerm "EnumGenus" ;
         sh:path :genus ;
-        sh:class :Genus ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:Genus ;
+            ]
+        ] ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
@@ -619,7 +680,13 @@
             "Type de mouvement"@fr,
             "Tipo di movimento"@it ;
         sh:path :notificationType ;
-        sh:class :NotificationType ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:NotificationType ;
+            ]
+        ] ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
@@ -692,7 +759,13 @@
             "Type d'utilisation du groupe d'animaux (pour les animaux individuels il figure sur la classe «Einzeltier»)"@fr,
             "Tipo di utilizzo del gruppo di animali (per gli animali singoli figura sulla classe «Einzeltier»)"@it ;
         sh:path :typeOfUse ;
-        sh:class :AnimalTypeOfUse ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:AnimalTypeOfUse ;
+            ]
+        ] ;
         sh:maxCount 1 ;
     ],
     [
@@ -769,7 +842,13 @@
             "p. ex. statut épizootique, vaccinal ou de risque"@fr,
             "p. es. stato epizootico, vaccinale o di rischio"@it ;
         sh:path :healthStatusType ;
-        sh:class :HealthStatusType ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:HealthStatusType ;
+            ]
+        ] ;
         sh:maxCount 1 ;
     ],
     [
@@ -779,7 +858,13 @@
             "Statut"@fr,
             "Stato"@it ;
         sh:path :epizooticStatus ;
-        sh:class :LocalUnitEpizooticStatus ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:LocalUnitEpizooticStatus ;
+            ]
+        ] ;
         sh:maxCount 1 ;
     ],
     [
@@ -840,7 +925,13 @@
             "p. ex. statut épizootique, vaccinal ou de risque"@fr,
             "p. es. stato epizootico, vaccinale o di rischio"@it ;
         sh:path :healthStatusType ;
-        sh:class :HealthStatusType ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:HealthStatusType ;
+            ]
+        ] ;
         sh:maxCount 1 ;
     ],
     [
@@ -850,7 +941,13 @@
             "Statut"@fr,
             "Stato"@it ;
         sh:path :epizooticStatus ;
-        sh:class :AnimalEpizooticStatus ;
+        sh:class schema:CategoryCode ;
+        sh:node [
+            sh:property [
+                sh:path schema:inCodeSet ;
+                sh:hasValue codelist:AnimalEpizooticStatus ;
+            ]
+        ] ;
         sh:maxCount 1 ;
     ],
     [

@@ -64,7 +64,7 @@ GREY             := \033[0;90m
 BOLD       := \033[1;37m
 NC               := \033[0m
 
-.PHONY: all help robot test docs clean check-python venv install-dependencies install-r-packages setup build delete publish stamp-metadata generate-shacl-docs generate-glossary-docs generate-code-list-docs
+.PHONY: all help robot test docs clean check-python venv install-dependencies install-r-packages setup build delete publish stamp-metadata generate-shacl-docs generate-glossary-docs
 
 # Default target
 all: test docs ## Run the tests and build the documentation (default)
@@ -223,7 +223,7 @@ build: $(PROCESSED_DATA) ## Build the graph: integration, reasoning, SPARQL proc
 # BUILD DOCUMENTATION
 # ==============================================================================
 
-$(DOCS_UML_PNG): $(SHAPES) $(ONTO) src/rdf/data/code_lists.skos.ttl src/python/utils/patch_uml_diagram.py | $(IMG_DIR) $(LOG_DIR) $(SHACL_PLAY_JAR) $(PLANTUML_JAR) $(JAVA17)
+$(DOCS_UML_PNG): $(SHAPES) $(ONTO) src/python/utils/patch_uml_diagram.py | $(IMG_DIR) $(LOG_DIR) $(SHACL_PLAY_JAR) $(PLANTUML_JAR) $(JAVA17)
 	@mkdir -p $(DOCS_IMG_DIR)
 	@printf "$(BOLD)[*] Extracting UML structure via SHACL Play...$(NC)\n"
 	@printf "$(GREY)"; \
@@ -233,15 +233,9 @@ $(DOCS_UML_PNG): $(SHAPES) $(ONTO) src/rdf/data/code_lists.skos.ttl src/python/u
 	@printf "$(BOLD)[*] Rendering PNG with PlantUML (Pure Java Smetana engine)...$(NC)\n"
 	@printf "$(GREY)"; \
 	awk '/@startuml/{print;print "!pragma layout smetana";next} /^remove @unlinked/{next} 1' $(UML_PUML) > $(UML_PUML).tmp && mv $(UML_PUML).tmp $(UML_PUML); \
-	$(VENV_PYTHON) src/python/utils/patch_uml_diagram.py -i $(UML_PUML) -o $(ONTO) -c src/rdf/data/code_lists.skos.ttl || { printf "$(NC)"; exit 1; }; \
+	$(VENV_PYTHON) src/python/utils/patch_uml_diagram.py -i $(UML_PUML) -o $(ONTO) || { printf "$(NC)"; exit 1; }; \
 	$(JAVA17) -jar $(PLANTUML_JAR) -tpng $(UML_PUML) -o $(shell cd $(IMG_DIR) && pwd) || { printf "$(NC)"; exit 1; }; \
 	cp $(IMG_DIR)/uml.png $(DOCS_UML_PNG); \
-	printf "$(NC)"
-
-generate-code-list-docs: src/rdf/data/code_lists.skos.ttl $(PREFIXES) src/python/utils/generate_code_list_docs.py | $(VENV)/.requirements-installed.stamp ## Generate the code list pages from the SKOS code lists
-	@printf "$(BOLD)[*] Generating code list documentation...$(NC)\n"
-	@printf "$(GREY)"; \
-	$(VENV_PYTHON) src/python/utils/generate_code_list_docs.py -i src/rdf/data/code_lists.skos.ttl -d $(DOCS_DIR) -p $(PREFIXES) || { printf "$(NC)"; exit 1; }; \
 	printf "$(NC)"
 
 generate-shacl-docs: $(SHAPES) $(PREFIXES) $(PROCESSED_DATA) $(DOCS_DIR)/_ech.yml src/python/utils/generate_shacl_docs.py | $(VENV)/.requirements-installed.stamp ## Generate the data model and code list pages from the SHACL shapes and the graph
@@ -256,7 +250,7 @@ generate-glossary-docs: src/rdf/data/glossary.skos.ttl $(PREFIXES) src/python/ut
 	$(VENV_PYTHON) src/python/utils/generate_glossary_docs.py -i src/rdf/data/glossary.skos.ttl -d $(DOCS_DIR) -p $(PREFIXES) || { printf "$(NC)"; exit 1; }; \
 	printf "$(NC)"
 
-docs: $(SHACL_REPORT) generate-shacl-docs generate-glossary-docs generate-code-list-docs $(DOCS_UML_PNG) $(R_STAMP) ## Generate the data model and glossary pages and render the documentation (website, PDF)
+docs: $(SHACL_REPORT) generate-shacl-docs generate-glossary-docs $(DOCS_UML_PNG) $(R_STAMP) ## Generate the data model and glossary pages and render the documentation (website, PDF)
 	@printf "$(BOLD)[*] Rendering documentation with Quarto...$(NC)\n"
 	@printf "$(GREY)"; \
 	quarto render docs > $(QUARTO_LOG) 2>&1 || { printf "$(NC)\n$(RED)ERROR: Quarto rendering failed. See log below:$(NC)\n$(GREY)"; cat $(QUARTO_LOG); printf "$(NC)\n"; exit 1; }; \
@@ -321,5 +315,5 @@ publish: test stamp-metadata delete ## Test, then replace the graph on LINDAS wi
 
 clean: ## Remove all build artifacts, caches, the virtual environment and generated pages
 	@printf "$(BOLD)[*] Cleaning build artifacts...$(NC)\n"
-	@rm -rf $(BUILD_DIR) $(VENV) docs/*/codelists.md docs/*/code-lists.md docs/*/entities.md docs/*/glossary.md docs/*/namespaces.md
+	@rm -rf $(BUILD_DIR) $(VENV) docs/*/codelists.md docs/*/entities.md docs/*/glossary.md docs/*/namespaces.md
 	@find . -path ./.git -prune -o \( -name __pycache__ -o -name .pytest_cache -o -name .quarto -o -name '*_files' -o -name '*_cache' -o -name '*.quarto_ipynb' -o -name .Rhistory -o -name .RData \) -prune -exec rm -rf {} +

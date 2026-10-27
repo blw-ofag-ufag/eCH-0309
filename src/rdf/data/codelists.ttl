@@ -1,0 +1,715 @@
+# ==============================================================================
+# CODE LISTS (Wertebereiche)
+#
+# The Wertebereiche are part of the Hilfsmittel, so they are defined here and
+# edited here. They follow the template's code list structure: a list is a
+# schema:CategoryCodeSet, its values are schema:CategoryCode instances, as
+# prescribed by src/rdf/shapes/codelist.shacl.ttl and checked by
+# tests/test_codelists.py. The data model restricts a property to a list with
+# sh:node [ sh:property [ sh:path schema:inCodeSet ; sh:hasValue <list> ] ].
+#
+# tests/test_code_lists.py compares the lists against the TVD AnimalTracing
+# openAPI (TVD API Gateway Animal Tracing 1.0,
+# https://test-01-tvd-api-at.identitas.ch/open-api/v1.0, as of 2026-10-27) and
+# reports drift in both directions: a value this file carries that the
+# interface has dropped, and a value the interface has gained that nobody has
+# decided about. A list derived from an enum is recognised by the property
+# shape in model.shacl.ttl that restricts to it and names the enum with
+# :animalTracingTerm; the code value of each value is the enum member.
+# Known-absent values are listed in the test with their reason.
+#
+# Each list has its own sub-namespace for its values, and each value is named
+# by the identifier its source system uses, as in eCH-0265, where the AGIS,
+# NAEBI and PSM lists are keyed by their own numeric codes. The identifier is
+# therefore not ours to case.
+#
+# Four lists -- Bewegungstyp, Typ Gesundheitsstatus and the two Seuchenstatus
+# lists -- come from the Wertebereich tables of the Hilfsmittel alone: the
+# openAPI splits notification types per species and holds the health statuses as
+# a field per disease.
+#
+# French and Italian labels and most descriptions are still missing where the
+# sources provide none.
+# ==============================================================================
+
+@prefix codelist:               <https://agriculture.ld.admin.ch/eCH-0309/1/codelist/> .
+@prefix genus:                  <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
+@prefix gender:                 <https://agriculture.ld.admin.ch/eCH-0309/1/gender/> .
+@prefix animaltypeofuse:        <https://agriculture.ld.admin.ch/eCH-0309/1/animaltypeofuse/> .
+@prefix equidtypeofusage:       <https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/> .
+@prefix animalhistorystate:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
+@prefix equidnotificationstate: <https://agriculture.ld.admin.ch/eCH-0309/1/equidnotificationstate/> .
+@prefix equidwithersclass:      <https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
+@prefix notificationtype:       <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
+@prefix healthstatustype:       <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/> .
+@prefix localunithealthstatus:  <https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/> .
+@prefix animalhealthstatus:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/> .
+
+@prefix schema:                 <http://schema.org/> .
+
+
+# ------------------------------------------------------------------------------
+# Nutztierart -- openAPI EnumGenus
+# Hilfsmittel: Tabelle 2: Definition Wertebereich Nutztierarten für die TVD
+# ------------------------------------------------------------------------------
+
+codelist:Genus a schema:CategoryCodeSet ;
+    schema:name "Nutztierart"@de,
+        "Genus"@en,
+        "Espèce d'animal de rente"@fr,
+        "Specie di animale da reddito"@it ;
+    schema:hasCategoryCode genus:Cattle,
+        genus:Pig,
+        genus:Sheep,
+        genus:Goat,
+        genus:Camelid,
+        genus:Game,
+        genus:Equid,
+        genus:Poultry .
+
+genus:Cattle a schema:CategoryCode ;
+    schema:inCodeSet codelist:Genus ;
+    schema:codeValue "Cattle" ;
+    schema:name "Rindvieh"@de,
+        "Cattle"@en ;
+    schema:description "Tiere der Rindergattung (*Bos*) und Wasserbüffel (*Bubalus bubalis*)"@de .
+
+genus:Pig a schema:CategoryCode ;
+    schema:inCodeSet codelist:Genus ;
+    schema:codeValue "Pig" ;
+    schema:name "Schweine"@de,
+        "Pig"@en .
+
+genus:Sheep a schema:CategoryCode ;
+    schema:inCodeSet codelist:Genus ;
+    schema:codeValue "Sheep" ;
+    schema:name "Schafe"@de,
+        "Sheep"@en .
+
+genus:Goat a schema:CategoryCode ;
+    schema:inCodeSet codelist:Genus ;
+    schema:codeValue "Goat" ;
+    schema:name "Ziegen"@de,
+        "Goat"@en .
+
+genus:Camelid a schema:CategoryCode ;
+    schema:inCodeSet codelist:Genus ;
+    schema:codeValue "Camelid" ;
+    schema:name "Kameliden"@de,
+        "Camelid"@en ;
+    schema:description "Neuweltkameliden"@de .
+
+genus:Game a schema:CategoryCode ;
+    schema:inCodeSet codelist:Genus ;
+    schema:codeValue "Game" ;
+    schema:name "Wild"@de,
+        "Game"@en ;
+    schema:description "Wild in Gehegen"@de .
+
+genus:Equid a schema:CategoryCode ;
+    schema:inCodeSet codelist:Genus ;
+    schema:codeValue "Equid" ;
+    schema:name "Equiden"@de,
+        "Equid"@en ;
+    schema:description "Tiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel)"@de .
+
+genus:Poultry a schema:CategoryCode ;
+    schema:inCodeSet codelist:Genus ;
+    schema:codeValue "Poultry" ;
+    schema:name "Geflügel"@de,
+        "Poultry"@en .
+
+
+# ------------------------------------------------------------------------------
+# Geschlecht -- openAPI EnumGender
+# Hilfsmittel: Tabelle 6: Definition Wertebereich Geschlecht
+# ------------------------------------------------------------------------------
+
+codelist:Gender a schema:CategoryCodeSet ;
+    schema:name "Geschlecht"@de,
+        "Gender"@en,
+        "Sexe"@fr,
+        "Sesso"@it ;
+    schema:hasCategoryCode gender:Female,
+        gender:Male .
+
+gender:Female a schema:CategoryCode ;
+    schema:inCodeSet codelist:Gender ;
+    schema:codeValue "Female" ;
+    schema:name "Weiblich"@de,
+        "Female"@en .
+
+gender:Male a schema:CategoryCode ;
+    schema:inCodeSet codelist:Gender ;
+    schema:codeValue "Male" ;
+    schema:name "Männlich"@de,
+        "Male"@en .
+
+
+# ------------------------------------------------------------------------------
+# Zweck (Rinder, Schafe, Ziegen) -- openAPI EnumAnimalTypeOfUse
+# Hilfsmittel: Tabelle 3: Definition Wertebereich Zweck pro Nutztierart
+# ------------------------------------------------------------------------------
+
+codelist:AnimalTypeOfUse a schema:CategoryCodeSet ;
+    schema:name "Zweck (Rinder, Schafe, Ziegen)"@de,
+        "Type of use (cattle, sheep, goats)"@en,
+        "Type d'utilisation (bovins, ovins, caprins)"@fr,
+        "Tipo di utilizzo (bovini, ovini, caprini)"@it ;
+    schema:hasCategoryCode animaltypeofuse:Other,
+        animaltypeofuse:Milk .
+
+animaltypeofuse:Other a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalTypeOfUse ;
+    schema:codeValue "Other" ;
+    schema:name "Andere"@de,
+        "Other"@en .
+
+animaltypeofuse:Milk a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalTypeOfUse ;
+    schema:codeValue "Milk" ;
+    schema:name "Milch"@de,
+        "Milk"@en ;
+    schema:description "Milchkühe, -schafe und -ziegen"@de .
+
+
+# ------------------------------------------------------------------------------
+# Zweck (Equiden) -- openAPI EquidTypeOfUsage
+# Hilfsmittel: Tabelle 3: Definition Wertebereich Zweck pro Nutztierart
+# ------------------------------------------------------------------------------
+
+codelist:EquidTypeOfUsage a schema:CategoryCodeSet ;
+    schema:name "Zweck (Equiden)"@de,
+        "Type of use (equids)"@en,
+        "Type d'utilisation (équidés)"@fr,
+        "Tipo di utilizzo (equidi)"@it ;
+    schema:hasCategoryCode equidtypeofusage:CompanionAnimal,
+        equidtypeofusage:FarmAnimal .
+
+equidtypeofusage:CompanionAnimal a schema:CategoryCode ;
+    schema:inCodeSet codelist:EquidTypeOfUsage ;
+    schema:codeValue "CompanionAnimal" ;
+    schema:name "Heimtier"@de,
+        "Companion animal"@en .
+
+equidtypeofusage:FarmAnimal a schema:CategoryCode ;
+    schema:inCodeSet codelist:EquidTypeOfUsage ;
+    schema:codeValue "FarmAnimal" ;
+    schema:name "Nutztier"@de,
+        "Farm animal"@en .
+
+
+# ------------------------------------------------------------------------------
+# Tiergeschichtestatus -- openAPI EnumAnimalHistoryState
+# Hilfsmittel: Tabelle 7: Definition Wertebereich Tiergeschichtestatus
+# ------------------------------------------------------------------------------
+
+codelist:AnimalHistoryState a schema:CategoryCodeSet ;
+    schema:name "Tiergeschichtestatus"@de,
+        "Animal history state"@en,
+        "Statut de l'historique de l'animal"@fr,
+        "Stato della storia dell'animale"@it ;
+    schema:hasCategoryCode animalhistorystate:NotDefined,
+        animalhistorystate:NotOk,
+        animalhistorystate:TemporaryOk,
+        animalhistorystate:Ok,
+        animalhistorystate:Lost .
+
+animalhistorystate:NotDefined a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalHistoryState ;
+    schema:codeValue "NotDefined" ;
+    schema:name "Nicht definiert"@de,
+        "Not defined"@en .
+
+animalhistorystate:NotOk a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalHistoryState ;
+    schema:codeValue "NotOk" ;
+    schema:name "Fehlerhaft"@de,
+        "Not ok"@en .
+
+animalhistorystate:TemporaryOk a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalHistoryState ;
+    schema:codeValue "TemporaryOk" ;
+    schema:name "Temporär OK"@de,
+        "Temporary ok"@en .
+
+animalhistorystate:Ok a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalHistoryState ;
+    schema:codeValue "Ok" ;
+    schema:name "OK"@de,
+        "Ok"@en .
+
+animalhistorystate:Lost a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalHistoryState ;
+    schema:codeValue "Lost" ;
+    schema:name "Verschollen"@de,
+        "Lost"@en .
+
+
+# ------------------------------------------------------------------------------
+# Grössenkategorie -- openAPI EnumEquidWithersClass
+# No Wertebereich table in the Hilfsmittel.
+# ------------------------------------------------------------------------------
+
+codelist:EquidWithersClass a schema:CategoryCodeSet ;
+    schema:name "Grössenkategorie"@de,
+        "Withers class"@en,
+        "Catégorie de taille"@fr,
+        "Categoria di grandezza"@it ;
+    schema:hasCategoryCode equidwithersclass:LessOrEqualThan148cm,
+        equidwithersclass:GreaterThan148cm .
+
+equidwithersclass:LessOrEqualThan148cm a schema:CategoryCode ;
+    schema:inCodeSet codelist:EquidWithersClass ;
+    schema:codeValue "LessOrEqualThan148cm" ;
+    schema:name "Widerristhöhe bis 148 cm"@de,
+        "Withers height up to 148 cm"@en,
+        "Hauteur au garrot jusqu'à 148 cm"@fr,
+        "Altezza al garrese fino a 148 cm"@it .
+
+equidwithersclass:GreaterThan148cm a schema:CategoryCode ;
+    schema:inCodeSet codelist:EquidWithersClass ;
+    schema:codeValue "GreaterThan148cm" ;
+    schema:name "Widerristhöhe über 148 cm"@de,
+        "Withers height above 148 cm"@en,
+        "Hauteur au garrot supérieure à 148 cm"@fr,
+        "Altezza al garrese superiore a 148 cm"@it .
+
+
+# ------------------------------------------------------------------------------
+# Bewegungstyp -- aus dem Hilfsmittel, Tabelle 8: Definition Wertebereich Bewegungstyp
+# ------------------------------------------------------------------------------
+
+codelist:NotificationType a schema:CategoryCodeSet ;
+    schema:name "Bewegungstyp"@de,
+        "Notification type"@en,
+        "Type de mouvement"@fr,
+        "Tipo di movimento"@it ;
+    schema:hasCategoryCode notificationtype:Birth,
+        notificationtype:Arrival,
+        notificationtype:Leaving,
+        notificationtype:Slaughter,
+        notificationtype:Deceased,
+        notificationtype:Import,
+        notificationtype:Export,
+        notificationtype:DayStay,
+        notificationtype:ImportAfterExport,
+        notificationtype:OnFarmSlaughter,
+        notificationtype:DeathBirth,
+        notificationtype:LocationChange,
+        notificationtype:FirstRegistration .
+
+notificationtype:Birth a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "Birth" ;
+    schema:name "Geburt"@de,
+        "Birth"@en,
+        "Naissance"@fr,
+        "Nascita"@it .
+
+notificationtype:Arrival a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "Arrival" ;
+    schema:name "Zugang"@de,
+        "Arrival"@en,
+        "Entrée"@fr,
+        "Entrata"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it .
+
+notificationtype:Leaving a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "Leaving" ;
+    schema:name "Abgang"@de,
+        "Departure"@en,
+        "Sortie"@fr,
+        "Uscita"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it .
+
+notificationtype:Slaughter a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "Slaughter" ;
+    schema:name "Schlachtung"@de,
+        "Slaughter"@en,
+        "Abattage"@fr,
+        "Macellazione"@it .
+
+notificationtype:Deceased a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "Deceased" ;
+    schema:name "Verendung"@de,
+        "Death"@en,
+        "Mort"@fr,
+        "Morte"@it ;
+    schema:description "Bei Equiden: Euthanasierung"@de,
+        "For equids: euthanasia"@en,
+        "Pour les équidés : euthanasie"@fr,
+        "Per gli equidi: eutanasia"@it .
+
+notificationtype:Import a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "Import" ;
+    schema:name "Einfuhr"@de,
+        "Import"@en,
+        "Importation"@fr,
+        "Importazione"@it .
+
+notificationtype:Export a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "Export" ;
+    schema:name "Ausfuhr"@de,
+        "Export"@en,
+        "Exportation"@fr,
+        "Esportazione"@it ;
+    schema:description "Bei Equiden: Eigentumsabgabe ins Ausland"@de,
+        "For equids: transfer of ownership abroad"@en,
+        "Pour les équidés : cession de propriété à l'étranger"@fr,
+        "Per gli equidi: cessione di proprietà all'estero"@it .
+
+notificationtype:DayStay a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "DayStay" ;
+    schema:name "Tagesaufenthalt"@de,
+        "Day stay"@en,
+        "Séjour à la journée"@fr,
+        "Soggiorno giornaliero"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it .
+
+notificationtype:ImportAfterExport a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "ImportAfterExport" ;
+    schema:name "Einfuhr nach Ausfuhr"@de,
+        "Import after export"@en,
+        "Importation après exportation"@fr,
+        "Importazione dopo esportazione"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it .
+
+notificationtype:OnFarmSlaughter a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "OnFarmSlaughter" ;
+    schema:name "Hofschlachtung"@de,
+        "On-farm slaughter"@en,
+        "Abattage à la ferme"@fr,
+        "Macellazione in azienda"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it .
+
+notificationtype:DeathBirth a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "DeathBirth" ;
+    schema:name "Totgeburt"@de,
+        "Stillbirth"@en,
+        "Mortinaissance"@fr,
+        "Nato morto"@it ;
+    schema:description "Nicht für Equiden"@de,
+        "Not for equids"@en,
+        "Pas pour les équidés"@fr,
+        "Non per gli equidi"@it .
+
+notificationtype:LocationChange a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "LocationChange" ;
+    schema:name "Standortwechsel"@de,
+        "Change of location"@en,
+        "Changement de lieu"@fr,
+        "Cambiamento di ubicazione"@it ;
+    schema:description "Nur für Equiden"@de,
+        "For equids only"@en,
+        "Uniquement pour les équidés"@fr,
+        "Solo per gli equidi"@it .
+
+notificationtype:FirstRegistration a schema:CategoryCode ;
+    schema:inCodeSet codelist:NotificationType ;
+    schema:codeValue "FirstRegistration" ;
+    schema:name "Erstregistrierung"@de,
+        "First registration"@en,
+        "Premier enregistrement"@fr,
+        "Prima registrazione"@it .
+
+
+# ------------------------------------------------------------------------------
+# Typ Gesundheitsstatus -- aus dem Hilfsmittel, Tabelle 9: Definition Wertebereich Typ Gesundheitsstatus
+# ------------------------------------------------------------------------------
+
+codelist:HealthStatusType a schema:CategoryCodeSet ;
+    schema:name "Typ Gesundheitsstatus"@de,
+        "Health status type"@en,
+        "Type d'état sanitaire"@fr,
+        "Tipo di stato sanitario"@it ;
+    schema:hasCategoryCode healthstatustype:EpizooticStatus,
+        healthstatustype:VaccinationStatus,
+        healthstatustype:RiskStatus,
+        healthstatustype:LaboratoryResult .
+
+healthstatustype:EpizooticStatus a schema:CategoryCode ;
+    schema:inCodeSet codelist:HealthStatusType ;
+    schema:codeValue "EpizooticStatus" ;
+    schema:name "Seuchenstatus"@de,
+        "Epizootic status"@en,
+        "Statut épizootique"@fr,
+        "Stato epizootico"@it .
+
+healthstatustype:VaccinationStatus a schema:CategoryCode ;
+    schema:inCodeSet codelist:HealthStatusType ;
+    schema:codeValue "VaccinationStatus" ;
+    schema:name "Impfstatus"@de,
+        "Vaccination status"@en,
+        "Statut vaccinal"@fr,
+        "Stato vaccinale"@it .
+
+healthstatustype:RiskStatus a schema:CategoryCode ;
+    schema:inCodeSet codelist:HealthStatusType ;
+    schema:codeValue "RiskStatus" ;
+    schema:name "Risikostatus"@de,
+        "Risk status"@en,
+        "Statut de risque"@fr,
+        "Stato di rischio"@it .
+
+healthstatustype:LaboratoryResult a schema:CategoryCode ;
+    schema:inCodeSet codelist:HealthStatusType ;
+    schema:codeValue "LaboratoryResult" ;
+    schema:name "Laborergebnis"@de,
+        "Laboratory result"@en,
+        "Résultat de laboratoire"@fr,
+        "Risultato di laboratorio"@it .
+
+
+# ------------------------------------------------------------------------------
+# Seuchenstatus örtliche Einheit -- aus dem Hilfsmittel, Tabelle 10: Definition Wertebereich Seuchenstatus örtliche Einheit
+# ------------------------------------------------------------------------------
+
+codelist:LocalUnitEpizooticStatus a schema:CategoryCodeSet ;
+    schema:name "Seuchenstatus örtliche Einheit"@de,
+        "Health status of a local unit"@en,
+        "État sanitaire de l'unité locale"@fr,
+        "Stato sanitario dell'unità locale"@it ;
+    schema:hasCategoryCode localunithealthstatus:Blocked,
+        localunithealthstatus:Free,
+        localunithealthstatus:NotTested,
+        localunithealthstatus:High,
+        localunithealthstatus:Low,
+        localunithealthstatus:Medium,
+        localunithealthstatus:Positive,
+        localunithealthstatus:Negative .
+
+localunithealthstatus:Blocked a schema:CategoryCode ;
+    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
+    schema:codeValue "Blocked" ;
+    schema:name "gesperrt"@de,
+        "Blocked"@en,
+        "Bloqué"@fr,
+        "Bloccato"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it .
+
+localunithealthstatus:Free a schema:CategoryCode ;
+    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
+    schema:codeValue "Free" ;
+    schema:name "frei"@de,
+        "Free"@en,
+        "Libre"@fr,
+        "Libero"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it .
+
+localunithealthstatus:NotTested a schema:CategoryCode ;
+    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
+    schema:codeValue "NotTested" ;
+    schema:name "Nicht getestet"@de,
+        "Not tested"@en,
+        "Non testé"@fr,
+        "Non testato"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it .
+
+localunithealthstatus:High a schema:CategoryCode ;
+    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
+    schema:codeValue "High" ;
+    schema:name "Hoch"@de,
+        "High"@en,
+        "Élevé"@fr,
+        "Alto"@it ;
+    schema:description "Typ: Risikostatus"@de,
+        "Type: risk status"@en,
+        "Type : statut de risque"@fr,
+        "Tipo: stato di rischio"@it .
+
+localunithealthstatus:Low a schema:CategoryCode ;
+    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
+    schema:codeValue "Low" ;
+    schema:name "Tief"@de,
+        "Low"@en,
+        "Faible"@fr,
+        "Basso"@it ;
+    schema:description "Typ: Risikostatus"@de,
+        "Type: risk status"@en,
+        "Type : statut de risque"@fr,
+        "Tipo: stato di rischio"@it .
+
+localunithealthstatus:Medium a schema:CategoryCode ;
+    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
+    schema:codeValue "Medium" ;
+    schema:name "Mittel"@de,
+        "Medium"@en,
+        "Moyen"@fr,
+        "Medio"@it ;
+    schema:description "Typ: Risikostatus"@de,
+        "Type: risk status"@en,
+        "Type : statut de risque"@fr,
+        "Tipo: stato di rischio"@it .
+
+localunithealthstatus:Positive a schema:CategoryCode ;
+    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
+    schema:codeValue "Positive" ;
+    schema:name "positiv"@de,
+        "Positive"@en,
+        "Positif"@fr,
+        "Positivo"@it ;
+    schema:description "Typ: Laborergebnis"@de,
+        "Type: laboratory result"@en,
+        "Type : résultat de laboratoire"@fr,
+        "Tipo: risultato di laboratorio"@it .
+
+localunithealthstatus:Negative a schema:CategoryCode ;
+    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
+    schema:codeValue "Negative" ;
+    schema:name "negativ"@de,
+        "Negative"@en,
+        "Négatif"@fr,
+        "Negativo"@it ;
+    schema:description "Typ: Laborergebnis"@de,
+        "Type: laboratory result"@en,
+        "Type : résultat de laboratoire"@fr,
+        "Tipo: risultato di laboratorio"@it .
+
+
+# ------------------------------------------------------------------------------
+# Seuchenstatus Einzeltier -- aus dem Hilfsmittel, Tabelle 11: Definition Wertebereich Seuchenstatus Einzeltier
+# ------------------------------------------------------------------------------
+
+codelist:AnimalEpizooticStatus a schema:CategoryCodeSet ;
+    schema:name "Seuchenstatus Einzeltier"@de,
+        "Health status of an individual animal"@en,
+        "État sanitaire de l'animal individuel"@fr,
+        "Stato sanitario dell'animale singolo"@it ;
+    schema:hasCategoryCode animalhealthstatus:Blocked,
+        animalhealthstatus:Free,
+        animalhealthstatus:NotTested,
+        animalhealthstatus:Vaccinated .
+
+animalhealthstatus:Blocked a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalEpizooticStatus ;
+    schema:codeValue "Blocked" ;
+    schema:name "gesperrt"@de,
+        "Blocked"@en,
+        "Bloqué"@fr,
+        "Bloccato"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it .
+
+animalhealthstatus:Free a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalEpizooticStatus ;
+    schema:codeValue "Free" ;
+    schema:name "frei"@de,
+        "Free"@en,
+        "Libre"@fr,
+        "Libero"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it .
+
+animalhealthstatus:NotTested a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalEpizooticStatus ;
+    schema:codeValue "NotTested" ;
+    schema:name "Nicht getestet"@de,
+        "Not tested"@en,
+        "Non testé"@fr,
+        "Non testato"@it ;
+    schema:description "Typ: Seuchenstatus"@de,
+        "Type: epizootic status"@en,
+        "Type : statut épizootique"@fr,
+        "Tipo: stato epizootico"@it .
+
+animalhealthstatus:Vaccinated a schema:CategoryCode ;
+    schema:inCodeSet codelist:AnimalEpizooticStatus ;
+    schema:codeValue "Vaccinated" ;
+    schema:name "geimpft"@de,
+        "Vaccinated"@en,
+        "Vacciné"@fr,
+        "Vaccinato"@it ;
+    schema:description "Typ: Impfstatus"@de,
+        "Type: vaccination status"@en,
+        "Type : statut vaccinal"@fr,
+        "Tipo: stato vaccinale"@it .
+
+
+# ------------------------------------------------------------------------------
+# Meldestatus Equide -- openAPI EnumEquidNotificationState
+# Keine Wertebereichstabelle im Hilfsmittel; die Werte stammen allein aus der
+# openAPI, die Bezeichnungen sind daraus abgeleitet.
+# ------------------------------------------------------------------------------
+
+codelist:EquidNotificationState a schema:CategoryCodeSet ;
+    schema:name "Meldestatus Equide"@de,
+        "Equid notification state"@en,
+        "Statut d'annonce de l'équidé"@fr,
+        "Stato di notifica dell'equide"@it ;
+    schema:hasCategoryCode equidnotificationstate:Ok,
+        equidnotificationstate:LocationChangePending,
+        equidnotificationstate:OwnershipAcquisitionPending,
+        equidnotificationstate:LocationChangeAndAcquisitionPending .
+
+equidnotificationstate:Ok a schema:CategoryCode ;
+    schema:inCodeSet codelist:EquidNotificationState ;
+    schema:codeValue "Ok" ;
+    schema:name "OK"@de,
+        "OK"@en,
+        "OK"@fr,
+        "OK"@it .
+
+equidnotificationstate:LocationChangePending a schema:CategoryCode ;
+    schema:inCodeSet codelist:EquidNotificationState ;
+    schema:codeValue "LocationChangePending" ;
+    schema:name "Standortwechsel hängig"@de,
+        "Change of location pending"@en,
+        "Changement de lieu en attente"@fr,
+        "Cambiamento di ubicazione in sospeso"@it .
+
+equidnotificationstate:OwnershipAcquisitionPending a schema:CategoryCode ;
+    schema:inCodeSet codelist:EquidNotificationState ;
+    schema:codeValue "OwnershipAcquisitionPending" ;
+    schema:name "Eigentumsübernahme hängig"@de,
+        "Transfer of ownership pending"@en,
+        "Reprise de propriété en attente"@fr,
+        "Acquisizione della proprietà in sospeso"@it .
+
+equidnotificationstate:LocationChangeAndAcquisitionPending a schema:CategoryCode ;
+    schema:inCodeSet codelist:EquidNotificationState ;
+    schema:codeValue "LocationChangeAndAcquisitionPending" ;
+    schema:name "Standortwechsel und Eigentumsübernahme hängig"@de,
+        "Change of location and transfer of ownership pending"@en,
+        "Changement de lieu et reprise de propriété en attente"@fr,
+        "Cambiamento di ubicazione e acquisizione della proprietà in sospeso"@it ;
+ .

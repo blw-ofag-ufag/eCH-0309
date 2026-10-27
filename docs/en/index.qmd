@@ -77,7 +77,9 @@ Interfaces: AnimalTracing API, technical service description AnimalTracing
 
 # Code lists {#sec-code-lists}
 
-{{< include code-lists.md >}}
+The following code lists define the permitted values of the corresponding attributes of the data model (@sec-data-model). Each code list is modelled as a `schema:CategoryCodeSet` and each of its values as a `schema:CategoryCode`. The code of a value is the identifier the TVD interface uses for it. For some of the code lists no French or Italian designations are available yet; they are given in German and English, as provided by the sources.
+
+{{< include codelists.md >}}
 
 # Safety considerations {#sec-safety-consideration}
 

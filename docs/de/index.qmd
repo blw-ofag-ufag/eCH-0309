@@ -77,7 +77,9 @@ Schnittstellen: AnimalTracing API, Technische Servicebeschreibung AnimalTracing
 
 # Wertebereiche {#sec-code-lists}
 
-{{< include code-lists.md >}}
+Die folgenden Wertebereiche legen die zulässigen Werte der entsprechenden Attribute des Datenmodells fest (@sec-data-model). Jeder Wertebereich ist als `schema:CategoryCodeSet` modelliert und jeder seiner Werte als `schema:CategoryCode`. Der Code eines Werts ist der Bezeichner, den die TVD-Schnittstelle für ihn verwendet. Für einen Teil der Wertebereiche liegen noch keine französischen und italienischen Bezeichnungen vor; sie sind in Deutsch und Englisch aufgeführt, so wie sie die Quellen liefern.
+
+{{< include codelists.md >}}
 
 # Sicherheitsaspekte {#sec-safety-consideration}
 
