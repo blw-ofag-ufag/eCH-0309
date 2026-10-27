@@ -14,8 +14,8 @@
 #
 # Code lists are modelled the same way in every project: a list is a
 # schema:CategoryCodeSet, its values are schema:CategoryCode instances with a
-# code value, a name and a description per language, at least one alternate
-# name (abbreviation or symbol) and the list(s) they belong to. These shapes
+# code value, a name and a description per language, optionally alternate
+# names (abbreviation or symbol) and the list(s) they belong to. These shapes
 # are maintained by the template and checked by tests/test_codelists.py
 # against the code lists of src/rdf/data/. They are not part of the project's
 # data model (model.shacl.ttl), which only restricts its properties to a list.
@@ -101,10 +101,9 @@
     sh:property [
         sh:order 4 ;
         sh:path schema:alternateName ;
-        sh:minCount 1 ;
         sh:nodeKind sh:Literal ;
         sh:disjoint schema:name ;
-        sh:message "Every code needs at least one schema:alternateName (abbreviation or symbol) that differs from its schema:name."@en ;
+        sh:message "An alternate name of a code (abbreviation or symbol) must differ from its schema:name."@en ;
     ] ;
     sh:property [
         sh:order 5 ;
