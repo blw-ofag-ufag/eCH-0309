@@ -51,7 +51,6 @@ TRANSLATIONS = {
         "see_code_list": "See code list {list}",
         "type_restrictions": "with the following restrictions:",
         "restrictions": "Restrictions",
-        "cl_iri": "IRI",
         "cl_code": "Code",
         "cl_name": "Name",
         "cl_description": "Description",
@@ -98,7 +97,6 @@ TRANSLATIONS = {
         "see_code_list": "Siehe Codeliste {list}",
         "type_restrictions": "mit folgenden Einschränkungen:",
         "restrictions": "Einschränkungen",
-        "cl_iri": "IRI",
         "cl_code": "Code",
         "cl_name": "Name",
         "cl_description": "Beschreibung",
@@ -145,7 +143,6 @@ TRANSLATIONS = {
         "see_code_list": "Voir la liste de codes {list}",
         "type_restrictions": "avec les restrictions suivantes:",
         "restrictions": "Restrictions",
-        "cl_iri": "IRI",
         "cl_code": "Code",
         "cl_name": "Nom",
         "cl_description": "Description",
@@ -192,7 +189,6 @@ TRANSLATIONS = {
         "see_code_list": "Vedi l'elenco di codici {list}",
         "type_restrictions": "con le seguenti restrizioni:",
         "restrictions": "Restrizioni",
-        "cl_iri": "IRI",
         "cl_code": "Codice",
         "cl_name": "Nome",
         "cl_description": "Descrizione",
@@ -575,7 +571,8 @@ def alternate_names(data, subject, lang):
 def code_list_pages(g, data, lang, trans):
     """Markdown of the chapter on code lists: one section per
     schema:CategoryCodeSet of the data graph with its description and a table
-    of its codes (IRI, code value, name with alternate names, description)."""
+    of its codes (code value linked to the code's IRI, name with alternate
+    names, description)."""
     lines = []
     code_lists = sorted(set(data.subjects(RDF.type, SCHEMA.CategoryCodeSet)),
                         key=lambda cl: (code_list_label(g, data, cl, lang).lower(), str(cl)))
@@ -590,21 +587,33 @@ def code_list_pages(g, data, lang, trans):
             lines.append("")
         codes = set(data.objects(code_list, SCHEMA.hasCategoryCode)) | set(data.subjects(SCHEMA.inCodeSet, code_list))
         rows = []
+        longest = 0
         for item in sorted(codes, key=lambda c: (natural_key(data.value(c, SCHEMA.codeValue) or ""), str(c))):
             value = data.value(item, SCHEMA.codeValue)
             name = get_localized_value(data, item, [SCHEMA.name], lang) or format_uri(g, item)
             alternates = alternate_names(data, item, lang)
             if alternates:
                 name += f" ({', '.join(alternates)})"
-            rows.append([qname_link(g, item),
-                         code(value) if value is not None else "",
+            # The code links to the code's IRI; an IRI column of its own only
+            # repeated the code behind a prefix and could not wrap in the PDF.
+            if value is not None:
+                cell = f"[{code(value)}]({item})"
+                longest = max(longest, len(str(value)))
+            else:
+                cell = qname_link(g, item)
+            rows.append([cell,
                          sanitize_cell(name),
                          sanitize_cell(get_localized_value(data, item, [SCHEMA.description], lang) or "")])
-        lines.extend(build_grid_table([trans['cl_iri'], trans['cl_code'], trans['cl_name'], trans['cl_description']],
-                                      rows, [20, 10, 30, 50]))
+        lines.extend(build_grid_table([trans['cl_code'], trans['cl_name'], trans['cl_description']],
+                                      rows, [20, 30, 50]))
         lines.append("")
-        # explicit widths: the IRI links make the ASCII column wider than it should render
-        lines.append(f": {trans['cl_caption'].format(name=label)} {{#tbl-{slug} tbl-colwidths=\"[18,10,30,42]\"}}")
+        # Explicit widths, since the links make the ASCII columns wider than
+        # they should render. A code cannot wrap, so its column is as wide as
+        # the longest code of the list; name and description share the rest.
+        code_width = min(42, max(16, round(longest * 1.15) + 2))
+        name_width = round((100 - code_width) * 0.4)
+        widths = f"[{code_width},{name_width},{100 - code_width - name_width}]"
+        lines.append(f": {trans['cl_caption'].format(name=label)} {{#tbl-{slug} tbl-colwidths=\"{widths}\"}}")
         lines.append("")
     return lines
 
