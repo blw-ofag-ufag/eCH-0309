@@ -7,15 +7,15 @@ import pytest
 import time
 
 def get_tracked_files():
-    """Returns a list of .md, .qmd, and .bib files tracked by git, falling back to rglob if git fails."""
+    """Returns a list of .md, .qmd, .bib and CSL YAML files tracked by git, falling back to rglob if git fails."""
     try:
         result = subprocess.run(["git", "ls-files", "-z"], capture_output=True, text=True, check=True)
-        files = [f for f in result.stdout.split('\0') if f and f.endswith(('.md', '.qmd', '.bib'))]
+        files = [f for f in result.stdout.split('\0') if f and f.endswith(('.md', '.qmd', '.bib', '.yaml'))]
         return [Path(f) for f in files]
         
     except (subprocess.SubprocessError, FileNotFoundError):
         files = []
-        for ext in ("*.md", "*.qmd", "*.bib"):
+        for ext in ("*.md", "*.qmd", "*.bib", "*.yaml"):
             files.extend(
                 p for p in Path(".").rglob(ext)
                 if not set(p.parts) & {"venv", "build", ".quarto", ".git"}
@@ -23,10 +23,11 @@ def get_tracked_files():
         return files
 
 def get_urls():
-    """Extract URLs from all tracked Markdown and BibTeX files, ignoring code blocks in Markdown."""
+    """Extract URLs from all tracked Markdown, BibTeX and CSL YAML files, ignoring code blocks in Markdown."""
     url_regex = re.compile(r'\[[^\]]*\]\((https?://[^\)]+)\)')
     url_regex_angle = re.compile(r'<(https?://[^>]+)>')
     bib_url_regex = re.compile(r'(?i)\burl\s*=\s*[{"]\s*(https?://[^"\}]+)\s*["\}]')
+    csl_url_regex = re.compile(r'^\s*URL:\s*"?(https?://[^\s"]+)', re.MULTILINE)
     
     urls = []
     for f in get_tracked_files():
@@ -47,6 +48,10 @@ def get_urls():
         elif f.suffix.lower() == '.bib':
             for match in bib_url_regex.finditer(content):
                 urls.append((str(f), match.group(1).strip()))
+
+        elif f.suffix.lower() == '.yaml':
+            for match in csl_url_regex.finditer(content):
+                urls.append((str(f), match.group(1)))
 
     return sorted(list(set(urls)))
 

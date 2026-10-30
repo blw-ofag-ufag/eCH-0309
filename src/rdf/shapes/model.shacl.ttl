@@ -66,6 +66,9 @@
 # one in eCH-0108 or eCH-0261; a missing annotation means that source has no
 # counterpart, which the rdfs:comment then says.
 #
+# sh:order on a node shape sets the order of the classes in chapter 3 of the
+# documentation; it follows the Objektkatalog.
+#
 # Points still to be settled with the Fachgruppe are tracked as issues, not
 # recorded here.
 # ==============================================================================
@@ -84,6 +87,7 @@
     # "Rechtliche Einheit Tierhalter und Eigentümer".
     :animalTracingTerm "LegalUnitOrganisationResponse", "LegalUnitPersonResponse" ;
     :echTerm "eCH-0108:legalUnitMasterDataType", "eCH-0261:legalUnitType" ;
+    sh:order 1 ;
     sh:targetClass :LegalUnit .
 
 :AnimalKeeperShape a sh:NodeShape ;
@@ -97,6 +101,7 @@
         "Un gestore è un'unità giuridica ai sensi dell'eCH-0108 che si assume il rischio aziendale di un'azienda (OTerm art. 2). Il detentore di animali è una forma di gestore che detiene animali (OTerm art. 11a); necessita quindi di un'unità locale (detenzione di animali). La responsabilità delle notifiche spetta al detentore di animali per tutte le categorie di animali ad eccezione degli equidi; per gli equidi spetta al proprietario o alla proprietaria. Gli attributi sono descritti nell'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), capitoli 3.1 e 3.2."@it ;
     :animalTracingTerm "LegalUnitOrganisationResponse", "LegalUnitPersonResponse", "FarmManagerV1Response" ;
     :echTerm "eCH-0108:legalUnitMasterDataType", "eCH-0261:legalUnitType" ;
+    sh:order 2 ;
     sh:targetClass :AnimalKeeper .
 
 :LocalUnitShape a sh:NodeShape ;
@@ -110,6 +115,7 @@
         "Un'unità locale ai sensi dell'eCH-0108 è un impianto situato in un luogo determinato in cui viene svolta un'attività economica. Un'unità locale possiede un numero RIS ed è sempre assegnata a un'unità giuridica (o impresa). L'unità locale è identificata dal suo numero RIS. Un'unità locale può essere composta da uno o più edifici. L'EGID attribuito al numero RIS si riferisce al «centro» dell'unità locale, rispettivamente al suo edificio principale. Questa definizione è tratta dall'[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf), capitolo 1.5; i complementi specifici per l'agricoltura sono descritti nell'[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf), capitoli 3.3 e 3.4. Nella BDTA le unità locali sono chiamate «detenzioni di animali» e sono inoltre identificate dal loro numero BDTA."@it ;
     :animalTracingTerm "LocalUnitOwnResponse", "LocalUnitPublicResponse", "FarmDataV1Response" ;
     :echTerm "eCH-0108:localUnitMasterDataType", "eCH-0261:localUnitType" ;
+    sh:order 3 ;
     sh:targetClass :LocalUnit ;
     sh:property [
         sh:order 1 ;
@@ -144,6 +150,7 @@
         "Un animal de rente identifié individuellement. Dans la banque de données sur le trafic des animaux, les animaux des catégories bovins, ovins, caprins et équidés sont enregistrés comme animaux individuels ; ils sont identifiés de manière univoque par leur numéro de marque auriculaire, ou par l'UELN pour les équidés. Aucun animal individuel n'est tenu pour les porcs et la volaille, mais uniquement des notifications de groupe."@fr,
         "Un animale da reddito identificato singolarmente. Nella banca dati sul traffico di animali, gli animali delle categorie bovini, ovini, caprini ed equidi sono registrati come animali singoli; sono identificati in modo univoco dal numero della marca auricolare o, per gli equidi, dall'UELN. Per i suini e il pollame non vengono tenuti animali singoli, ma esclusivamente notifiche di gruppo."@it ;
     :animalTracingTerm "CattleDetailV1Response", "SheepDetailV1Response", "GoatDetailV1Response" ;
+    sh:order 4 ;
     sh:targetClass :Animal ;
     sh:property
     [
@@ -337,6 +344,7 @@
         "Sous-classe de la classe animal individuel pour les animaux du genre équidé (cheval, mulet, bardot, âne). Tous les attributs de la classe animal individuel s'appliquent également aux équidés ; cette classe ne décrit que les informations supplémentaires propres aux équidés. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d'animaux. Un propriétaire est l'unité juridique qui détient des équidés en propriété ; le terme n'est utilisé que pour les propriétaires d'équidés."@fr,
         "Sottoclasse della classe animale singolo per gli animali del genere equide (cavallo, mulo, bardotto, asino). Tutti gli attributi della classe animale singolo si applicano anche agli equidi; questa classe descrive esclusivamente le informazioni aggiuntive specifiche degli equidi. Per gli equidi la responsabilità delle notifiche spetta al proprietario e non al detentore di animali. Un proprietario è l'unità giuridica che ha in proprietà degli equidi; il termine è usato solo per i proprietari di equidi."@it ;
     :animalTracingTerm "EquidDetailsEquidResponse", "EquidDetailsPublicEquidResponse" ;
+    sh:order 5 ;
     sh:targetClass :Equid ;
     sh:property
     [
@@ -477,6 +485,7 @@
         "Un événement concernant un animal individuel. Sont considérées comme événements les notifications de mouvement, les notifications de données de base, les modifications d'attributs individuels des données de base ainsi que les notifications finales. Une notification se rapporte toujours à l'unité locale où l'événement a eu lieu et peut en outre indiquer l'unité locale de provenance. Les événements sont annoncés par les personnes autorisées, avec indication de l'unité d'élevage à laquelle la notification se rapporte ; pour les équidés, ils sont annoncés par les personnes autorisées du propriétaire d'équidés responsable."@fr,
         "Un evento che riguarda un animale singolo. Sono considerati eventi le notifiche di movimento, le notifiche di dati di base, le modifiche di singoli attributi dei dati di base nonché le notifiche finali. Una notifica si riferisce sempre all'unità locale in cui si è verificato l'evento e può inoltre indicare l'unità locale di provenienza. Gli eventi sono notificati dalle persone autorizzate, con indicazione della detenzione di animali cui si riferisce la notifica; per gli equidi sono notificati dalle persone autorizzate del proprietario di equidi responsabile."@it ;
     :animalTracingTerm "CattleDetailV1NotificationResponse", "SheepDetailV1NotificationResponse", "GoatDetailV1NotificationResponse" ;
+    sh:order 6 ;
     sh:targetClass :AnimalNotification ;
     sh:property
     [
@@ -624,6 +633,7 @@
         "An event concerning a group of animals that cannot be identified individually. Group notifications are recorded for animals of the categories pigs and poultry; the individuals of such a group are therefore not known. Events are reported by the natural persons of the responsible legal unit, the animal keeper. They comprise housing notifications for poultry, movement notifications for pigs, and slaughter notifications for pigs (by head) and poultry groups (in kg)."@en,
         "Un événement concernant un groupe d'animaux qui ne peuvent pas être identifiés individuellement. Les notifications de groupe sont enregistrées pour les animaux des catégories porcs et volaille ; les individus d'un tel groupe ne sont donc pas connus. Les événements sont annoncés par les personnes physiques de l'unité juridique responsable, le détenteur d'animaux. Ils comprennent les annonces de mise en place pour la volaille, les annonces de mouvement pour les porcs ainsi que les annonces d'abattage de porcs (en têtes) et de groupes de volaille (en kg)."@fr,
         "Un evento che riguarda un gruppo di animali non identificabili singolarmente. Le notifiche di gruppo sono registrate per gli animali delle categorie suini e pollame; gli individui di un tale gruppo non sono pertanto noti. Gli eventi sono notificati dalle persone fisiche dell'unità giuridica responsabile, il detentore di animali. Comprendono le notifiche di accasamento per il pollame, le notifiche di movimento per i suini nonché le notifiche di macellazione di suini (in capi) e di gruppi di pollame (in kg)."@it ;
+    sh:order 7 ;
     sh:targetClass :GroupNotification ;
     sh:property
     [
@@ -829,6 +839,7 @@
         "Where animal disease events are of national significance, it is essential that animal keepers are informed about movement bans and disease status, so that the risk of spread through animal movements can be minimised. Disease information recorded for a local unit. In addition to the epizootic status of a local unit, vaccination, risk and laboratory results can also be represented."@en,
         "Lorsque des épizooties revêtent une importance nationale, il est essentiel que les détenteurs d'animaux soient informés des interdictions de déplacement et du statut épizootique, afin de minimiser le risque de propagation par le trafic des animaux. Une information épizootique enregistrée sur une unité locale. Outre le statut épizootique d'une unité locale, les résultats de vaccination, de risque et de laboratoire peuvent également être représentés."@fr,
         "Quando si verificano epizoozie di rilevanza nazionale, è essenziale che i detentori di animali siano informati sui blocchi e sullo stato epizootico, affinché il rischio di diffusione attraverso il traffico di animali possa essere ridotto al minimo. Un'informazione epizootica registrata su un'unità locale. Oltre allo stato epizootico di un'unità locale, possono essere rappresentati anche i risultati di vaccinazione, di rischio e di laboratorio."@it ;
+    sh:order 8 ;
     sh:targetClass :LocalUnitHealthStatus ;
     sh:property
     [
@@ -912,6 +923,7 @@
         "Une information épizootique enregistrée sur un animal individuel. Outre le statut épizootique individuel, les vaccinations pertinentes sont également enregistrées."@fr,
         "Un'informazione epizootica registrata su un animale singolo. Oltre allo stato epizootico individuale, vengono registrate anche le vaccinazioni rilevanti."@it ;
     :animalTracingTerm "CattleDetailV1DiseasesResponse" ;
+    sh:order 9 ;
     sh:targetClass :AnimalHealthStatus ;
     sh:property
     [
