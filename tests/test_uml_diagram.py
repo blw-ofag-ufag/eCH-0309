@@ -105,14 +105,40 @@ def test_generalizations_are_added_for_drawn_classes(patch, tmp_path):
     assert result.index(f'{ANIMAL} <|-- {EQUID} ') < result.index("hide circle")
 
 
-def test_value_domains_reads_the_concept_types(patch, tmp_path):
-    code_lists = tmp_path / "code_lists.ttl"
-    code_lists.write_text(
-        "@prefix : <https://agriculture.ld.admin.ch/eCH-0309/1/> .\n"
-        "@prefix genus: <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .\n"
-        "@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n"
-        "genus:Cattle a skos:Concept, :Genus .\n", encoding="utf-8")
-    assert patch.value_domains(code_lists) == {"Genus"}
+# As SHACL Play draws a coded attribute: an arrow to an anonymous class that
+# holds the schema:inCodeSet restriction of its sh:node.
+DRAWN_CODE_LIST = [
+    "@startuml",
+    f"Class {ANIMAL} ",
+    'Class 905dc14ff21155578392978a43bd6d7a as " " ',
+    '"905dc14ff21155578392978a43bd6d7a" : schema:inCodeSet  = :codelist/Genus  ',
+    'Class 1f2e3d4c5b6a79880000000000000000 as " " ',
+    f'{ANIMAL} --> "905dc14ff21155578392978a43bd6d7a" : :genus<U+00A0>[1..1]  ',
+    "hide circle",
+    "@enduml",
+]
+
+
+def test_resolve_names_the_code_list_of_an_anonymous_class(patch):
+    lines, domains = patch.resolve_code_lists(DRAWN_CODE_LIST)
+    assert domains == {"Genus"}
+    assert f'{ANIMAL} --> ":Genus" : :genus<U+00A0>[1..1]  ' in lines
+    assert not any("905dc14ff21155578392978a43bd6d7a" in line for line in lines)
+    assert not any("schema:inCodeSet" in line for line in lines)
+
+
+def test_resolve_leaves_other_anonymous_classes_alone(patch):
+    """An inline restriction that is not to a code list is not a value domain."""
+    lines, _ = patch.resolve_code_lists(DRAWN_CODE_LIST)
+    assert 'Class 1f2e3d4c5b6a79880000000000000000 as " " ' in lines
+
+
+def test_a_resolved_code_list_ends_up_as_an_attribute(patch):
+    lines, domains = patch.resolve_code_lists(DRAWN_CODE_LIST)
+    lines = patch.promote_references(lines, domains)
+    lines = patch.demote_value_domains(lines, domains)
+    assert f'{ANIMAL} : :genus : :Genus [1..1] ' in lines
+    assert not any("-->" in line for line in lines)
 
 
 def test_the_passes_compose(patch, tmp_path):

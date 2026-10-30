@@ -29,32 +29,6 @@
 :AnimalHealthStatus a owl:Class .
 
 # ==============================================================================
-# CODE LIST CLASSES
-# ==============================================================================
-
-:Genus a owl:Class .
-
-:Gender a owl:Class .
-
-:AnimalTypeOfUse a owl:Class .
-
-:EquidTypeOfUsage a owl:Class .
-
-:AnimalHistoryState a owl:Class .
-
-:EquidWithersClass a owl:Class .
-
-:EquidNotificationState a owl:Class .
-
-:NotificationType a owl:Class .
-
-:HealthStatusType a owl:Class .
-
-:LocalUnitEpizooticStatus a owl:Class .
-
-:AnimalEpizooticStatus a owl:Class .
-
-# ==============================================================================
 # OBJECT PROPERTIES
 # ==============================================================================
 

@@ -1,0 +1,97 @@
+# ==============================================================================
+# CODE LIST VALUES IN THE TVD INTERFACE
+#
+# Seven code lists take their codes from an enum of the TVD AnimalTracing
+# openAPI; the property shapes of model.shacl.ttl name that enum with
+# :animalTracingTerm, and the code of a value is the enum member.
+#
+# The other four lists -- Bewegungstyp, Typ Gesundheitsstatus and the two
+# Seuchenstatus lists -- come from the Wertebereich tables of the Hilfsmittel.
+# The interface splits notification types per species and holds the health
+# statuses as one enum per disease, partly under other names. This file
+# records, per value, its counterparts in the interface: an enum member as
+# Schema.Member, or a whole schema. A value without a counterpart, such as
+# DayStay, is not listed.
+#
+# The statements are kept apart from src/rdf/data/codelists.ttl, because the
+# template's code list shapes are closed. Annex D of the Hilfsmittel is
+# generated from this file (generate_animaltracing_docs.py), and
+# tests/test_code_lists.py checks it against the interface.
+# ==============================================================================
+
+@prefix :                       <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix notificationtype:       <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
+@prefix healthstatustype:       <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/> .
+@prefix localunithealthstatus:  <https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/> .
+@prefix animalhealthstatus:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/> .
+
+
+# ------------------------------------------------------------------------------
+# Bewegungstyp
+# ------------------------------------------------------------------------------
+
+notificationtype:Birth :animalTracingTerm "EnumCattleNotificationType.Birth",
+        "EnumSheepNotificationType.Birth",
+        "EnumGoatNotificationType.Birth" .
+
+notificationtype:Arrival :animalTracingTerm "EnumCattleNotificationType.Arrival",
+        "EnumSheepNotificationType.Arrival",
+        "EnumGoatNotificationType.Arrival" .
+
+notificationtype:Leaving :animalTracingTerm "EnumCattleNotificationType.Leaving",
+        "EnumSheepNotificationType.Leaving",
+        "EnumGoatNotificationType.Leaving" .
+
+notificationtype:Slaughter :animalTracingTerm "EnumCattleNotificationType.Slaughtering",
+        "EnumSheepNotificationType.Slaughter",
+        "EnumGoatNotificationType.Slaughter" .
+
+notificationtype:Deceased :animalTracingTerm "EnumCattleNotificationType.Deceased",
+        "EnumSheepNotificationType.Deceased",
+        "EnumGoatNotificationType.Deceased" .
+
+notificationtype:Import :animalTracingTerm "EnumCattleNotificationType.Import",
+        "EnumSheepNotificationType.Import",
+        "EnumGoatNotificationType.Import" .
+
+notificationtype:Export :animalTracingTerm "EnumCattleNotificationType.Export",
+        "EnumSheepNotificationType.Export",
+        "EnumGoatNotificationType.Export" .
+
+notificationtype:OnFarmSlaughter :animalTracingTerm "EnumCattleNotificationType.YardSlaughter",
+        "EnumSheepNotificationType.OnFarmSlaughter",
+        "EnumGoatNotificationType.OnFarmSlaughter" .
+
+notificationtype:DeathBirth :animalTracingTerm "EnumCattleNotificationType.DeathBirth",
+        "EnumSheepNotificationType.DeathBirth",
+        "EnumGoatNotificationType.DeathBirth" .
+
+notificationtype:FirstRegistration :animalTracingTerm "EnumSheepNotificationType.FirstRegistration",
+        "EnumGoatNotificationType.FirstRegistration" .
+
+
+# ------------------------------------------------------------------------------
+# Typ Gesundheitsstatus
+# ------------------------------------------------------------------------------
+
+healthstatustype:EpizooticStatus :animalTracingTerm "BvdState",
+        "FootRotState" .
+
+
+# ------------------------------------------------------------------------------
+# Seuchenstatus örtliche Einheit
+# ------------------------------------------------------------------------------
+
+localunithealthstatus:Blocked :animalTracingTerm "BvdState.Blocked",
+        "FootRotState.Blocked" .
+
+localunithealthstatus:Free :animalTracingTerm "FootRotState.Free" .
+
+localunithealthstatus:NotTested :animalTracingTerm "FootRotState.NotTested" .
+
+
+# ------------------------------------------------------------------------------
+# Seuchenstatus Einzeltier
+# ------------------------------------------------------------------------------
+
+animalhealthstatus:Vaccinated :animalTracingTerm "EnumCattleLsdState.Vaccinated" .

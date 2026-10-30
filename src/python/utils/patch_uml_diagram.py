@@ -1,18 +1,22 @@
 """Complete a PlantUML class diagram drawn by SHACL Play.
 
 SHACL Play reads the shapes graph alone, and decides how to render a reference
-from the target shape's own constraints. Three consequences follow, one per pass
-below:
+from the target shape's own constraints. A first pass, `resolve_code_lists`,
+names the code lists: a coded attribute is restricted to a schema:CategoryCode
+whose schema:inCodeSet is its list, and SHACL Play draws that inline restriction
+as an anonymous class holding only `schema:inCodeSet = :codelist/Genus`. The
+pass replaces each such class by the list it names, `":Genus"`, so that the
+passes after it see a code list as a class of its own. Three consequences of
+SHACL Play's rendering follow, one per pass below:
 
 1. `promote_references` -- a reference whose target shape declares no
    constraints of its own is emitted as a box attribute instead of an
    association, so the same kind of relation is drawn two different ways
    depending on how richly the *other* class happens to be described.
-2. `demote_value_domains` -- a code list class is drawn as a class in its own
-   right whenever some coded attribute is mandatory, and as an attribute
-   otherwise. A Wertebereich is a value domain, not an entity, so it is drawn
-   the way UML draws an enumeration-typed attribute: on the class that uses it.
-   The lists themselves have their own chapter in the document.
+2. `demote_value_domains` -- a code list is drawn as a class with an arrow
+   pointing at it. A Wertebereich is a value domain, not an entity, so it is
+   drawn the way UML draws an enumeration-typed attribute: on the class that
+   uses it. The lists themselves have their own chapter in the document.
 3. `add_generalizations` -- rdfs:subClassOf axioms live in the ontology, which
    SHACL Play never reads, so a subclass with no property shapes of its own
    ends up as an isolated box.
@@ -40,7 +44,7 @@ import re
 from pathlib import Path
 
 from rdflib import Graph
-from rdflib.namespace import RDF, RDFS, SKOS
+from rdflib.namespace import RDFS
 
 CLASS_RE = re.compile(r'^Class\s+"(?P<title>[^"]+)"')
 TARGET_RE = re.compile(r"\(([^)]+)\)\s*$")
@@ -61,6 +65,10 @@ TITLE_RE = re.compile(r'"[^"]*\((:[^)]+)\)"')
 # MEMBER_RE cannot stand in: it is anchored, and reads association labels only.
 BOX_MEMBER_RE = re.compile(
     r'^"[^"]+"\s*:\s*\+?\S+(?:\s*:\s*\S+)?\s*\[(?P<cardinality>[^\]]+)\]\s*$')
+# The anonymous class SHACL Play draws for an inline sh:node restriction, and
+# the one member it gives the class when the restriction is to a code list.
+INLINE_CLASS_RE = re.compile(r'^Class\s+(?P<id>\w+)\s+as\s+" "\s*$')
+IN_CODE_SET_RE = re.compile(r'^"(?P<id>\w+)"\s*:\s*schema:inCodeSet\s*=\s*(?P<list>\S+)\s*$')
 # The cardinality SHACL Play writes for a property shape with sh:maxCount 0.
 EXCLUDED = "0..0"
 
@@ -92,18 +100,24 @@ def drawn_classes(lines):
     return titles
 
 
-def value_domains(path):
-    """Local names of the classes that type a skos:Concept, i.e. the Wertebereiche."""
-    if not path:
-        return set()
-    graph = Graph(bind_namespaces="none")
-    graph.parse(path, format="turtle")
-    return {
-        local_name(concept_class)
-        for concept in graph.subjects(RDF.type, SKOS.Concept)
-        for concept_class in graph.objects(concept, RDF.type)
-        if concept_class != SKOS.Concept
-    }
+def resolve_code_lists(lines):
+    """Replaces each anonymous class that stands for a code list restriction by
+    the list it names, and returns the lines and the local names of the lists,
+    i.e. the Wertebereiche."""
+    lists = {}
+    for line in lines:
+        match = IN_CODE_SET_RE.match(line)
+        if match:
+            lists[match.group("id")] = local_name(match.group("list"))
+    resolved = []
+    for line in lines:
+        inline = INLINE_CLASS_RE.match(line)
+        if (inline and inline.group("id") in lists) or IN_CODE_SET_RE.match(line):
+            continue
+        for node, name in lists.items():
+            line = line.replace(f'"{node}"', f'":{name}"')
+        resolved.append(line)
+    return resolved, set(lists.values())
 
 
 def promote_references(lines, domains):
@@ -221,16 +235,15 @@ def main():
     parser = argparse.ArgumentParser(description="Complete a SHACL Play PlantUML diagram.")
     parser.add_argument("-i", "--input", required=True, help="PlantUML file (.puml), edited in place")
     parser.add_argument("-o", "--ontology", required=True, help="Ontology file (.ttl) declaring rdfs:subClassOf")
-    parser.add_argument("-c", "--code-lists", help="SKOS file (.ttl) whose concept types are value domains")
     args = parser.parse_args()
 
     ontology = Graph(bind_namespaces="none")
     ontology.parse(args.ontology, format="turtle")
-    domains = value_domains(args.code_lists)
 
     puml = Path(args.input)
     lines = puml.read_text(encoding="utf-8").splitlines()
 
+    lines, domains = resolve_code_lists(lines)
     lines = promote_references(lines, domains)
     lines = demote_value_domains(lines, domains)
     lines = add_generalizations(lines, ontology)

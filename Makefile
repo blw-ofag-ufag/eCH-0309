@@ -25,8 +25,8 @@ PLANTUML_JAR       := $(VENV_BIN)/plantuml.jar
 VENV_JAVA_DIR      := $(VENV)/java17
 JAVA17             := $(VENV_JAVA_DIR)/jdk-17.0.2/bin/java
 RSCRIPT          ?= Rscript
-R_REQUIREMENTS   := $(wildcard $(R_DIR)/requirements.txt)
-R_STAMP          := $(if $(R_REQUIREMENTS),$(VENV)/.r-packages-installed.stamp)
+R_DESCRIPTION    := $(wildcard $(R_DIR)/DESCRIPTION)
+R_STAMP          := $(if $(R_DESCRIPTION),$(VENV)/.r-packages-installed.stamp)
 
 # Inputs
 ONTO             := src/rdf/ontology/model.owl.ttl
@@ -64,7 +64,7 @@ GREY             := \033[0;90m
 BOLD       := \033[1;37m
 NC               := \033[0m
 
-.PHONY: all help robot test docs clean check-python venv install-dependencies install-r-packages setup build delete publish stamp-metadata generate-shacl-docs generate-glossary-docs generate-code-list-docs
+.PHONY: all help robot test docs clean check-python venv install-dependencies install-r-packages setup build delete publish stamp-metadata generate-shacl-docs generate-glossary-docs generate-animaltracing-docs
 
 # Default target
 all: test docs ## Run the tests and build the documentation (default)
@@ -105,11 +105,13 @@ $(VENV)/.requirements-installed.stamp: $(PYTHON_DIR)/requirements.txt | $(VENV_P
 
 install-dependencies: $(VENV)/.requirements-installed.stamp
 
-# 4. Install R packages (the stamp is only defined if src/r/requirements.txt exists)
-$(VENV)/.r-packages-installed.stamp: $(R_REQUIREMENTS) $(R_DIR)/utils/install_packages.R | $(VENV_PYTHON)
+# 4. Install the R packages of src/r/DESCRIPTION and the system libraries they need
+#    with pak (the stamp is only defined if the DESCRIPTION file exists)
+$(VENV)/.r-packages-installed.stamp: $(R_DESCRIPTION) | $(VENV_PYTHON)
 	@command -v $(RSCRIPT) >/dev/null 2>&1 || \
 		(printf "$(RED)ERROR: R not found (Rscript). Install R or delete $(R_DIR)/ if the documentation does not use R.$(NC)\n"; exit 1)
-	@printf "$(GREY)"; $(RSCRIPT) $(R_DIR)/utils/install_packages.R $(R_REQUIREMENTS) || { printf "$(NC)"; exit 1; }; printf "$(NC)"
+	@printf "$(BOLD)[*] Installing R packages...$(NC)\n"
+	@printf "$(GREY)"; $(RSCRIPT) -e 'if (!requireNamespace("pak", quietly = TRUE)) install.packages("pak", repos = "https://cloud.r-project.org"); pak::local_install_deps("$(R_DIR)")' || { printf "$(NC)"; exit 1; }; printf "$(NC)"
 	@touch $@
 
 install-r-packages: $(R_STAMP)
@@ -221,7 +223,7 @@ build: $(PROCESSED_DATA) ## Build the graph: integration, reasoning, SPARQL proc
 # BUILD DOCUMENTATION
 # ==============================================================================
 
-$(DOCS_UML_PNG): $(SHAPES) $(ONTO) src/rdf/data/code_lists.skos.ttl src/python/utils/patch_uml_diagram.py | $(IMG_DIR) $(LOG_DIR) $(SHACL_PLAY_JAR) $(PLANTUML_JAR) $(JAVA17)
+$(DOCS_UML_PNG): $(SHAPES) $(ONTO) src/python/utils/patch_uml_diagram.py | $(IMG_DIR) $(LOG_DIR) $(SHACL_PLAY_JAR) $(PLANTUML_JAR) $(JAVA17)
 	@mkdir -p $(DOCS_IMG_DIR)
 	@printf "$(BOLD)[*] Extracting UML structure via SHACL Play...$(NC)\n"
 	@printf "$(GREY)"; \
@@ -231,18 +233,12 @@ $(DOCS_UML_PNG): $(SHAPES) $(ONTO) src/rdf/data/code_lists.skos.ttl src/python/u
 	@printf "$(BOLD)[*] Rendering PNG with PlantUML (Pure Java Smetana engine)...$(NC)\n"
 	@printf "$(GREY)"; \
 	awk '/@startuml/{print;print "!pragma layout smetana";next} /^remove @unlinked/{next} 1' $(UML_PUML) > $(UML_PUML).tmp && mv $(UML_PUML).tmp $(UML_PUML); \
-	$(VENV_PYTHON) src/python/utils/patch_uml_diagram.py -i $(UML_PUML) -o $(ONTO) -c src/rdf/data/code_lists.skos.ttl || { printf "$(NC)"; exit 1; }; \
+	$(VENV_PYTHON) src/python/utils/patch_uml_diagram.py -i $(UML_PUML) -o $(ONTO) || { printf "$(NC)"; exit 1; }; \
 	$(JAVA17) -jar $(PLANTUML_JAR) -tpng $(UML_PUML) -o $(shell cd $(IMG_DIR) && pwd) || { printf "$(NC)"; exit 1; }; \
 	cp $(IMG_DIR)/uml.png $(DOCS_UML_PNG); \
 	printf "$(NC)"
 
-generate-code-list-docs: src/rdf/data/code_lists.skos.ttl $(PREFIXES) src/python/utils/generate_code_list_docs.py | $(VENV)/.requirements-installed.stamp ## Generate the code list pages from the SKOS code lists
-	@printf "$(BOLD)[*] Generating code list documentation...$(NC)\n"
-	@printf "$(GREY)"; \
-	$(VENV_PYTHON) src/python/utils/generate_code_list_docs.py -i src/rdf/data/code_lists.skos.ttl -d $(DOCS_DIR) -p $(PREFIXES) || { printf "$(NC)"; exit 1; }; \
-	printf "$(NC)"
-
-generate-shacl-docs: $(SHAPES) $(PREFIXES) $(PROCESSED_DATA) $(DOCS_DIR)/_ech.yml src/python/utils/generate_shacl_docs.py | $(VENV)/.requirements-installed.stamp ## Generate the data model pages from the SHACL shapes
+generate-shacl-docs: $(SHAPES) $(PREFIXES) $(PROCESSED_DATA) $(DOCS_DIR)/_ech.yml src/python/utils/generate_shacl_docs.py | $(VENV)/.requirements-installed.stamp ## Generate the data model and code list pages from the SHACL shapes and the graph
 	@printf "$(BOLD)[*] Generating SHACL documentation...$(NC)\n"
 	@printf "$(GREY)"; \
 	$(VENV_PYTHON) src/python/utils/generate_shacl_docs.py -i $(SHAPES) -d $(DOCS_DIR) -p $(PREFIXES) -g $(PROCESSED_DATA) -c $(DOCS_DIR)/_ech.yml || { printf "$(NC)"; exit 1; }; \
@@ -254,7 +250,13 @@ generate-glossary-docs: src/rdf/data/glossary.skos.ttl $(PREFIXES) src/python/ut
 	$(VENV_PYTHON) src/python/utils/generate_glossary_docs.py -i src/rdf/data/glossary.skos.ttl -d $(DOCS_DIR) -p $(PREFIXES) || { printf "$(NC)"; exit 1; }; \
 	printf "$(NC)"
 
-docs: $(SHACL_REPORT) generate-shacl-docs generate-glossary-docs generate-code-list-docs $(DOCS_UML_PNG) $(R_STAMP) ## Generate the data model and glossary pages and render the documentation (website, PDF)
+generate-animaltracing-docs: src/rdf/data/codelists.ttl $(SHAPES) src/rdf/mappings/animaltracing.ttl src/python/utils/generate_animaltracing_docs.py src/python/utils/generate_shacl_docs.py | $(VENV)/.requirements-installed.stamp ## Generate the annex on the TVD interface from the code lists and their counterparts
+	@printf "$(BOLD)[*] Generating TVD interface annex...$(NC)\n"
+	@printf "$(GREY)"; \
+	$(VENV_PYTHON) src/python/utils/generate_animaltracing_docs.py -c src/rdf/data/codelists.ttl -s $(SHAPES) -m src/rdf/mappings/animaltracing.ttl -d $(DOCS_DIR) || { printf "$(NC)"; exit 1; }; \
+	printf "$(NC)"
+
+docs: $(SHACL_REPORT) generate-shacl-docs generate-glossary-docs generate-animaltracing-docs $(DOCS_UML_PNG) $(R_STAMP) ## Generate the data model and glossary pages and render the documentation (website, PDF)
 	@printf "$(BOLD)[*] Rendering documentation with Quarto...$(NC)\n"
 	@printf "$(GREY)"; \
 	quarto render docs > $(QUARTO_LOG) 2>&1 || { printf "$(NC)\n$(RED)ERROR: Quarto rendering failed. See log below:$(NC)\n$(GREY)"; cat $(QUARTO_LOG); printf "$(NC)\n"; exit 1; }; \
@@ -319,5 +321,5 @@ publish: test stamp-metadata delete ## Test, then replace the graph on LINDAS wi
 
 clean: ## Remove all build artifacts, caches, the virtual environment and generated pages
 	@printf "$(BOLD)[*] Cleaning build artifacts...$(NC)\n"
-	@rm -rf $(BUILD_DIR) $(VENV) docs/*/entities.md docs/*/glossary.md docs/*/code-lists.md docs/*/namespaces.md
+	@rm -rf $(BUILD_DIR) $(VENV) docs/*/animaltracing.md docs/*/codelists.md docs/*/entities.md docs/*/glossary.md docs/*/namespaces.md
 	@find . -path ./.git -prune -o \( -name __pycache__ -o -name .pytest_cache -o -name .quarto -o -name '*_files' -o -name '*_cache' -o -name '*.quarto_ipynb' -o -name .Rhistory -o -name .RData \) -prune -exec rm -rf {} +

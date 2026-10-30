@@ -1,21 +1,24 @@
 """Compares the code lists against the TVD AnimalTracing openAPI.
 
-src/rdf/data/code_lists.skos.ttl is maintained by hand: the Wertebereiche are
-part of the Hilfsmittel, and describing a value or adding a translation has to
-survive. This module is what keeps it honest, by reporting drift in both
-directions:
+src/rdf/data/codelists.ttl is maintained by hand: the Wertebereiche are part of
+the Hilfsmittel, and describing a value or adding a translation has to survive.
+This module is what keeps it honest, by reporting drift in both directions:
 
-- a concept whose :animalTracingTerm no longer resolves, because the interface
-  renamed or dropped something;
+- a code value the interface no longer carries, because it renamed or dropped
+  something;
 - a value the interface carries that the file neither holds nor lists below as
   deliberately absent.
 
-The second direction only applies to the schemes that derive from an enum, which
-say so by naming it on the scheme itself. The other four take their values from
-the Wertebereich tables of the Hilfsmittel and reference the interface only where
-a counterpart happens to exist, so they are not meant to exhaust any enum.
+Only the lists derived from an enum are compared. A list says so through the
+data model: the property shape that restricts its values to the list names the
+enum with :animalTracingTerm, and the schema:codeValue of each of its values is
+the enum member. The other four lists take their values from the Wertebereich
+tables of the Hilfsmittel, so they are not meant to exhaust any enum. Where one
+of their values has a counterpart in the interface, under another name or in
+several enums, src/rdf/mappings/animaltracing.ttl records it, and the interface
+is checked to still carry it.
 
-That direction is the one a generator cannot give you. A new value in the
+The second direction is the one a generator cannot give you. A new value in the
 openAPI is a decision for the Fachgruppe, not something to import silently.
 """
 
@@ -25,13 +28,16 @@ import urllib.request
 from pathlib import Path
 
 import pytest
-from rdflib import RDF, Graph, URIRef
-from rdflib.namespace import SKOS
+from rdflib import Graph, Namespace, URIRef
+from rdflib.namespace import SH
 
-OPENAPI_URL = "https://test-03-tvd-api-at.identitas.ch/open-api/v1.0"
+OPENAPI_URL = "https://test-01-tvd-api-at.identitas.ch/open-api/v1.0"
 NS = "https://agriculture.ld.admin.ch/eCH-0309/1/"
+SCHEMA = Namespace("http://schema.org/")
 ANIMAL_TRACING_TERM = URIRef(NS + "animalTracingTerm")
-CODE_LISTS = Path("src/rdf/data/code_lists.skos.ttl")
+CODE_LISTS = Path("src/rdf/data/codelists.ttl")
+SHAPES = Path("src/rdf/shapes/model.shacl.ttl")
+COUNTERPARTS = Path("src/rdf/mappings/animaltracing.ttl")
 
 # Values the interface offers and the Hilfsmittel does not take, with the reason.
 # Adding one here is a decision; leaving one out makes the test fail.
@@ -77,58 +83,96 @@ def members(openapi):
 
 
 @pytest.fixture(scope="module")
-def graph():
-    if not CODE_LISTS.exists():
-        pytest.skip(f"Datei nicht gefunden: {CODE_LISTS}")
-    return Graph().parse(CODE_LISTS, format="turtle")
+def derived():
+    """Maps each enum a list derives from to the code values of that list."""
+    for path in (CODE_LISTS, SHAPES):
+        if not path.exists():
+            pytest.skip(f"Datei nicht gefunden: {path}")
+    graph = Graph().parse(CODE_LISTS, format="turtle").parse(SHAPES, format="turtle")
+    enums = {}
+    for prop, enum in graph.subject_objects(ANIMAL_TRACING_TERM):
+        for node in graph.objects(prop, SH.node):
+            for nested in graph.objects(node, SH.property):
+                if graph.value(nested, SH.path) != SCHEMA.inCodeSet:
+                    continue
+                code_list = graph.value(nested, SH.hasValue)
+                enums.setdefault(str(enum), set()).update(
+                    str(graph.value(code, SCHEMA.codeValue))
+                    for code in graph.objects(code_list, SCHEMA.hasCategoryCode))
+    return enums
 
 
-def terms(graph):
-    return sorted({str(o) for o in graph.objects(None, ANIMAL_TRACING_TERM)})
-
-
-def test_every_mapping_resolves(graph, members):
-    """Each :animalTracingTerm names a schema that exists, and a value it holds."""
+def test_every_code_value_resolves(derived, members):
+    """Each enum a list derives from exists, and holds every code value of the list."""
     unresolved = []
-    for term in terms(graph):
-        schema, _, value = term.partition(".")
-        if schema not in members:
-            unresolved.append(f"{term}: Schema «{schema}» gibt es nicht mehr")
-        elif value and value not in members[schema]:
-            unresolved.append(f"{term}: «{value}» gibt es in {schema} nicht mehr")
+    for enum, values in sorted(derived.items()):
+        if enum not in members:
+            unresolved.append(f"Schema «{enum}» gibt es nicht mehr")
+            continue
+        for value in sorted(values - members[enum]):
+            unresolved.append(f"{enum}.{value}: «{value}» gibt es in {enum} nicht mehr")
     assert not unresolved, "Die Schnittstelle hat sich geändert:\n  " + "\n  ".join(unresolved)
 
 
-def derived_schemes(graph):
-    """Enums a scheme declares itself derived from, by naming one on the scheme."""
-    return {str(term)
-            for scheme in graph.subjects(RDF.type, SKOS.ConceptScheme)
-            for term in graph.objects(scheme, ANIMAL_TRACING_TERM)}
-
-
-def test_no_value_of_a_derived_enum_is_unaccounted_for(graph, members):
-    """Every value of an enum a scheme derives from is adopted or declared absent."""
-    adopted = {}
-    for term in terms(graph):
-        schema, _, value = term.partition(".")
-        if value:
-            adopted.setdefault(schema, set()).add(value)
-
+def test_no_value_of_a_derived_enum_is_unaccounted_for(derived, members):
+    """Every value of an enum a list derives from is adopted or declared absent."""
     unaccounted = []
-    for schema in sorted(derived_schemes(graph) & set(members)):
-        known = adopted.get(schema, set()) | set(NOT_ADOPTED.get(schema, {}))
-        for value in sorted(members[schema] - known):
+    for enum in sorted(set(derived) & set(members)):
+        known = derived[enum] | set(NOT_ADOPTED.get(enum, {}))
+        for value in sorted(members[enum] - known):
             unaccounted.append(
-                f"{schema}.{value} ist neu in der Schnittstelle und weder übernommen "
+                f"{enum}.{value} ist neu in der Schnittstelle und weder übernommen "
                 f"noch in NOT_ADOPTED begründet")
     assert not unaccounted, "\n  ".join([""] + unaccounted)
 
 
-def test_values_declared_as_not_adopted_are_absent(graph):
+def test_values_declared_as_not_adopted_are_absent(derived):
     """What NOT_ADOPTED lists must really be absent, or the reason is stale."""
-    present = set(terms(graph))
-    stale = [f"{schema}.{value} ({reason})"
-             for schema, values in NOT_ADOPTED.items()
+    stale = [f"{enum}.{value} ({reason})"
+             for enum, values in NOT_ADOPTED.items()
              for value, reason in values.items()
-             if f"{schema}.{value}" in present]
+             if value in derived.get(enum, set())]
     assert not stale, "In NOT_ADOPTED begründet, aber trotzdem vorhanden:\n  " + "\n  ".join(stale)
+
+
+def test_every_enum_of_not_adopted_is_derived_from(derived):
+    """A NOT_ADOPTED entry for an enum no list derives from would never be checked."""
+    orphans = sorted(set(NOT_ADOPTED) - set(derived))
+    assert not orphans, "Keine Liste leitet sich ab von: " + ", ".join(orphans)
+
+
+@pytest.fixture(scope="module")
+def counterparts():
+    """The counterparts in the interface of the values of the Hilfsmittel lists."""
+    if not COUNTERPARTS.exists():
+        pytest.skip(f"Datei nicht gefunden: {COUNTERPARTS}")
+    graph = Graph().parse(COUNTERPARTS, format="turtle")
+    found = {}
+    for value, term in graph.subject_objects(ANIMAL_TRACING_TERM):
+        found.setdefault(graph.namespace_manager.normalizeUri(value), []).append(str(term))
+    return found
+
+
+def test_counterparts_resolve(counterparts, members):
+    """Each counterpart recorded for a Hilfsmittel value is still in the interface."""
+    unresolved = []
+    for value, terms in sorted(counterparts.items()):
+        for term in sorted(terms):
+            schema, _, member = term.partition(".")
+            if schema not in members:
+                unresolved.append(f"{value}: Schema «{schema}» gibt es nicht mehr")
+            elif member and member not in members[schema]:
+                unresolved.append(f"{value}: «{member}» gibt es in {schema} nicht mehr")
+    assert not unresolved, "Die Schnittstelle hat sich geändert:\n  " + "\n  ".join(unresolved)
+
+
+def test_counterparts_are_of_existing_values():
+    """A value in animaltracing.ttl that is no value of a code list is stale."""
+    for path in (CODE_LISTS, COUNTERPARTS):
+        if not path.exists():
+            pytest.skip(f"Datei nicht gefunden: {path}")
+    codes = set(Graph().parse(CODE_LISTS, format="turtle").subjects(SCHEMA.inCodeSet, None))
+    graph = Graph().parse(COUNTERPARTS, format="turtle")
+    stale = sorted(graph.namespace_manager.normalizeUri(value)
+                   for value in set(graph.subjects(ANIMAL_TRACING_TERM, None)) - codes)
+    assert not stale, "Kein Wert der Codelisten: " + ", ".join(stale)

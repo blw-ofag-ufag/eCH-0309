@@ -77,7 +77,9 @@ Schnittstellen: AnimalTracing API, Technische Servicebeschreibung AnimalTracing
 
 # Wertebereiche {#sec-code-lists}
 
-{{< include code-lists.md >}}
+Die folgenden Wertebereiche legen die zulässigen Werte der entsprechenden Attribute des Datenmodells fest (@sec-data-model). Jeder Wertebereich ist als `schema:CategoryCodeSet` modelliert und jeder seiner Werte als `schema:CategoryCode`. Wie die Codes den Enumerationen der TVD-Schnittstelle entsprechen, zeigt [Anhang D](#sec-appendix-d).
+
+{{< include codelists.md >}}
 
 # Sicherheitsaspekte {#sec-safety-consideration}
 
@@ -113,8 +115,16 @@ Diese Bestimmungen gelten jedoch nur für die von eCH erarbeiteten Standards, ni
 
 {{< include glossary.md >}}
 
-# Anhang D - Änderungen gegenüber der Vorversion {#sec-appendix-d .appendix}
+# Anhang D - Abbildung auf die TVD-Schnittstelle {#sec-appendix-d .appendix}
 
-# Anhang E - Abbildungsverzeichnis {#sec-appendix-e .appendix}
+Bei den Wertebereichen in @tbl-animaltracing-enums ist der Code eines Werts das gleichnamige Element einer Enumeration der TVD-Schnittstelle AnimalTracing.
 
-# Anhang F - Tabellenverzeichnis {#sec-appendix-f .appendix}
+Bei Bewegungstyp, Typ Gesundheitsstatus und den beiden Seuchenstatus-Wertebereichen führt die Schnittstelle die Bewegungstypen je Nutztierart und die Gesundheitsstatus je Seuche in eigenen Enumerationen, teils unter anderem Namen. Die folgenden Tabellen zeigen, welche Elemente der Schnittstelle einem Wert entsprechen; Werte ohne Entsprechung in der Schnittstelle sind nicht aufgeführt.
+
+{{< include animaltracing.md >}}
+
+# Anhang E - Änderungen gegenüber der Vorversion {#sec-appendix-e .appendix}
+
+# Anhang F - Abbildungsverzeichnis {#sec-appendix-f .appendix}
+
+# Anhang G - Tabellenverzeichnis {#sec-appendix-g .appendix}
