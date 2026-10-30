@@ -1,6 +1,6 @@
 # Hilfsmittel Tierverkehrsdaten
 
-19. Oktober 2026
+30. Oktober 2026
 
 - [Hinweis](#sec-note)
 - [<span class="toc-section-number">1</span>
@@ -36,28 +36,28 @@
     Einheit](#sec-nodeshape-localunitshape)
 - [<span class="toc-section-number">4</span>
   Wertebereiche](#sec-code-lists)
-  - [<span class="toc-section-number">4.1</span> Seuchenstatus
-    Einzeltier](#sec-codelist-animalhealthstatus)
+  - [<span class="toc-section-number">4.1</span>
+    Bewegungstyp](#sec-codelist-notificationtype)
   - [<span class="toc-section-number">4.2</span>
-    Tiergeschichtestatus](#sec-codelist-animalhistorystate)
-  - [<span class="toc-section-number">4.3</span> Zweck (Rinder, Schafe,
-    Ziegen)](#sec-codelist-animaltypeofuse)
+    Geschlecht](#sec-codelist-gender)
+  - [<span class="toc-section-number">4.3</span>
+    Grössenkategorie](#sec-codelist-equidwithersclass)
   - [<span class="toc-section-number">4.4</span> Meldestatus
     Equide](#sec-codelist-equidnotificationstate)
-  - [<span class="toc-section-number">4.5</span> Zweck
-    (Equiden)](#sec-codelist-equidtypeofusage)
-  - [<span class="toc-section-number">4.6</span>
-    Grössenkategorie](#sec-codelist-equidwithersclass)
-  - [<span class="toc-section-number">4.7</span>
-    Geschlecht](#sec-codelist-gender)
-  - [<span class="toc-section-number">4.8</span>
+  - [<span class="toc-section-number">4.5</span>
     Nutztierart](#sec-codelist-genus)
+  - [<span class="toc-section-number">4.6</span> Seuchenstatus
+    Einzeltier](#sec-codelist-animalepizooticstatus)
+  - [<span class="toc-section-number">4.7</span> Seuchenstatus örtliche
+    Einheit](#sec-codelist-localunitepizooticstatus)
+  - [<span class="toc-section-number">4.8</span>
+    Tiergeschichtestatus](#sec-codelist-animalhistorystate)
   - [<span class="toc-section-number">4.9</span> Typ
     Gesundheitsstatus](#sec-codelist-healthstatustype)
-  - [<span class="toc-section-number">4.10</span> Seuchenstatus örtliche
-    Einheit](#sec-codelist-localunithealthstatus)
-  - [<span class="toc-section-number">4.11</span>
-    Bewegungstyp](#sec-codelist-notificationtype)
+  - [<span class="toc-section-number">4.10</span> Zweck
+    (Equiden)](#sec-codelist-equidtypeofusage)
+  - [<span class="toc-section-number">4.11</span> Zweck (Rinder, Schafe,
+    Ziegen)](#sec-codelist-animaltypeofuse)
 - [<span class="toc-section-number">5</span>
   Sicherheitsaspekte](#sec-safety-consideration)
 - [<span class="toc-section-number">6</span>
@@ -70,12 +70,14 @@
   Prüfung](#sec-appendix-b)
 - [<span class="toc-section-number">10</span> Anhang C - Abkürzungen und
   Glossar](#sec-appendix-c)
-- [<span class="toc-section-number">11</span> Anhang D - Änderungen
-  gegenüber der Vorversion](#sec-appendix-d)
-- [<span class="toc-section-number">12</span> Anhang E -
-  Abbildungsverzeichnis](#sec-appendix-e)
+- [<span class="toc-section-number">11</span> Anhang D - Abbildung auf
+  die TVD-Schnittstelle](#sec-appendix-d)
+- [<span class="toc-section-number">12</span> Anhang E - Änderungen
+  gegenüber der Vorversion](#sec-appendix-e)
 - [<span class="toc-section-number">13</span> Anhang F -
-  Tabellenverzeichnis](#sec-appendix-f)
+  Abbildungsverzeichnis](#sec-appendix-f)
+- [<span class="toc-section-number">14</span> Anhang G -
+  Tabellenverzeichnis](#sec-appendix-g)
 
 # Hinweis
 
@@ -200,10 +202,12 @@ Names*](https://www.w3.org/TR/turtle/#prefixed-name) aufgelöst werden
 Tabelle 1: In eCH-0309 – Hilfsmittel Tierverkehrsdaten verwendete
 Namespaces.
 
-| Präfix | Namespace                                   |
-|:-------|:--------------------------------------------|
-| :      | https://agriculture.ld.admin.ch/eCH-0309/1/ |
-| xsd:   | http://www.w3.org/2001/XMLSchema#           |
+| Präfix    | Namespace                                            |
+|:----------|:-----------------------------------------------------|
+| :         | https://agriculture.ld.admin.ch/eCH-0309/1/          |
+| codelist: | https://agriculture.ld.admin.ch/eCH-0309/1/codelist/ |
+| schema:   | http://schema.org/                                   |
+| xsd:      | http://www.w3.org/2001/XMLSchema#                    |
 
 </div>
 
@@ -258,9 +262,9 @@ Zielklasse
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 43%" />
-<col style="width: 48%" />
-<col style="width: 8%" />
+<col style="width: 50%" />
+<col style="width: 39%" />
+<col style="width: 9%" />
 </colgroup>
 <thead>
 <tr>
@@ -304,7 +308,8 @@ href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
 href="https://agriculture.ld.admin.ch/eCH-0309/1/genus">:genus</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/Genus">:Genus</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-genus">Nutztierart</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
@@ -313,7 +318,8 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/Genus">:Genus</a></li>
 href="https://agriculture.ld.admin.ch/eCH-0309/1/gender">:gender</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/Gender">:Gender</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-gender">Geschlecht</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -339,11 +345,12 @@ href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 <td style="text-align: left;"><strong>TiergeschichteStatus</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>):
 Status der Tiergeschichte zum Abfragedatum. Nicht relevant für Equiden;
-der Objektkatalog führt das Attribut deshalb mit Kardinalität 1, die
-Pflicht gilt aber nur für die übrigen Einzeltiere.</td>
+die Pflicht gilt deshalb nur für die übrigen Einzeltiere.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHistoryState">:AnimalHistoryState</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a
+href="#sec-codelist-animalhistorystate">Tiergeschichtestatus</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -352,16 +359,16 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHistoryState">:AnimalHist
 href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfUse">:typeOfUse</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalTypeOfUse">:AnimalTypeOfUse</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-animaltypeofuse">Zweck (Rinder, Schafe,
+Ziegen)</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Kastriert</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/castrated">:castrated</a>):
-Der Objektkatalog bezeichnet das Attribut als für Equiden nicht
-vorhanden, die openAPI führt es aber auch auf den Equiden-Antworten; die
-Abweichung ist mit Issue #45 bei Identitas angefragt.</td>
+Gibt an, ob das Tier kastriert ist. Gilt auch für Equiden.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: Wahrheitswert (<a
 href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
@@ -373,9 +380,8 @@ href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
 
 ### Regeln
 
-Der Objektkatalog führt den TiergeschichteStatus mit Kardinalität 1,
-bezeichnet ihn für Equiden aber als nicht relevant. Die Pflicht gilt
-deshalb für jedes Einzeltier ausser den Equiden.
+Der TiergeschichteStatus ist für Equiden nicht relevant. Er ist deshalb
+für jedes Einzeltier ausser den Equiden Pflicht.
 
 ## Equide
 
@@ -386,7 +392,7 @@ zusätzlichen, equidenspezifischen Angaben. Die Verantwortung für das
 Meldewesen liegt bei Equiden nicht beim Tierhaltenden, sondern bei der
 Eigentümerin oder beim Eigentümer. Ein Eigentümer ist die rechtliche
 Einheit, in deren Eigentum Equiden sind; der Begriff wird nur für
-Equideneigentümer geführt (Kapitel 3.1.1 des Hilfsmittels).
+Equideneigentümer geführt.
 
 ### Übersicht
 
@@ -404,9 +410,9 @@ Zielklasse
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 44%" />
-<col style="width: 47%" />
-<col style="width: 7%" />
+<col style="width: 53%" />
+<col style="width: 36%" />
+<col style="width: 9%" />
 </colgroup>
 <thead>
 <tr>
@@ -422,7 +428,7 @@ Eigentümerin</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/owner">:owner</a>): Die
 rechtliche Einheit, in deren Eigentum der Equide steht. Bei Equiden
 liegt die Verantwortung für das Meldewesen beim Eigentümer und nicht
-beim Tierhaltenden (Kapitel 3.1.1 des Hilfsmittels).</td>
+beim Tierhaltenden.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a href="#sec-nodeshape-legalunitshape">Rechtliche
 Einheit</a></li>
@@ -434,7 +440,9 @@ Einheit</a></li>
 href="https://agriculture.ld.admin.ch/eCH-0309/1/withersClass">:withersClass</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidWithersClass">:EquidWithersClass</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a
+href="#sec-codelist-equidwithersclass">Grössenkategorie</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
@@ -445,7 +453,9 @@ Equiden führen anstelle des TiergeschichteStatus einen eigenen
 Meldestatus.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidNotificationState">:EquidNotificationState</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-equidnotificationstate">Meldestatus
+Equide</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
@@ -456,25 +466,24 @@ Equiden verwenden einen eigenen Wertebereich: Heimtier oder
 Nutztier.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/EquidTypeOfUsage">:EquidTypeOfUsage</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-equidtypeofusage">Zweck
+(Equiden)</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Identifikation Vater</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/father">:father</a>):
-Equiden führen keinen Vater: die openAPI kennt für sie nur die Mutter
-und die genetische Mutter. Der Objektkatalog nennt im Attribut dagegen
-die UELN des Vatertiers; die Abweichung ist mit Issue #45 bei Identitas
-angefragt.</td>
+Equiden führen keinen Vater; erfasst werden nur die Mutter und die
+genetische Mutter.</td>
 <td style="text-align: left;"></td>
 <td style="text-align: right;">0..0</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>TiergeschichteStatus</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>):
-Im Objektkatalog als «nicht relevant für Equiden» bezeichnet; an seine
-Stelle tritt der Meldestatus.</td>
+Für Equiden nicht relevant; an seine Stelle tritt der Meldestatus.</td>
 <td style="text-align: left;"></td>
 <td style="text-align: right;">0..0</td>
 </tr>
@@ -511,9 +520,9 @@ Zielklasse
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 44%" />
-<col style="width: 47%" />
-<col style="width: 7%" />
+<col style="width: 53%" />
+<col style="width: 36%" />
+<col style="width: 9%" />
 </colgroup>
 <thead>
 <tr>
@@ -539,7 +548,9 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatus
 z. B. Seuchenstatus, Impfstatus, Risikostatus</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/HealthStatusType">:HealthStatusType</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-healthstatustype">Typ
+Gesundheitsstatus</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -548,7 +559,9 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/HealthStatusType">:HealthStatus
 href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalEpizooticStatus">:AnimalEpizooticStatus</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-animalepizooticstatus">Seuchenstatus
+Einzeltier</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -572,9 +585,7 @@ Tierhaltende über Sperren und Seuchenstatus informiert sind; so kann ein
 Ausbreitungsrisiko durch den Tierverkehr minimiert werden. Eine
 Seucheninformation, die auf einer örtlichen Einheit erfasst ist. Neben
 dem Seuchenstatus einer örtlichen Einheit können auch Impf-, Risiko- und
-Laborergebnisse abgebildet werden. In der openAPI-Spezifikation von
-AnimalTracing besteht dafür keine eigene Klasse; die entsprechenden
-Angaben sind dort Attribute der örtlichen Einheit.
+Laborergebnisse abgebildet werden.
 
 ### Übersicht
 
@@ -590,11 +601,11 @@ Zielklasse
 
 ### Eigenschaften
 
-<table style="width:100%;">
+<table style="width:99%;">
 <colgroup>
-<col style="width: 42%" />
-<col style="width: 49%" />
-<col style="width: 7%" />
+<col style="width: 53%" />
+<col style="width: 36%" />
+<col style="width: 9%" />
 </colgroup>
 <thead>
 <tr>
@@ -620,7 +631,9 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatus
 z. B. Seuchenstatus, Impfstatus, Risikostatus</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/HealthStatusType">:HealthStatusType</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-healthstatustype">Typ
+Gesundheitsstatus</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -629,7 +642,9 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/HealthStatusType">:HealthStatus
 href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitEpizooticStatus">:LocalUnitEpizooticStatus</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-localunitepizooticstatus">Seuchenstatus
+örtliche Einheit</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -655,9 +670,7 @@ Ereignisse werden durch die natürlichen Personen der verantwortlichen
 rechtlichen Einheit Tierhaltender gemeldet. Sie umfassen
 Einstallungsmeldungen bei Geflügel, Bewegungsmeldungen bei Schweinen
 sowie Schlachtungsmeldungen von Schweinen (in Stück) und Geflügelgruppen
-(in kg). Für diese Klasse besteht in der openAPI-Spezifikation von
-AnimalTracing kein Gegenstück, da Schweine und Geflügel dort nicht
-abgebildet sind.
+(in kg).
 
 ### Übersicht
 
@@ -675,9 +688,9 @@ Zielklasse
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 46%" />
-<col style="width: 44%" />
-<col style="width: 8%" />
+<col style="width: 52%" />
+<col style="width: 37%" />
+<col style="width: 9%" />
 </colgroup>
 <thead>
 <tr>
@@ -723,7 +736,8 @@ href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
 href="https://agriculture.ld.admin.ch/eCH-0309/1/genus">:genus</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/Genus">:Genus</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-genus">Nutztierart</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
@@ -743,7 +757,8 @@ href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
 href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationType">:notificationType</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/NotificationType">:NotificationType</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-notificationtype">Bewegungstyp</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
@@ -796,7 +811,9 @@ Nutzungsart der Tiergruppe (bei Einzeltieren wird die Nutzungsart auf
 der Klasse «Einzeltier» geführt)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalTypeOfUse">:AnimalTypeOfUse</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-animaltypeofuse">Zweck (Rinder, Schafe,
+Ziegen)</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -842,9 +859,9 @@ Zielklasse
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 46%" />
-<col style="width: 44%" />
-<col style="width: 8%" />
+<col style="width: 53%" />
+<col style="width: 37%" />
+<col style="width: 9%" />
 </colgroup>
 <thead>
 <tr>
@@ -899,7 +916,8 @@ href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
 href="https://agriculture.ld.admin.ch/eCH-0309/1/genus">:genus</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/Genus">:Genus</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-genus">Nutztierart</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
@@ -908,7 +926,8 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/Genus">:Genus</a></li>
 href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationType">:notificationType</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/NotificationType">:NotificationType</a></li>
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-notificationtype">Bewegungstyp</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
@@ -950,8 +969,7 @@ eine natürliche Person. Das Mastersystem für diese Daten ist das
 UID-Register des BFS; das landwirtschaftliche Informationssystem bezieht
 die Daten aus diesem Register über eine Schnittstelle. Der Tierhaltende
 und der Equideneigentümer sind die beiden Ausprägungen der rechtlichen
-Einheit, die in diesem Hilfsmittel vorkommen (Kapitel 3.1.1 des
-Hilfsmittels). Die Attribute sind in
+Einheit, die in diesem Hilfsmittel vorkommen. Die Attribute sind in
 [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf),
 Kapitel 3.1 und 3.2, sowie in
 [eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf),
@@ -977,7 +995,7 @@ ist eine Form des Bewirtschafters, der Tiere hält (LBV Art. 11a); er
 braucht somit eine örtliche Einheit (Tierhaltung). Die Verantwortung für
 das Meldewesen obliegt dem Tierhaltenden für alle Tierkategorien mit
 Ausnahme der Equiden; bei Equiden liegt sie beim Eigentümer oder bei der
-Eigentümerin (Kapitel 3.1.1 des Hilfsmittels). Die Attribute sind in
+Eigentümerin. Die Attribute sind in
 [eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf),
 Kapitel 3.1 und 3.2, beschrieben.
 
@@ -992,12 +1010,6 @@ Zielklasse
 [:AnimalKeeper](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeper)
 
 </div>
-
-### Regeln
-
-Ein Tierhaltender braucht mindestens eine örtliche Einheit (Kapitel
-3.1.1 des Hilfsmittels). Diese Regel ist der Semantikbeschreibung
-entnommen, nicht dem Objektkatalog.
 
 ## Örtliche Einheit
 
@@ -1032,8 +1044,8 @@ Zielklasse
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 53%" />
-<col style="width: 35%" />
+<col style="width: 52%" />
+<col style="width: 36%" />
 <col style="width: 10%" />
 </colgroup>
 <thead>
@@ -1051,9 +1063,8 @@ Zuordnung der örtlichen Einheit zum Tierhaltenden. Nach eCH-0108,
 Kapitel 1.5, ist eine örtliche Einheit immer einer rechtlichen Einheit
 (bzw. einem Unternehmen) zugeordnet; die Stammdaten der örtlichen
 Einheit führen dafür das optionale Merkmal «mainUid» mit der UID der
-rechtlichen Haupteinheit. Da der Tierhaltende nach dem Objektkatalog nur
-eine Sonderform der rechtlichen Einheit ist, ist diese Zuordnung nicht
-zwingend.</td>
+rechtlichen Haupteinheit. Da der Tierhaltende nur eine Sonderform der
+rechtlichen Einheit ist, ist diese Zuordnung nicht zwingend.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a
 href="#sec-nodeshape-animalkeepershape">Tierhaltender</a></li>
@@ -1065,183 +1076,215 @@ href="#sec-nodeshape-animalkeepershape">Tierhaltender</a></li>
 
 # Wertebereiche
 
-Für einen Teil der Wertebereiche liegen noch keine französischen und
-italienischen Bezeichnungen vor; die Bezeichnungen sind in Deutsch und
-Englisch aufgeführt, so wie sie die Quellen liefern.
-(<https://test-03-tvd-api-at.identitas.ch/open-api/v1.0>, 2026-09-24)
+Die folgenden Wertebereiche legen die zulässigen Werte der
+entsprechenden Attribute des Datenmodells fest
+(<a href="#sec-data-model" class="quarto-xref">Kapitel 3</a>). Jeder
+Wertebereich ist als `schema:CategoryCodeSet` modelliert und jeder
+seiner Werte als `schema:CategoryCode`. Wie die Codes den Enumerationen
+der TVD-Schnittstelle entsprechen, zeigt [Anhang D](#sec-appendix-d).
 
-## Seuchenstatus Einzeltier
+## Bewegungstyp
 
-<div id="tbl-codelist-animalhealthstatus">
+Art einer Meldung zu einem Einzeltier, z. B. eine Bewegung, eine Geburt
+oder eine Schlachtung.
 
-Tabelle 2: Werte des Wertebereichs Seuchenstatus Einzeltier
+<div id="tbl-codelist-notificationtype">
 
-| Wert         | Bezeichnung    | Beschreibung       |
-|:-------------|:---------------|:-------------------|
-| `Blocked`    | gesperrt       | Typ: Seuchenstatus |
-| `Free`       | frei           | Typ: Seuchenstatus |
-| `NotTested`  | Nicht getestet | Typ: Seuchenstatus |
-| `Vaccinated` | geimpft        | Typ: Impfstatus    |
+Tabelle 2: Werte der Codeliste Bewegungstyp.
 
-</div>
-
-## Tiergeschichtestatus
-
-<div id="tbl-codelist-animalhistorystate">
-
-Tabelle 3: Werte des Wertebereichs Tiergeschichtestatus
-
-| Wert          | Bezeichnung     | Beschreibung |
-|:--------------|:----------------|:-------------|
-| `Lost`        | Verschollen     |              |
-| `NotDefined`  | Nicht definiert |              |
-| `NotOk`       | Fehlerhaft      |              |
-| `Ok`          | OK              |              |
-| `TemporaryOk` | Temporär OK     |              |
-
-</div>
-
-## Zweck (Rinder, Schafe, Ziegen)
-
-<div id="tbl-codelist-animaltypeofuse">
-
-Tabelle 4: Werte des Wertebereichs Zweck (Rinder, Schafe, Ziegen)
-
-| Wert    | Bezeichnung | Beschreibung                   |
-|:--------|:------------|:-------------------------------|
-| `Milk`  | Milch       | Milchkühe, -schafe und -ziegen |
-| `Other` | Andere      |                                |
-
-</div>
-
-## Meldestatus Equide
-
-<div id="tbl-codelist-equidnotificationstate">
-
-Tabelle 5: Werte des Wertebereichs Meldestatus Equide
-
-| Wert | Bezeichnung | Beschreibung |
+| Code | Name | Beschreibung |
 |:---|:---|:---|
-| `LocationChangeAndAcquisitionPending` | Standortwechsel und Eigentumsübernahme hängig |  |
-| `LocationChangePending` | Standortwechsel hängig |  |
-| `Ok` | OK |  |
-| `OwnershipAcquisitionPending` | Eigentumsübernahme hängig |  |
-
-</div>
-
-## Zweck (Equiden)
-
-<div id="tbl-codelist-equidtypeofusage">
-
-Tabelle 6: Werte des Wertebereichs Zweck (Equiden)
-
-| Wert              | Bezeichnung | Beschreibung |
-|:------------------|:------------|:-------------|
-| `CompanionAnimal` | Heimtier    |              |
-| `FarmAnimal`      | Nutztier    |              |
-
-</div>
-
-## Grössenkategorie
-
-<div id="tbl-codelist-equidwithersclass">
-
-Tabelle 7: Werte des Wertebereichs Grössenkategorie
-
-| Wert                   | Bezeichnung               | Beschreibung |
-|:-----------------------|:--------------------------|:-------------|
-| `GreaterThan148cm`     | Widerristhöhe über 148 cm |              |
-| `LessOrEqualThan148cm` | Widerristhöhe bis 148 cm  |              |
+| [`Arrival`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Arrival) | Zugang | Nicht für Equiden |
+| [`Birth`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Birth) | Geburt | Lebendgeburt eines Tiers |
+| [`DayStay`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/DayStay) | Tagesaufenthalt | Nicht für Equiden |
+| [`DeathBirth`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/DeathBirth) | Totgeburt | Nicht für Equiden |
+| [`Deceased`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Deceased) | Verendung | Bei Equiden: Euthanasierung |
+| [`Export`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Export) | Ausfuhr | Bei Equiden: Eigentumsabgabe ins Ausland |
+| [`FirstRegistration`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/FirstRegistration) | Erstregistrierung | Nur für Schafe und Ziegen |
+| [`Import`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Import) | Einfuhr | Einfuhr eines Tiers aus dem Ausland |
+| [`ImportAfterExport`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/ImportAfterExport) | Einfuhr nach Ausfuhr | Nicht für Equiden |
+| [`Leaving`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Leaving) | Abgang | Nicht für Equiden |
+| [`LocationChange`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/LocationChange) | Standortwechsel | Nur für Equiden |
+| [`OnFarmSlaughter`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/OnFarmSlaughter) | Hofschlachtung | Nicht für Equiden |
+| [`Slaughter`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Slaughter) | Schlachtung | Schlachtung in einem Schlachtbetrieb |
 
 </div>
 
 ## Geschlecht
 
+Geschlecht eines Einzeltiers.
+
 <div id="tbl-codelist-gender">
 
-Tabelle 8: Werte des Wertebereichs Geschlecht
+Tabelle 3: Werte der Codeliste Geschlecht.
 
-| Wert     | Bezeichnung | Beschreibung |
-|:---------|:------------|:-------------|
-| `Female` | Weiblich    |              |
-| `Male`   | Männlich    |              |
+| Code | Name | Beschreibung |
+|:---|:---|:---|
+| [`Female`](https://agriculture.ld.admin.ch/eCH-0309/1/gender/Female) | Weiblich | Weibliches Tier |
+| [`Male`](https://agriculture.ld.admin.ch/eCH-0309/1/gender/Male) | Männlich | Männliches Tier |
+
+</div>
+
+## Grössenkategorie
+
+Einteilung der Equiden in zwei Kategorien nach ihrer Widerristhöhe.
+
+<div id="tbl-codelist-equidwithersclass">
+
+Tabelle 4: Werte der Codeliste Grössenkategorie.
+
+| Code | Name | Beschreibung |
+|:---|:---|:---|
+| [`GreaterThan148cm`](https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/GreaterThan148cm) | Widerristhöhe über 148 cm | Equiden mit einer Widerristhöhe von mehr als 148 cm |
+| [`LessOrEqualThan148cm`](https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/LessOrEqualThan148cm) | Widerristhöhe bis 148 cm | Equiden mit einer Widerristhöhe von höchstens 148 cm |
+
+</div>
+
+## Meldestatus Equide
+
+Stand der Meldungen zu einem Equiden: ob ein Standortwechsel oder eine
+Eigentumsübernahme noch hängig ist.
+
+<div id="tbl-codelist-equidnotificationstate">
+
+Tabelle 5: Werte der Codeliste Meldestatus Equide.
+
+| Code | Name | Beschreibung |
+|:---|:---|:---|
+| [`LocationChangeAndAcquisitionPending`](https://agriculture.ld.admin.ch/eCH-0309/1/equidnotificationstate/LocationChangeAndAcquisitionPending) | Standortwechsel und Eigentumsübernahme hängig | Die Meldungen eines Standortwechsels und einer Eigentumsübernahme sind noch nicht abgeschlossen |
+| [`LocationChangePending`](https://agriculture.ld.admin.ch/eCH-0309/1/equidnotificationstate/LocationChangePending) | Standortwechsel hängig | Die Meldung eines Standortwechsels ist noch nicht abgeschlossen |
+| [`Ok`](https://agriculture.ld.admin.ch/eCH-0309/1/equidnotificationstate/Ok) | OK | Für den Equiden ist keine Meldung hängig |
+| [`OwnershipAcquisitionPending`](https://agriculture.ld.admin.ch/eCH-0309/1/equidnotificationstate/OwnershipAcquisitionPending) | Eigentumsübernahme hängig | Die Meldung einer Eigentumsübernahme ist noch nicht abgeschlossen |
 
 </div>
 
 ## Nutztierart
 
+Nutztierarten, deren Tiere in der TVD registriert und deren Bewegungen
+gemeldet werden.
+
 <div id="tbl-codelist-genus">
 
-Tabelle 9: Werte des Wertebereichs Nutztierart
+Tabelle 6: Werte der Codeliste Nutztierart.
 
-| Wert | Bezeichnung | Beschreibung |
+| Code | Name | Beschreibung |
 |:---|:---|:---|
-| `Camelid` | Kameliden | Neuweltkameliden |
-| `Cattle` | Rindvieh | Tiere der Rindergattung (*Bos*) und Wasserbüffel (*Bubalus bubalis*) |
-| `Equid` | Equiden | Tiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel) |
-| `Game` | Wild | Wild in Gehegen |
-| `Goat` | Ziegen |  |
-| `Pig` | Schweine |  |
-| `Poultry` | Geflügel |  |
-| `Sheep` | Schafe |  |
+| [`Camelid`](https://agriculture.ld.admin.ch/eCH-0309/1/genus/Camelid) | Kameliden | Neuweltkameliden |
+| [`Cattle`](https://agriculture.ld.admin.ch/eCH-0309/1/genus/Cattle) | Rindvieh | Tiere der Rindergattung (*Bos*) und Wasserbüffel (*Bubalus bubalis*) |
+| [`Equid`](https://agriculture.ld.admin.ch/eCH-0309/1/genus/Equid) | Equiden | Tiere der Pferdegattung (Pferd, Maultier, Maulesel, Esel) |
+| [`Game`](https://agriculture.ld.admin.ch/eCH-0309/1/genus/Game) | Wild | Wild in Gehegen |
+| [`Goat`](https://agriculture.ld.admin.ch/eCH-0309/1/genus/Goat) | Ziegen | Hausziegen |
+| [`Pig`](https://agriculture.ld.admin.ch/eCH-0309/1/genus/Pig) | Schweine | Hausschweine |
+| [`Poultry`](https://agriculture.ld.admin.ch/eCH-0309/1/genus/Poultry) | Geflügel | Hausgeflügel, z. B. Hühner, Truthühner, Enten und Gänse |
+| [`Sheep`](https://agriculture.ld.admin.ch/eCH-0309/1/genus/Sheep) | Schafe | Hausschafe |
 
 </div>
 
-## Typ Gesundheitsstatus
+## Seuchenstatus Einzeltier
 
-<div id="tbl-codelist-healthstatustype">
+Werte des Gesundheitsstatus eines Einzeltiers; ihr Typ steht in der
+Beschreibung.
 
-Tabelle 10: Werte des Wertebereichs Typ Gesundheitsstatus
+<div id="tbl-codelist-animalepizooticstatus">
 
-| Wert                | Bezeichnung   | Beschreibung |
-|:--------------------|:--------------|:-------------|
-| `EpizooticStatus`   | Seuchenstatus |              |
-| `LaboratoryResult`  | Laborergebnis |              |
-| `RiskStatus`        | Risikostatus  |              |
-| `VaccinationStatus` | Impfstatus    |              |
+Tabelle 7: Werte der Codeliste Seuchenstatus Einzeltier.
+
+| Code | Name | Beschreibung |
+|:---|:---|:---|
+| [`Blocked`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Blocked) | gesperrt | Typ: Seuchenstatus |
+| [`Free`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Free) | frei | Typ: Seuchenstatus |
+| [`NotTested`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/NotTested) | Nicht getestet | Typ: Seuchenstatus |
+| [`Vaccinated`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated) | geimpft | Typ: Impfstatus |
 
 </div>
 
 ## Seuchenstatus örtliche Einheit
 
-<div id="tbl-codelist-localunithealthstatus">
+Werte des Gesundheitsstatus einer örtlichen Einheit; ihr Typ steht in
+der Beschreibung.
 
-Tabelle 11: Werte des Wertebereichs Seuchenstatus örtliche Einheit
+<div id="tbl-codelist-localunitepizooticstatus">
 
-| Wert        | Bezeichnung    | Beschreibung       |
-|:------------|:---------------|:-------------------|
-| `Blocked`   | gesperrt       | Typ: Seuchenstatus |
-| `Free`      | frei           | Typ: Seuchenstatus |
-| `High`      | Hoch           | Typ: Risikostatus  |
-| `Low`       | Tief           | Typ: Risikostatus  |
-| `Medium`    | Mittel         | Typ: Risikostatus  |
-| `Negative`  | negativ        | Typ: Laborergebnis |
-| `NotTested` | Nicht getestet | Typ: Seuchenstatus |
-| `Positive`  | positiv        | Typ: Laborergebnis |
+Tabelle 8: Werte der Codeliste Seuchenstatus örtliche Einheit.
+
+| Code | Name | Beschreibung |
+|:---|:---|:---|
+| [`Blocked`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Blocked) | gesperrt | Typ: Seuchenstatus |
+| [`Free`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Free) | frei | Typ: Seuchenstatus |
+| [`High`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/High) | Hoch | Typ: Risikostatus |
+| [`Low`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Low) | Tief | Typ: Risikostatus |
+| [`Medium`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Medium) | Mittel | Typ: Risikostatus |
+| [`Negative`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Negative) | negativ | Typ: Laborergebnis |
+| [`NotTested`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/NotTested) | Nicht getestet | Typ: Seuchenstatus |
+| [`Positive`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Positive) | positiv | Typ: Laborergebnis |
 
 </div>
 
-## Bewegungstyp
+## Tiergeschichtestatus
 
-<div id="tbl-codelist-notificationtype">
+Status der Tiergeschichte eines Einzeltiers zum Abfragedatum. Nicht
+relevant für Equiden.
 
-Tabelle 12: Werte des Wertebereichs Bewegungstyp
+<div id="tbl-codelist-animalhistorystate">
 
-| Wert | Bezeichnung | Beschreibung |
+Tabelle 9: Werte der Codeliste Tiergeschichtestatus.
+
+| Code | Name | Beschreibung |
 |:---|:---|:---|
-| `Arrival` | Zugang | Nicht für Equiden |
-| `Birth` | Geburt |  |
-| `DayStay` | Tagesaufenthalt | Nicht für Equiden |
-| `DeathBirth` | Totgeburt | Nicht für Equiden |
-| `Deceased` | Verendung | Bei Equiden: Euthanasierung |
-| `Export` | Ausfuhr | Bei Equiden: Eigentumsabgabe ins Ausland |
-| `FirstRegistration` | Erstregistrierung |  |
-| `Import` | Einfuhr |  |
-| `ImportAfterExport` | Einfuhr nach Ausfuhr | Nicht für Equiden |
-| `Leaving` | Abgang | Nicht für Equiden |
-| `LocationChange` | Standortwechsel | Nur für Equiden |
-| `OnFarmSlaughter` | Hofschlachtung | Nicht für Equiden |
-| `Slaughter` | Schlachtung |  |
+| [`Lost`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/Lost) | Verschollen | Der Verbleib des Tiers ist unbekannt |
+| [`NotDefined`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/NotDefined) | Nicht definiert | Für die Tiergeschichte ist kein Status festgelegt |
+| [`NotOk`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/NotOk) | Fehlerhaft | Die Tiergeschichte enthält Fehler oder Lücken |
+| [`Ok`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/Ok) | OK | Die Tiergeschichte ist vollständig und korrekt |
+| [`TemporaryOk`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/TemporaryOk) | Temporär OK | Die Tiergeschichte gilt vorläufig als korrekt |
+
+</div>
+
+## Typ Gesundheitsstatus
+
+Art eines Gesundheitsstatus einer örtlichen Einheit oder eines
+Einzeltiers.
+
+<div id="tbl-codelist-healthstatustype">
+
+Tabelle 10: Werte der Codeliste Typ Gesundheitsstatus.
+
+| Code | Name | Beschreibung |
+|:---|:---|:---|
+| [`EpizooticStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/EpizooticStatus) | Seuchenstatus | Status bezüglich einer Tierseuche, z. B. gesperrt oder frei |
+| [`LaboratoryResult`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/LaboratoryResult) | Laborergebnis | Ergebnis einer Laboruntersuchung, z. B. positiv oder negativ |
+| [`RiskStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/RiskStatus) | Risikostatus | Einstufung des Seuchenrisikos, z. B. hoch, mittel oder tief |
+| [`VaccinationStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/VaccinationStatus) | Impfstatus | Angabe, ob gegen eine Tierseuche geimpft wurde |
+
+</div>
+
+## Zweck (Equiden)
+
+Verwendungszweck eines Equiden; er bestimmt, ob der Equide zur
+Lebensmittelgewinnung geschlachtet werden darf.
+
+<div id="tbl-codelist-equidtypeofusage">
+
+Tabelle 11: Werte der Codeliste Zweck (Equiden).
+
+| Code | Name | Beschreibung |
+|:---|:---|:---|
+| [`CompanionAnimal`](https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/CompanionAnimal) | Heimtier | Equide, der nicht zur Lebensmittelgewinnung geschlachtet werden darf |
+| [`FarmAnimal`](https://agriculture.ld.admin.ch/eCH-0309/1/equidtypeofusage/FarmAnimal) | Nutztier | Equide, der zur Lebensmittelgewinnung geschlachtet werden darf |
+
+</div>
+
+## Zweck (Rinder, Schafe, Ziegen)
+
+Nutzungsart von Rindern, Schafen und Ziegen.
+
+<div id="tbl-codelist-animaltypeofuse">
+
+Tabelle 12: Werte der Codeliste Zweck (Rinder, Schafe, Ziegen).
+
+| Code | Name | Beschreibung |
+|:---|:---|:---|
+| [`Milk`](https://agriculture.ld.admin.ch/eCH-0309/1/animaltypeofuse/Milk) | Milch | Milchkühe, -schafe und -ziegen |
+| [`Other`](https://agriculture.ld.admin.ch/eCH-0309/1/animaltypeofuse/Other) | Andere | Jede andere Nutzung als die Milchproduktion, z. B. Fleischproduktion |
 
 </div>
 
@@ -1385,11 +1428,240 @@ bestehend aus Subjekt, Prädikat und Objekt.</p>
 
 </div>
 
-# Anhang D - Änderungen gegenüber der Vorversion
+# Anhang D - Abbildung auf die TVD-Schnittstelle
 
-# Anhang E - Abbildungsverzeichnis
+Bei den Wertebereichen in
+<a href="#tbl-animaltracing-enums" class="quarto-xref">Tabelle 14</a>
+ist der Code eines Werts das gleichnamige Element einer Enumeration der
+TVD-Schnittstelle AnimalTracing.
 
-# Anhang F - Tabellenverzeichnis
+Bei Bewegungstyp, Typ Gesundheitsstatus und den beiden
+Seuchenstatus-Wertebereichen führt die Schnittstelle die Bewegungstypen
+je Nutztierart und die Gesundheitsstatus je Seuche in eigenen
+Enumerationen, teils unter anderem Namen. Die folgenden Tabellen zeigen,
+welche Elemente der Schnittstelle einem Wert entsprechen; Werte ohne
+Entsprechung in der Schnittstelle sind nicht aufgeführt.
+
+<div id="tbl-animaltracing-enums">
+
+Tabelle 14: Enumerationen der TVD-Schnittstelle, aus denen die
+Wertebereiche ihre Codes beziehen.
+
+| Wertebereich | Enumeration der Schnittstelle |
+|:---|:---|
+| [Geschlecht](#sec-codelist-gender) | `EnumGender` |
+| [Grössenkategorie](#sec-codelist-equidwithersclass) | `EnumEquidWithersClass` |
+| [Meldestatus Equide](#sec-codelist-equidnotificationstate) | `EnumEquidNotificationState` |
+| [Nutztierart](#sec-codelist-genus) | `EnumGenus` |
+| [Tiergeschichtestatus](#sec-codelist-animalhistorystate) | `EnumAnimalHistoryState` |
+| [Zweck (Equiden)](#sec-codelist-equidtypeofusage) | `EquidTypeOfUsage` |
+| [Zweck (Rinder, Schafe, Ziegen)](#sec-codelist-animaltypeofuse) | `EnumAnimalTypeOfUse` |
+
+</div>
+
+<div id="tbl-animaltracing-codelist-notificationtype">
+
+Tabelle 15: Entsprechungen der Werte des Wertebereichs Bewegungstyp in
+der TVD-Schnittstelle.
+
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 33%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">TVD-Schnittstelle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Arrival"><code>Arrival</code></a></td>
+<td style="text-align: left;">Zugang</td>
+<td
+style="text-align: left;"><code>EnumCattleNotificationType.Arrival</code><br />
+<code>EnumGoatNotificationType.Arrival</code><br />
+<code>EnumSheepNotificationType.Arrival</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Birth"><code>Birth</code></a></td>
+<td style="text-align: left;">Geburt</td>
+<td
+style="text-align: left;"><code>EnumCattleNotificationType.Birth</code><br />
+<code>EnumGoatNotificationType.Birth</code><br />
+<code>EnumSheepNotificationType.Birth</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/DeathBirth"><code>DeathBirth</code></a></td>
+<td style="text-align: left;">Totgeburt</td>
+<td
+style="text-align: left;"><code>EnumCattleNotificationType.DeathBirth</code><br />
+<code>EnumGoatNotificationType.DeathBirth</code><br />
+<code>EnumSheepNotificationType.DeathBirth</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Deceased"><code>Deceased</code></a></td>
+<td style="text-align: left;">Verendung</td>
+<td
+style="text-align: left;"><code>EnumCattleNotificationType.Deceased</code><br />
+<code>EnumGoatNotificationType.Deceased</code><br />
+<code>EnumSheepNotificationType.Deceased</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Export"><code>Export</code></a></td>
+<td style="text-align: left;">Ausfuhr</td>
+<td
+style="text-align: left;"><code>EnumCattleNotificationType.Export</code><br />
+<code>EnumGoatNotificationType.Export</code><br />
+<code>EnumSheepNotificationType.Export</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/FirstRegistration"><code>FirstRegistration</code></a></td>
+<td style="text-align: left;">Erstregistrierung</td>
+<td
+style="text-align: left;"><code>EnumGoatNotificationType.FirstRegistration</code><br />
+<code>EnumSheepNotificationType.FirstRegistration</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Import"><code>Import</code></a></td>
+<td style="text-align: left;">Einfuhr</td>
+<td
+style="text-align: left;"><code>EnumCattleNotificationType.Import</code><br />
+<code>EnumGoatNotificationType.Import</code><br />
+<code>EnumSheepNotificationType.Import</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Leaving"><code>Leaving</code></a></td>
+<td style="text-align: left;">Abgang</td>
+<td
+style="text-align: left;"><code>EnumCattleNotificationType.Leaving</code><br />
+<code>EnumGoatNotificationType.Leaving</code><br />
+<code>EnumSheepNotificationType.Leaving</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/OnFarmSlaughter"><code>OnFarmSlaughter</code></a></td>
+<td style="text-align: left;">Hofschlachtung</td>
+<td
+style="text-align: left;"><code>EnumCattleNotificationType.YardSlaughter</code><br />
+<code>EnumGoatNotificationType.OnFarmSlaughter</code><br />
+<code>EnumSheepNotificationType.OnFarmSlaughter</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Slaughter"><code>Slaughter</code></a></td>
+<td style="text-align: left;">Schlachtung</td>
+<td
+style="text-align: left;"><code>EnumCattleNotificationType.Slaughtering</code><br />
+<code>EnumGoatNotificationType.Slaughter</code><br />
+<code>EnumSheepNotificationType.Slaughter</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div id="tbl-animaltracing-codelist-animalepizooticstatus">
+
+Tabelle 16: Entsprechungen der Werte des Wertebereichs Seuchenstatus
+Einzeltier in der TVD-Schnittstelle.
+
+| Code | Name | TVD-Schnittstelle |
+|:---|:---|:---|
+| [`Vaccinated`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated) | geimpft | `EnumCattleLsdState.Vaccinated` |
+
+</div>
+
+<div id="tbl-animaltracing-codelist-localunitepizooticstatus">
+
+Tabelle 17: Entsprechungen der Werte des Wertebereichs Seuchenstatus
+örtliche Einheit in der TVD-Schnittstelle.
+
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 41%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">TVD-Schnittstelle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Blocked"><code>Blocked</code></a></td>
+<td style="text-align: left;">gesperrt</td>
+<td style="text-align: left;"><code>BvdState.Blocked</code><br />
+<code>FootRotState.Blocked</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Free"><code>Free</code></a></td>
+<td style="text-align: left;">frei</td>
+<td style="text-align: left;"><code>FootRotState.Free</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/NotTested"><code>NotTested</code></a></td>
+<td style="text-align: left;">Nicht getestet</td>
+<td style="text-align: left;"><code>FootRotState.NotTested</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div id="tbl-animaltracing-codelist-healthstatustype">
+
+Tabelle 18: Entsprechungen der Werte des Wertebereichs Typ
+Gesundheitsstatus in der TVD-Schnittstelle.
+
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 36%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">TVD-Schnittstelle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/EpizooticStatus"><code>EpizooticStatus</code></a></td>
+<td style="text-align: left;">Seuchenstatus</td>
+<td style="text-align: left;"><code>BvdState</code><br />
+<code>FootRotState</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+# Anhang E - Änderungen gegenüber der Vorversion
+
+# Anhang F - Abbildungsverzeichnis
+
+# Anhang G - Tabellenverzeichnis
 
 [^1]: <https://www.news.admin.ch/de/nsb?id=57438>
 
