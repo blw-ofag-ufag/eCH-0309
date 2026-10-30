@@ -732,7 +732,11 @@ def main():
                 'slug': slug
             })
             
-        shapes_data.sort(key=lambda x: x['label'].lower())
+        # Classes by sh:order of their node shape, then alphabetically.
+        def class_order(x):
+            order = g.value(x['uri'], SH.order)
+            return (order.toPython() if order is not None else 9999, x['label'].lower())
+        shapes_data.sort(key=class_order)
 
         for s_data in shapes_data:
             shape = s_data['uri']
