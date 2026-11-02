@@ -748,10 +748,10 @@
             "Group information"@en,
             "Information de groupe"@fr,
             "Informazione di gruppo"@it ;
-        sh:description "Bei Einstallungsmeldungen von Geflügel ist eine Gruppeninformation anzugeben"@de,
-            "Group information must be given for housing notifications of poultry"@en,
-            "Une information de groupe doit être indiquée pour les annonces de mise en place de volaille"@fr,
-            "Per le notifiche di accasamento di pollame va indicata un'informazione di gruppo"@it ;
+        sh:description "Nur für Geflügel, nicht für Schweine: Bei Einstallungsmeldungen ist eine Gruppeninformation anzugeben."@de,
+            "Only for poultry, not for pigs: group information must be given for housing notifications."@en,
+            "Uniquement pour la volaille, pas pour les porcs : une information de groupe doit être indiquée pour les annonces de mise en place."@fr,
+            "Solo per il pollame, non per i suini: per le notifiche di accasamento va indicata un'informazione di gruppo."@it ;
         sh:path :groupInformation ;
         sh:datatype xsd:string ;
         sh:maxCount 1 ;
@@ -823,10 +823,10 @@
             "Weight"@en,
             "Poids"@fr,
             "Peso"@it ;
-        sh:description "Gesamtgewicht in kg der Tiergruppe bei Schlachtungsmeldungen von Geflügel"@de,
-            "Total weight in kg of the animal group for slaughter notifications of poultry"@en,
-            "Poids total en kg du groupe d'animaux pour les annonces d'abattage de volaille"@fr,
-            "Peso totale in kg del gruppo di animali per le notifiche di macellazione di pollame"@it ;
+        sh:description "Nur für Geflügel: Gesamtgewicht der Tiergruppe in kg bei Schlachtungsmeldungen. Schlachtungen von Schweinen werden in Stück gemeldet (Anzahl)."@de,
+            "Only for poultry: total weight of the animal group in kg for slaughter notifications. Slaughterings of pigs are notified in head (count)."@en,
+            "Uniquement pour la volaille : poids total du groupe d'animaux en kg pour les annonces d'abattage. Les abattages de porcs sont annoncés en nombre de têtes (nombre)."@fr,
+            "Solo per il pollame: peso totale del gruppo di animali in kg per le notifiche di macellazione. Le macellazioni di suini sono notificate in capi (numero)."@it ;
         sh:path :weight ;
         sh:datatype xsd:integer ;
         sh:maxCount 1 ;
@@ -857,10 +857,10 @@
             "Age"@en,
             "Âge"@fr,
             "Età"@it ;
-        sh:description "Bei Einstallungsmeldungen von Geflügel ist das Alter in Wochen anzugeben"@de,
-            "For housing notifications of poultry the age must be given in weeks"@en,
-            "Pour les annonces de mise en place de volaille, l'âge doit être indiqué en semaines"@fr,
-            "Per le notifiche di accasamento di pollame l'età va indicata in settimane"@it ;
+        sh:description "Nur für Geflügel, nicht für Schweine: Bei Einstallungsmeldungen ist das Alter in Wochen anzugeben."@de,
+            "Only for poultry, not for pigs: the age must be given in weeks for housing notifications."@en,
+            "Uniquement pour la volaille, pas pour les porcs : l'âge doit être indiqué en semaines pour les annonces de mise en place."@fr,
+            "Solo per il pollame, non per i suini: per le notifiche di accasamento l'età va indicata in settimane."@it ;
         sh:path :age ;
         sh:datatype xsd:integer ;
         sh:maxCount 1 ;
