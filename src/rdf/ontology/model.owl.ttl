@@ -27,8 +27,6 @@
 
 :GroupNotification a owl:Class .
 
-:LocalUnitHealthStatus a owl:Class .
-
 :AnimalHealthStatus a owl:Class .
 
 # ==============================================================================
@@ -106,3 +104,7 @@
 :age a owl:DatatypeProperty .
 
 :validFrom a owl:DatatypeProperty .
+
+:bvdState a owl:DatatypeProperty .
+
+:footRotState a owl:DatatypeProperty .

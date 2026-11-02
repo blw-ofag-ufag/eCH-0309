@@ -5,8 +5,9 @@
 # openAPI; the property shapes of model.shacl.ttl name that enum with
 # :animalTracingTerm, and the code of a value is the enum member.
 #
-# The other four lists -- Bewegungstyp, Typ Gesundheitsstatus and the two
-# Seuchenstatus lists -- come from the Wertebereich tables of the Hilfsmittel.
+# The other three lists -- Bewegungstyp, Typ Gesundheitsstatus and
+# Seuchenstatus Einzeltier -- come from the Wertebereich tables of the
+# Hilfsmittel.
 # The interface splits notification types per species and holds the health
 # statuses as one enum per disease, partly under other names. This file
 # records, per value, its counterparts in the interface: an enum member as
@@ -21,8 +22,6 @@
 
 @prefix :                       <https://agriculture.ld.admin.ch/eCH-0309/1/> .
 @prefix notificationtype:       <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
-@prefix healthstatustype:       <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/> .
-@prefix localunithealthstatus:  <https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/> .
 @prefix animalhealthstatus:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/> .
 
 
@@ -68,26 +67,6 @@ notificationtype:DeathBirth :animalTracingTerm "EnumCattleNotificationType.Death
 
 notificationtype:FirstRegistration :animalTracingTerm "EnumSheepNotificationType.FirstRegistration",
         "EnumGoatNotificationType.FirstRegistration" .
-
-
-# ------------------------------------------------------------------------------
-# Typ Gesundheitsstatus
-# ------------------------------------------------------------------------------
-
-healthstatustype:EpizooticStatus :animalTracingTerm "BvdState",
-        "FootRotState" .
-
-
-# ------------------------------------------------------------------------------
-# Seuchenstatus örtliche Einheit
-# ------------------------------------------------------------------------------
-
-localunithealthstatus:Blocked :animalTracingTerm "BvdState.Blocked",
-        "FootRotState.Blocked" .
-
-localunithealthstatus:Free :animalTracingTerm "FootRotState.Free" .
-
-localunithealthstatus:NotTested :animalTracingTerm "FootRotState.NotTested" .
 
 
 # ------------------------------------------------------------------------------
