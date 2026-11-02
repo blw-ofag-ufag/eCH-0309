@@ -15,7 +15,7 @@ def test_model_shacl():
 
     src/rdf/ontology/model.owl.ttl must be passed as the ontology graph: it
     carries :Equid rdfs:subClassOf :Animal, which sh:class traverses when it
-    checks whether an :Equid is an acceptable value for :animal. RDFS inference
+    checks whether an :Equid is an acceptable value for :mother. RDFS inference
     is switched on in addition, mirroring the `robot reason` stage of the build.
 
     src/rdf/data/codelists.ttl is merged into the data graph, because the coded

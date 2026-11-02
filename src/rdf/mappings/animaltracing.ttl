@@ -5,14 +5,11 @@
 # openAPI; the property shapes of model.shacl.ttl name that enum with
 # :animalTracingTerm, and the code of a value is the enum member.
 #
-# The other three lists -- Bewegungstyp, Typ Gesundheitsstatus and
-# Seuchenstatus Einzeltier -- come from the Wertebereich tables of the
-# Hilfsmittel.
-# The interface splits notification types per species and holds the health
-# statuses as one enum per disease, partly under other names. This file
-# records, per value, its counterparts in the interface: an enum member as
-# Schema.Member, or a whole schema. A value without a counterpart, such as
-# DayStay, is not listed.
+# The other list -- Bewegungstyp -- comes from the Wertebereich table of the
+# Hilfsmittel. The interface splits notification types per species, partly
+# under other names. This file records, per value, its counterparts in the
+# interface: an enum member as Schema.Member. A value without a counterpart,
+# such as DayStay, is not listed.
 #
 # The statements are kept apart from src/rdf/data/codelists.ttl, because the
 # template's code list shapes are closed. Annex D of the Hilfsmittel is
@@ -22,7 +19,6 @@
 
 @prefix :                       <https://agriculture.ld.admin.ch/eCH-0309/1/> .
 @prefix notificationtype:       <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
-@prefix animalhealthstatus:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/> .
 
 
 # ------------------------------------------------------------------------------
@@ -68,9 +64,3 @@ notificationtype:DeathBirth :animalTracingTerm "EnumCattleNotificationType.Death
 notificationtype:FirstRegistration :animalTracingTerm "EnumSheepNotificationType.FirstRegistration",
         "EnumGoatNotificationType.FirstRegistration" .
 
-
-# ------------------------------------------------------------------------------
-# Seuchenstatus Einzeltier
-# ------------------------------------------------------------------------------
-
-animalhealthstatus:Vaccinated :animalTracingTerm "EnumCattleLsdState.Vaccinated" .

@@ -27,7 +27,6 @@
 
 :GroupNotification a owl:Class .
 
-:AnimalHealthStatus a owl:Class .
 
 # ==============================================================================
 # OBJECT PROPERTIES
@@ -65,10 +64,6 @@
 
 :notificationType a owl:ObjectProperty .
 
-:healthStatusType a owl:ObjectProperty .
-
-:epizooticStatus a owl:ObjectProperty .
-
 # ==============================================================================
 # ANNOTATION PROPERTIES
 # ==============================================================================
@@ -103,7 +98,9 @@
 
 :age a owl:DatatypeProperty .
 
-:validFrom a owl:DatatypeProperty .
+:lsdVaccinationState a owl:DatatypeProperty .
+
+:lsdVaccinationDate a owl:DatatypeProperty .
 
 :bvdState a owl:DatatypeProperty .
 

@@ -67,9 +67,9 @@
 # does not list, and :RuminantShape. The catalogue lists the attributes of
 # cattle, sheep and goats under «Einzeltier» and notes those that equids lack;
 # the model moves them to a subclass of their own, so that «Einzeltier» holds
-# only what all individual animals share. The catalogue's «Gesundheitsstatus
-# Standort» is not a class: as in AnimalTracing, the local unit carries one
-# status per disease.
+# only what all individual animals share. The catalogue's two
+# «Gesundheitsstatus» classes are not classes here: as in AnimalTracing, the
+# local unit and the animal carry one status per disease.
 #
 # The German rdfs:label and sh:name are the Hilfsmittel's own wording.
 # :animalTracingTerm records the counterpart in AnimalTracing and :echTerm the
@@ -404,6 +404,40 @@
             ]
         ] ;
         sh:maxCount 1 ;
+    ],
+    # The health status of an animal, as AnimalTracing holds it: one field per
+    # disease, so far only the LSD vaccination of cattle. The values are the
+    # enum members.
+    [
+        sh:order 5 ;
+        sh:name "LSD-Impfstatus"@de,
+            "LSD vaccination status"@en,
+            "Statut de vaccination DNC"@fr,
+            "Stato di vaccinazione DNC"@it ;
+        :animalTracingTerm "EnumCattleLsdState" ;
+        sh:description "Impfstatus gegen die Lumpy Skin Disease (LSD). Nur für Rinder."@de,
+            "Vaccination status against lumpy skin disease (LSD). Only for cattle."@en,
+            "Statut de vaccination contre la dermatose nodulaire contagieuse (DNC). Uniquement pour les bovins."@fr,
+            "Stato di vaccinazione contro la dermatite nodulare contagiosa (DNC). Solo per i bovini."@it ;
+        sh:path :lsdVaccinationState ;
+        sh:datatype xsd:string ;
+        sh:in ( "Undefined" "Vaccinated" ) ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 6 ;
+        sh:name "LSD-Impfdatum"@de,
+            "LSD vaccination date"@en,
+            "Date de vaccination DNC"@fr,
+            "Data di vaccinazione DNC"@it ;
+        :animalTracingTerm "CattleDetailV1DiseasesResponse.lsdVaccinationDate" ;
+        sh:description "Datum der Impfung gegen die Lumpy Skin Disease (LSD). Nur für Rinder."@de,
+            "Date of the vaccination against lumpy skin disease (LSD). Only for cattle."@en,
+            "Date de la vaccination contre la dermatose nodulaire contagieuse (DNC). Uniquement pour les bovins."@fr,
+            "Data della vaccinazione contro la dermatite nodulare contagiosa (DNC). Solo per i bovini."@it ;
+        sh:path :lsdVaccinationDate ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
     ] ;
     sh:property
     [
@@ -420,6 +454,26 @@
             "A ruminant has at most one father animal."@en,
             "Un ruminant a au plus un père."@fr,
             "Un ruminante ha al massimo un padre."@it ;
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:description "Der LSD-Impfstatus und das LSD-Impfdatum werden nur für Rinder geführt, nicht für Schafe und Ziegen."@de,
+            "The LSD vaccination status and date are recorded only for cattle, not for sheep and goats."@en,
+            "Le statut et la date de vaccination DNC ne sont enregistrés que pour les bovins, pas pour les ovins et les caprins."@fr,
+            "Lo stato e la data di vaccinazione DNC sono registrati solo per i bovini, non per ovini e caprini."@it ;
+        sh:message "Für Schafe und Ziegen wird keine LSD-Impfung geführt."@de,
+            "No LSD vaccination is recorded for sheep and goats."@en,
+            "Aucune vaccination DNC n'est enregistrée pour les ovins et les caprins."@fr,
+            "Per ovini e caprini non è registrata alcuna vaccinazione DNC."@it ;
+        sh:prefixes : ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this :genus ?genus .
+                FILTER (?genus IN (genus:Sheep, genus:Goat))
+                FILTER EXISTS { $this :lsdVaccinationState|:lsdVaccinationDate ?value . }
+            }
+        """ ;
     ] .
 
 
@@ -901,84 +955,4 @@
             "A group notification states at most one local unit as its origin."@en,
             "Une notification de groupe indique au plus une unité locale comme provenance."@fr,
             "Una notifica di gruppo indica al massimo un'unità locale come provenienza."@it ;
-    ] .
-
-:AnimalHealthStatusShape a sh:NodeShape ;
-    rdfs:label "Gesundheitsstatus Einzeltier"@de,
-        "Health status of an individual animal"@en,
-        "État sanitaire de l'animal individuel"@fr,
-        "Stato sanitario dell'animale singolo"@it ;
-    rdfs:comment "Eine Seucheninformation, die auf einem Einzeltier erfasst ist. Zusätzlich zum individuellen Seuchenstatus werden damit auch relevante Impfungen erfasst."@de,
-        "Disease information recorded for an individual animal. In addition to the individual epizootic status, relevant vaccinations are recorded as well."@en,
-        "Une information épizootique enregistrée sur un animal individuel. Outre le statut épizootique individuel, les vaccinations pertinentes sont également enregistrées."@fr,
-        "Un'informazione epizootica registrata su un animale singolo. Oltre allo stato epizootico individuale, vengono registrate anche le vaccinazioni rilevanti."@it ;
-    :animalTracingTerm "CattleDetailV1DiseasesResponse" ;
-    sh:order 9 ;
-    sh:targetClass :AnimalHealthStatus ;
-    sh:property
-    [
-        sh:order 2 ;
-        sh:name "Typ"@de,
-            "Type"@en,
-            "Type"@fr,
-            "Tipo"@it ;
-        sh:description "z. B. Seuchenstatus, Impfstatus, Risikostatus"@de,
-            "e.g. epizootic, vaccination or risk status"@en,
-            "p. ex. statut épizootique, vaccinal ou de risque"@fr,
-            "p. es. stato epizootico, vaccinale o di rischio"@it ;
-        sh:path :healthStatusType ;
-        sh:class schema:CategoryCode ;
-        sh:node [
-            sh:property [
-                sh:path schema:inCodeSet ;
-                sh:hasValue codelist:HealthStatusType ;
-            ]
-        ] ;
-        sh:maxCount 1 ;
-    ],
-    [
-        sh:order 4 ;
-        sh:name "Status"@de,
-            "Status"@en,
-            "Statut"@fr,
-            "Stato"@it ;
-        sh:path :epizooticStatus ;
-        sh:class schema:CategoryCode ;
-        sh:node [
-            sh:property [
-                sh:path schema:inCodeSet ;
-                sh:hasValue codelist:AnimalEpizooticStatus ;
-            ]
-        ] ;
-        sh:maxCount 1 ;
-    ],
-    [
-        sh:order 5 ;
-        sh:name "Datum"@de,
-            "Date"@en,
-            "Date"@fr,
-            "Data"@it ;
-        sh:description "Datum, ab dem der Seuchenstatus gültig ist oder das Impfdatum"@de,
-            "Date from which the status is valid, or the date of vaccination"@en,
-            "Date à partir de laquelle le statut est valable, ou la date de vaccination"@fr,
-            "Data a partire dalla quale lo stato è valido, o la data della vaccinazione"@it ;
-        sh:path :validFrom ;
-        sh:datatype xsd:date ;
-        sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:order 1 ;
-        sh:name "Tier-ID"@de,
-            "Animal ID"@en,
-            "ID de l'animal"@fr,
-            "ID dell'animale"@it ;
-        :animalTracingTerm "CattleDetailV1Response.eartagNumber" ;
-        sh:path :animal ;
-        sh:class :Animal ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:message "Ein Gesundheitsstatus Einzeltier bezieht sich auf genau ein Einzeltier."@de,
-            "A health status of an individual animal refers to exactly one individual animal."@en,
-            "Un état sanitaire de l'animal individuel se rapporte à exactement un animal individuel."@fr,
-            "Uno stato sanitario dell'animale singolo si riferisce a esattamente un animale singolo."@it ;
     ] .

@@ -12,10 +12,10 @@ This module is what keeps it honest, by reporting drift in both directions:
 Only the lists derived from an enum are compared. A list says so through the
 data model: the property shape that restricts its values to the list names the
 enum with :animalTracingTerm, and the schema:codeValue of each of its values is
-the enum member. The other three lists take their values from the Wertebereich
-tables of the Hilfsmittel, so they are not meant to exhaust any enum. Where one
-of their values has a counterpart in the interface, under another name or in
-several enums, src/rdf/mappings/animaltracing.ttl records it, and the interface
+the enum member. The other list, Bewegungstyp, takes its values from the
+Wertebereich table of the Hilfsmittel, so it is not meant to exhaust any enum.
+Where one of its values has a counterpart in the interface, under another name
+or in several enums, src/rdf/mappings/animaltracing.ttl records it, and the interface
 is checked to still carry it.
 
 The second direction is the one a generator cannot give you. A new value in the
