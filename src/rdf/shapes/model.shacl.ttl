@@ -545,7 +545,7 @@ eCH-0261:LocalUnit a sh:NodeShape, rdfs:Class ;
             "Specie di animale da reddito"@it ;
         :animalTracingTerm "EnumGenus" ;
         sh:path :genus ;
-        sh:in ( genus:Equid ) ;
+        sh:hasValue genus:Equid ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;

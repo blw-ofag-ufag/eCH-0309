@@ -63,6 +63,10 @@ MEMBER_RE = re.compile(r'^\s*(?P<property>\S+?)(?:<U\+00A0>|\s)+\[(?P<cardinalit
 ATTRIBUTE_LINE_RE = re.compile(
     r'^(?P<source>"[^"]+")\s*:\s*\+?(?P<property>\S+)\s*:\s*\S+\s*\[(?P<cardinality>[^\]]+)\]\s*$')
 TITLE_RE = re.compile(r'"[^"]*\(([^)]+)\)"')
+# A box attribute fixed to one value by sh:hasValue, which SHACL Play writes
+# as `= value` after the cardinality, with the value relative to the base IRI.
+FIXED_VALUE_RE = re.compile(
+    r'^(?P<source>"[^"]+")\s*:\s*\+?(?P<property>\S+)\s*\[(?P<cardinality>[^\]]+)\]\s*=\s*\S+\s*$')
 # A box attribute, with or without the type that drop_attribute_types removes.
 # MEMBER_RE cannot stand in: it is anchored, and reads association labels only.
 BOX_MEMBER_RE = re.compile(
@@ -217,10 +221,11 @@ def drop_excluded_attributes(lines):
 
 
 def drop_attribute_types(lines):
-    """Leaves a box attribute as name and cardinality. The type is in the tables."""
+    """Leaves a box attribute as name and cardinality. The type, and a value
+    fixed by sh:hasValue, are in the tables."""
     return [
         (f'{match.group("source")} : {match.group("property")} [{match.group("cardinality")}] '
-         if (match := ATTRIBUTE_LINE_RE.match(line)) else line)
+         if (match := ATTRIBUTE_LINE_RE.match(line) or FIXED_VALUE_RE.match(line)) else line)
         for line in lines
     ]
 

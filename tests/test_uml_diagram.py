@@ -172,6 +172,13 @@ def test_attribute_types_are_dropped(patch):
     assert result[2] == f'{ANIMAL} --> "{EQUID[1:-1]}" : :mother [0..1] ', "associations untouched"
 
 
+def test_fixed_values_are_dropped(patch):
+    """A value fixed by sh:hasValue is in the entity table; SHACL Play writes it
+    relative to the base IRI, which would read wrongly on the box."""
+    result = patch.drop_attribute_types([f'{EQUID} : :genus  [1..1]  = :genus/Equid  '])
+    assert result == [f'{EQUID} : :genus [1..1] ']
+
+
 def test_titles_are_shortened_to_the_target_class(patch):
     result = patch.shorten_titles([f"Class {ANIMAL} ", f'{ANIMAL} <|-- {EQUID} '])
     assert result == ['Class ":Animal" ', '":Animal" <|-- ":Equid" ']
