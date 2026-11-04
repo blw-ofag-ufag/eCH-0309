@@ -5,6 +5,7 @@
 # Project-specific namespaces/qnames
 @prefix :                <https://agriculture.ld.admin.ch/eCH-0309/1/> .
 @prefix codelist:        <https://agriculture.ld.admin.ch/eCH-0309/1/codelist/> .
+@prefix genus:           <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
 
 
 # LINDAS-specific namespaces/qnames
@@ -52,14 +53,21 @@
     [
         sh:prefix "" ;
         sh:namespace "https://agriculture.ld.admin.ch/eCH-0309/1/"^^xsd:anyURI ;
+    ],
+    [
+        sh:prefix "genus" ;
+        sh:namespace "https://agriculture.ld.admin.ch/eCH-0309/1/genus/"^^xsd:anyURI ;
     ] .
 
 # ==============================================================================
 # NODE SHAPES
 #
 # One shape per class of the Objektkatalog (chapter 3.3 of the Hilfsmittel),
-# and :LegalUnitShape, which the Semantikbeschreibung describes but the
-# catalogue does not list.
+# :LegalUnitShape, which the Semantikbeschreibung describes but the catalogue
+# does not list, and :RuminantShape. The catalogue lists the attributes of
+# cattle, sheep and goats under «Einzeltier» and notes those that equids lack;
+# the model moves them to a subclass of their own, so that «Einzeltier» holds
+# only what all individual animals share.
 #
 # The German rdfs:label and sh:name are the Hilfsmittel's own wording.
 # :animalTracingTerm records the counterpart in AnimalTracing and :echTerm the
@@ -145,16 +153,15 @@
         "Individual animal"@en,
         "Animal individuel"@fr,
         "Animale singolo"@it ;
-    rdfs:comment "Ein einzeln identifiziertes Nutztier. In der Tierverkehrsdatenbank werden Tiere der Kategorien Rinder, Schafe, Ziegen und Equiden als Einzeltiere erfasst; sie werden über die Ohrmarkennummer, bei Equiden über die UELN, eindeutig identifiziert. Für Schweine und Geflügel werden keine Einzeltiere geführt, sondern ausschliesslich Gruppenmeldungen."@de,
-        "An individually identified farm animal. In the animal movement database, animals of the categories cattle, sheep, goats and equids are recorded as individual animals; they are uniquely identified by their ear tag number, or by the UELN in the case of equids. No individual animals are kept for pigs and poultry, only group notifications."@en,
-        "Un animal de rente identifié individuellement. Dans la banque de données sur le trafic des animaux, les animaux des catégories bovins, ovins, caprins et équidés sont enregistrés comme animaux individuels ; ils sont identifiés de manière univoque par leur numéro de marque auriculaire, ou par l'UELN pour les équidés. Aucun animal individuel n'est tenu pour les porcs et la volaille, mais uniquement des notifications de groupe."@fr,
-        "Un animale da reddito identificato singolarmente. Nella banca dati sul traffico di animali, gli animali delle categorie bovini, ovini, caprini ed equidi sono registrati come animali singoli; sono identificati in modo univoco dal numero della marca auricolare o, per gli equidi, dall'UELN. Per i suini e il pollame non vengono tenuti animali singoli, ma esclusivamente notifiche di gruppo."@it ;
-    :animalTracingTerm "CattleDetailV1Response", "SheepDetailV1Response", "GoatDetailV1Response" ;
+    rdfs:comment "Ein einzeln identifiziertes Nutztier. In der Tierverkehrsdatenbank werden Tiere der Kategorien Rinder, Schafe, Ziegen und Equiden als Einzeltiere erfasst; sie werden über die Ohrmarkennummer, bei Equiden über die UELN, eindeutig identifiziert. Für Schweine und Geflügel werden keine Einzeltiere geführt, sondern ausschliesslich Gruppenmeldungen. Jedes Einzeltier ist entweder ein Wiederkäuer (Rind, Schaf, Ziege) oder ein Equide; diese Klasse beschreibt die Angaben, die für beide gelten."@de,
+        "An individually identified farm animal. In the animal movement database, animals of the categories cattle, sheep, goats and equids are recorded as individual animals; they are uniquely identified by their ear tag number, or by the UELN in the case of equids. No individual animals are kept for pigs and poultry, only group notifications. Every individual animal is either a ruminant (cattle, sheep, goat) or an equid; this class describes the information that applies to both."@en,
+        "Un animal de rente identifié individuellement. Dans la banque de données sur le trafic des animaux, les animaux des catégories bovins, ovins, caprins et équidés sont enregistrés comme animaux individuels ; ils sont identifiés de manière univoque par leur numéro de marque auriculaire, ou par l'UELN pour les équidés. Aucun animal individuel n'est tenu pour les porcs et la volaille, mais uniquement des notifications de groupe. Chaque animal individuel est soit un ruminant (bovin, ovin, caprin), soit un équidé ; cette classe décrit les informations qui valent pour les deux."@fr,
+        "Un animale da reddito identificato singolarmente. Nella banca dati sul traffico di animali, gli animali delle categorie bovini, ovini, caprini ed equidi sono registrati come animali singoli; sono identificati in modo univoco dal numero della marca auricolare o, per gli equidi, dall'UELN. Per i suini e il pollame non vengono tenuti animali singoli, ma esclusivamente notifiche di gruppo. Ogni animale singolo è un ruminante (bovino, ovino, caprino) oppure un equide; questa classe descrive le informazioni che valgono per entrambi."@it ;
     sh:order 4 ;
     sh:targetClass :Animal ;
     sh:property
     [
-        sh:order 3 ;
+        sh:order 2 ;
         sh:name "Identifikator"@de,
             "Identifier"@en,
             "Identifiant"@fr,
@@ -170,7 +177,7 @@
         sh:maxCount 1 ;
     ],
     [
-        sh:order 4 ;
+        sh:order 3 ;
         sh:name "Nutztierart"@de,
             "Genus"@en,
             "Espèce d'animal de rente"@fr,
@@ -188,7 +195,7 @@
         sh:maxCount 1 ;
     ],
     [
-        sh:order 5 ;
+        sh:order 4 ;
         sh:name "Geschlecht"@de,
             "Gender"@en,
             "Sexe"@fr,
@@ -205,7 +212,7 @@
         sh:maxCount 1 ;
     ],
     [
-        sh:order 6 ;
+        sh:order 5 ;
         sh:name "Geburtsdatum"@de,
             "Date of birth"@en,
             "Date de naissance"@fr,
@@ -216,7 +223,7 @@
         sh:maxCount 1 ;
     ],
     [
-        sh:order 7 ;
+        sh:order 6 ;
         sh:name "Todesdatum"@de,
             "Date of death"@en,
             "Date de mort"@fr,
@@ -227,16 +234,111 @@
         sh:maxCount 1 ;
     ],
     [
-        sh:order 8 ;
+        sh:order 7 ;
+        sh:name "Kastriert"@de,
+            "Castrated"@en,
+            "Castré"@fr,
+            "Castrato"@it ;
+        :animalTracingTerm "CattleDetailV1Response.isCastrated", "EquidDetailsV1EquidResponse.isCastrated" ;
+        sh:description "Gibt an, ob das Tier kastriert ist. Nur für Rinder und Equiden."@de,
+            "Whether the animal is castrated. Only for cattle and equids."@en,
+            "Indique si l'animal est castré. Uniquement pour les bovins et les équidés."@fr,
+            "Indica se l'animale è castrato. Solo per bovini ed equidi."@it ;
+        sh:path :castrated ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:order 1 ;
+        sh:name "Identifikation Mutter"@de,
+            "Mother"@en,
+            "Mère"@fr,
+            "Madre"@it ;
+        :animalTracingTerm "CattleDetailV1ParentageResponse.motherEartagNumber", "EquidDetailsParentageResponse.motherUeln" ;
+        sh:path :mother ;
+        sh:class :Animal ;
+        sh:maxCount 1 ;
+        sh:message "Ein Einzeltier hat höchstens ein Muttertier."@de,
+            "An individual animal has at most one mother animal."@en,
+            "Un animal individuel a au plus une mère."@fr,
+            "Un animale singolo ha al massimo una madre."@it ;
+    ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:description "Jedes Einzeltier ist entweder ein Wiederkäuer oder ein Equide."@de,
+            "Every individual animal is either a ruminant or an equid."@en,
+            "Chaque animal individuel est soit un ruminant, soit un équidé."@fr,
+            "Ogni animale singolo è un ruminante oppure un equide."@it ;
+        sh:message "Ein Einzeltier muss ein Wiederkäuer oder ein Equide sein."@de,
+            "An individual animal must be a ruminant or an equid."@en,
+            "Un animal individuel doit être un ruminant ou un équidé."@fr,
+            "Un animale singolo deve essere un ruminante o un equide."@it ;
+        sh:prefixes : ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS { $this a :Ruminant . }
+                FILTER NOT EXISTS { $this a :Equid . }
+            }
+        """ ;
+    ],
+    [
+        a sh:SPARQLConstraint ;
+        sh:description "Kastriert wird nur für Rinder und Equiden geführt, nicht für Schafe und Ziegen."@de,
+            "Castrated is recorded only for cattle and equids, not for sheep and goats."@en,
+            "Castré n'est enregistré que pour les bovins et les équidés, pas pour les ovins et les caprins."@fr,
+            "Castrato è registrato solo per bovini ed equidi, non per ovini e caprini."@it ;
+        sh:message "Für Schafe und Ziegen wird nicht angegeben, ob sie kastriert sind."@de,
+            "Whether sheep and goats are castrated is not recorded."@en,
+            "Pour les ovins et les caprins, il n'est pas indiqué s'ils sont castrés."@fr,
+            "Per ovini e caprini non si indica se sono castrati."@it ;
+        sh:prefixes : ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this :castrated ?castrated ;
+                    :genus ?genus .
+                FILTER (?genus IN (genus:Sheep, genus:Goat))
+            }
+        """ ;
+    ] .
+
+:RuminantShape a sh:NodeShape ;
+    rdfs:label "Wiederkäuer"@de,
+        "Ruminant"@en,
+        "Ruminant"@fr,
+        "Ruminante"@it ;
+    rdfs:comment "Subklasse der Klasse Einzeltier für Tiere der Nutztierarten Rinder, Schafe und Ziegen. Alle Attribute der Klasse Einzeltier gelten auch für Wiederkäuer; diese Klasse beschreibt die zusätzlichen Angaben, die für Equiden nicht geführt werden."@de,
+        "Subclass of the class individual animal for animals of the genera cattle, sheep and goats. All attributes of the class individual animal also apply to ruminants; this class describes the additional information that is not recorded for equids."@en,
+        "Sous-classe de la classe animal individuel pour les animaux des espèces bovins, ovins et caprins. Tous les attributs de la classe animal individuel s'appliquent également aux ruminants ; cette classe décrit les informations supplémentaires qui ne sont pas enregistrées pour les équidés."@fr,
+        "Sottoclasse della classe animale singolo per gli animali delle specie bovini, ovini e caprini. Tutti gli attributi della classe animale singolo si applicano anche ai ruminanti; questa classe descrive le informazioni supplementari che non sono registrate per gli equidi."@it ;
+    :animalTracingTerm "CattleDetailV1Response", "SheepDetailV1Response", "GoatDetailV1Response" ;
+    sh:order 5 ;
+    sh:targetClass :Ruminant ;
+    sh:property
+    [
+        sh:order 2 ;
+        sh:name "Nutztierart"@de,
+            "Genus"@en,
+            "Espèce d'animal de rente"@fr,
+            "Specie di animale da reddito"@it ;
+        :animalTracingTerm "EnumGenus" ;
+        sh:path :genus ;
+        sh:in ( genus:Cattle genus:Sheep genus:Goat ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 3 ;
         sh:name "TiergeschichteStatus"@de,
             "Animal history state"@en,
             "Statut de l'historique de l'animal"@fr,
             "Stato della storia dell'animale"@it ;
         :animalTracingTerm "EnumAnimalHistoryState" ;
-        sh:description "Status der Tiergeschichte zum Abfragedatum. Nicht relevant für Equiden; die Pflicht gilt deshalb nur für die übrigen Einzeltiere."@de,
-            "State of the animal history at the date of the query. Not relevant for equids; the obligation therefore applies only to the other individual animals."@en,
-            "Statut de l'historique de l'animal à la date de la requête. Non pertinent pour les équidés ; l'obligation ne vaut donc que pour les autres animaux individuels."@fr,
-            "Stato della storia dell'animale alla data della richiesta. Non rilevante per gli equidi; l'obbligo vale quindi solo per gli altri animali singoli."@it ;
+        sh:description "Status der Tiergeschichte zum Abfragedatum."@de,
+            "State of the animal history at the date of the query."@en,
+            "Statut de l'historique de l'animal à la date de la requête."@fr,
+            "Stato della storia dell'animale alla data della richiesta."@it ;
         sh:path :historyState ;
         sh:class schema:CategoryCode ;
         sh:node [
@@ -245,10 +347,11 @@
                 sh:hasValue codelist:AnimalHistoryState ;
             ]
         ] ;
+        sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
     [
-        sh:order 11 ;
+        sh:order 4 ;
         sh:name "Zweck"@de,
             "Type of use"@en,
             "Type d'utilisation"@fr,
@@ -263,76 +366,24 @@
             ]
         ] ;
         sh:maxCount 1 ;
-    ],
-    [
-        sh:order 12 ;
-        sh:name "Kastriert"@de,
-            "Castrated"@en,
-            "Castré"@fr,
-            "Castrato"@it ;
-        :animalTracingTerm "CattleDetailV1Response.isCastrated", "EquidDetailsV1EquidResponse.isCastrated" ;
-        sh:description "Gibt an, ob das Tier kastriert ist. Gilt auch für Equiden."@de,
-            "Whether the animal is castrated. Applies to equids as well."@en,
-            "Indique si l'animal est castré. S'applique également aux équidés."@fr,
-            "Indica se l'animale è castrato. Vale anche per gli equidi."@it ;
-        sh:path :castrated ;
-        sh:datatype xsd:boolean ;
-        sh:maxCount 1 ;
     ] ;
-    sh:property [
-        sh:order 1 ;
-        sh:name "Identifikation Mutter"@de,
-            "Mother"@en,
-            "Mère"@fr,
-            "Madre"@it ;
-        :animalTracingTerm "CattleDetailV1ParentageResponse.motherEartagNumber" ;
-        sh:path :mother ;
-        sh:class :Animal ;
-        sh:maxCount 1 ;
-        sh:message "Ein Einzeltier hat höchstens ein Muttertier."@de,
-            "An individual animal has at most one mother animal."@en,
-            "Un animal individuel a au plus une mère."@fr,
-            "Un animale singolo ha al massimo una madre."@it ;
-    ],
+    sh:property
     [
-        sh:order 2 ;
+        sh:order 1 ;
         sh:name "Identifikation Vater"@de,
             "Father"@en,
             "Père"@fr,
             "Padre"@it ;
         :animalTracingTerm "CattleDetailV1ParentageResponse.fatherEartagNumber" ;
         sh:path :father ;
-        sh:class :Animal ;
+        sh:class :Ruminant ;
         sh:maxCount 1 ;
-        sh:message "Ein Einzeltier hat höchstens ein Vatertier."@de,
-            "An individual animal has at most one father animal."@en,
-            "Un animal individuel a au plus un père."@fr,
-            "Un animale singolo ha al massimo un padre."@it ;
-    ] ;
-    sh:sparql [
-        a sh:SPARQLConstraint ;
-        sh:description "Der TiergeschichteStatus ist für Equiden nicht relevant. Er ist deshalb für jedes Einzeltier ausser den Equiden Pflicht."@de,
-            "The animal history state is not relevant for equids. It is therefore mandatory for every individual animal except equids."@en,
-            "Le statut de l'historique de l'animal n'est pas pertinent pour les équidés. Il est donc obligatoire pour tout animal individuel à l'exception des équidés."@fr,
-            "Lo stato della storia dell'animale non è rilevante per gli equidi. È quindi obbligatorio per ogni animale singolo tranne gli equidi."@it ;
-        sh:message "Jedes Einzeltier ausser den Equiden braucht einen TiergeschichteStatus."@de,
-            "Every individual animal except equids requires an animal history state."@en,
-            "Tout animal individuel, à l'exception des équidés, doit avoir un statut de l'historique de l'animal."@fr,
-            "Ogni animale singolo, tranne gli equidi, necessita di uno stato della storia dell'animale."@it ;
-        sh:prefixes : ;
-        sh:select """
-            SELECT $this
-            WHERE {
-                FILTER NOT EXISTS { $this a :Equid . }
-                FILTER NOT EXISTS { $this :historyState ?state . }
-            }
-        """ ;
+        sh:message "Ein Wiederkäuer hat höchstens ein Vatertier."@de,
+            "A ruminant has at most one father animal."@en,
+            "Un ruminant a au plus un père."@fr,
+            "Un ruminante ha al massimo un padre."@it ;
     ] .
 
-# :owner follows the Objektkatalog's cardinality of 1. Whether an equid owner
-# is always a UID-registered rechtliche Einheit is disputed by review comment
-# [SB14]; issue #13 sets out the five sources and what changes if the comment
-# is upheld.
 
 :EquidShape a sh:NodeShape ;
     rdfs:label "Equide"@de,
@@ -344,11 +395,11 @@
         "Sous-classe de la classe animal individuel pour les animaux du genre équidé (cheval, mulet, bardot, âne). Tous les attributs de la classe animal individuel s'appliquent également aux équidés ; cette classe ne décrit que les informations supplémentaires propres aux équidés. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d'animaux. Un propriétaire est l'unité juridique qui détient des équidés en propriété ; le terme n'est utilisé que pour les propriétaires d'équidés."@fr,
         "Sottoclasse della classe animale singolo per gli animali del genere equide (cavallo, mulo, bardotto, asino). Tutti gli attributi della classe animale singolo si applicano anche agli equidi; questa classe descrive esclusivamente le informazioni aggiuntive specifiche degli equidi. Per gli equidi la responsabilità delle notifiche spetta al proprietario e non al detentore di animali. Un proprietario è l'unità giuridica che ha in proprietà degli equidi; il termine è usato solo per i proprietari di equidi."@it ;
     :animalTracingTerm "EquidDetailsEquidResponse", "EquidDetailsPublicEquidResponse" ;
-    sh:order 5 ;
+    sh:order 6 ;
     sh:targetClass :Equid ;
     sh:property
     [
-        sh:order 3 ;
+        sh:order 5 ;
         sh:name "Meldestatus"@de,
             "Notification state"@en,
             "Statut d'annonce"@fr,
@@ -370,7 +421,7 @@
         sh:maxCount 1 ;
     ],
     [
-        sh:order 4 ;
+        sh:order 6 ;
         sh:name "Zweck"@de,
             "Type of use"@en,
             "Type d'utilisation"@fr,
@@ -391,52 +442,21 @@
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ],
-    # Attributes of «Einzeltier» that do not apply to equids. The Objektkatalog
-    # exempts the TiergeschichteStatus itself. The father contradicts it and is
-    # put to Identitas as issue #45. The type of use is not dropped but replaced,
-    # by the equid-specific one above.
     [
-        sh:order 90 ;
-        sh:name "Identifikation Vater"@de,
-            "Father"@en,
-            "Père"@fr,
-            "Padre"@it ;
-        sh:description "Equiden führen keinen Vater; erfasst werden nur die Mutter und die genetische Mutter."@de,
-            "Equids have no father; only the mother and the genetic mother are recorded."@en,
-            "Les équidés n'ont pas de père ; seules la mère et la mère génétique sont enregistrées."@fr,
-            "Gli equidi non hanno un padre; sono registrate solo la madre e la madre genetica."@it ;
-        sh:path :father ;
-        sh:maxCount 0 ;
-    ],
-    [
-        sh:order 91 ;
-        sh:name "TiergeschichteStatus"@de,
-            "Animal history state"@en,
-            "Statut de l'historique de l'animal"@fr,
-            "Stato della storia dell'animale"@it ;
-        sh:description "Für Equiden nicht relevant; an seine Stelle tritt der Meldestatus."@de,
-            "Not relevant for equids; the notification state takes its place."@en,
-            "Non pertinent pour les équidés ; le statut d'annonce prend sa place."@fr,
-            "Non rilevante per gli equidi; al suo posto subentra lo stato di notifica."@it ;
-        sh:path :historyState ;
-        sh:maxCount 0 ;
-    ],
-    [
-        sh:order 92 ;
-        sh:name "Zweck (Nutztiere)"@de,
-            "Type of use (livestock)"@en,
-            "Type d'utilisation (animaux de rente)"@fr,
-            "Tipo di utilizzo (animali da reddito)"@it ;
-        sh:description "Gilt nicht für Equiden; an seine Stelle tritt der equidenspezifische Zweck."@de,
-            "Does not apply to equids; the equid-specific type of use takes its place."@en,
-            "Ne s'applique pas aux équidés; le type d'utilisation propre aux équidés prend sa place."@fr,
-            "Non si applica agli equidi; al suo posto subentra il tipo di utilizzo specifico degli equidi."@it ;
-        sh:path :typeOfUse ;
-        sh:maxCount 0 ;
+        sh:order 3 ;
+        sh:name "Nutztierart"@de,
+            "Genus"@en,
+            "Espèce d'animal de rente"@fr,
+            "Specie di animale da reddito"@it ;
+        :animalTracingTerm "EnumGenus" ;
+        sh:path :genus ;
+        sh:in ( genus:Equid ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
     ] ;
     sh:property
     [
-        sh:order 2 ;
+        sh:order 4 ;
         sh:name "Grössenkategorie"@de,
             "Withers class"@en,
             "Catégorie de taille"@fr,
@@ -473,6 +493,21 @@
             "An equid has exactly one owner."@en,
             "Un équidé a exactement un propriétaire."@fr,
             "Un equide ha esattamente un proprietario."@it ;
+    ],
+    [
+        sh:order 2 ;
+        sh:name "Identifikation genetische Mutter"@de,
+            "Genetic mother"@en,
+            "Mère génétique"@fr,
+            "Madre genetica"@it ;
+        :animalTracingTerm "EquidDetailsParentageResponse.geneticMotherUeln" ;
+        sh:path :geneticMother ;
+        sh:class :Equid ;
+        sh:maxCount 1 ;
+        sh:message "Ein Equide hat höchstens eine genetische Mutter."@de,
+            "An equid has at most one genetic mother."@en,
+            "Un équidé a au plus une mère génétique."@fr,
+            "Un equide ha al massimo una madre genetica."@it ;
     ] .
 
 :AnimalNotificationShape a sh:NodeShape ;
@@ -485,7 +520,7 @@
         "Un événement concernant un animal individuel. Sont considérées comme événements les notifications de mouvement, les notifications de données de base, les modifications d'attributs individuels des données de base ainsi que les notifications finales. Une notification se rapporte toujours à l'unité locale où l'événement a eu lieu et peut en outre indiquer l'unité locale de provenance. Les événements sont annoncés par les personnes autorisées, avec indication de l'unité d'élevage à laquelle la notification se rapporte ; pour les équidés, ils sont annoncés par les personnes autorisées du propriétaire d'équidés responsable."@fr,
         "Un evento che riguarda un animale singolo. Sono considerati eventi le notifiche di movimento, le notifiche di dati di base, le modifiche di singoli attributi dei dati di base nonché le notifiche finali. Una notifica si riferisce sempre all'unità locale in cui si è verificato l'evento e può inoltre indicare l'unità locale di provenienza. Gli eventi sono notificati dalle persone autorizzate, con indicazione della detenzione di animali cui si riferisce la notifica; per gli equidi sono notificati dalle persone autorizzate del proprietario di equidi responsabile."@it ;
     :animalTracingTerm "CattleDetailV1NotificationResponse", "SheepDetailV1NotificationResponse", "GoatDetailV1NotificationResponse" ;
-    sh:order 6 ;
+    sh:order 7 ;
     sh:targetClass :AnimalNotification ;
     sh:property
     [
@@ -633,7 +668,7 @@
         "An event concerning a group of animals that cannot be identified individually. Group notifications are recorded for animals of the categories pigs and poultry; the individuals of such a group are therefore not known. Events are reported by the natural persons of the responsible legal unit, the animal keeper. They comprise housing notifications for poultry, movement notifications for pigs, and slaughter notifications for pigs (by head) and poultry groups (in kg)."@en,
         "Un événement concernant un groupe d'animaux qui ne peuvent pas être identifiés individuellement. Les notifications de groupe sont enregistrées pour les animaux des catégories porcs et volaille ; les individus d'un tel groupe ne sont donc pas connus. Les événements sont annoncés par les personnes physiques de l'unité juridique responsable, le détenteur d'animaux. Ils comprennent les annonces de mise en place pour la volaille, les annonces de mouvement pour les porcs ainsi que les annonces d'abattage de porcs (en têtes) et de groupes de volaille (en kg)."@fr,
         "Un evento che riguarda un gruppo di animali non identificabili singolarmente. Le notifiche di gruppo sono registrate per gli animali delle categorie suini e pollame; gli individui di un tale gruppo non sono pertanto noti. Gli eventi sono notificati dalle persone fisiche dell'unità giuridica responsabile, il detentore di animali. Comprendono le notifiche di accasamento per il pollame, le notifiche di movimento per i suini nonché le notifiche di macellazione di suini (in capi) e di gruppi di pollame (in kg)."@it ;
-    sh:order 7 ;
+    sh:order 8 ;
     sh:targetClass :GroupNotification ;
     sh:property
     [
@@ -839,7 +874,7 @@
         "Where animal disease events are of national significance, it is essential that animal keepers are informed about movement bans and disease status, so that the risk of spread through animal movements can be minimised. Disease information recorded for a local unit. In addition to the epizootic status of a local unit, vaccination, risk and laboratory results can also be represented."@en,
         "Lorsque des épizooties revêtent une importance nationale, il est essentiel que les détenteurs d'animaux soient informés des interdictions de déplacement et du statut épizootique, afin de minimiser le risque de propagation par le trafic des animaux. Une information épizootique enregistrée sur une unité locale. Outre le statut épizootique d'une unité locale, les résultats de vaccination, de risque et de laboratoire peuvent également être représentés."@fr,
         "Quando si verificano epizoozie di rilevanza nazionale, è essenziale che i detentori di animali siano informati sui blocchi e sullo stato epizootico, affinché il rischio di diffusione attraverso il traffico di animali possa essere ridotto al minimo. Un'informazione epizootica registrata su un'unità locale. Oltre allo stato epizootico di un'unità locale, possono essere rappresentati anche i risultati di vaccinazione, di rischio e di laboratorio."@it ;
-    sh:order 8 ;
+    sh:order 9 ;
     sh:targetClass :LocalUnitHealthStatus ;
     sh:property
     [
@@ -923,7 +958,7 @@
         "Une information épizootique enregistrée sur un animal individuel. Outre le statut épizootique individuel, les vaccinations pertinentes sont également enregistrées."@fr,
         "Un'informazione epizootica registrata su un animale singolo. Oltre allo stato epizootico individuale, vengono registrate anche le vaccinazioni rilevanti."@it ;
     :animalTracingTerm "CattleDetailV1DiseasesResponse" ;
-    sh:order 9 ;
+    sh:order 10 ;
     sh:targetClass :AnimalHealthStatus ;
     sh:property
     [

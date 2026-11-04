@@ -38,21 +38,22 @@ localunit:1 a :LocalUnit ;
 localunit:2 a :LocalUnit ;
     :animalKeeper animalkeeper:1 .
 
-# Three individual animals plus one equid.
-animal:1 a :Animal ;
+# Three ruminants plus two equids.
+animal:1 a :Ruminant ;
     :identifier "CH000000000001" ;
     :genus genus:Cattle ;
     :historyState animalhistorystate:Ok .
 
-animal:2 a :Animal ;
+animal:2 a :Ruminant ;
     :identifier "CH000000000002" ;
     :genus genus:Cattle ;
     :historyState animalhistorystate:Ok .
 
-animal:3 a :Animal ;
+animal:3 a :Ruminant ;
     :identifier "CH000000000003" ;
     :genus genus:Cattle ;
     :historyState animalhistorystate:Ok ;
+    :castrated false ;
     :mother animal:1 ;
     :father animal:2 .
 

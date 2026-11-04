@@ -17,6 +17,9 @@
 
 :Animal a owl:Class .
 
+:Ruminant a owl:Class ;
+    rdfs:subClassOf :Animal .
+
 :Equid a owl:Class ;
     rdfs:subClassOf :Animal .
 
@@ -43,6 +46,8 @@
 :mother a owl:ObjectProperty .
 
 :father a owl:ObjectProperty .
+
+:geneticMother a owl:ObjectProperty .
 
 :owner a owl:ObjectProperty .
 
