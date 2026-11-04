@@ -100,7 +100,7 @@ These provisions shall apply to the standards prepared by eCH only, however, not
 
 For the code lists in @tbl-animaltracing-enums, the code of a value is the member of the same name of an enum of the TVD interface AnimalTracing.
 
-For notification type, health status type and the two epizootic status code lists, the interface holds the notification types per livestock species and the health statuses per disease in enums of their own, partly under other names. The following tables show which members of the interface correspond to a value; values without a corresponding value in the interface are not listed.
+For notification type and the epizootic status of individual animals, the interface holds the notification types per livestock species and the health statuses per disease in enums of their own, partly under other names. The following tables show which members of the interface correspond to a value; values without a corresponding value in the interface are not listed.
 
 {{< include animaltracing.md >}}
 

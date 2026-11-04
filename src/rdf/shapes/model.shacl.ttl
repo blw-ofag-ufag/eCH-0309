@@ -67,7 +67,9 @@
 # does not list, and :RuminantShape. The catalogue lists the attributes of
 # cattle, sheep and goats under «Einzeltier» and notes those that equids lack;
 # the model moves them to a subclass of their own, so that «Einzeltier» holds
-# only what all individual animals share.
+# only what all individual animals share. The catalogue's «Gesundheitsstatus
+# Standort» is not a class: as in AnimalTracing, the local unit carries one
+# status per disease.
 #
 # The German rdfs:label and sh:name are the Hilfsmittel's own wording.
 # :animalTracingTerm records the counterpart in AnimalTracing and :echTerm the
@@ -146,6 +148,42 @@
             "A local unit is assigned to at most one animal keeper."@en,
             "Une unité locale est rattachée à au plus un détenteur d'animaux."@fr,
             "Un'unità locale è assegnata al massimo a un detentore di animali."@it ;
+    ] ;
+    # The health status of a local unit, as AnimalTracing holds it: one field
+    # per disease on the local unit itself. The values are the enum members;
+    # their names and meanings are not published (GetEnumeration).
+    sh:property
+    [
+        sh:order 2 ;
+        sh:name "BVD-Status"@de,
+            "BVD status"@en,
+            "Statut BVD"@fr,
+            "Stato BVD"@it ;
+        :animalTracingTerm "BvdState" ;
+        sh:description "BVD-Status der örtlichen Einheit, für die Gattung Rinder."@de,
+            "BVD status of the local unit, for the genus cattle."@en,
+            "Statut BVD de l'unité locale, pour le genre bovins."@fr,
+            "Stato BVD dell'unità locale, per il genere bovini."@it ;
+        sh:path :bvdState ;
+        sh:datatype xsd:string ;
+        sh:in ( "Undefined" "Blocked" "AnimalBlocked" "NotBlocked" "ConditionalBlocked" "BvdFree" "NotBvdFree" "NotBvdFreeBlocked" ) ;
+        sh:maxCount 1 ;
+    ],
+    [
+        sh:order 3 ;
+        sh:name "Moderhinkestatus"@de,
+            "Footrot status"@en,
+            "Statut piétin"@fr,
+            "Stato zoppina"@it ;
+        :animalTracingTerm "FootRotState" ;
+        sh:description "Moderhinkestatus der örtlichen Einheit, für die Gattung Schafe."@de,
+            "Footrot status of the local unit, for the genus sheep."@en,
+            "Statut piétin de l'unité locale, pour le genre ovins."@fr,
+            "Stato zoppina dell'unità locale, per il genere ovini."@it ;
+        sh:path :footRotState ;
+        sh:datatype xsd:string ;
+        sh:in ( "Undefined" "Free" "NotTested" "Blocked" ) ;
+        sh:maxCount 1 ;
     ] .
 
 :AnimalShape a sh:NodeShape ;
@@ -865,89 +903,6 @@
             "Una notifica di gruppo indica al massimo un'unità locale come provenienza."@it ;
     ] .
 
-:LocalUnitHealthStatusShape a sh:NodeShape ;
-    rdfs:label "Gesundheitsstatus Standort"@de,
-        "Health status of a local unit"@en,
-        "État sanitaire de l'unité locale"@fr,
-        "Stato sanitario dell'unità locale"@it ;
-    rdfs:comment "Bei Seuchengeschehen von nationaler Bedeutung ist es entscheidend, dass Tierhaltende über Sperren und Seuchenstatus informiert sind; so kann ein Ausbreitungsrisiko durch den Tierverkehr minimiert werden. Eine Seucheninformation, die auf einer örtlichen Einheit erfasst ist. Neben dem Seuchenstatus einer örtlichen Einheit können auch Impf-, Risiko- und Laborergebnisse abgebildet werden."@de,
-        "Where animal disease events are of national significance, it is essential that animal keepers are informed about movement bans and disease status, so that the risk of spread through animal movements can be minimised. Disease information recorded for a local unit. In addition to the epizootic status of a local unit, vaccination, risk and laboratory results can also be represented."@en,
-        "Lorsque des épizooties revêtent une importance nationale, il est essentiel que les détenteurs d'animaux soient informés des interdictions de déplacement et du statut épizootique, afin de minimiser le risque de propagation par le trafic des animaux. Une information épizootique enregistrée sur une unité locale. Outre le statut épizootique d'une unité locale, les résultats de vaccination, de risque et de laboratoire peuvent également être représentés."@fr,
-        "Quando si verificano epizoozie di rilevanza nazionale, è essenziale che i detentori di animali siano informati sui blocchi e sullo stato epizootico, affinché il rischio di diffusione attraverso il traffico di animali possa essere ridotto al minimo. Un'informazione epizootica registrata su un'unità locale. Oltre allo stato epizootico di un'unità locale, possono essere rappresentati anche i risultati di vaccinazione, di rischio e di laboratorio."@it ;
-    sh:order 9 ;
-    sh:targetClass :LocalUnitHealthStatus ;
-    sh:property
-    [
-        sh:order 2 ;
-        sh:name "Typ"@de,
-            "Type"@en,
-            "Type"@fr,
-            "Tipo"@it ;
-        sh:description "z. B. Seuchenstatus, Impfstatus, Risikostatus"@de,
-            "e.g. epizootic, vaccination or risk status"@en,
-            "p. ex. statut épizootique, vaccinal ou de risque"@fr,
-            "p. es. stato epizootico, vaccinale o di rischio"@it ;
-        sh:path :healthStatusType ;
-        sh:class schema:CategoryCode ;
-        sh:node [
-            sh:property [
-                sh:path schema:inCodeSet ;
-                sh:hasValue codelist:HealthStatusType ;
-            ]
-        ] ;
-        sh:maxCount 1 ;
-    ],
-    [
-        sh:order 4 ;
-        sh:name "Status"@de,
-            "Status"@en,
-            "Statut"@fr,
-            "Stato"@it ;
-        sh:path :epizooticStatus ;
-        sh:class schema:CategoryCode ;
-        sh:node [
-            sh:property [
-                sh:path schema:inCodeSet ;
-                sh:hasValue codelist:LocalUnitEpizooticStatus ;
-            ]
-        ] ;
-        sh:maxCount 1 ;
-    ],
-    [
-        sh:order 5 ;
-        sh:name "Datum"@de,
-            "Date"@en,
-            "Date"@fr,
-            "Data"@it ;
-        sh:description "Datum, ab dem der Seuchenstatus gültig ist"@de,
-            "Date from which the status is valid"@en,
-            "Date à partir de laquelle le statut est valable"@fr,
-            "Data a partire dalla quale lo stato è valido"@it ;
-        sh:path :validFrom ;
-        sh:datatype xsd:date ;
-        sh:maxCount 1 ;
-    ] ;
-    sh:property [
-        sh:order 1 ;
-        sh:name "Örtliche Einheit"@de,
-            "Local unit"@en,
-            "Unité locale"@fr,
-            "Unità locale"@it ;
-        :animalTracingTerm "LocalUnitPublicResponse.bvdState", "LocalUnitPublicResponse.footRotState" ;
-        sh:description "BUR-Nummer der örtlichen Einheit"@de,
-            "BUR number of the local unit"@en,
-            "Numéro REE de l'unité locale"@fr,
-            "Numero RIS dell'unità locale"@it ;
-        sh:path :localUnit ;
-        sh:class :LocalUnit ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:message "Ein Gesundheitsstatus Standort bezieht sich auf genau eine örtliche Einheit."@de,
-            "A health status of a local unit refers to exactly one local unit."@en,
-            "Un état sanitaire de l'unité locale se rapporte à exactement une unité locale."@fr,
-            "Uno stato sanitario dell'unità locale si riferisce a esattamente un'unità locale."@it ;
-    ] .
-
 :AnimalHealthStatusShape a sh:NodeShape ;
     rdfs:label "Gesundheitsstatus Einzeltier"@de,
         "Health status of an individual animal"@en,
@@ -958,7 +913,7 @@
         "Une information épizootique enregistrée sur un animal individuel. Outre le statut épizootique individuel, les vaccinations pertinentes sont également enregistrées."@fr,
         "Un'informazione epizootica registrata su un animale singolo. Oltre allo stato epizootico individuale, vengono registrate anche le vaccinazioni rilevanti."@it ;
     :animalTracingTerm "CattleDetailV1DiseasesResponse" ;
-    sh:order 10 ;
+    sh:order 9 ;
     sh:targetClass :AnimalHealthStatus ;
     sh:property
     [

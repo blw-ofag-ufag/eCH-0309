@@ -33,7 +33,9 @@
 animalkeeper:1 a :AnimalKeeper .
 
 localunit:1 a :LocalUnit ;
-    :animalKeeper animalkeeper:1 .
+    :animalKeeper animalkeeper:1 ;
+    :bvdState "BvdFree" ;
+    :footRotState "Free" .
 
 localunit:2 a :LocalUnit ;
     :animalKeeper animalkeeper:1 .
@@ -98,9 +100,6 @@ notification:2 a :GroupNotification ;
     :notificationType notificationtype:Arrival ;
     :eventDate "2026-03-01"^^xsd:date ;
     :notificationDate "2026-03-02"^^xsd:date ;
-    :localUnit localunit:1 .
-
-healthstatus:1 a :LocalUnitHealthStatus ;
     :localUnit localunit:1 .
 
 # Load-bearing assertion: :animal requires sh:class :Animal, but animal:4 is

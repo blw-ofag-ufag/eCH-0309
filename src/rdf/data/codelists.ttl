@@ -23,8 +23,8 @@
 # NAEBI and PSM lists are keyed by their own numeric codes. The identifier is
 # therefore not ours to case.
 #
-# Four lists -- Bewegungstyp, Typ Gesundheitsstatus and the two Seuchenstatus
-# lists -- come from the Wertebereich tables of the Hilfsmittel alone: the
+# Three lists -- Bewegungstyp, Typ Gesundheitsstatus and Seuchenstatus
+# Einzeltier -- come from the Wertebereich tables of the Hilfsmittel alone: the
 # openAPI splits notification types per species and holds the health statuses as
 # a field per disease. Where one of their values has a counterpart in the
 # openAPI, src/rdf/mappings/animaltracing.ttl records it.
@@ -44,7 +44,6 @@
 @prefix equidwithersclass:      <https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
 @prefix notificationtype:       <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
 @prefix healthstatustype:       <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/> .
-@prefix localunithealthstatus:  <https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/> .
 @prefix animalhealthstatus:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/> .
 
 @prefix schema:                 <http://schema.org/> .
@@ -614,10 +613,10 @@ codelist:HealthStatusType a schema:CategoryCodeSet ;
         "Health status type"@en,
         "Type d'état sanitaire"@fr,
         "Tipo di stato sanitario"@it ;
-    schema:description "Art eines Gesundheitsstatus einer örtlichen Einheit oder eines Einzeltiers."@de,
-        "Kind of health status of a local unit or an individual animal."@en,
-        "Type d'un état sanitaire d'une unité locale ou d'un animal individuel."@fr,
-        "Tipo di uno stato sanitario di un'unità locale o di un singolo animale."@it ;
+    schema:description "Art eines Gesundheitsstatus eines Einzeltiers."@de,
+        "Kind of health status of an individual animal."@en,
+        "Type d'un état sanitaire d'un animal individuel."@fr,
+        "Tipo di uno stato sanitario di un singolo animale."@it ;
     schema:hasCategoryCode healthstatustype:EpizooticStatus,
         healthstatustype:VaccinationStatus,
         healthstatustype:RiskStatus,
@@ -670,125 +669,6 @@ healthstatustype:LaboratoryResult a schema:CategoryCode ;
         "Result of a laboratory test, e.g. positive or negative"@en,
         "Résultat d'une analyse de laboratoire, p. ex. positif ou négatif"@fr,
         "Risultato di un'analisi di laboratorio, p. es. positivo o negativo"@it .
-
-
-# ------------------------------------------------------------------------------
-# Seuchenstatus örtliche Einheit -- aus dem Hilfsmittel, Tabelle 10: Definition Wertebereich Seuchenstatus örtliche Einheit
-# ------------------------------------------------------------------------------
-
-codelist:LocalUnitEpizooticStatus a schema:CategoryCodeSet ;
-    schema:name "Seuchenstatus örtliche Einheit"@de,
-        "Health status of a local unit"@en,
-        "État sanitaire de l'unité locale"@fr,
-        "Stato sanitario dell'unità locale"@it ;
-    schema:description "Werte des Gesundheitsstatus einer örtlichen Einheit; ihr Typ steht in der Beschreibung."@de,
-        "Values of the health status of a local unit; their type is given in the description."@en,
-        "Valeurs de l'état sanitaire d'une unité locale ; leur type figure dans la description."@fr,
-        "Valori dello stato sanitario di un'unità locale; il loro tipo è indicato nella descrizione."@it ;
-    schema:hasCategoryCode localunithealthstatus:Blocked,
-        localunithealthstatus:Free,
-        localunithealthstatus:NotTested,
-        localunithealthstatus:High,
-        localunithealthstatus:Low,
-        localunithealthstatus:Medium,
-        localunithealthstatus:Positive,
-        localunithealthstatus:Negative .
-
-localunithealthstatus:Blocked a schema:CategoryCode ;
-    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
-    schema:codeValue "Blocked" ;
-    schema:name "gesperrt"@de,
-        "Blocked"@en,
-        "Bloqué"@fr,
-        "Bloccato"@it ;
-    schema:description "Typ: Seuchenstatus"@de,
-        "Type: epizootic status"@en,
-        "Type : statut épizootique"@fr,
-        "Tipo: stato epizootico"@it .
-
-localunithealthstatus:Free a schema:CategoryCode ;
-    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
-    schema:codeValue "Free" ;
-    schema:name "frei"@de,
-        "Free"@en,
-        "Libre"@fr,
-        "Libero"@it ;
-    schema:description "Typ: Seuchenstatus"@de,
-        "Type: epizootic status"@en,
-        "Type : statut épizootique"@fr,
-        "Tipo: stato epizootico"@it .
-
-localunithealthstatus:NotTested a schema:CategoryCode ;
-    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
-    schema:codeValue "NotTested" ;
-    schema:name "Nicht getestet"@de,
-        "Not tested"@en,
-        "Non testé"@fr,
-        "Non testato"@it ;
-    schema:description "Typ: Seuchenstatus"@de,
-        "Type: epizootic status"@en,
-        "Type : statut épizootique"@fr,
-        "Tipo: stato epizootico"@it .
-
-localunithealthstatus:High a schema:CategoryCode ;
-    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
-    schema:codeValue "High" ;
-    schema:name "Hoch"@de,
-        "High"@en,
-        "Élevé"@fr,
-        "Alto"@it ;
-    schema:description "Typ: Risikostatus"@de,
-        "Type: risk status"@en,
-        "Type : statut de risque"@fr,
-        "Tipo: stato di rischio"@it .
-
-localunithealthstatus:Low a schema:CategoryCode ;
-    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
-    schema:codeValue "Low" ;
-    schema:name "Tief"@de,
-        "Low"@en,
-        "Faible"@fr,
-        "Basso"@it ;
-    schema:description "Typ: Risikostatus"@de,
-        "Type: risk status"@en,
-        "Type : statut de risque"@fr,
-        "Tipo: stato di rischio"@it .
-
-localunithealthstatus:Medium a schema:CategoryCode ;
-    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
-    schema:codeValue "Medium" ;
-    schema:name "Mittel"@de,
-        "Medium"@en,
-        "Moyen"@fr,
-        "Medio"@it ;
-    schema:description "Typ: Risikostatus"@de,
-        "Type: risk status"@en,
-        "Type : statut de risque"@fr,
-        "Tipo: stato di rischio"@it .
-
-localunithealthstatus:Positive a schema:CategoryCode ;
-    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
-    schema:codeValue "Positive" ;
-    schema:name "positiv"@de,
-        "Positive"@en,
-        "Positif"@fr,
-        "Positivo"@it ;
-    schema:description "Typ: Laborergebnis"@de,
-        "Type: laboratory result"@en,
-        "Type : résultat de laboratoire"@fr,
-        "Tipo: risultato di laboratorio"@it .
-
-localunithealthstatus:Negative a schema:CategoryCode ;
-    schema:inCodeSet codelist:LocalUnitEpizooticStatus ;
-    schema:codeValue "Negative" ;
-    schema:name "negativ"@de,
-        "Negative"@en,
-        "Négatif"@fr,
-        "Negativo"@it ;
-    schema:description "Typ: Laborergebnis"@de,
-        "Type: laboratory result"@en,
-        "Type : résultat de laboratoire"@fr,
-        "Tipo: risultato di laboratorio"@it .
 
 
 # ------------------------------------------------------------------------------

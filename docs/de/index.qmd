@@ -100,7 +100,7 @@ Diese Bestimmungen gelten jedoch nur für die von eCH erarbeiteten Standards, ni
 
 Bei den Wertebereichen in @tbl-animaltracing-enums ist der Code eines Werts das gleichnamige Element einer Enumeration der TVD-Schnittstelle AnimalTracing.
 
-Bei Bewegungstyp, Typ Gesundheitsstatus und den beiden Seuchenstatus-Wertebereichen führt die Schnittstelle die Bewegungstypen je Nutztierart und die Gesundheitsstatus je Seuche in eigenen Enumerationen, teils unter anderem Namen. Die folgenden Tabellen zeigen, welche Elemente der Schnittstelle einem Wert entsprechen; Werte ohne Entsprechung in der Schnittstelle sind nicht aufgeführt.
+Bei Bewegungstyp und Seuchenstatus Einzeltier führt die Schnittstelle die Bewegungstypen je Nutztierart und die Gesundheitsstatus je Seuche in eigenen Enumerationen, teils unter anderem Namen. Die folgenden Tabellen zeigen, welche Elemente der Schnittstelle einem Wert entsprechen; Werte ohne Entsprechung in der Schnittstelle sind nicht aufgeführt.
 
 {{< include animaltracing.md >}}
 

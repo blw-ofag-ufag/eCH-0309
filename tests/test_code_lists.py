@@ -12,7 +12,7 @@ This module is what keeps it honest, by reporting drift in both directions:
 Only the lists derived from an enum are compared. A list says so through the
 data model: the property shape that restricts its values to the list names the
 enum with :animalTracingTerm, and the schema:codeValue of each of its values is
-the enum member. The other four lists take their values from the Wertebereich
+the enum member. The other three lists take their values from the Wertebereich
 tables of the Hilfsmittel, so they are not meant to exhaust any enum. Where one
 of their values has a counterpart in the interface, under another name or in
 several enums, src/rdf/mappings/animaltracing.ttl records it, and the interface
@@ -29,6 +29,7 @@ from pathlib import Path
 
 import pytest
 from rdflib import Graph, Namespace, URIRef
+from rdflib.collection import Collection
 from rdflib.namespace import SH
 
 OPENAPI_URL = "https://test-01-tvd-api-at.identitas.ch/open-api/v1.0"
@@ -84,13 +85,18 @@ def members(openapi):
 
 @pytest.fixture(scope="module")
 def derived():
-    """Maps each enum a list derives from to the code values of that list."""
+    """Maps each enum a list derives from to the code values of that list, and
+    each enum an attribute takes its sh:in values from to those values."""
     for path in (CODE_LISTS, SHAPES):
         if not path.exists():
             pytest.skip(f"Datei nicht gefunden: {path}")
     graph = Graph().parse(CODE_LISTS, format="turtle").parse(SHAPES, format="turtle")
     enums = {}
     for prop, enum in graph.subject_objects(ANIMAL_TRACING_TERM):
+        # an attribute that takes the enum members themselves, as strings
+        members = graph.value(prop, SH["in"])
+        if members is not None and graph.value(prop, SH.datatype) is not None:
+            enums.setdefault(str(enum), set()).update(str(m) for m in Collection(graph, members))
         for node in graph.objects(prop, SH.node):
             for nested in graph.objects(node, SH.property):
                 if graph.value(nested, SH.path) != SCHEMA.inCodeSet:
