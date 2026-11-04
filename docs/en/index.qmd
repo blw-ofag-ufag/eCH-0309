@@ -1,5 +1,5 @@
 ---
-title: "Auxiliary document: animal movement data"
+title: Animal movement data
 abstract: This document describes the data of the animal movement database (TVD) semantically, so that specialists without in-depth IT knowledge can also gain a better understanding of the data.
 date: today
 date-format: long
