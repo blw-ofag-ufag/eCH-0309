@@ -303,3 +303,151 @@ references:
   publisher: Sparna
   issued: 2020
   URL: https://shacl-play.sparna.fr/
+
+# --- Swiss legislation ---------------------------------------------------------
+
+- id: TSG
+  citation-label: TSG
+  type: legislation
+  title: "Tierseuchengesetz vom 1. Juli 1966 (TSG)"
+  note: SR 916.40
+  issued: 1966-07-01
+  URL: https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de
+
+- id: TSV
+  citation-label: TSV
+  type: legislation
+  title: "Tierseuchenverordnung vom 27. Juni 1995 (TSV)"
+  note: SR 916.401
+  issued: 1995-06-27
+  URL: https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de
+
+- id: TVD-Verordnung
+  citation-label: TVD-Verordnung
+  type: legislation
+  title: "Verordnung vom 26. Oktober 2011 über die Tierverkehrsdatenbank (TVD-Verordnung)"
+  note: SR 916.404.1
+  issued: 2011-10-26
+  URL: https://www.fedlex.admin.ch/eli/cc/2011/775/de
+
+- id: IdTVD-V
+  citation-label: IdTVD-V
+  type: legislation
+  title: "Verordnung vom 3. November 2021 über die Identitas AG und die Tierverkehrsdatenbank (IdTVD-V)"
+  note: SR 916.404.1
+  issued: 2021-11-03
+  URL: https://www.fedlex.admin.ch/eli/cc/2021/751/de
+
+- id: LwG
+  citation-label: LwG
+  type: legislation
+  title: "Bundesgesetz vom 29. April 1998 über die Landwirtschaft (Landwirtschaftsgesetz, LwG)"
+  note: SR 910.1
+  issued: 1998-04-29
+  URL: https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de
+
+- id: DZV
+  citation-label: DZV
+  type: legislation
+  title: "Verordnung vom 23. Oktober 2013 über die Direktzahlungen an die Landwirtschaft (Direktzahlungsverordnung, DZV)"
+  note: SR 910.13
+  issued: 2013-10-23
+  URL: https://www.fedlex.admin.ch/eli/cc/2013/765/de
+
+# --- Web pages -------------------------------------------------------------------
+
+- id: bundesrat2015bse
+  citation-label: Bundesrat 2015
+  type: webpage
+  author:
+  - literal: Der Bundesrat
+  title: "Erfolg nach 25 Jahren BSE-Bekämpfung"
+  genre: Medienmitteilung
+  issued: 2015-05-29
+  accessed: 2026-10-30
+  URL: https://www.admin.ch/de/nsb?id=57438
+
+- id: eurlex-animal-health-law
+  citation-label: EUR-Lex
+  type: webpage
+  author:
+  - literal: Amt für Veröffentlichungen der Europäischen Union
+  title: "Das EU-Tiergesundheitsrecht"
+  container-title: "EUR-Lex – Zusammenfassungen der EU-Gesetzgebung"
+  accessed: 2026-10-30
+  URL: https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html
+
+- id: blw-agate
+  citation-label: Agate
+  type: webpage
+  author:
+  - literal: Bundesamt für Landwirtschaft (BLW)
+  title: "agate.ch – der Online-Schalter für die Landwirtschaft"
+  issued: 2024-12-04
+  accessed: 2026-10-30
+  URL: https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html
+
+- id: blw-agis
+  citation-label: AGIS
+  type: webpage
+  author:
+  - literal: Bundesamt für Landwirtschaft (BLW)
+  title: "Agrarpolitisches Informationssystem AGIS"
+  issued: 2024-12-04
+  accessed: 2026-10-30
+  URL: https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html
+
+- id: blw-agrarumweltmonitoring
+  citation-label: Agrarumweltmonitoring
+  type: webpage
+  author:
+  - literal: Bundesamt für Landwirtschaft (BLW)
+  title: "Agrarumweltmonitoring"
+  issued: 2024-12-04
+  accessed: 2026-10-30
+  URL: https://www.blw.admin.ch/de/agrarumweltmonitoring
+
+- id: bfs-stru
+  citation-label: STRU
+  type: webpage
+  author:
+  - literal: Bundesamt für Statistik (BFS)
+  title: "Landwirtschaftliche Strukturerhebung"
+  accessed: 2026-10-30
+  URL: https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html
+
+- id: sbv-agristat
+  citation-label: Agristat
+  type: webpage
+  author:
+  - literal: Schweizer Bauernverband (SBV)
+  title: "Agristat – Statistik der Schweizer Landwirtschaft"
+  accessed: 2026-10-30
+  URL: https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft
+
+- id: proviande-herkunft
+  citation-label: Proviande
+  type: webpage
+  author:
+  - literal: Proviande
+  title: "Herkunft"
+  accessed: 2026-10-30
+  URL: https://www.proviande.ch/de/herkunft
+
+- id: identitas-labelbase
+  citation-label: Labelbase
+  type: webpage
+  author:
+  - literal: Identitas AG
+  title: "Labelbase"
+  accessed: 2026-10-30
+  URL: https://www.identitas.ch/produkte/labelbase
+
+- id: identitas-tierstatistik
+  citation-label: Tierstatistik
+  type: webpage
+  author:
+  - literal: Identitas AG
+  title: "Tierstatistik"
+  accessed: 2026-10-30
+  URL: https://tierstatistik.identitas.ch
