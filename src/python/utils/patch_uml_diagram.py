@@ -35,8 +35,10 @@ has to see the box attributes before `demote_value_domains` rewrites references
 back into that form, and `add_generalizations` has to see the final set of drawn
 classes so that it does not link a class that is no longer there.
 
-SHACL Play names a class `":EquidShape (:Equid)"` -- the shape, then its target
-class in parentheses -- and that title is what every pass matches against.
+SHACL Play names a class `":Equid (:Equid)"` -- the shape, then its target
+class in parentheses, both as QNames, so a class in a foreign namespace reads
+`"eCH-0261:LocalUnit (eCH-0261:LocalUnit)"` -- and that title is what every
+pass matches against.
 """
 
 import argparse
@@ -60,7 +62,7 @@ LINE_BREAK = "\\l"
 MEMBER_RE = re.compile(r'^\s*(?P<property>\S+?)(?:<U\+00A0>|\s)+\[(?P<cardinality>[^\]]+)\]')
 ATTRIBUTE_LINE_RE = re.compile(
     r'^(?P<source>"[^"]+")\s*:\s*\+?(?P<property>\S+)\s*:\s*\S+\s*\[(?P<cardinality>[^\]]+)\]\s*$')
-TITLE_RE = re.compile(r'"[^"]*\((:[^)]+)\)"')
+TITLE_RE = re.compile(r'"[^"]*\(([^)]+)\)"')
 # A box attribute, with or without the type that drop_attribute_types removes.
 # MEMBER_RE cannot stand in: it is anchored, and reads association labels only.
 BOX_MEMBER_RE = re.compile(
@@ -224,7 +226,8 @@ def drop_attribute_types(lines):
 
 
 def shorten_titles(lines):
-    """Reduces `":AnimalShape (:Animal)"` to `":Animal"` everywhere it appears.
+    """Reduces `":Animal (:Animal)"` to `":Animal"` everywhere it appears, and
+    likewise `"eCH-0261:LocalUnit (eCH-0261:LocalUnit)"` to `"eCH-0261:LocalUnit"`.
 
     Runs last: every other pass matches on the parenthesised form.
     """
