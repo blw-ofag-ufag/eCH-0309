@@ -19,7 +19,6 @@
 @prefix localunit:     <https://agriculture.ld.admin.ch/eCH-0309/1/localunit/> .
 @prefix animal:        <https://agriculture.ld.admin.ch/eCH-0309/1/animal/> .
 @prefix notification:  <https://agriculture.ld.admin.ch/eCH-0309/1/notification/> .
-@prefix healthstatus:  <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatus/> .
 @prefix legalunit:     <https://agriculture.ld.admin.ch/eCH-0309/1/legalunit/> .
 @prefix genus:         <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
 @prefix animalhistorystate: <https://agriculture.ld.admin.ch/eCH-0309/1/animalhistorystate/> .
@@ -56,6 +55,8 @@ animal:3 a :Ruminant ;
     :genus genus:Cattle ;
     :historyState animalhistorystate:Ok ;
     :castrated false ;
+    :lsdVaccinationState "Vaccinated" ;
+    :lsdVaccinationDate "2026-02-15"^^xsd:date ;
     :mother animal:1 ;
     :father animal:2 .
 
@@ -71,16 +72,21 @@ animal:4 a :Equid ;
     :withersClass equidwithersclass:GreaterThan148cm ;
     :owner legalunit:1 .
 
-# Second load-bearing assertion: :owner requires sh:class :LegalUnit, but
-# animalkeeper:1 is typed :AnimalKeeper only. This conforms only as long as
-# :AnimalKeeper rdfs:subClassOf :LegalUnit is in scope.
+# Two load-bearing assertions. :owner requires sh:class :LegalUnit, but
+# animalkeeper:1 is typed :AnimalKeeper only; this conforms only as long as
+# :AnimalKeeper rdfs:subClassOf :LegalUnit is in scope. :mother requires
+# sh:class :Animal, but animal:4 is typed :Equid only; sh:class traverses
+# rdfs:subClassOf*, so this conforms only as long as :Equid rdfs:subClassOf
+# :Animal is in scope -- it breaks the moment the specialization is dropped
+# from src/rdf/ontology/model.owl.ttl.
 animal:5 a :Equid ;
     :identifier "CH000000000005" ;
     :genus genus:Equid ;
     :notificationState equidnotificationstate:Ok ;
     :typeOfEquidUsage equidtypeofusage:FarmAnimal ;
     :withersClass equidwithersclass:GreaterThan148cm ;
-    :owner animalkeeper:1 .
+    :owner animalkeeper:1 ;
+    :mother animal:4 .
 
 # A move of animal:3 from localunit:1 to localunit:2, and a group notification
 # for a herd of pigs or poultry on localunit:1.
@@ -101,10 +107,3 @@ notification:2 a :GroupNotification ;
     :eventDate "2026-03-01"^^xsd:date ;
     :notificationDate "2026-03-02"^^xsd:date ;
     :localUnit localunit:1 .
-
-# Load-bearing assertion: :animal requires sh:class :Animal, but animal:4 is
-# typed :Equid only. sh:class traverses rdfs:subClassOf*, so this conforms only
-# as long as :Equid rdfs:subClassOf :Animal is in scope -- it breaks the moment
-# the specialization is dropped from src/rdf/ontology/model.owl.ttl.
-healthstatus:2 a :AnimalHealthStatus ;
-    :animal animal:4 .

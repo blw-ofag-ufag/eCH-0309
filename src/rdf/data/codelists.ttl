@@ -23,11 +23,10 @@
 # NAEBI and PSM lists are keyed by their own numeric codes. The identifier is
 # therefore not ours to case.
 #
-# Three lists -- Bewegungstyp, Typ Gesundheitsstatus and Seuchenstatus
-# Einzeltier -- come from the Wertebereich tables of the Hilfsmittel alone: the
-# openAPI splits notification types per species and holds the health statuses as
-# a field per disease. Where one of their values has a counterpart in the
-# openAPI, src/rdf/mappings/animaltracing.ttl records it.
+# One list -- Bewegungstyp -- comes from the Wertebereich tables of the
+# Hilfsmittel alone: the openAPI splits notification types per species. Where
+# one of its values has a counterpart in the openAPI,
+# src/rdf/mappings/animaltracing.ttl records it.
 #
 # Where the sources define a value, its description follows them. The other
 # descriptions and the French and Italian designations were drafted for the
@@ -43,8 +42,6 @@
 @prefix equidnotificationstate: <https://agriculture.ld.admin.ch/eCH-0309/1/equidnotificationstate/> .
 @prefix equidwithersclass:      <https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
 @prefix notificationtype:       <https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
-@prefix healthstatustype:       <https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/> .
-@prefix animalhealthstatus:     <https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/> .
 
 @prefix schema:                 <http://schema.org/> .
 
@@ -602,140 +599,6 @@ notificationtype:FirstRegistration a schema:CategoryCode ;
         "For sheep and goats only"@en,
         "Uniquement pour les ovins et les caprins"@fr,
         "Solo per ovini e caprini"@it .
-
-
-# ------------------------------------------------------------------------------
-# Typ Gesundheitsstatus -- aus dem Hilfsmittel, Tabelle 9: Definition Wertebereich Typ Gesundheitsstatus
-# ------------------------------------------------------------------------------
-
-codelist:HealthStatusType a schema:CategoryCodeSet ;
-    schema:name "Typ Gesundheitsstatus"@de,
-        "Health status type"@en,
-        "Type d'état sanitaire"@fr,
-        "Tipo di stato sanitario"@it ;
-    schema:description "Art eines Gesundheitsstatus eines Einzeltiers."@de,
-        "Kind of health status of an individual animal."@en,
-        "Type d'un état sanitaire d'un animal individuel."@fr,
-        "Tipo di uno stato sanitario di un singolo animale."@it ;
-    schema:hasCategoryCode healthstatustype:EpizooticStatus,
-        healthstatustype:VaccinationStatus,
-        healthstatustype:RiskStatus,
-        healthstatustype:LaboratoryResult .
-
-healthstatustype:EpizooticStatus a schema:CategoryCode ;
-    schema:inCodeSet codelist:HealthStatusType ;
-    schema:codeValue "EpizooticStatus" ;
-    schema:name "Seuchenstatus"@de,
-        "Epizootic status"@en,
-        "Statut épizootique"@fr,
-        "Stato epizootico"@it ;
-    schema:description "Status bezüglich einer Tierseuche, z. B. gesperrt oder frei"@de,
-        "Status regarding an animal disease, e.g. blocked or free"@en,
-        "Statut relatif à une épizootie, p. ex. bloqué ou libre"@fr,
-        "Stato relativo a un'epizoozia, p. es. bloccato o libero"@it .
-
-healthstatustype:VaccinationStatus a schema:CategoryCode ;
-    schema:inCodeSet codelist:HealthStatusType ;
-    schema:codeValue "VaccinationStatus" ;
-    schema:name "Impfstatus"@de,
-        "Vaccination status"@en,
-        "Statut vaccinal"@fr,
-        "Stato vaccinale"@it ;
-    schema:description "Angabe, ob gegen eine Tierseuche geimpft wurde"@de,
-        "Whether vaccination against an animal disease has taken place"@en,
-        "Indique si une vaccination contre une épizootie a été effectuée"@fr,
-        "Indica se è stata eseguita una vaccinazione contro un'epizoozia"@it .
-
-healthstatustype:RiskStatus a schema:CategoryCode ;
-    schema:inCodeSet codelist:HealthStatusType ;
-    schema:codeValue "RiskStatus" ;
-    schema:name "Risikostatus"@de,
-        "Risk status"@en,
-        "Statut de risque"@fr,
-        "Stato di rischio"@it ;
-    schema:description "Einstufung des Seuchenrisikos, z. B. hoch, mittel oder tief"@de,
-        "Rating of the disease risk, e.g. high, medium or low"@en,
-        "Classification du risque d'épizootie, p. ex. élevé, moyen ou faible"@fr,
-        "Classificazione del rischio di epizoozia, p. es. alto, medio o basso"@it .
-
-healthstatustype:LaboratoryResult a schema:CategoryCode ;
-    schema:inCodeSet codelist:HealthStatusType ;
-    schema:codeValue "LaboratoryResult" ;
-    schema:name "Laborergebnis"@de,
-        "Laboratory result"@en,
-        "Résultat de laboratoire"@fr,
-        "Risultato di laboratorio"@it ;
-    schema:description "Ergebnis einer Laboruntersuchung, z. B. positiv oder negativ"@de,
-        "Result of a laboratory test, e.g. positive or negative"@en,
-        "Résultat d'une analyse de laboratoire, p. ex. positif ou négatif"@fr,
-        "Risultato di un'analisi di laboratorio, p. es. positivo o negativo"@it .
-
-
-# ------------------------------------------------------------------------------
-# Seuchenstatus Einzeltier -- aus dem Hilfsmittel, Tabelle 11: Definition Wertebereich Seuchenstatus Einzeltier
-# ------------------------------------------------------------------------------
-
-codelist:AnimalEpizooticStatus a schema:CategoryCodeSet ;
-    schema:name "Seuchenstatus Einzeltier"@de,
-        "Health status of an individual animal"@en,
-        "État sanitaire de l'animal individuel"@fr,
-        "Stato sanitario dell'animale singolo"@it ;
-    schema:description "Werte des Gesundheitsstatus eines Einzeltiers; ihr Typ steht in der Beschreibung."@de,
-        "Values of the health status of an individual animal; their type is given in the description."@en,
-        "Valeurs de l'état sanitaire d'un animal individuel ; leur type figure dans la description."@fr,
-        "Valori dello stato sanitario di un singolo animale; il loro tipo è indicato nella descrizione."@it ;
-    schema:hasCategoryCode animalhealthstatus:Blocked,
-        animalhealthstatus:Free,
-        animalhealthstatus:NotTested,
-        animalhealthstatus:Vaccinated .
-
-animalhealthstatus:Blocked a schema:CategoryCode ;
-    schema:inCodeSet codelist:AnimalEpizooticStatus ;
-    schema:codeValue "Blocked" ;
-    schema:name "gesperrt"@de,
-        "Blocked"@en,
-        "Bloqué"@fr,
-        "Bloccato"@it ;
-    schema:description "Typ: Seuchenstatus"@de,
-        "Type: epizootic status"@en,
-        "Type : statut épizootique"@fr,
-        "Tipo: stato epizootico"@it .
-
-animalhealthstatus:Free a schema:CategoryCode ;
-    schema:inCodeSet codelist:AnimalEpizooticStatus ;
-    schema:codeValue "Free" ;
-    schema:name "frei"@de,
-        "Free"@en,
-        "Libre"@fr,
-        "Libero"@it ;
-    schema:description "Typ: Seuchenstatus"@de,
-        "Type: epizootic status"@en,
-        "Type : statut épizootique"@fr,
-        "Tipo: stato epizootico"@it .
-
-animalhealthstatus:NotTested a schema:CategoryCode ;
-    schema:inCodeSet codelist:AnimalEpizooticStatus ;
-    schema:codeValue "NotTested" ;
-    schema:name "Nicht getestet"@de,
-        "Not tested"@en,
-        "Non testé"@fr,
-        "Non testato"@it ;
-    schema:description "Typ: Seuchenstatus"@de,
-        "Type: epizootic status"@en,
-        "Type : statut épizootique"@fr,
-        "Tipo: stato epizootico"@it .
-
-animalhealthstatus:Vaccinated a schema:CategoryCode ;
-    schema:inCodeSet codelist:AnimalEpizooticStatus ;
-    schema:codeValue "Vaccinated" ;
-    schema:name "geimpft"@de,
-        "Vaccinated"@en,
-        "Vacciné"@fr,
-        "Vaccinato"@it ;
-    schema:description "Typ: Impfstatus"@de,
-        "Type: vaccination status"@en,
-        "Type : statut vaccinal"@fr,
-        "Tipo: stato vaccinale"@it .
 
 
 # ------------------------------------------------------------------------------
