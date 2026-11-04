@@ -36,7 +36,7 @@ In der Verordnung über die Identitas AG und die Tierverkehrsdatenbank [@IdTVD-V
 
 Rasch etablierte sich das Tiermeldewesen auch entlang der gesamten Lebensmittelwertschöpfungskette. Programme mit Tierwohl-, Rückverfolgbarkeits- und Herkunftsversprechen stützen sich darauf ab [@proviande-herkunft; @identitas-labelbase]. Die Vielfalt der Tierinformation aus dem Meldewesen des Tierverkehrs spiegelt sich auch in den öffentlich verfügbaren Datensätzen der Open Data Plattform Tierstatistik [@identitas-tierstatistik].
 
-Die technische Schnittstellenbeschreibung in diesem Dokument basiert auf der technischen Servicebeschreibung AnimalTracing v1.32, sowie der openAPI-Spezifikation v. x.xx.
+Die technische Schnittstellenbeschreibung in diesem Dokument basiert auf der technischen Servicebeschreibung AnimalTracing v1.32, sowie der openAPI-Spezifikation v1.0 [@animaltracing-openapi].
 
 ## Verweise {#sec-references}
 

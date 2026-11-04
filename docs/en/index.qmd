@@ -36,7 +36,7 @@ The Ordinance on Identitas AG and the animal movement database [@IdTVD-V] furthe
 
 Animal movement reporting quickly became established along the entire food value chain as well. Programmes with animal welfare, traceability and origin commitments rely on it [@proviande-herkunft; @identitas-labelbase]. The variety of animal information from animal movement reporting is also reflected in the publicly available datasets of the Tierstatistik open data platform [@identitas-tierstatistik].
 
-The technical interface description in this document is based on the technical service description AnimalTracing v1.32 and on the openAPI specification v. x.xx.
+The technical interface description in this document is based on the technical service description AnimalTracing v1.32 and on the openAPI specification v1.0 [@animaltracing-openapi].
 
 ## References {#sec-references}
 

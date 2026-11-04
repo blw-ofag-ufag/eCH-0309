@@ -36,7 +36,7 @@ L'ordonnance sur Identitas SA et la banque de données sur le trafic des animaux
 
 Le système d'annonce du trafic des animaux s'est rapidement imposé tout au long de la chaîne de valeur alimentaire. Les programmes assortis de promesses en matière de bien-être animal, de traçabilité et de provenance s'y appuient [@proviande-herkunft; @identitas-labelbase]. La diversité des informations sur les animaux issues du système d'annonce du trafic des animaux se reflète également dans les jeux de données publiquement disponibles de la plateforme Open Data Tierstatistik [@identitas-tierstatistik].
 
-La description technique des interfaces figurant dans le présent document se fonde sur la description technique de service AnimalTracing v1.32 ainsi que sur la spécification openAPI v. x.xx.
+La description technique des interfaces figurant dans le présent document se fonde sur la description technique de service AnimalTracing v1.32 ainsi que sur la spécification openAPI v1.0 [@animaltracing-openapi].
 
 ## Renvois {#sec-references}
 
