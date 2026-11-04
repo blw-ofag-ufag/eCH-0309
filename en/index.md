@@ -25,15 +25,13 @@ November 4, 2026
   - [<span class="toc-section-number">3.4</span> Individual
     animal](#sec-nodeshape-animalshape)
   - [<span class="toc-section-number">3.5</span>
+    Ruminant](#sec-nodeshape-ruminantshape)
+  - [<span class="toc-section-number">3.6</span>
     Equid](#sec-nodeshape-equidshape)
-  - [<span class="toc-section-number">3.6</span> Individual animal
+  - [<span class="toc-section-number">3.7</span> Individual animal
     notification](#sec-nodeshape-animalnotificationshape)
-  - [<span class="toc-section-number">3.7</span> Group
+  - [<span class="toc-section-number">3.8</span> Group
     notification](#sec-nodeshape-groupnotificationshape)
-  - [<span class="toc-section-number">3.8</span> Health status of a
-    local unit](#sec-nodeshape-localunithealthstatusshape)
-  - [<span class="toc-section-number">3.9</span> Health status of an
-    individual animal](#sec-nodeshape-animalhealthstatusshape)
 - [<span class="toc-section-number">4</span> Code
   lists](#sec-code-lists)
   - [<span class="toc-section-number">4.1</span> Animal history
@@ -44,19 +42,13 @@ November 4, 2026
     Gender](#sec-codelist-gender)
   - [<span class="toc-section-number">4.4</span>
     Genus](#sec-codelist-genus)
-  - [<span class="toc-section-number">4.5</span> Health status of a
-    local unit](#sec-codelist-localunitepizooticstatus)
-  - [<span class="toc-section-number">4.6</span> Health status of an
-    individual animal](#sec-codelist-animalepizooticstatus)
-  - [<span class="toc-section-number">4.7</span> Health status
-    type](#sec-codelist-healthstatustype)
-  - [<span class="toc-section-number">4.8</span> Notification
+  - [<span class="toc-section-number">4.5</span> Notification
     type](#sec-codelist-notificationtype)
-  - [<span class="toc-section-number">4.9</span> Type of use (cattle,
+  - [<span class="toc-section-number">4.6</span> Type of use (cattle,
     sheep, goats)](#sec-codelist-animaltypeofuse)
-  - [<span class="toc-section-number">4.10</span> Type of use
+  - [<span class="toc-section-number">4.7</span> Type of use
     (equids)](#sec-codelist-equidtypeofusage)
-  - [<span class="toc-section-number">4.11</span> Withers
+  - [<span class="toc-section-number">4.8</span> Withers
     class](#sec-codelist-equidwithersclass)
 - [<span class="toc-section-number">5</span> Safety
   considerations](#sec-safety-consideration)
@@ -202,6 +194,7 @@ movement data.
 |:----------|:-----------------------------------------------------|
 | :         | https://agriculture.ld.admin.ch/eCH-0309/1/          |
 | codelist: | https://agriculture.ld.admin.ch/eCH-0309/1/codelist/ |
+| genus:    | https://agriculture.ld.admin.ch/eCH-0309/1/genus/    |
 | schema:   | http://schema.org/                                   |
 | xsd:      | http://www.w3.org/2001/XMLSchema#                    |
 
@@ -226,13 +219,13 @@ means exactly one value, `[0..1]` at most one. An arrow leads to the
 class being referred to and carries the name of the relationship;
 several relationships between the same two classes share one arrow. The
 line with the triangle connects a class to its superclass, at which the
-triangle points: an equid is an individual animal and has, in addition
-to the attributes shown, all attributes of the individual animal, which
-are not repeated in the diagram. Attributes with a code list are drawn
-like all the others; the permitted values are given in
-<a href="#sec-code-lists" class="quarto-xref">Section 4</a>. The diagram
-states neither datatypes nor descriptions; those follow in the sections
-on the individual classes.
+triangle points: a ruminant and an equid are each an individual animal
+and have, in addition to the attributes shown, all attributes of the
+individual animal, which are not repeated in the diagram. Attributes
+with a code list are drawn like all the others; the permitted values are
+given in <a href="#sec-code-lists" class="quarto-xref">Section 4</a>.
+The diagram states neither datatypes nor descriptions; those follow in
+the sections on the individual classes.
 
 ## Legal unit
 
@@ -321,9 +314,9 @@ Target class
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 55%" />
-<col style="width: 32%" />
-<col style="width: 10%" />
+<col style="width: 50%" />
+<col style="width: 38%" />
+<col style="width: 9%" />
 </colgroup>
 <thead>
 <tr>
@@ -348,6 +341,32 @@ keeper</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
+<tr>
+<td style="text-align: left;"><strong>BVD status</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/bvdState">:bvdState</a>):
+BVD status of the local unit, for the genus cattle.</td>
+<td style="text-align: left;"><ul>
+<li>Type: Text (<a
+href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
+<li>Values: <code>Undefined</code>, <code>Blocked</code>,
+<code>AnimalBlocked</code>, <code>NotBlocked</code>,
+<code>ConditionalBlocked</code>, <code>BvdFree</code>,
+<code>NotBvdFree</code>, <code>NotBvdFreeBlocked</code></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Footrot status</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/footRotState">:footRotState</a>):
+Footrot status of the local unit, for the genus sheep.</td>
+<td style="text-align: left;"><ul>
+<li>Type: Text (<a
+href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
+<li>Values: <code>Undefined</code>, <code>Free</code>,
+<code>NotTested</code>, <code>Blocked</code></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
 </tbody>
 </table>
 
@@ -357,7 +376,9 @@ An individually identified farm animal. In the animal movement database,
 animals of the categories cattle, sheep, goats and equids are recorded
 as individual animals; they are uniquely identified by their ear tag
 number, or by the UELN in the case of equids. No individual animals are
-kept for pigs and poultry, only group notifications.
+kept for pigs and poultry, only group notifications. Every individual
+animal is either a ruminant (cattle, sheep, goat) or an equid; this
+class describes the information that applies to both.
 
 ### Overview
 
@@ -375,8 +396,8 @@ Target class
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 39%" />
+<col style="width: 49%" />
+<col style="width: 40%" />
 <col style="width: 9%" />
 </colgroup>
 <thead>
@@ -391,16 +412,6 @@ Target class
 <td style="text-align: left;"><strong>Mother</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/mother">:mother</a>):
 An individual animal has at most one mother animal.</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a href="#sec-nodeshape-animalshape">Individual
-animal</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Father</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/father">:father</a>):
-An individual animal has at most one father animal.</td>
 <td style="text-align: left;"><ul>
 <li>Type: <a href="#sec-nodeshape-animalshape">Individual
 animal</a></li>
@@ -457,18 +468,96 @@ href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 <td style="text-align: right;">0..1</td>
 </tr>
 <tr>
+<td style="text-align: left;"><strong>Castrated</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/castrated">:castrated</a>):
+Whether the animal is castrated. Only for cattle and equids.</td>
+<td style="text-align: left;"><ul>
+<li>Type: Boolean (<a
+href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+
+### Rules
+
+Castrated is recorded only for cattle and equids, not for sheep and
+goats.
+
+Every individual animal is either a ruminant or an equid.
+
+## Ruminant
+
+Subclass of the class individual animal for animals of the genera
+cattle, sheep and goats. All attributes of the class individual animal
+also apply to ruminants; this class describes the additional information
+that is not recorded for equids.
+
+### Overview
+
+<div class="ech-facts">
+
+Shape  
+[:RuminantShape](https://agriculture.ld.admin.ch/eCH-0309/1/RuminantShape)
+
+Target class  
+[:Ruminant](https://agriculture.ld.admin.ch/eCH-0309/1/Ruminant)
+
+</div>
+
+### Properties
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 42%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Cardinality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Father</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/father">:father</a>): A
+ruminant has at most one father animal.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-ruminantshape">Ruminant</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Genus</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/genus">:genus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Values:
+<ul>
+<li>Cattle (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/genus/Cattle">genus:Cattle</a>)</li>
+<li>Sheep (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/genus/Sheep">genus:Sheep</a>)</li>
+<li>Goat (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/genus/Goat">genus:Goat</a>)</li>
+</ul></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
 <td style="text-align: left;"><strong>Animal history state</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>):
-State of the animal history at the date of the query. Not relevant for
-equids; the obligation therefore applies only to the other individual
-animals.</td>
+State of the animal history at the date of the query.</td>
 <td style="text-align: left;"><ul>
 <li>Type: <a
 href="http://schema.org/CategoryCode">schema:CategoryCode</a>, see code
 list <a href="#sec-codelist-animalhistorystate">Animal history
 state</a></li>
 </ul></td>
-<td style="text-align: right;">0..1</td>
+<td style="text-align: right;">1..1</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Type of use</strong> (<a
@@ -482,12 +571,26 @@ goats)</a></li>
 <td style="text-align: right;">0..1</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Castrated</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/castrated">:castrated</a>):
-Whether the animal is castrated. Applies to equids as well.</td>
+<td style="text-align: left;"><strong>LSD vaccination status</strong>
+(<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/lsdVaccinationState">:lsdVaccinationState</a>):
+Vaccination status against lumpy skin disease (LSD). Only for
+cattle.</td>
 <td style="text-align: left;"><ul>
-<li>Type: Boolean (<a
-href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
+<li>Type: Text (<a
+href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
+<li>Values: <code>Undefined</code>, <code>Vaccinated</code></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>LSD vaccination date</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/lsdVaccinationDate">:lsdVaccinationDate</a>):
+Date of the vaccination against lumpy skin disease (LSD). Only for
+cattle.</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -496,8 +599,8 @@ href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>)</li>
 
 ### Rules
 
-The animal history state is not relevant for equids. It is therefore
-mandatory for every individual animal except equids.
+The LSD vaccination status and date are recorded only for cattle, not
+for sheep and goats.
 
 ## Equid
 
@@ -524,9 +627,9 @@ Target class
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 53%" />
-<col style="width: 36%" />
-<col style="width: 9%" />
+<col style="width: 48%" />
+<col style="width: 42%" />
+<col style="width: 8%" />
 </colgroup>
 <thead>
 <tr>
@@ -543,6 +646,27 @@ legal unit that owns the equid. For equids, responsibility for reporting
 lies with the owner rather than with the animal keeper.</td>
 <td style="text-align: left;"><ul>
 <li>Type: <a href="#sec-nodeshape-legalunitshape">Legal unit</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Genetic mother</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/geneticMother">:geneticMother</a>):
+An equid has at most one genetic mother.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-equidshape">Equid</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Genus</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/genus">:genus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Values:
+<ul>
+<li>Equid (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/genus/Equid">genus:Equid</a>)</li>
+</ul></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
@@ -581,30 +705,6 @@ list <a href="#sec-codelist-equidtypeofusage">Type of use
 (equids)</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Father</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/father">:father</a>):
-Equids have no father; only the mother and the genetic mother are
-recorded.</td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;">0..0</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Animal history state</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>):
-Not relevant for equids; the notification state takes its place.</td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;">0..0</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Type of use (livestock)</strong>
-(<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfUse">:typeOfUse</a>):
-Does not apply to equids; the equid-specific type of use takes its
-place.</td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;">0..0</td>
 </tr>
 </tbody>
 </table>
@@ -809,8 +909,8 @@ list <a href="#sec-codelist-genus">Genus</a></li>
 <tr>
 <td style="text-align: left;"><strong>Group information</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/groupInformation">:groupInformation</a>):
-Group information must be given for housing notifications of
-poultry</td>
+Only for poultry, not for pigs: group information must be given for
+housing notifications.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Text (<a
 href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
@@ -860,8 +960,8 @@ href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
 <tr>
 <td style="text-align: left;"><strong>Weight</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/weight">:weight</a>):
-Total weight in kg of the animal group for slaughter notifications of
-poultry</td>
+Only for poultry: total weight of the animal group in kg for slaughter
+notifications. Slaughterings of pigs are notified in head (count).</td>
 <td style="text-align: left;"><ul>
 <li>Type: Integer (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
@@ -883,174 +983,12 @@ goats)</a></li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Age</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): For
-housing notifications of poultry the age must be given in weeks</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Only
+for poultry, not for pigs: the age must be given in weeks for housing
+notifications.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Integer (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-</tbody>
-</table>
-
-## Health status of a local unit
-
-Where animal disease events are of national significance, it is
-essential that animal keepers are informed about movement bans and
-disease status, so that the risk of spread through animal movements can
-be minimised. Disease information recorded for a local unit. In addition
-to the epizootic status of a local unit, vaccination, risk and
-laboratory results can also be represented.
-
-### Overview
-
-<div class="ech-facts">
-
-Shape  
-[:LocalUnitHealthStatusShape](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatusShape)
-
-Target class  
-[:LocalUnitHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatus)
-
-</div>
-
-### Properties
-
-<table style="width:99%;">
-<colgroup>
-<col style="width: 53%" />
-<col style="width: 36%" />
-<col style="width: 9%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Details</th>
-<th style="text-align: right;">Cardinality</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Local unit</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>):
-BUR number of the local unit</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a href="#sec-nodeshape-localunitshape">Local unit</a></li>
-</ul></td>
-<td style="text-align: right;">1..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Type</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>):
-e.g. epizootic, vaccination or risk status</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a
-href="http://schema.org/CategoryCode">schema:CategoryCode</a>, see code
-list <a href="#sec-codelist-healthstatustype">Health status
-type</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Status</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a
-href="http://schema.org/CategoryCode">schema:CategoryCode</a>, see code
-list <a href="#sec-codelist-localunitepizooticstatus">Health status of a
-local unit</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Date</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>):
-Date from which the status is valid</td>
-<td style="text-align: left;"><ul>
-<li>Type: Date (<a
-href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-</tbody>
-</table>
-
-## Health status of an individual animal
-
-Disease information recorded for an individual animal. In addition to
-the individual epizootic status, relevant vaccinations are recorded as
-well.
-
-### Overview
-
-<div class="ech-facts">
-
-Shape  
-[:AnimalHealthStatusShape](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatusShape)
-
-Target class  
-[:AnimalHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatus)
-
-</div>
-
-### Properties
-
-<table style="width:99%;">
-<colgroup>
-<col style="width: 53%" />
-<col style="width: 36%" />
-<col style="width: 9%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Details</th>
-<th style="text-align: right;">Cardinality</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Animal ID</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/animal">:animal</a>): A
-health status of an individual animal refers to exactly one individual
-animal.</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a href="#sec-nodeshape-animalshape">Individual
-animal</a></li>
-</ul></td>
-<td style="text-align: right;">1..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Type</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>):
-e.g. epizootic, vaccination or risk status</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a
-href="http://schema.org/CategoryCode">schema:CategoryCode</a>, see code
-list <a href="#sec-codelist-healthstatustype">Health status
-type</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Status</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a
-href="http://schema.org/CategoryCode">schema:CategoryCode</a>, see code
-list <a href="#sec-codelist-animalepizooticstatus">Health status of an
-individual animal</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Date</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>):
-Date from which the status is valid, or the date of vaccination</td>
-<td style="text-align: left;"><ul>
-<li>Type: Date (<a
-href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -1140,63 +1078,6 @@ Table 5: Values of the code list Genus.
 
 </div>
 
-## Health status of a local unit
-
-Values of the health status of a local unit; their type is given in the
-description.
-
-<div id="tbl-codelist-localunitepizooticstatus">
-
-Table 6: Values of the code list Health status of a local unit.
-
-| Code | Name | Description |
-|:---|:---|:---|
-| [`Blocked`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Blocked) | Blocked | Type: epizootic status |
-| [`Free`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Free) | Free | Type: epizootic status |
-| [`High`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/High) | High | Type: risk status |
-| [`Low`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Low) | Low | Type: risk status |
-| [`Medium`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Medium) | Medium | Type: risk status |
-| [`Negative`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Negative) | Negative | Type: laboratory result |
-| [`NotTested`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/NotTested) | Not tested | Type: epizootic status |
-| [`Positive`](https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Positive) | Positive | Type: laboratory result |
-
-</div>
-
-## Health status of an individual animal
-
-Values of the health status of an individual animal; their type is given
-in the description.
-
-<div id="tbl-codelist-animalepizooticstatus">
-
-Table 7: Values of the code list Health status of an individual animal.
-
-| Code | Name | Description |
-|:---|:---|:---|
-| [`Blocked`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Blocked) | Blocked | Type: epizootic status |
-| [`Free`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Free) | Free | Type: epizootic status |
-| [`NotTested`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/NotTested) | Not tested | Type: epizootic status |
-| [`Vaccinated`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated) | Vaccinated | Type: vaccination status |
-
-</div>
-
-## Health status type
-
-Kind of health status of a local unit or an individual animal.
-
-<div id="tbl-codelist-healthstatustype">
-
-Table 8: Values of the code list Health status type.
-
-| Code | Name | Description |
-|:---|:---|:---|
-| [`EpizooticStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/EpizooticStatus) | Epizootic status | Status regarding an animal disease, e.g. blocked or free |
-| [`LaboratoryResult`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/LaboratoryResult) | Laboratory result | Result of a laboratory test, e.g. positive or negative |
-| [`RiskStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/RiskStatus) | Risk status | Rating of the disease risk, e.g. high, medium or low |
-| [`VaccinationStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/VaccinationStatus) | Vaccination status | Whether vaccination against an animal disease has taken place |
-
-</div>
-
 ## Notification type
 
 Type of a notification about an individual animal, e.g. a movement, a
@@ -1204,7 +1085,7 @@ birth or a slaughter.
 
 <div id="tbl-codelist-notificationtype">
 
-Table 9: Values of the code list Notification type.
+Table 6: Values of the code list Notification type.
 
 | Code | Name | Description |
 |:---|:---|:---|
@@ -1230,7 +1111,7 @@ Type of use of cattle, sheep and goats.
 
 <div id="tbl-codelist-animaltypeofuse">
 
-Table 10: Values of the code list Type of use (cattle, sheep, goats).
+Table 7: Values of the code list Type of use (cattle, sheep, goats).
 
 | Code | Name | Description |
 |:---|:---|:---|
@@ -1246,7 +1127,7 @@ slaughtered for food production.
 
 <div id="tbl-codelist-equidtypeofusage">
 
-Table 11: Values of the code list Type of use (equids).
+Table 8: Values of the code list Type of use (equids).
 
 | Code | Name | Description |
 |:---|:---|:---|
@@ -1262,7 +1143,7 @@ withers.
 
 <div id="tbl-codelist-equidwithersclass">
 
-Table 12: Values of the code list Withers class.
+Table 9: Values of the code list Withers class.
 
 | Code | Name | Description |
 |:---|:---|:---|
@@ -1501,7 +1382,7 @@ Recommendation) : World Wide Web Consortium (W3C), 2014</span>
 
 <div id="tbl-glossary">
 
-Table 13: Glossary of eCH-0309
+Table 10: Glossary of eCH-0309
 
 <table>
 <colgroup>
@@ -1565,20 +1446,19 @@ RDF, consisting of a subject, predicate, and object.</p>
 # Annex D - Mapping to the TVD interface
 
 For the code lists in
-<a href="#tbl-animaltracing-enums" class="quarto-xref">Table 14</a>, the
+<a href="#tbl-animaltracing-enums" class="quarto-xref">Table 11</a>, the
 code of a value is the member of the same name of an enum of the TVD
 interface AnimalTracing.
 
-For notification type, health status type and the two epizootic status
-code lists, the interface holds the notification types per livestock
-species and the health statuses per disease in enums of their own,
-partly under other names. The following tables show which members of the
-interface correspond to a value; values without a corresponding value in
-the interface are not listed.
+For notification type, the interface holds the notification types per
+livestock species in enums of their own, partly under other names. The
+following table shows which members of the interface correspond to a
+value; values without a corresponding value in the interface are not
+listed.
 
 <div id="tbl-animaltracing-enums">
 
-Table 14: Enums of the TVD interface from which the code lists take
+Table 11: Enums of the TVD interface from which the code lists take
 their codes.
 
 | Code list | Enum of the interface |
@@ -1593,94 +1473,9 @@ their codes.
 
 </div>
 
-<div id="tbl-animaltracing-codelist-localunitepizooticstatus">
-
-Table 15: Corresponding values of the code list Health status of a local
-unit in the TVD interface.
-
-<table>
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 41%" />
-<col style="width: 45%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Code</th>
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">TVD interface</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Blocked"><code>Blocked</code></a></td>
-<td style="text-align: left;">Blocked</td>
-<td style="text-align: left;"><code>BvdState.Blocked</code><br />
-<code>FootRotState.Blocked</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Free"><code>Free</code></a></td>
-<td style="text-align: left;">Free</td>
-<td style="text-align: left;"><code>FootRotState.Free</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/NotTested"><code>NotTested</code></a></td>
-<td style="text-align: left;">Not tested</td>
-<td style="text-align: left;"><code>FootRotState.NotTested</code></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<div id="tbl-animaltracing-codelist-animalepizooticstatus">
-
-Table 16: Corresponding values of the code list Health status of an
-individual animal in the TVD interface.
-
-| Code | Name | TVD interface |
-|:---|:---|:---|
-| [`Vaccinated`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated) | Vaccinated | `EnumCattleLsdState.Vaccinated` |
-
-</div>
-
-<div id="tbl-animaltracing-codelist-healthstatustype">
-
-Table 17: Corresponding values of the code list Health status type in
-the TVD interface.
-
-<table>
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 36%" />
-<col style="width: 45%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Code</th>
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">TVD interface</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/EpizooticStatus"><code>EpizooticStatus</code></a></td>
-<td style="text-align: left;">Epizootic status</td>
-<td style="text-align: left;"><code>BvdState</code><br />
-<code>FootRotState</code></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
 <div id="tbl-animaltracing-codelist-notificationtype">
 
-Table 18: Corresponding values of the code list Notification type in the
+Table 12: Corresponding values of the code list Notification type in the
 TVD interface.
 
 <table>
