@@ -106,6 +106,8 @@ Beim Bewegungstyp führt die Schnittstelle die Bewegungstypen je Nutztierart in 
 
 # Anhang E - Änderungen gegenüber der Vorversion {#sec-appendix-e .appendix}
 
+Die Version {{< meta ech.version >}} ist die erste Version dieses Hilfsmittels. Es gibt daher keine Vorversion und keine Änderungen gegenüber einer solchen. Künftige Änderungen je Version werden in den [Releases auf GitHub](https://github.com/blw-ofag-ufag/eCH-0309/releases) festgehalten.
+
 # Anhang F - Abbildungsverzeichnis {#sec-appendix-f .appendix}
 
 {{< ech figures >}}

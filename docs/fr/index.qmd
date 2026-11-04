@@ -106,6 +106,8 @@ Pour le type de mouvement, l'interface gère les types de mouvement par espèce 
 
 # Annexe E - Modifications par rapport à la version précédente {#sec-appendix-e .appendix}
 
+La version {{< meta ech.version >}} est la première version du présent document. Il n'existe donc pas de version précédente ni de modifications par rapport à celle-ci. Les modifications futures par version seront consignées dans les [releases sur GitHub](https://github.com/blw-ofag-ufag/eCH-0309/releases).
+
 # Annexe F - Table des illustrations {#sec-appendix-f .appendix}
 
 {{< ech figures >}}

@@ -106,6 +106,8 @@ For notification type, the interface holds the notification types per livestock 
 
 # Annex E - Changes in comparison to previous version {#sec-appendix-e .appendix}
 
+Version {{< meta ech.version >}} is the first version of this document. There is therefore no previous version and no changes to report. Future changes per version will be recorded in the [releases on GitHub](https://github.com/blw-ofag-ufag/eCH-0309/releases).
+
 # Annex F - Table of figures {#sec-appendix-f .appendix}
 
 {{< ech figures >}}
