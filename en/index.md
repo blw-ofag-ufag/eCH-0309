@@ -32,6 +32,8 @@ November 4, 2026
     notification](#sec-nodeshape-animalnotificationshape)
   - [<span class="toc-section-number">3.8</span> Group
     notification](#sec-nodeshape-groupnotificationshape)
+  - [<span class="toc-section-number">3.9</span> Health status of an
+    individual animal](#sec-nodeshape-animalhealthstatusshape)
 - [<span class="toc-section-number">4</span> Code
   lists](#sec-code-lists)
   - [<span class="toc-section-number">4.1</span> Animal history
@@ -42,13 +44,17 @@ November 4, 2026
     Gender](#sec-codelist-gender)
   - [<span class="toc-section-number">4.4</span>
     Genus](#sec-codelist-genus)
-  - [<span class="toc-section-number">4.5</span> Notification
+  - [<span class="toc-section-number">4.5</span> Health status of an
+    individual animal](#sec-codelist-animalepizooticstatus)
+  - [<span class="toc-section-number">4.6</span> Health status
+    type](#sec-codelist-healthstatustype)
+  - [<span class="toc-section-number">4.7</span> Notification
     type](#sec-codelist-notificationtype)
-  - [<span class="toc-section-number">4.6</span> Type of use (cattle,
+  - [<span class="toc-section-number">4.8</span> Type of use (cattle,
     sheep, goats)](#sec-codelist-animaltypeofuse)
-  - [<span class="toc-section-number">4.7</span> Type of use
+  - [<span class="toc-section-number">4.9</span> Type of use
     (equids)](#sec-codelist-equidtypeofusage)
-  - [<span class="toc-section-number">4.8</span> Withers
+  - [<span class="toc-section-number">4.10</span> Withers
     class](#sec-codelist-equidwithersclass)
 - [<span class="toc-section-number">5</span> Safety
   considerations](#sec-safety-consideration)
@@ -510,9 +516,9 @@ Target class
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 48%" />
-<col style="width: 42%" />
-<col style="width: 7%" />
+<col style="width: 44%" />
+<col style="width: 45%" />
+<col style="width: 8%" />
 </colgroup>
 <thead>
 <tr>
@@ -570,37 +576,8 @@ goats)</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
-<tr>
-<td style="text-align: left;"><strong>LSD vaccination status</strong>
-(<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/lsdVaccinationState">:lsdVaccinationState</a>):
-Vaccination status against lumpy skin disease (LSD). Only for
-cattle.</td>
-<td style="text-align: left;"><ul>
-<li>Type: Text (<a
-href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
-<li>Values: <code>Undefined</code>, <code>Vaccinated</code></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>LSD vaccination date</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/lsdVaccinationDate">:lsdVaccinationDate</a>):
-Date of the vaccination against lumpy skin disease (LSD). Only for
-cattle.</td>
-<td style="text-align: left;"><ul>
-<li>Type: Date (<a
-href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
 </tbody>
 </table>
-
-### Rules
-
-The LSD vaccination status and date are recorded only for cattle, not
-for sheep and goats.
 
 ## Equid
 
@@ -909,8 +886,8 @@ list <a href="#sec-codelist-genus">Genus</a></li>
 <tr>
 <td style="text-align: left;"><strong>Group information</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/groupInformation">:groupInformation</a>):
-Only for poultry, not for pigs: group information must be given for
-housing notifications.</td>
+Group information must be given for housing notifications of
+poultry</td>
 <td style="text-align: left;"><ul>
 <li>Type: Text (<a
 href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
@@ -960,8 +937,8 @@ href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
 <tr>
 <td style="text-align: left;"><strong>Weight</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/weight">:weight</a>):
-Only for poultry: total weight of the animal group in kg for slaughter
-notifications. Slaughterings of pigs are notified in head (count).</td>
+Total weight in kg of the animal group for slaughter notifications of
+poultry</td>
 <td style="text-align: left;"><ul>
 <li>Type: Integer (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
@@ -983,12 +960,92 @@ goats)</a></li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Age</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Only
-for poultry, not for pigs: the age must be given in weeks for housing
-notifications.</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): For
+housing notifications of poultry the age must be given in weeks</td>
 <td style="text-align: left;"><ul>
 <li>Type: Integer (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+
+## Health status of an individual animal
+
+Disease information recorded for an individual animal. In addition to
+the individual epizootic status, relevant vaccinations are recorded as
+well.
+
+### Overview
+
+<div class="ech-facts">
+
+Shape  
+[:AnimalHealthStatusShape](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatusShape)
+
+Target class  
+[:AnimalHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatus)
+
+</div>
+
+### Properties
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 36%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Cardinality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Animal ID</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/animal">:animal</a>): A
+health status of an individual animal refers to exactly one individual
+animal.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-animalshape">Individual
+animal</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>):
+e.g. epizootic, vaccination or risk status</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, see code
+list <a href="#sec-codelist-healthstatustype">Health status
+type</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Status</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, see code
+list <a href="#sec-codelist-animalepizooticstatus">Health status of an
+individual animal</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Date</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>):
+Date from which the status is valid, or the date of vaccination</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -1078,6 +1135,41 @@ Table 5: Values of the code list Genus.
 
 </div>
 
+## Health status of an individual animal
+
+Values of the health status of an individual animal; their type is given
+in the description.
+
+<div id="tbl-codelist-animalepizooticstatus">
+
+Table 6: Values of the code list Health status of an individual animal.
+
+| Code | Name | Description |
+|:---|:---|:---|
+| [`Blocked`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Blocked) | Blocked | Type: epizootic status |
+| [`Free`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Free) | Free | Type: epizootic status |
+| [`NotTested`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/NotTested) | Not tested | Type: epizootic status |
+| [`Vaccinated`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated) | Vaccinated | Type: vaccination status |
+
+</div>
+
+## Health status type
+
+Kind of health status of an individual animal.
+
+<div id="tbl-codelist-healthstatustype">
+
+Table 7: Values of the code list Health status type.
+
+| Code | Name | Description |
+|:---|:---|:---|
+| [`EpizooticStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/EpizooticStatus) | Epizootic status | Status regarding an animal disease, e.g. blocked or free |
+| [`LaboratoryResult`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/LaboratoryResult) | Laboratory result | Result of a laboratory test, e.g. positive or negative |
+| [`RiskStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/RiskStatus) | Risk status | Rating of the disease risk, e.g. high, medium or low |
+| [`VaccinationStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/VaccinationStatus) | Vaccination status | Whether vaccination against an animal disease has taken place |
+
+</div>
+
 ## Notification type
 
 Type of a notification about an individual animal, e.g. a movement, a
@@ -1085,7 +1177,7 @@ birth or a slaughter.
 
 <div id="tbl-codelist-notificationtype">
 
-Table 6: Values of the code list Notification type.
+Table 8: Values of the code list Notification type.
 
 | Code | Name | Description |
 |:---|:---|:---|
@@ -1111,7 +1203,7 @@ Type of use of cattle, sheep and goats.
 
 <div id="tbl-codelist-animaltypeofuse">
 
-Table 7: Values of the code list Type of use (cattle, sheep, goats).
+Table 9: Values of the code list Type of use (cattle, sheep, goats).
 
 | Code | Name | Description |
 |:---|:---|:---|
@@ -1127,7 +1219,7 @@ slaughtered for food production.
 
 <div id="tbl-codelist-equidtypeofusage">
 
-Table 8: Values of the code list Type of use (equids).
+Table 10: Values of the code list Type of use (equids).
 
 | Code | Name | Description |
 |:---|:---|:---|
@@ -1143,7 +1235,7 @@ withers.
 
 <div id="tbl-codelist-equidwithersclass">
 
-Table 9: Values of the code list Withers class.
+Table 11: Values of the code list Withers class.
 
 | Code | Name | Description |
 |:---|:---|:---|
@@ -1382,7 +1474,7 @@ Recommendation) : World Wide Web Consortium (W3C), 2014</span>
 
 <div id="tbl-glossary">
 
-Table 10: Glossary of eCH-0309
+Table 12: Glossary of eCH-0309
 
 <table>
 <colgroup>
@@ -1446,19 +1538,20 @@ RDF, consisting of a subject, predicate, and object.</p>
 # Annex D - Mapping to the TVD interface
 
 For the code lists in
-<a href="#tbl-animaltracing-enums" class="quarto-xref">Table 11</a>, the
+<a href="#tbl-animaltracing-enums" class="quarto-xref">Table 13</a>, the
 code of a value is the member of the same name of an enum of the TVD
 interface AnimalTracing.
 
-For notification type, the interface holds the notification types per
-livestock species in enums of their own, partly under other names. The
-following table shows which members of the interface correspond to a
-value; values without a corresponding value in the interface are not
-listed.
+For notification type and the epizootic status of individual animals,
+the interface holds the notification types per livestock species and the
+health statuses per disease in enums of their own, partly under other
+names. The following tables show which members of the interface
+correspond to a value; values without a corresponding value in the
+interface are not listed.
 
 <div id="tbl-animaltracing-enums">
 
-Table 11: Enums of the TVD interface from which the code lists take
+Table 13: Enums of the TVD interface from which the code lists take
 their codes.
 
 | Code list | Enum of the interface |
@@ -1473,9 +1566,20 @@ their codes.
 
 </div>
 
+<div id="tbl-animaltracing-codelist-animalepizooticstatus">
+
+Table 14: Corresponding values of the code list Health status of an
+individual animal in the TVD interface.
+
+| Code | Name | TVD interface |
+|:---|:---|:---|
+| [`Vaccinated`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated) | Vaccinated | `EnumCattleLsdState.Vaccinated` |
+
+</div>
+
 <div id="tbl-animaltracing-codelist-notificationtype">
 
-Table 12: Corresponding values of the code list Notification type in the
+Table 15: Corresponding values of the code list Notification type in the
 TVD interface.
 
 <table>

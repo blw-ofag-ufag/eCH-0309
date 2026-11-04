@@ -32,6 +32,8 @@
     Einzeltier](#sec-nodeshape-animalnotificationshape)
   - [<span class="toc-section-number">3.8</span>
     Gruppenmeldung](#sec-nodeshape-groupnotificationshape)
+  - [<span class="toc-section-number">3.9</span> Gesundheitsstatus
+    Einzeltier](#sec-nodeshape-animalhealthstatusshape)
 - [<span class="toc-section-number">4</span>
   Wertebereiche](#sec-code-lists)
   - [<span class="toc-section-number">4.1</span>
@@ -44,11 +46,15 @@
     Equide](#sec-codelist-equidnotificationstate)
   - [<span class="toc-section-number">4.5</span>
     Nutztierart](#sec-codelist-genus)
-  - [<span class="toc-section-number">4.6</span>
+  - [<span class="toc-section-number">4.6</span> Seuchenstatus
+    Einzeltier](#sec-codelist-animalepizooticstatus)
+  - [<span class="toc-section-number">4.7</span>
     Tiergeschichtestatus](#sec-codelist-animalhistorystate)
-  - [<span class="toc-section-number">4.7</span> Zweck
+  - [<span class="toc-section-number">4.8</span> Typ
+    Gesundheitsstatus](#sec-codelist-healthstatustype)
+  - [<span class="toc-section-number">4.9</span> Zweck
     (Equiden)](#sec-codelist-equidtypeofusage)
-  - [<span class="toc-section-number">4.8</span> Zweck (Rinder, Schafe,
+  - [<span class="toc-section-number">4.10</span> Zweck (Rinder, Schafe,
     Ziegen)](#sec-codelist-animaltypeofuse)
 - [<span class="toc-section-number">5</span>
   Sicherheitsaspekte](#sec-safety-consideration)
@@ -520,9 +526,9 @@ Zielklasse
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 48%" />
-<col style="width: 42%" />
-<col style="width: 7%" />
+<col style="width: 44%" />
+<col style="width: 45%" />
+<col style="width: 8%" />
 </colgroup>
 <thead>
 <tr>
@@ -580,35 +586,8 @@ Ziegen)</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
-<tr>
-<td style="text-align: left;"><strong>LSD-Impfstatus</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/lsdVaccinationState">:lsdVaccinationState</a>):
-Impfstatus gegen die Lumpy Skin Disease (LSD). Nur für Rinder.</td>
-<td style="text-align: left;"><ul>
-<li>Typ: Zeichenkette (<a
-href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
-<li>Werte: <code>Undefined</code>, <code>Vaccinated</code></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>LSD-Impfdatum</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/lsdVaccinationDate">:lsdVaccinationDate</a>):
-Datum der Impfung gegen die Lumpy Skin Disease (LSD). Nur für
-Rinder.</td>
-<td style="text-align: left;"><ul>
-<li>Typ: Datum (<a
-href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
 </tbody>
 </table>
-
-### Regeln
-
-Der LSD-Impfstatus und das LSD-Impfdatum werden nur für Rinder geführt,
-nicht für Schafe und Ziegen.
 
 ## Equide
 
@@ -930,8 +909,8 @@ Codeliste <a href="#sec-codelist-genus">Nutztierart</a></li>
 <tr>
 <td style="text-align: left;"><strong>Gruppeninformation</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/groupInformation">:groupInformation</a>):
-Nur für Geflügel, nicht für Schweine: Bei Einstallungsmeldungen ist eine
-Gruppeninformation anzugeben.</td>
+Bei Einstallungsmeldungen von Geflügel ist eine Gruppeninformation
+anzugeben</td>
 <td style="text-align: left;"><ul>
 <li>Typ: Zeichenkette (<a
 href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
@@ -982,9 +961,8 @@ href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
 <tr>
 <td style="text-align: left;"><strong>Gewicht</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/weight">:weight</a>):
-Nur für Geflügel: Gesamtgewicht der Tiergruppe in kg bei
-Schlachtungsmeldungen. Schlachtungen von Schweinen werden in Stück
-gemeldet (Anzahl).</td>
+Gesamtgewicht in kg der Tiergruppe bei Schlachtungsmeldungen von
+Geflügel</td>
 <td style="text-align: left;"><ul>
 <li>Typ: Ganzzahl (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
@@ -1006,12 +984,92 @@ Ziegen)</a></li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Alter</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Nur für
-Geflügel, nicht für Schweine: Bei Einstallungsmeldungen ist das Alter in
-Wochen anzugeben.</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Bei
+Einstallungsmeldungen von Geflügel ist das Alter in Wochen
+anzugeben</td>
 <td style="text-align: left;"><ul>
 <li>Typ: Ganzzahl (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+
+## Gesundheitsstatus Einzeltier
+
+Eine Seucheninformation, die auf einem Einzeltier erfasst ist.
+Zusätzlich zum individuellen Seuchenstatus werden damit auch relevante
+Impfungen erfasst.
+
+### Übersicht
+
+<div class="ech-facts">
+
+Shape  
+[:AnimalHealthStatusShape](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatusShape)
+
+Zielklasse  
+[:AnimalHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatus)
+
+</div>
+
+### Eigenschaften
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 36%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Beschreibung</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Kardinalität</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Tier-ID</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/animal">:animal</a>):
+Ein Gesundheitsstatus Einzeltier bezieht sich auf genau ein
+Einzeltier.</td>
+<td style="text-align: left;"><ul>
+<li>Typ: <a href="#sec-nodeshape-animalshape">Einzeltier</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Typ</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>):
+z. B. Seuchenstatus, Impfstatus, Risikostatus</td>
+<td style="text-align: left;"><ul>
+<li>Typ: <a
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-healthstatustype">Typ
+Gesundheitsstatus</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Status</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Typ: <a
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe
+Codeliste <a href="#sec-codelist-animalepizooticstatus">Seuchenstatus
+Einzeltier</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Datum</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>):
+Datum, ab dem der Seuchenstatus gültig ist oder das Impfdatum</td>
+<td style="text-align: left;"><ul>
+<li>Typ: Datum (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -1124,6 +1182,24 @@ Tabelle 6: Werte der Codeliste Nutztierart.
 
 </div>
 
+## Seuchenstatus Einzeltier
+
+Werte des Gesundheitsstatus eines Einzeltiers; ihr Typ steht in der
+Beschreibung.
+
+<div id="tbl-codelist-animalepizooticstatus">
+
+Tabelle 7: Werte der Codeliste Seuchenstatus Einzeltier.
+
+| Code | Name | Beschreibung |
+|:---|:---|:---|
+| [`Blocked`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Blocked) | gesperrt | Typ: Seuchenstatus |
+| [`Free`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Free) | frei | Typ: Seuchenstatus |
+| [`NotTested`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/NotTested) | Nicht getestet | Typ: Seuchenstatus |
+| [`Vaccinated`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated) | geimpft | Typ: Impfstatus |
+
+</div>
+
 ## Tiergeschichtestatus
 
 Status der Tiergeschichte eines Einzeltiers zum Abfragedatum. Nicht
@@ -1131,7 +1207,7 @@ relevant für Equiden.
 
 <div id="tbl-codelist-animalhistorystate">
 
-Tabelle 7: Werte der Codeliste Tiergeschichtestatus.
+Tabelle 8: Werte der Codeliste Tiergeschichtestatus.
 
 | Code | Name | Beschreibung |
 |:---|:---|:---|
@@ -1143,6 +1219,23 @@ Tabelle 7: Werte der Codeliste Tiergeschichtestatus.
 
 </div>
 
+## Typ Gesundheitsstatus
+
+Art eines Gesundheitsstatus eines Einzeltiers.
+
+<div id="tbl-codelist-healthstatustype">
+
+Tabelle 9: Werte der Codeliste Typ Gesundheitsstatus.
+
+| Code | Name | Beschreibung |
+|:---|:---|:---|
+| [`EpizooticStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/EpizooticStatus) | Seuchenstatus | Status bezüglich einer Tierseuche, z. B. gesperrt oder frei |
+| [`LaboratoryResult`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/LaboratoryResult) | Laborergebnis | Ergebnis einer Laboruntersuchung, z. B. positiv oder negativ |
+| [`RiskStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/RiskStatus) | Risikostatus | Einstufung des Seuchenrisikos, z. B. hoch, mittel oder tief |
+| [`VaccinationStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/VaccinationStatus) | Impfstatus | Angabe, ob gegen eine Tierseuche geimpft wurde |
+
+</div>
+
 ## Zweck (Equiden)
 
 Verwendungszweck eines Equiden; er bestimmt, ob der Equide zur
@@ -1150,7 +1243,7 @@ Lebensmittelgewinnung geschlachtet werden darf.
 
 <div id="tbl-codelist-equidtypeofusage">
 
-Tabelle 8: Werte der Codeliste Zweck (Equiden).
+Tabelle 10: Werte der Codeliste Zweck (Equiden).
 
 | Code | Name | Beschreibung |
 |:---|:---|:---|
@@ -1165,7 +1258,7 @@ Nutzungsart von Rindern, Schafen und Ziegen.
 
 <div id="tbl-codelist-animaltypeofuse">
 
-Tabelle 9: Werte der Codeliste Zweck (Rinder, Schafe, Ziegen).
+Tabelle 11: Werte der Codeliste Zweck (Rinder, Schafe, Ziegen).
 
 | Code | Name | Beschreibung |
 |:---|:---|:---|
@@ -1406,7 +1499,7 @@ Recommendation) : World Wide Web Consortium (W3C), 2014</span>
 
 <div id="tbl-glossary">
 
-Tabelle 10: Glossar des Hilfsmittels eCH-0309
+Tabelle 12: Glossar des Hilfsmittels eCH-0309
 
 <table>
 <colgroup>
@@ -1472,19 +1565,19 @@ bestehend aus Subjekt, Prädikat und Objekt.</p>
 # Anhang D - Abbildung auf die TVD-Schnittstelle
 
 Bei den Wertebereichen in
-<a href="#tbl-animaltracing-enums" class="quarto-xref">Tabelle 11</a>
+<a href="#tbl-animaltracing-enums" class="quarto-xref">Tabelle 13</a>
 ist der Code eines Werts das gleichnamige Element einer Enumeration der
 TVD-Schnittstelle AnimalTracing.
 
-Beim Bewegungstyp führt die Schnittstelle die Bewegungstypen je
-Nutztierart in eigenen Enumerationen, teils unter anderem Namen. Die
-folgende Tabelle zeigt, welche Elemente der Schnittstelle einem Wert
-entsprechen; Werte ohne Entsprechung in der Schnittstelle sind nicht
-aufgeführt.
+Bei Bewegungstyp und Seuchenstatus Einzeltier führt die Schnittstelle
+die Bewegungstypen je Nutztierart und die Gesundheitsstatus je Seuche in
+eigenen Enumerationen, teils unter anderem Namen. Die folgenden Tabellen
+zeigen, welche Elemente der Schnittstelle einem Wert entsprechen; Werte
+ohne Entsprechung in der Schnittstelle sind nicht aufgeführt.
 
 <div id="tbl-animaltracing-enums">
 
-Tabelle 11: Enumerationen der TVD-Schnittstelle, aus denen die
+Tabelle 13: Enumerationen der TVD-Schnittstelle, aus denen die
 Wertebereiche ihre Codes beziehen.
 
 | Wertebereich | Enumeration der Schnittstelle |
@@ -1501,7 +1594,7 @@ Wertebereiche ihre Codes beziehen.
 
 <div id="tbl-animaltracing-codelist-notificationtype">
 
-Tabelle 12: Entsprechungen der Werte des Wertebereichs Bewegungstyp in
+Tabelle 14: Entsprechungen der Werte des Wertebereichs Bewegungstyp in
 der TVD-Schnittstelle.
 
 <table>
@@ -1609,6 +1702,17 @@ style="text-align: left;"><code>EnumCattleNotificationType.Slaughtering</code><b
 </tr>
 </tbody>
 </table>
+
+</div>
+
+<div id="tbl-animaltracing-codelist-animalepizooticstatus">
+
+Tabelle 15: Entsprechungen der Werte des Wertebereichs Seuchenstatus
+Einzeltier in der TVD-Schnittstelle.
+
+| Code | Name | TVD-Schnittstelle |
+|:---|:---|:---|
+| [`Vaccinated`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated) | geimpft | `EnumCattleLsdState.Vaccinated` |
 
 </div>
 

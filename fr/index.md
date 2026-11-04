@@ -32,6 +32,8 @@
     individuel](#sec-nodeshape-animalnotificationshape)
   - [<span class="toc-section-number">3.8</span> Notification de
     groupe](#sec-nodeshape-groupnotificationshape)
+  - [<span class="toc-section-number">3.9</span> État sanitaire de
+    l’animal individuel](#sec-nodeshape-animalhealthstatusshape)
 - [<span class="toc-section-number">4</span> Domaines de
   valeurs](#sec-code-lists)
   - [<span class="toc-section-number">4.1</span> Catégorie de
@@ -48,8 +50,12 @@
     (bovins, ovins, caprins)](#sec-codelist-animaltypeofuse)
   - [<span class="toc-section-number">4.7</span> Type d’utilisation
     (équidés)](#sec-codelist-equidtypeofusage)
-  - [<span class="toc-section-number">4.8</span> Type de
+  - [<span class="toc-section-number">4.8</span> Type d’état
+    sanitaire](#sec-codelist-healthstatustype)
+  - [<span class="toc-section-number">4.9</span> Type de
     mouvement](#sec-codelist-notificationtype)
+  - [<span class="toc-section-number">4.10</span> État sanitaire de
+    l’animal individuel](#sec-codelist-animalepizooticstatus)
 - [<span class="toc-section-number">5</span> Considérations de
   sécurité](#sec-safety-consideration)
 - [<span class="toc-section-number">6</span> Clause de
@@ -533,9 +539,9 @@ Classe cible
 
 <table style="width:99%;">
 <colgroup>
-<col style="width: 48%" />
-<col style="width: 42%" />
-<col style="width: 7%" />
+<col style="width: 44%" />
+<col style="width: 45%" />
+<col style="width: 8%" />
 </colgroup>
 <thead>
 <tr>
@@ -595,38 +601,8 @@ d’utilisation (bovins, ovins, caprins)</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
-<tr>
-<td style="text-align: left;"><strong>Statut de vaccination DNC</strong>
-(<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/lsdVaccinationState">:lsdVaccinationState</a>):
-Statut de vaccination contre la dermatose nodulaire contagieuse (DNC).
-Uniquement pour les bovins.</td>
-<td style="text-align: left;"><ul>
-<li>Type: Chaîne de caractères (<a
-href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
-<li>Valeurs: <code>Undefined</code>, <code>Vaccinated</code></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Date de vaccination DNC</strong>
-(<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/lsdVaccinationDate">:lsdVaccinationDate</a>):
-Date de la vaccination contre la dermatose nodulaire contagieuse (DNC).
-Uniquement pour les bovins.</td>
-<td style="text-align: left;"><ul>
-<li>Type: Date (<a
-href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
 </tbody>
 </table>
-
-### Règles
-
-Le statut et la date de vaccination DNC ne sont enregistrés que pour les
-bovins, pas pour les ovins et les caprins.
 
 ## Équidé
 
@@ -950,8 +926,8 @@ rente</a></li>
 <tr>
 <td style="text-align: left;"><strong>Information de groupe</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/groupInformation">:groupInformation</a>):
-Uniquement pour la volaille, pas pour les porcs : une information de
-groupe doit être indiquée pour les annonces de mise en place.</td>
+Une information de groupe doit être indiquée pour les annonces de mise
+en place de volaille</td>
 <td style="text-align: left;"><ul>
 <li>Type: Chaîne de caractères (<a
 href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
@@ -1002,9 +978,8 @@ href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
 <tr>
 <td style="text-align: left;"><strong>Poids</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/weight">:weight</a>):
-Uniquement pour la volaille : poids total du groupe d’animaux en kg pour
-les annonces d’abattage. Les abattages de porcs sont annoncés en nombre
-de têtes (nombre).</td>
+Poids total en kg du groupe d’animaux pour les annonces d’abattage de
+volaille</td>
 <td style="text-align: left;"><ul>
 <li>Type: Nombre entier (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
@@ -1026,12 +1001,94 @@ d’utilisation (bovins, ovins, caprins)</a></li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Âge</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>):
-Uniquement pour la volaille, pas pour les porcs : l’âge doit être
-indiqué en semaines pour les annonces de mise en place.</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Pour
+les annonces de mise en place de volaille, l’âge doit être indiqué en
+semaines</td>
 <td style="text-align: left;"><ul>
 <li>Type: Nombre entier (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+
+## État sanitaire de l’animal individuel
+
+Une information épizootique enregistrée sur un animal individuel. Outre
+le statut épizootique individuel, les vaccinations pertinentes sont
+également enregistrées.
+
+### Aperçu
+
+<div class="ech-facts">
+
+Shape  
+[:AnimalHealthStatusShape](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatusShape)
+
+Classe cible  
+[:AnimalHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatus)
+
+</div>
+
+### Propriétés
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 36%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Détails</th>
+<th style="text-align: right;">Cardinalité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ID de l’animal</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/animal">:animal</a>):
+Un état sanitaire de l’animal individuel se rapporte à exactement un
+animal individuel.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-animalshape">Animal
+individuel</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>):
+p. ex. statut épizootique, vaccinal ou de risque</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la
+liste de codes <a href="#sec-codelist-healthstatustype">Type d’état
+sanitaire</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Statut</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la
+liste de codes <a href="#sec-codelist-animalepizooticstatus">État
+sanitaire de l’animal individuel</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Date</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>):
+Date à partir de laquelle le statut est valable, ou la date de
+vaccination</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -1171,6 +1228,23 @@ Table 8: Valeurs de la liste de codes Type d’utilisation (équidés).
 
 </div>
 
+## Type d’état sanitaire
+
+Type d’un état sanitaire d’un animal individuel.
+
+<div id="tbl-codelist-healthstatustype">
+
+Table 9: Valeurs de la liste de codes Type d’état sanitaire.
+
+| Code | Nom | Description |
+|:---|:---|:---|
+| [`EpizooticStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/EpizooticStatus) | Statut épizootique | Statut relatif à une épizootie, p. ex. bloqué ou libre |
+| [`LaboratoryResult`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/LaboratoryResult) | Résultat de laboratoire | Résultat d’une analyse de laboratoire, p. ex. positif ou négatif |
+| [`RiskStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/RiskStatus) | Statut de risque | Classification du risque d’épizootie, p. ex. élevé, moyen ou faible |
+| [`VaccinationStatus`](https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/VaccinationStatus) | Statut vaccinal | Indique si une vaccination contre une épizootie a été effectuée |
+
+</div>
+
 ## Type de mouvement
 
 Type d’une annonce concernant un animal individuel, p. ex. un mouvement,
@@ -1178,7 +1252,7 @@ une naissance ou un abattage.
 
 <div id="tbl-codelist-notificationtype">
 
-Table 9: Valeurs de la liste de codes Type de mouvement.
+Table 10: Valeurs de la liste de codes Type de mouvement.
 
 | Code | Nom | Description |
 |:---|:---|:---|
@@ -1195,6 +1269,25 @@ Table 9: Valeurs de la liste de codes Type de mouvement.
 | [`LocationChange`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/LocationChange) | Changement de lieu | Uniquement pour les équidés |
 | [`OnFarmSlaughter`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/OnFarmSlaughter) | Abattage à la ferme | Pas pour les équidés |
 | [`Slaughter`](https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/Slaughter) | Abattage | Abattage dans un abattoir |
+
+</div>
+
+## État sanitaire de l’animal individuel
+
+Valeurs de l’état sanitaire d’un animal individuel ; leur type figure
+dans la description.
+
+<div id="tbl-codelist-animalepizooticstatus">
+
+Table 11: Valeurs de la liste de codes État sanitaire de l’animal
+individuel.
+
+| Code | Nom | Description |
+|:---|:---|:---|
+| [`Blocked`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Blocked) | Bloqué | Type : statut épizootique |
+| [`Free`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Free) | Libre | Type : statut épizootique |
+| [`NotTested`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/NotTested) | Non testé | Type : statut épizootique |
+| [`Vaccinated`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated) | Vacciné | Type : statut vaccinal |
 
 </div>
 
@@ -1432,7 +1525,7 @@ Recommendation) : World Wide Web Consortium (W3C), 2014</span>
 
 <div id="tbl-glossary">
 
-Table 10: Glossaire de l’eCH-0309
+Table 12: Glossaire de l’eCH-0309
 
 <table>
 <colgroup>
@@ -1501,19 +1594,20 @@ sont en outre identifiées par leur numéro BDTA.</td>
 # Annexe D - Correspondance avec l’interface de la BDTA
 
 Pour les domaines de valeurs du
-<a href="#tbl-animaltracing-enums" class="quarto-xref">Table 11</a>, le
+<a href="#tbl-animaltracing-enums" class="quarto-xref">Table 13</a>, le
 code d’une valeur est l’élément du même nom d’une énumération de
 l’interface AnimalTracing de la BDTA.
 
-Pour le type de mouvement, l’interface gère les types de mouvement par
-espèce d’animal de rente dans des énumérations distinctes, en partie
-sous d’autres noms. Le tableau suivant indique quels éléments de
-l’interface correspondent à une valeur ; les valeurs sans équivalent ne
-sont pas mentionnées.
+Pour le type de mouvement et le statut épizootique des animaux
+individuels, l’interface gère les types de mouvement par espèce d’animal
+de rente et les états sanitaires par épizootie dans des énumérations
+distinctes, en partie sous d’autres noms. Les tableaux suivants
+indiquent quels éléments de l’interface correspondent à une valeur ; les
+valeurs sans équivalent ne sont pas mentionnées.
 
 <div id="tbl-animaltracing-enums">
 
-Table 11: Énumérations de l’interface de la BDTA dont les domaines de
+Table 13: Énumérations de l’interface de la BDTA dont les domaines de
 valeurs tirent leurs codes.
 
 | Domaine de valeurs | Énumération de l’interface |
@@ -1530,7 +1624,7 @@ valeurs tirent leurs codes.
 
 <div id="tbl-animaltracing-codelist-notificationtype">
 
-Table 12: Équivalents des valeurs du domaine de valeurs Type de
+Table 14: Équivalents des valeurs du domaine de valeurs Type de
 mouvement dans l’interface de la BDTA.
 
 <table>
@@ -1638,6 +1732,17 @@ style="text-align: left;"><code>EnumCattleNotificationType.Slaughtering</code><b
 </tr>
 </tbody>
 </table>
+
+</div>
+
+<div id="tbl-animaltracing-codelist-animalepizooticstatus">
+
+Table 15: Équivalents des valeurs du domaine de valeurs État sanitaire
+de l’animal individuel dans l’interface de la BDTA.
+
+| Code | Nom | Interface de la BDTA |
+|:---|:---|:---|
+| [`Vaccinated`](https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated) | Vacciné | `EnumCattleLsdState.Vaccinated` |
 
 </div>
 
