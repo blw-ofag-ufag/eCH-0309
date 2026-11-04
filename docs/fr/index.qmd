@@ -108,4 +108,8 @@ Pour le type de mouvement, l'interface gère les types de mouvement par espèce 
 
 # Annexe F - Table des illustrations {#sec-appendix-f .appendix}
 
+{{< ech figures >}}
+
 # Annexe G - Liste des tableaux {#sec-appendix-g .appendix}
+
+{{< ech tables >}}

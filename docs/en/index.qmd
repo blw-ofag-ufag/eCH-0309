@@ -108,4 +108,8 @@ For notification type, the interface holds the notification types per livestock 
 
 # Annex F - Table of figures {#sec-appendix-f .appendix}
 
+{{< ech figures >}}
+
 # Annex G - Table of tables {#sec-appendix-g .appendix}
+
+{{< ech tables >}}

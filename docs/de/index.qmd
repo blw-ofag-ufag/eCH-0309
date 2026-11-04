@@ -108,4 +108,8 @@ Beim Bewegungstyp führt die Schnittstelle die Bewegungstypen je Nutztierart in 
 
 # Anhang F - Abbildungsverzeichnis {#sec-appendix-f .appendix}
 
+{{< ech figures >}}
+
 # Anhang G - Tabellenverzeichnis {#sec-appendix-g .appendix}
+
+{{< ech tables >}}
