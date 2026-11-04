@@ -92,6 +92,23 @@ Diese Bestimmungen gelten jedoch nur für die von eCH erarbeiteten Standards, ni
 
 # Anhang B - Mitwirkung und Prüfung {#sec-appendix-b .appendix}
 
+| Name                           | Organisation                                            |
+|:-------------------------------|:--------------------------------------------------------|
+| Jaquelino Barbosa              | Qualitas AG                                             |
+| Florian Frauchiger             | eOperations Schweiz AG                                  |
+| Daniela Hadorn Schneider       | Bundesamt für Lebensmittelsicherheit und Veterinärwesen |
+| David Joller                   | Identitas AG                                            |
+| Christoph Keller               | Kanton Bern                                             |
+| Damian Oswald                  | Bundesamt für Landwirtschaft                            |
+| Matthieu Perthuis              | GS1 Switzerland                                         |
+| Sara Schärrer                  | Bundesamt für Lebensmittelsicherheit und Veterinärwesen |
+| Domenic Schneider              | GS1 Switzerland                                         |
+| Heinzpeter Schwermer           | Bundesamt für Lebensmittelsicherheit und Veterinärwesen |
+| Lea Stauber                    | Bundesamt für Landwirtschaft                            |
+| Christian Wilda                | Bundesamt für Landwirtschaft                            |
+
+: Autoren und Revision {#tbl-authors tbl-colwidths="[50,50]"}
+
 # Anhang C - Abkürzungen und Glossar {#sec-appendix-c .appendix}
 
 {{< include glossary.md >}}

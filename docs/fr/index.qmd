@@ -92,6 +92,23 @@ Ces dispositions ne s'appliquent toutefois qu'aux standards élaborés par eCH, 
 
 # Annexe B - Collaboration et Vérification {#sec-appendix-b .appendix}
 
+| Nom                      | Organisation                                                           |
+|:-------------------------|:-----------------------------------------------------------------------|
+| Jaquelino Barbosa        | Qualitas AG                                                            |
+| Florian Frauchiger       | eOperations Schweiz AG                                                 |
+| Daniela Hadorn Schneider | Office fédéral de la sécurité alimentaire et des affaires vétérinaires |
+| David Joller             | Identitas SA                                                           |
+| Christoph Keller         | Canton de Berne                                                        |
+| Damian Oswald            | Office fédéral de l'agriculture                                        |
+| Matthieu Perthuis        | GS1 Switzerland                                                        |
+| Sara Schärrer            | Office fédéral de la sécurité alimentaire et des affaires vétérinaires |
+| Domenic Schneider        | GS1 Switzerland                                                        |
+| Heinzpeter Schwermer     | Office fédéral de la sécurité alimentaire et des affaires vétérinaires |
+| Lea Stauber              | Office fédéral de l'agriculture                                        |
+| Christian Wilda          | Office fédéral de l'agriculture                                        |
+
+: Auteurs et révision {#tbl-authors tbl-colwidths="[50,50]"}
+
 # Annexe C - Abréviations et glossaire {#sec-appendix-c .appendix}
 
 {{< include glossary.md >}}
