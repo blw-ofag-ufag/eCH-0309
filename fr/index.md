@@ -1,6 +1,6 @@
 # Document auxiliaire : données sur le trafic des animaux
 
-30 octobre 2026
+4 novembre 2026
 
 - [Remarque](#sec-note)
 - [<span class="toc-section-number">1</span>
@@ -16,24 +16,24 @@
   noms](#sec-namespaces)
 - [<span class="toc-section-number">3</span> Modèle de
   données](#sec-data-model)
-  - [<span class="toc-section-number">3.1</span> Animal
-    individuel](#sec-nodeshape-animalshape)
+  - [<span class="toc-section-number">3.1</span> Unité
+    juridique](#sec-nodeshape-legalunitshape)
   - [<span class="toc-section-number">3.2</span> Détenteur
     d’animaux](#sec-nodeshape-animalkeepershape)
-  - [<span class="toc-section-number">3.3</span> Notification d’animal
-    individuel](#sec-nodeshape-animalnotificationshape)
-  - [<span class="toc-section-number">3.4</span> Notification de
-    groupe](#sec-nodeshape-groupnotificationshape)
-  - [<span class="toc-section-number">3.5</span> Unité
-    juridique](#sec-nodeshape-legalunitshape)
-  - [<span class="toc-section-number">3.6</span> Unité
+  - [<span class="toc-section-number">3.3</span> Unité
     locale](#sec-nodeshape-localunitshape)
-  - [<span class="toc-section-number">3.7</span>
+  - [<span class="toc-section-number">3.4</span> Animal
+    individuel](#sec-nodeshape-animalshape)
+  - [<span class="toc-section-number">3.5</span>
     Équidé](#sec-nodeshape-equidshape)
+  - [<span class="toc-section-number">3.6</span> Notification d’animal
+    individuel](#sec-nodeshape-animalnotificationshape)
+  - [<span class="toc-section-number">3.7</span> Notification de
+    groupe](#sec-nodeshape-groupnotificationshape)
   - [<span class="toc-section-number">3.8</span> État sanitaire de
-    l’animal individuel](#sec-nodeshape-animalhealthstatusshape)
-  - [<span class="toc-section-number">3.9</span> État sanitaire de
     l’unité locale](#sec-nodeshape-localunithealthstatusshape)
+  - [<span class="toc-section-number">3.9</span> État sanitaire de
+    l’animal individuel](#sec-nodeshape-animalhealthstatusshape)
 - [<span class="toc-section-number">4</span> Domaines de
   valeurs](#sec-code-lists)
   - [<span class="toc-section-number">4.1</span> Catégorie de
@@ -122,19 +122,19 @@ sans faille des animaux de rente, le contrôle du trafic des animaux,
 l’obligation de déclarer la provenance ainsi que les contrôles de
 qualité tout au long de la chaîne de production et de transformation
 constituent depuis lors la base d’un niveau élevé de sécurité
-alimentaire[^1].
+alimentaire \[Bundesrat 2015\].
 
 L’expérience de l’ESB a conduit en 1999 à la création d’une banque de
 données nationale sur le trafic des animaux (BDTA). L’article 7a ainsi
-que les articles 13 à 15 de la loi sur les épizooties[^2] et le titre 2,
-sections 1, 1a et 2a de l’ordonnance sur les épizooties[^3] énoncent les
-dispositions légales fondamentales relatives à l’identification/au
-marquage et à l’enregistrement des animaux de rente ainsi qu’aux
-obligations d’annonce correspondantes. Elles s’alignent sur la
-législation européenne en la matière[^4] (règlement (UE) 2016/429 sur
-les maladies animales transmissibles; règlement délégué (UE) 2019/2035
-concernant les établissements détenant des animaux terrestres et les
-couvoirs ainsi que la traçabilité).
+que les articles 13 à 15 de la loi sur les épizooties \[TSG\] et le
+titre 2, sections 1, 1a et 2a de l’ordonnance sur les épizooties \[TSV\]
+énoncent les dispositions légales fondamentales relatives à
+l’identification/au marquage et à l’enregistrement des animaux de rente
+ainsi qu’aux obligations d’annonce correspondantes. Elles s’alignent sur
+la législation européenne en la matière \[EUR-Lex\] (règlement (UE)
+2016/429 sur les maladies animales transmissibles; règlement délégué
+(UE) 2019/2035 concernant les établissements détenant des animaux
+terrestres et les couvoirs ainsi que la traçabilité).
 
 Si seuls les bovins étaient soumis à l’obligation d’annonce à partir de
 1999, les porcs et les équidés ont suivi dès 2011, même si les porcs ne
@@ -142,47 +142,50 @@ font aujourd’hui encore pas l’objet d’annonces par animal individuel. À
 partir de 2014, respectivement de 2020, l’obligation d’annonce à la BDTA
 s’est également appliquée aux petits ruminants (moutons et chèvres). Au
 début, en 2014, elle ne concernait que les abattoirs. Depuis 2014, il
-existe également une obligation d’annonce pour la volaille[^5]. Depuis
-janvier 2020, les détenteurs de petits ruminants sont eux aussi intégrés
-dans le système d’annonce des animaux individuels.[^6] L’identification
-et le marquage des animaux à onglons au moyen de marques auriculaires,
-l’enregistrement individuel des bovins, des moutons et des chèvres dans
-la BDTA, ainsi que l’annonce des entrées, des sorties (l’animal quitte
-vivant une unité d’élevage), des naissances, des importations, des
-exportations, des abattages, des abattages à la ferme et des morts
-(l’animal est désannoncé comme n’étant plus vivant) sont obligatoires
-pour tous les détenteurs d’animaux en Suisse[^7]. Les annonces sont en
-outre soumises à des délais légaux[^8].
+existe également une obligation d’annonce pour la volaille
+\[TVD-Verordnung, version du 1er janvier 2014, p. 20\]. Depuis janvier
+2020, les détenteurs de petits ruminants sont eux aussi intégrés dans le
+système d’annonce des animaux individuels \[IdTVD-V, annexe 1\].
+L’identification et le marquage des animaux à onglons au moyen de
+marques auriculaires, l’enregistrement individuel des bovins, des
+moutons et des chèvres dans la BDTA, ainsi que l’annonce des entrées,
+des sorties (l’animal quitte vivant une unité d’élevage), des
+naissances, des importations, des exportations, des abattages, des
+abattages à la ferme et des morts (l’animal est désannoncé comme n’étant
+plus vivant) sont obligatoires pour tous les détenteurs d’animaux en
+Suisse \[TSG, art. 14 et 15a\]. Les annonces sont en outre soumises à
+des délais légaux \[TSV, art. 14\].
 
 La BDTA fait partie d’un paysage systémique regroupant l’agriculture,
-les affaires vétérinaires et la sécurité alimentaire. Le portail
-Agate[^9] en constitue la porte d’entrée centrale, avec au cœur le
-système d’information sur la politique agricole AGIS[^10].
+les affaires vétérinaires et la sécurité alimentaire. Le portail Agate
+\[Agate\] en constitue la porte d’entrée centrale, avec au cœur le
+système d’information sur la politique agricole AGIS \[AGIS\].
 
 <!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
 
 L’ordonnance sur Identitas SA et la banque de données sur le trafic des
-animaux[^11] (OId-BDTA) précise les contenus relatifs au trafic des
-animaux, les tâches d’Identitas SA ainsi que les droits d’accès aux
+animaux \[IdTVD-V\] (OId-BDTA) précise les contenus relatifs au trafic
+des animaux, les tâches d’Identitas SA ainsi que les droits d’accès aux
 données. L’importance de l’identification/du marquage des animaux de
 rente dépasse largement la problématique des épizooties et a donc
-également trouvé sa place dans la législation agricole[^12] (loi sur
+également trouvé sa place dans la législation agricole \[LwG\] (loi sur
 l’agriculture LAgr, art. 165g, 177 et 185) et dans diverses ordonnances
 associées. Les données issues du trafic des animaux sont devenues un
 élément indispensable de la mise en œuvre des mesures de politique
-agricole, par exemple les paiements directs liés aux animaux[^13], la
-détermination des flux d’éléments nutritifs ou le monitoring
-agroenvironnemental[^14]. Ces données servent en outre de base au relevé
-des structures de l’agriculture suisse[^15] et, plus généralement, à la
-statistique agricole[^16].
+agricole, par exemple les paiements directs liés aux animaux \[DZV,
+titre 2, chapitre 5, sections 7 à 9\], la détermination des flux
+d’éléments nutritifs ou le monitoring agroenvironnemental
+\[Agrarumweltmonitoring\]. Ces données servent en outre de base au
+relevé des structures de l’agriculture suisse \[STRU\] et, plus
+généralement, à la statistique agricole \[Agristat\].
 
 Le système d’annonce du trafic des animaux s’est rapidement imposé tout
 au long de la chaîne de valeur alimentaire. Les programmes assortis de
 promesses en matière de bien-être animal, de traçabilité et de
-provenance s’y appuient[^17]. La diversité des informations sur les
-animaux issues du système d’annonce du trafic des animaux se reflète
-également dans les jeux de données publiquement disponibles de la
-plateforme Open Data Tierstatistik[^18].
+provenance s’y appuient \[Labelbase; Proviande\]. La diversité des
+informations sur les animaux issues du système d’annonce du trafic des
+animaux se reflète également dans les jeux de données publiquement
+disponibles de la plateforme Open Data Tierstatistik \[Tierstatistik\].
 
 La description technique des interfaces figurant dans le présent
 document se fonde sur la description technique de service AnimalTracing
@@ -243,6 +246,127 @@ représentés comme tous les autres; les valeurs admises figurent au
 <a href="#sec-code-lists" class="quarto-xref">Section 4</a>. Le
 diagramme n’indique ni les types de données ni les descriptions:
 celles-ci suivent dans les sections consacrées aux différentes classes.
+
+## Unité juridique
+
+L’unité juridique au sens de l’eCH-0108 est une personne morale (p. ex.
+société anonyme, Sàrl), une société de personnes (p. ex. société en nom
+collectif) ou une personne physique exerçant une activité indépendante
+qui est soumise à la loi fédérale sur le numéro d’identification des
+entreprises (LIDE) et qui est inscrite au registre IDE. Elle identifie
+par exemple le sujet fiscal pour les autorités fiscales ou la personne
+assujettie aux cotisations d’assurances sociales. L’unité juridique est
+identifiée par son IDE. Ce n’est que lorsque l’entreprise est une
+«entreprise individuelle» que l’exploitant est en même temps une
+personne physique. Le système maître de ces données est le registre IDE
+de l’OFS ; le système d’information agricole obtient les données de ce
+registre via une interface. Le détenteur d’animaux et le propriétaire
+d’équidés sont les deux formes d’unité juridique qui apparaissent dans
+le présent document. Les attributs sont décrits dans
+l’[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf),
+chapitres 3.1 et 3.2, ainsi que dans
+l’[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf),
+chapitre 3.1.
+
+### Aperçu
+
+<div class="ech-facts">
+
+Shape  
+[:LegalUnitShape](https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnitShape)
+
+Classe cible  
+[:LegalUnit](https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnit)
+
+</div>
+
+## Détenteur d’animaux
+
+Un exploitant est une unité juridique au sens de l’eCH-0108 qui assume
+le risque économique d’une exploitation (OTerm art. 2). Le détenteur
+d’animaux est une forme d’exploitant qui détient des animaux (OTerm art.
+11a) ; il lui faut donc une unité locale (unité d’élevage). La
+responsabilité des notifications incombe au détenteur d’animaux pour
+toutes les catégories d’animaux à l’exception des équidés ; pour les
+équidés, elle incombe au propriétaire ou à la propriétaire. Les
+attributs sont décrits dans
+l’[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf),
+chapitres 3.1 et 3.2.
+
+### Aperçu
+
+<div class="ech-facts">
+
+Shape  
+[:AnimalKeeperShape](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeperShape)
+
+Classe cible  
+[:AnimalKeeper](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeper)
+
+</div>
+
+## Unité locale
+
+Une unité locale au sens de l’eCH-0108 est une installation située en un
+lieu déterminé où s’exerce une activité économique. Une unité locale
+possède un numéro REE et est toujours rattachée à une unité juridique
+(ou entreprise). L’unité locale est identifiée par son numéro REE. Une
+unité locale peut se composer d’un ou de plusieurs bâtiments. L’EGID
+attribué au numéro REE se rapporte au «centre» de l’unité locale,
+respectivement à son bâtiment principal. Cette définition est tirée de
+l’[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf),
+chapitre 1.5 ; les compléments spécifiques à l’agriculture sont décrits
+dans
+l’[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf),
+chapitres 3.3 et 3.4. Dans la BDTA, les unités locales sont appelées
+«unités d’élevage» et sont en outre identifiées par leur numéro BDTA.
+
+### Aperçu
+
+<div class="ech-facts">
+
+Shape  
+[:LocalUnitShape](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitShape)
+
+Classe cible  
+[:LocalUnit](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnit)
+
+</div>
+
+### Propriétés
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 34%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Détails</th>
+<th style="text-align: right;">Cardinalité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Détenteur d’animaux</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/animalKeeper">:animalKeeper</a>):
+Rattachement de l’unité locale au détenteur d’animaux. Selon l’eCH-0108,
+chapitre 1.5, une unité locale est toujours rattachée à une unité
+juridique (ou entreprise) ; les données de base de l’unité locale
+comportent à cet effet l’attribut facultatif «mainUid» contenant l’IDE
+de l’unité juridique principale. Le détenteur d’animaux n’étant qu’une
+forme particulière de l’unité juridique, ce rattachement n’est pas
+obligatoire.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-animalkeepershape">Détenteur
+d’animaux</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
 
 ## Animal individuel
 
@@ -397,30 +521,122 @@ Le statut de l’historique de l’animal n’est pas pertinent pour les
 équidés. Il est donc obligatoire pour tout animal individuel à
 l’exception des équidés.
 
-## Détenteur d’animaux
+## Équidé
 
-Un exploitant est une unité juridique au sens de l’eCH-0108 qui assume
-le risque économique d’une exploitation (OTerm art. 2). Le détenteur
-d’animaux est une forme d’exploitant qui détient des animaux (OTerm art.
-11a) ; il lui faut donc une unité locale (unité d’élevage). La
-responsabilité des notifications incombe au détenteur d’animaux pour
-toutes les catégories d’animaux à l’exception des équidés ; pour les
-équidés, elle incombe au propriétaire ou à la propriétaire. Les
-attributs sont décrits dans
-l’[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf),
-chapitres 3.1 et 3.2.
+Sous-classe de la classe animal individuel pour les animaux du genre
+équidé (cheval, mulet, bardot, âne). Tous les attributs de la classe
+animal individuel s’appliquent également aux équidés ; cette classe ne
+décrit que les informations supplémentaires propres aux équidés. Pour
+les équidés, la responsabilité des notifications incombe au propriétaire
+et non au détenteur d’animaux. Un propriétaire est l’unité juridique qui
+détient des équidés en propriété ; le terme n’est utilisé que pour les
+propriétaires d’équidés.
 
 ### Aperçu
 
 <div class="ech-facts">
 
 Shape  
-[:AnimalKeeperShape](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeperShape)
+[:EquidShape](https://agriculture.ld.admin.ch/eCH-0309/1/EquidShape)
 
 Classe cible  
-[:AnimalKeeper](https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeper)
+[:Equid](https://agriculture.ld.admin.ch/eCH-0309/1/Equid)
 
 </div>
+
+### Propriétés
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 36%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Détails</th>
+<th style="text-align: right;">Cardinalité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Propriétaire</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/owner">:owner</a>):
+L’unité juridique qui détient l’équidé en propriété. Pour les équidés,
+la responsabilité des notifications incombe au propriétaire et non au
+détenteur d’animaux.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-legalunitshape">Unité
+juridique</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Catégorie de taille</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/withersClass">:withersClass</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la
+liste de codes <a href="#sec-codelist-equidwithersclass">Catégorie de
+taille</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Statut d’annonce</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationState">:notificationState</a>):
+Les équidés portent un statut d’annonce propre au lieu du statut de
+l’historique de l’animal.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la
+liste de codes <a href="#sec-codelist-equidnotificationstate">Statut
+d’annonce de l’équidé</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type d’utilisation</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfEquidUsage">:typeOfEquidUsage</a>):
+Les équidés utilisent un domaine de valeurs propre: animal de compagnie
+ou animal de rente.</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a
+href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la
+liste de codes <a href="#sec-codelist-equidtypeofusage">Type
+d’utilisation (équidés)</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Père</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/father">:father</a>):
+Les équidés n’ont pas de père ; seules la mère et la mère génétique sont
+enregistrées.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Statut de l’historique de
+l’animal</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>):
+Non pertinent pour les équidés ; le statut d’annonce prend sa
+place.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Type d’utilisation (animaux de
+rente)</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfUse">:typeOfUse</a>):
+Ne s’applique pas aux équidés; le type d’utilisation propre aux équidés
+prend sa place.</td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0..0</td>
+</tr>
+</tbody>
+</table>
 
 ## Notification d’animal individuel
 
@@ -718,123 +934,25 @@ href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
 </tbody>
 </table>
 
-## Unité juridique
+## État sanitaire de l’unité locale
 
-L’unité juridique au sens de l’eCH-0108 est une personne morale (p. ex.
-société anonyme, Sàrl), une société de personnes (p. ex. société en nom
-collectif) ou une personne physique exerçant une activité indépendante
-qui est soumise à la loi fédérale sur le numéro d’identification des
-entreprises (LIDE) et qui est inscrite au registre IDE. Elle identifie
-par exemple le sujet fiscal pour les autorités fiscales ou la personne
-assujettie aux cotisations d’assurances sociales. L’unité juridique est
-identifiée par son IDE. Ce n’est que lorsque l’entreprise est une
-«entreprise individuelle» que l’exploitant est en même temps une
-personne physique. Le système maître de ces données est le registre IDE
-de l’OFS ; le système d’information agricole obtient les données de ce
-registre via une interface. Le détenteur d’animaux et le propriétaire
-d’équidés sont les deux formes d’unité juridique qui apparaissent dans
-le présent document. Les attributs sont décrits dans
-l’[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf),
-chapitres 3.1 et 3.2, ainsi que dans
-l’[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf),
-chapitre 3.1.
+Lorsque des épizooties revêtent une importance nationale, il est
+essentiel que les détenteurs d’animaux soient informés des interdictions
+de déplacement et du statut épizootique, afin de minimiser le risque de
+propagation par le trafic des animaux. Une information épizootique
+enregistrée sur une unité locale. Outre le statut épizootique d’une
+unité locale, les résultats de vaccination, de risque et de laboratoire
+peuvent également être représentés.
 
 ### Aperçu
 
 <div class="ech-facts">
 
 Shape  
-[:LegalUnitShape](https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnitShape)
+[:LocalUnitHealthStatusShape](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatusShape)
 
 Classe cible  
-[:LegalUnit](https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnit)
-
-</div>
-
-## Unité locale
-
-Une unité locale au sens de l’eCH-0108 est une installation située en un
-lieu déterminé où s’exerce une activité économique. Une unité locale
-possède un numéro REE et est toujours rattachée à une unité juridique
-(ou entreprise). L’unité locale est identifiée par son numéro REE. Une
-unité locale peut se composer d’un ou de plusieurs bâtiments. L’EGID
-attribué au numéro REE se rapporte au «centre» de l’unité locale,
-respectivement à son bâtiment principal. Dans la BDTA, les unités
-locales sont appelées «unités d’élevage» et sont en outre identifiées
-par leur numéro BDTA. Cette définition est tirée de
-l’[eCH-0108](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf),
-chapitre 1.5 ; les compléments spécifiques à l’agriculture sont décrits
-dans
-l’[eCH-0261](https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf),
-chapitres 3.3 et 3.4.
-
-### Aperçu
-
-<div class="ech-facts">
-
-Shape  
-[:LocalUnitShape](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitShape)
-
-Classe cible  
-[:LocalUnit](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnit)
-
-</div>
-
-### Propriétés
-
-<table style="width:99%;">
-<colgroup>
-<col style="width: 54%" />
-<col style="width: 34%" />
-<col style="width: 10%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Détails</th>
-<th style="text-align: right;">Cardinalité</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Détenteur d’animaux</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/animalKeeper">:animalKeeper</a>):
-Rattachement de l’unité locale au détenteur d’animaux. Selon l’eCH-0108,
-chapitre 1.5, une unité locale est toujours rattachée à une unité
-juridique (ou entreprise) ; les données de base de l’unité locale
-comportent à cet effet l’attribut facultatif «mainUid» contenant l’IDE
-de l’unité juridique principale. Le détenteur d’animaux n’étant qu’une
-forme particulière de l’unité juridique, ce rattachement n’est pas
-obligatoire.</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a href="#sec-nodeshape-animalkeepershape">Détenteur
-d’animaux</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-</tbody>
-</table>
-
-## Équidé
-
-Sous-classe de la classe animal individuel pour les animaux du genre
-équidé (cheval, mulet, bardot, âne). Tous les attributs de la classe
-animal individuel s’appliquent également aux équidés ; cette classe ne
-décrit que les informations supplémentaires propres aux équidés. Pour
-les équidés, la responsabilité des notifications incombe au propriétaire
-et non au détenteur d’animaux. Un propriétaire est l’unité juridique qui
-détient des équidés en propriété ; le terme n’est utilisé que pour les
-propriétaires d’équidés.
-
-### Aperçu
-
-<div class="ech-facts">
-
-Shape  
-[:EquidShape](https://agriculture.ld.admin.ch/eCH-0309/1/EquidShape)
-
-Classe cible  
-[:Equid](https://agriculture.ld.admin.ch/eCH-0309/1/Equid)
+[:LocalUnitHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatus)
 
 </div>
 
@@ -855,79 +973,46 @@ Classe cible
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Propriétaire</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/owner">:owner</a>):
-L’unité juridique qui détient l’équidé en propriété. Pour les équidés,
-la responsabilité des notifications incombe au propriétaire et non au
-détenteur d’animaux.</td>
+<td style="text-align: left;"><strong>Unité locale</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>):
+Numéro REE de l’unité locale</td>
 <td style="text-align: left;"><ul>
-<li>Type: <a href="#sec-nodeshape-legalunitshape">Unité
-juridique</a></li>
+<li>Type: <a href="#sec-nodeshape-localunitshape">Unité locale</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Catégorie de taille</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/withersClass">:withersClass</a>)</td>
+<td style="text-align: left;"><strong>Type</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>):
+p. ex. statut épizootique, vaccinal ou de risque</td>
 <td style="text-align: left;"><ul>
 <li>Type: <a
 href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la
-liste de codes <a href="#sec-codelist-equidwithersclass">Catégorie de
-taille</a></li>
+liste de codes <a href="#sec-codelist-healthstatustype">Type d’état
+sanitaire</a></li>
 </ul></td>
-<td style="text-align: right;">1..1</td>
+<td style="text-align: right;">0..1</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Statut d’annonce</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationState">:notificationState</a>):
-Les équidés portent un statut d’annonce propre au lieu du statut de
-l’historique de l’animal.</td>
+<td style="text-align: left;"><strong>Statut</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
 <td style="text-align: left;"><ul>
 <li>Type: <a
 href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la
-liste de codes <a href="#sec-codelist-equidnotificationstate">Statut
-d’annonce de l’équidé</a></li>
+liste de codes <a href="#sec-codelist-localunitepizooticstatus">État
+sanitaire de l’unité locale</a></li>
 </ul></td>
-<td style="text-align: right;">1..1</td>
+<td style="text-align: right;">0..1</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Type d’utilisation</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfEquidUsage">:typeOfEquidUsage</a>):
-Les équidés utilisent un domaine de valeurs propre: animal de compagnie
-ou animal de rente.</td>
+<td style="text-align: left;"><strong>Date</strong> (<a
+href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>):
+Date à partir de laquelle le statut est valable</td>
 <td style="text-align: left;"><ul>
-<li>Type: <a
-href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la
-liste de codes <a href="#sec-codelist-equidtypeofusage">Type
-d’utilisation (équidés)</a></li>
+<li>Type: Date (<a
+href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </ul></td>
-<td style="text-align: right;">1..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Père</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/father">:father</a>):
-Les équidés n’ont pas de père ; seules la mère et la mère génétique sont
-enregistrées.</td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;">0..0</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Statut de l’historique de
-l’animal</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/historyState">:historyState</a>):
-Non pertinent pour les équidés ; le statut d’annonce prend sa
-place.</td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;">0..0</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Type d’utilisation (animaux de
-rente)</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/typeOfUse">:typeOfUse</a>):
-Ne s’applique pas aux équidés; le type d’utilisation propre aux équidés
-prend sa place.</td>
-<td style="text-align: left;"></td>
-<td style="text-align: right;">0..0</td>
+<td style="text-align: right;">0..1</td>
 </tr>
 </tbody>
 </table>
@@ -1005,89 +1090,6 @@ sanitaire de l’animal individuel</a></li>
 href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>):
 Date à partir de laquelle le statut est valable, ou la date de
 vaccination</td>
-<td style="text-align: left;"><ul>
-<li>Type: Date (<a
-href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-</tbody>
-</table>
-
-## État sanitaire de l’unité locale
-
-Lorsque des épizooties revêtent une importance nationale, il est
-essentiel que les détenteurs d’animaux soient informés des interdictions
-de déplacement et du statut épizootique, afin de minimiser le risque de
-propagation par le trafic des animaux. Une information épizootique
-enregistrée sur une unité locale. Outre le statut épizootique d’une
-unité locale, les résultats de vaccination, de risque et de laboratoire
-peuvent également être représentés.
-
-### Aperçu
-
-<div class="ech-facts">
-
-Shape  
-[:LocalUnitHealthStatusShape](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatusShape)
-
-Classe cible  
-[:LocalUnitHealthStatus](https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatus)
-
-</div>
-
-### Propriétés
-
-<table style="width:99%;">
-<colgroup>
-<col style="width: 53%" />
-<col style="width: 36%" />
-<col style="width: 9%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Détails</th>
-<th style="text-align: right;">Cardinalité</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Unité locale</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>):
-Numéro REE de l’unité locale</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a href="#sec-nodeshape-localunitshape">Unité locale</a></li>
-</ul></td>
-<td style="text-align: right;">1..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Type</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>):
-p. ex. statut épizootique, vaccinal ou de risque</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a
-href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la
-liste de codes <a href="#sec-codelist-healthstatustype">Type d’état
-sanitaire</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Statut</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
-<td style="text-align: left;"><ul>
-<li>Type: <a
-href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la
-liste de codes <a href="#sec-codelist-localunitepizooticstatus">État
-sanitaire de l’unité locale</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Date</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>):
-Date à partir de laquelle le statut est valable</td>
 <td style="text-align: left;"><ul>
 <li>Type: Date (<a
 href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
@@ -1376,6 +1378,151 @@ tiers.
 
 <div id="refs" class="references csl-bib-body">
 
+<div id="ref-blw-agate" class="csl-entry">
+
+<span class="csl-left-margin">\[Agate\]
+</span><span class="csl-right-inline">Bundesamt für Landwirtschaft
+(BLW): *agate.ch – der Online-Schalter für die Landwirtschaft*. URL
+<https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html>. -
+consulté 2026-10-30</span>
+
+</div>
+
+<div id="ref-blw-agis" class="csl-entry">
+
+<span class="csl-left-margin">\[AGIS\]
+</span><span class="csl-right-inline">Bundesamt für Landwirtschaft
+(BLW): *Agrarpolitisches Informationssystem AGIS*. URL
+<https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html>. -
+consulté 2026-10-30</span>
+
+</div>
+
+<div id="ref-blw-agrarumweltmonitoring" class="csl-entry">
+
+<span class="csl-left-margin">\[Agrarumweltmonitoring\]
+</span><span class="csl-right-inline">Bundesamt für Landwirtschaft
+(BLW): *Agrarumweltmonitoring*. URL
+<https://www.blw.admin.ch/de/agrarumweltmonitoring>. - consulté
+2026-10-30</span>
+
+</div>
+
+<div id="ref-sbv-agristat" class="csl-entry">
+
+<span class="csl-left-margin">\[Agristat\]
+</span><span class="csl-right-inline">Schweizer Bauernverband (SBV):
+*Agristat – Statistik der Schweizer Landwirtschaft*. URL
+<https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft>. -
+consulté 2026-10-30</span>
+
+</div>
+
+<div id="ref-bundesrat2015bse" class="csl-entry">
+
+<span class="csl-left-margin">\[Bundesrat 2015\]
+</span><span class="csl-right-inline">Der Bundesrat: *Erfolg nach 25
+Jahren BSE-Bekämpfung*. URL <https://www.admin.ch/de/nsb?id=57438>. -
+consulté 2026-10-30</span>
+
+</div>
+
+<div id="ref-DZV" class="csl-entry">
+
+<span class="csl-left-margin">\[DZV\]
+</span><span class="csl-right-inline">[Verordnung vom 23. Oktober 2013
+über die Direktzahlungen an die Landwirtschaft
+(Direktzahlungsverordnung,
+DZV)](https://www.fedlex.admin.ch/eli/cc/2013/765/de), 2013. — SR
+910.13</span>
+
+</div>
+
+<div id="ref-eurlex-animal-health-law" class="csl-entry">
+
+<span class="csl-left-margin">\[EUR-Lex\]
+</span><span class="csl-right-inline">Amt für Veröffentlichungen der
+Europäischen Union: *Das EU-Tiergesundheitsrecht*. URL
+<https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html>. -
+consulté 2026-10-30. — EUR-Lex – Zusammenfassungen der
+EU-Gesetzgebung</span>
+
+</div>
+
+<div id="ref-IdTVD-V" class="csl-entry">
+
+<span class="csl-left-margin">\[IdTVD-V\]
+</span><span class="csl-right-inline">[Verordnung vom 3. November 2021
+über die Identitas AG und die Tierverkehrsdatenbank
+(IdTVD-V)](https://www.fedlex.admin.ch/eli/cc/2021/751/de), 2021. — SR
+916.404.1</span>
+
+</div>
+
+<div id="ref-identitas-labelbase" class="csl-entry">
+
+<span class="csl-left-margin">\[Labelbase\]
+</span><span class="csl-right-inline">Identitas AG: *Labelbase*. URL
+<https://www.identitas.ch/produkte/labelbase>. - consulté
+2026-10-30</span>
+
+</div>
+
+<div id="ref-LwG" class="csl-entry">
+
+<span class="csl-left-margin">\[LwG\]
+</span><span class="csl-right-inline">[Bundesgesetz vom 29. April 1998
+über die Landwirtschaft (Landwirtschaftsgesetz,
+LwG)](https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de), 1998.
+— SR 910.1</span>
+
+</div>
+
+<div id="ref-proviande-herkunft" class="csl-entry">
+
+<span class="csl-left-margin">\[Proviande\]
+</span><span class="csl-right-inline">Proviande: *Herkunft*. URL
+<https://www.proviande.ch/de/herkunft>. - consulté 2026-10-30</span>
+
+</div>
+
+<div id="ref-bfs-stru" class="csl-entry">
+
+<span class="csl-left-margin">\[STRU\]
+</span><span class="csl-right-inline">Bundesamt für Statistik (BFS):
+*Landwirtschaftliche Strukturerhebung*. URL
+<https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html>. -
+consulté 2026-10-30</span>
+
+</div>
+
+<div id="ref-identitas-tierstatistik" class="csl-entry">
+
+<span class="csl-left-margin">\[Tierstatistik\]
+</span><span class="csl-right-inline">Identitas AG: *Tierstatistik*. URL
+<https://tierstatistik.identitas.ch>. - consulté 2026-10-30</span>
+
+</div>
+
+<div id="ref-TSG" class="csl-entry">
+
+<span class="csl-left-margin">\[TSG\]
+</span><span class="csl-right-inline">[Tierseuchengesetz vom 1. Juli
+1966 (TSG)](https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de),
+1966. — SR 916.40</span>
+
+</div>
+
+<div id="ref-TSV" class="csl-entry">
+
+<span class="csl-left-margin">\[TSV\]
+</span><span class="csl-right-inline">[Tierseuchenverordnung vom 27.
+Juni 1995
+(TSV)](https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de), 1995.
+— SR 916.401</span>
+
+</div>
+
 <div id="ref-Turtle" class="csl-entry">
 
 <span class="csl-left-margin">\[Turtle\]
@@ -1383,6 +1530,16 @@ tiers.
 Tim ; Prud’hommeaux, Eric ; Carothers, Gavin: *[RDF 1.1 Turtle – Terse
 RDF Triple Language](https://www.w3.org/TR/turtle/)* (W3C
 Recommendation) : World Wide Web Consortium (W3C), 2014</span>
+
+</div>
+
+<div id="ref-TVD-Verordnung" class="csl-entry">
+
+<span class="csl-left-margin">\[TVD-Verordnung\]
+</span><span class="csl-right-inline">[Verordnung vom 26. Oktober 2011
+über die Tierverkehrsdatenbank
+(TVD-Verordnung)](https://www.fedlex.admin.ch/eli/cc/2011/775/de), 2011.
+— SR 916.404.1</span>
 
 </div>
 
@@ -1695,44 +1852,3 @@ href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/NotTested
 # Annexe F - Table des illustrations
 
 # Annexe G - Liste des tableaux
-
-[^1]: <https://www.news.admin.ch/de/nsb?id=57438>
-
-[^2]: <https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de>
-
-[^3]: <https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de>
-
-[^4]: <https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html>
-
-[^5]: <https://fedlex.data.admin.ch/eli/cc/2011/775>, Version 1.1.2014,
-    Seite 20
-
-[^6]: <https://www.fedlex.admin.ch/eli/cc/2021/751/de#annex_1/lvl_u1/lvl_2>
-
-[^7]: <https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_14>,
-    <https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_15_a>
-
-[^8]: <https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de#art_14>
-
-[^9]: <https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html>
-
-[^10]: <https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html>
-
-[^11]: <https://www.fedlex.admin.ch/eli/cc/2021/751/de>
-
-[^12]: <https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de>
-
-[^13]: <https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_7>,
-    <https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_8>,
-    <https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_9>
-
-[^14]: <https://www.blw.admin.ch/de/agrarumweltmonitoring>
-
-[^15]: <https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html>
-
-[^16]: <https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft>
-
-[^17]: <https://www.proviande.ch/de/herkunft>,
-    <https://www.identitas.ch/produkte/labelbase>
-
-[^18]: <https://tierstatistik.identitas.ch>

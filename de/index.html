@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,18 +58,19 @@ div.csl-indent {
 <link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6453f418aeef366c23116eb9cb0b6816.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5de16f5e46225c21e2daa90d340bf64f.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-3218d7d29a29f08bc4fdf3802c3e3ca5.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5de16f5e46225c21e2daa90d340bf64f.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-19d6cc7f63305eac27870747eef10c23.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bb776f738e6917ce48923d81b095be1d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-19d6cc7f63305eac27870747eef10c23.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-840e4237e0296d8d88a09dfa1585d2ce.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-47c06f0f6c58e4699d92b2812f23d6b0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-840e4237e0296d8d88a09dfa1585d2ce.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -104,7 +105,7 @@ div.csl-indent {
 
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Zum Hauptinhalt springen</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -127,6 +128,7 @@ div.csl-indent {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -156,13 +158,19 @@ div.csl-indent {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -256,6 +264,7 @@ div.csl-indent {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -273,7 +282,7 @@ div.csl-indent {
     <div id="quarto-announcement" data-announcement-id="567b550b14a91b118b5d849fc5505b9a" class="alert alert-warning hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
 <p>Diese Seite beinhaltet einen <em>Working Draft</em> und kann sich dadurch laufend verändern. Für eine aktuelle Version, besuchen Sie <a href="https://ech.ch/">ech.ch</a>.</p>
 </div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Website">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
@@ -281,8 +290,7 @@ div.csl-indent {
     <img src="../assets/ech.svg" alt="eCH" class="navbar-logo dark-content">
     </a>
   </div>
-            <div id="quarto-search" class="" title="Suchen"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -326,8 +334,9 @@ div.csl-indent {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten" aria-label="Dunkelmodus umschalten"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -336,7 +345,7 @@ div.csl-indent {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Auf dieser Seite</h2>
    
   <ul class="collapse">
@@ -351,15 +360,15 @@ div.csl-indent {
   <li><a href="#sec-namespaces" id="toc-sec-namespaces" class="nav-link" data-scroll-target="#sec-namespaces"><span class="header-section-number">2</span> Namespaces</a></li>
   <li><a href="#sec-data-model" id="toc-sec-data-model" class="nav-link" data-scroll-target="#sec-data-model"><span class="header-section-number">3</span> Datenmodell</a>
   <ul class="collapse">
-  <li><a href="#sec-nodeshape-animalshape" id="toc-sec-nodeshape-animalshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalshape"><span class="header-section-number">3.1</span> Einzeltier</a></li>
-  <li><a href="#sec-nodeshape-equidshape" id="toc-sec-nodeshape-equidshape" class="nav-link" data-scroll-target="#sec-nodeshape-equidshape"><span class="header-section-number">3.2</span> Equide</a></li>
-  <li><a href="#sec-nodeshape-animalhealthstatusshape" id="toc-sec-nodeshape-animalhealthstatusshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalhealthstatusshape"><span class="header-section-number">3.3</span> Gesundheitsstatus Einzeltier</a></li>
-  <li><a href="#sec-nodeshape-localunithealthstatusshape" id="toc-sec-nodeshape-localunithealthstatusshape" class="nav-link" data-scroll-target="#sec-nodeshape-localunithealthstatusshape"><span class="header-section-number">3.4</span> Gesundheitsstatus Standort</a></li>
-  <li><a href="#sec-nodeshape-groupnotificationshape" id="toc-sec-nodeshape-groupnotificationshape" class="nav-link" data-scroll-target="#sec-nodeshape-groupnotificationshape"><span class="header-section-number">3.5</span> Gruppenmeldung</a></li>
+  <li><a href="#sec-nodeshape-legalunitshape" id="toc-sec-nodeshape-legalunitshape" class="nav-link" data-scroll-target="#sec-nodeshape-legalunitshape"><span class="header-section-number">3.1</span> Rechtliche Einheit</a></li>
+  <li><a href="#sec-nodeshape-animalkeepershape" id="toc-sec-nodeshape-animalkeepershape" class="nav-link" data-scroll-target="#sec-nodeshape-animalkeepershape"><span class="header-section-number">3.2</span> Tierhaltender</a></li>
+  <li><a href="#sec-nodeshape-localunitshape" id="toc-sec-nodeshape-localunitshape" class="nav-link" data-scroll-target="#sec-nodeshape-localunitshape"><span class="header-section-number">3.3</span> Örtliche Einheit</a></li>
+  <li><a href="#sec-nodeshape-animalshape" id="toc-sec-nodeshape-animalshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalshape"><span class="header-section-number">3.4</span> Einzeltier</a></li>
+  <li><a href="#sec-nodeshape-equidshape" id="toc-sec-nodeshape-equidshape" class="nav-link" data-scroll-target="#sec-nodeshape-equidshape"><span class="header-section-number">3.5</span> Equide</a></li>
   <li><a href="#sec-nodeshape-animalnotificationshape" id="toc-sec-nodeshape-animalnotificationshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalnotificationshape"><span class="header-section-number">3.6</span> Meldung Einzeltier</a></li>
-  <li><a href="#sec-nodeshape-legalunitshape" id="toc-sec-nodeshape-legalunitshape" class="nav-link" data-scroll-target="#sec-nodeshape-legalunitshape"><span class="header-section-number">3.7</span> Rechtliche Einheit</a></li>
-  <li><a href="#sec-nodeshape-animalkeepershape" id="toc-sec-nodeshape-animalkeepershape" class="nav-link" data-scroll-target="#sec-nodeshape-animalkeepershape"><span class="header-section-number">3.8</span> Tierhaltender</a></li>
-  <li><a href="#sec-nodeshape-localunitshape" id="toc-sec-nodeshape-localunitshape" class="nav-link" data-scroll-target="#sec-nodeshape-localunitshape"><span class="header-section-number">3.9</span> Örtliche Einheit</a></li>
+  <li><a href="#sec-nodeshape-groupnotificationshape" id="toc-sec-nodeshape-groupnotificationshape" class="nav-link" data-scroll-target="#sec-nodeshape-groupnotificationshape"><span class="header-section-number">3.7</span> Gruppenmeldung</a></li>
+  <li><a href="#sec-nodeshape-localunithealthstatusshape" id="toc-sec-nodeshape-localunithealthstatusshape" class="nav-link" data-scroll-target="#sec-nodeshape-localunithealthstatusshape"><span class="header-section-number">3.8</span> Gesundheitsstatus Standort</a></li>
+  <li><a href="#sec-nodeshape-animalhealthstatusshape" id="toc-sec-nodeshape-animalhealthstatusshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalhealthstatusshape"><span class="header-section-number">3.9</span> Gesundheitsstatus Einzeltier</a></li>
   </ul></li>
   <li><a href="#sec-code-lists" id="toc-sec-code-lists" class="nav-link" data-scroll-target="#sec-code-lists"><span class="header-section-number">4</span> Wertebereiche</a>
   <ul class="collapse">
@@ -389,7 +398,7 @@ div.csl-indent {
 <div class="quarto-alternate-formats"><h2>Andere Formate</h2><ul><li><a href="index.pdf"><i class="bi bi-file-earmark-pdf"></i>PDF</a></li><li><a href="index.md"><i class="bi bi-markdown"></i>Markdown</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -446,7 +455,7 @@ div.csl-indent {
     <div>
     <dt>Ausgabedatum</dt>
     <dd>
-                        <p>30. Oktober 2026</p>
+                        <p>4. November 2026</p>
                       </dd>
   </div>
     <div>
@@ -504,7 +513,7 @@ div.csl-indent {
 <h1 class="unnumbered">Hinweis</h1>
 <p>Im vorliegenden Dokument wird bei der Bezeichnung von Personen eine geschlechtsneutrale Formulierung verwendet. Basis bildet der Leitfaden der Bundeskanzlei. Je nach Situation kommen Paarformen (Bürgerinnen und Bürger), geschlechtsabstrakte Formen (versicherte Person), geschlechtsneutrale Formen (Versicherte) oder Umschreibungen ohne Personenbezug zum Einsatz. Das generische Maskulin (Bürger) ist nicht zulässig. Vollformen werden in fortlaufenden Texten verwendet, also in Texten, die aus ausformulierten Sätzen bestehen. In verknappten Textpassagen, namentlich in Tabellen, können Kurzformen verwendet werden. Dabei wird die Kurzform mit Schrägstrich, aber ohne Auslassungsstrich verwendet (Referent/in). Genderstern und ähnliche Schreibweisen werden nicht verwendet.</p>
 </section>
-<section id="sec-introduction" class="level1 page-columns page-full" data-number="1">
+<section id="sec-introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Einleitung</h1>
 <section id="sec-status" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec-status"><span class="header-section-number">1.1</span> Status</h2>
@@ -514,15 +523,15 @@ div.csl-indent {
 <h2 data-number="1.2" class="anchored" data-anchor-id="sec-scope-of-application"><span class="header-section-number">1.2</span> Anwendungsgebiet</h2>
 <p>Das vorliegende Dokument beschreibt die Daten der Tierverkehrsdatenbank (TVD) semantisch, um auch Fachpersonen ohne vertiefte IT-Kenntnisse ein besseres Verständnis der Daten zu ermöglichen.</p>
 </section>
-<section id="sec-animal-movement-reporting" class="level2 page-columns page-full" data-number="1.3">
+<section id="sec-animal-movement-reporting" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="sec-animal-movement-reporting"><span class="header-section-number">1.3</span> Das Tiermeldewesen in der Schweiz</h2>
-<p>Die Land- und Ernährungswirtschaft in der Schweiz wurde in den 1990er Jahren stark durch die Tierseuche «BSE» herausgefordert. Als sich 1996 die Erkenntnis der Übertragbarkeit der Krankheit vom Tier auf den Menschen erhärtete, führte dies zu grosser Verunsicherung. In der Folge stiegen die Erwartungen an die Sicherheit von tierischen Lebensmitteln und das Bewusstsein für die Bedeutung der Lebensmittelkontrolle. Der Ansatz «vom Stall bis auf den Teller» etablierte sich. Die risikobasierte Überwachung, die lückenlose Rückverfolgbarkeit der Nutztiere, die Kontrolle des Tierverkehrs, die Pflicht zur Herkunftsdeklaration sowie Qualitätskontrollen in der gesamten Produktions- und Verarbeitungskette bilden seither die Basis für einen hohen Standard in der Lebensmittelsicherheit<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;<a href="https://www.news.admin.ch/de/nsb?id=57438" class="uri">https://www.news.admin.ch/de/nsb?id=57438</a></p></div><div id="fn2"><p><sup>2</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de" class="uri">https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de</a></p></div><div id="fn3"><p><sup>3</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de" class="uri">https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de</a></p></div><div id="fn4"><p><sup>4</sup>&nbsp;<a href="https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html" class="uri">https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html</a></p></div></div><p>Die Erfahrung BSE führte 1999 zum Aufbau einer nationalen Tierverkehrsdatenbank (TVD). In Artikel 7a sowie 13–15 des Tierseuchengesetzes<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> und in Titel 2, Abschnitt 1, 1a und 2a der Tierseuchenverordnung<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> sind die grundlegenden gesetzlichen Ausführungen zur Identifizierung/Kennzeichnung und der Registrierung von Nutztieren sowie die zugehörigen Meldepflichten formuliert. Diese orientieren sich an der europäischen Gesetzgebung zur selben Thematik<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> (Verordnung (EU) 2016/429 zu Tierseuchen; Delegierte Verordnung (EU) 2019/2035 über Betriebe, in denen Landtiere gehalten werden, und für Brütereien sowie zur Rückverfolgbarkeit).</p>
-<p>Waren ab 1999 vorerst Rinder meldepflichtig, folgten ab 2011 die Schweine und Equiden, wenn auch die Schweine bis heute nicht in Form von Einzeltiermeldungen. Ab 2014, respektive 2020 galt die Meldepflicht in die TVD dann auch für Kleinwiederkäuer (Schafe und Ziegen). Zu Beginn, 2014, betraf diese nur die Schlachtbetriebe. Seit 2014 besteht auch die Meldepflicht für Geflügel<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Seit dem Januar 2020 sind auch die Tierhaltenden von Kleinwiederkäuern in das Meldewesen der Einzeltiere eingebunden.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Die Identifizierung und Kennzeichnung der Klauentiere mit Ohrmarken, die Einzeltierregistrierung von Rindern, Schafen und Ziegen in der TVD, sowie die Meldung von Tierzugängen, Tierabgängen (Tier verlässt eine Tierhaltung lebend), Geburten, Einfuhr, Ausfuhr, Schlachtung, Hofschlachtung und Verendung (Tier wird als nicht mehr lebend abgemeldet), sind für alle Tierhaltenden in der Schweiz obligatorisch<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. Die Meldungen unterliegen zudem gesetzlichen Meldefristen<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;<a href="https://fedlex.data.admin.ch/eli/cc/2011/775" class="uri">https://fedlex.data.admin.ch/eli/cc/2011/775</a>, Version 1.1.2014, Seite 20</p></div><div id="fn6"><p><sup>6</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/2021/751/de#annex_1/lvl_u1/lvl_2" class="uri">https://www.fedlex.admin.ch/eli/cc/2021/751/de#annex_1/lvl_u1/lvl_2</a></p></div><div id="fn7"><p><sup>7</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_14" class="uri">https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_14</a>, <a href="https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_15_a" class="uri">https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de#art_15_a</a></p></div><div id="fn8"><p><sup>8</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de#art_14" class="uri">https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de#art_14</a></p></div><div id="fn9"><p><sup>9</sup>&nbsp;<a href="https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html" class="uri">https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html</a></p></div><div id="fn10"><p><sup>10</sup>&nbsp;<a href="https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html" class="uri">https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html</a></p></div></div><p>Die TVD ist Teil einer Systemlandschaft der Bereiche Landwirtschaft, Veterinärwesen und Lebensmittelsicherheit. Die zentrale Eingangspforte bildet dabei das Portal Agate<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>, mit dem Agrarpolitischen Informationssystem AGIS<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> im Zentrum.</p>
+<p>Die Land- und Ernährungswirtschaft in der Schweiz wurde in den 1990er Jahren stark durch die Tierseuche «BSE» herausgefordert. Als sich 1996 die Erkenntnis der Übertragbarkeit der Krankheit vom Tier auf den Menschen erhärtete, führte dies zu grosser Verunsicherung. In der Folge stiegen die Erwartungen an die Sicherheit von tierischen Lebensmitteln und das Bewusstsein für die Bedeutung der Lebensmittelkontrolle. Der Ansatz «vom Stall bis auf den Teller» etablierte sich. Die risikobasierte Überwachung, die lückenlose Rückverfolgbarkeit der Nutztiere, die Kontrolle des Tierverkehrs, die Pflicht zur Herkunftsdeklaration sowie Qualitätskontrollen in der gesamten Produktions- und Verarbeitungskette bilden seither die Basis für einen hohen Standard in der Lebensmittelsicherheit <span class="citation" data-cites="bundesrat2015bse">[<a href="#ref-bundesrat2015bse" role="doc-biblioref">Bundesrat 2015</a>]</span>.</p>
+<p>Die Erfahrung BSE führte 1999 zum Aufbau einer nationalen Tierverkehrsdatenbank (TVD). In Artikel 7a sowie 13–15 des Tierseuchengesetzes <span class="citation" data-cites="TSG">[<a href="#ref-TSG" role="doc-biblioref">TSG</a>]</span> und in Titel 2, Abschnitt 1, 1a und 2a der Tierseuchenverordnung <span class="citation" data-cites="TSV">[<a href="#ref-TSV" role="doc-biblioref">TSV</a>]</span> sind die grundlegenden gesetzlichen Ausführungen zur Identifizierung/Kennzeichnung und der Registrierung von Nutztieren sowie die zugehörigen Meldepflichten formuliert. Diese orientieren sich an der europäischen Gesetzgebung zur selben Thematik <span class="citation" data-cites="eurlex-animal-health-law">[<a href="#ref-eurlex-animal-health-law" role="doc-biblioref">EUR-Lex</a>]</span> (Verordnung (EU) 2016/429 zu Tierseuchen; Delegierte Verordnung (EU) 2019/2035 über Betriebe, in denen Landtiere gehalten werden, und für Brütereien sowie zur Rückverfolgbarkeit).</p>
+<p>Waren ab 1999 vorerst Rinder meldepflichtig, folgten ab 2011 die Schweine und Equiden, wenn auch die Schweine bis heute nicht in Form von Einzeltiermeldungen. Ab 2014, respektive 2020 galt die Meldepflicht in die TVD dann auch für Kleinwiederkäuer (Schafe und Ziegen). Zu Beginn, 2014, betraf diese nur die Schlachtbetriebe. Seit 2014 besteht auch die Meldepflicht für Geflügel <span class="citation" data-cites="TVD-Verordnung">[<a href="#ref-TVD-Verordnung" role="doc-biblioref">TVD-Verordnung</a>, Fassung vom 1. Januar 2014, S. 20]</span>. Seit dem Januar 2020 sind auch die Tierhaltenden von Kleinwiederkäuern in das Meldewesen der Einzeltiere eingebunden <span class="citation" data-cites="IdTVD-V">[<a href="#ref-IdTVD-V" role="doc-biblioref">IdTVD-V</a>, Anhang 1]</span>. Die Identifizierung und Kennzeichnung der Klauentiere mit Ohrmarken, die Einzeltierregistrierung von Rindern, Schafen und Ziegen in der TVD, sowie die Meldung von Tierzugängen, Tierabgängen (Tier verlässt eine Tierhaltung lebend), Geburten, Einfuhr, Ausfuhr, Schlachtung, Hofschlachtung und Verendung (Tier wird als nicht mehr lebend abgemeldet), sind für alle Tierhaltenden in der Schweiz obligatorisch <span class="citation" data-cites="TSG">[<a href="#ref-TSG" role="doc-biblioref">TSG</a>, Art. 14 und 15a]</span>. Die Meldungen unterliegen zudem gesetzlichen Meldefristen <span class="citation" data-cites="TSV">[<a href="#ref-TSV" role="doc-biblioref">TSV</a>, Art. 14]</span>.</p>
+<p>Die TVD ist Teil einer Systemlandschaft der Bereiche Landwirtschaft, Veterinärwesen und Lebensmittelsicherheit. Die zentrale Eingangspforte bildet dabei das Portal Agate <span class="citation" data-cites="blw-agate">[<a href="#ref-blw-agate" role="doc-biblioref">Agate</a>]</span>, mit dem Agrarpolitischen Informationssystem AGIS <span class="citation" data-cites="blw-agis">[<a href="#ref-blw-agis" role="doc-biblioref">AGIS</a>]</span> im Zentrum.</p>
 <!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
-<p>In der Verordnung über die Identitas AG und die Tierverkehrsdatenbank<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> (IdTVD-V) werden Inhalte zum Tierverkehr und Aufgaben der Identitas AG sowie die Zugriffsrechte auf die Daten weiter ausgeführt. Die Bedeutung der Identifizierung/Kennzeichnung von Nutztieren geht weit über die Seuchenthematik hinaus und fand deshalb auch Eingang in die landwirtschaftliche Gesetzgebung<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> (Landwirtschaftsgesetz LwG Artikel 165g, 177 und 185) und diverse zugehörige Verordnungen. Die Daten aus dem Tierverkehr entwickelten sich zu einem unverzichtbaren Bestandteil in der Umsetzung agrarpolitischer Massnahmen, beispielsweise der tierbezogenen Direktzahlungen<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>, der Bestimmung der Nährstoffflüsse oder des Agrarumweltmonitorings<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>. Weiter dienen die Daten auch als Grundlage für die Strukturerhebung der Landwirtschaft in der Schweiz<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a> und generell der landwirtschaftlichen Statistik<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn11"><p><sup>11</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/2021/751/de" class="uri">https://www.fedlex.admin.ch/eli/cc/2021/751/de</a></p></div><div id="fn12"><p><sup>12</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de" class="uri">https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de</a></p></div><div id="fn13"><p><sup>13</sup>&nbsp;<a href="https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_7" class="uri">https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_7</a>, <a href="https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_8" class="uri">https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_8</a>, <a href="https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_9" class="uri">https://www.fedlex.admin.ch/eli/cc/2013/765/de#tit_2/chap_5/sec_9</a></p></div><div id="fn14"><p><sup>14</sup>&nbsp;<a href="https://www.blw.admin.ch/de/agrarumweltmonitoring" class="uri">https://www.blw.admin.ch/de/agrarumweltmonitoring</a></p></div><div id="fn15"><p><sup>15</sup>&nbsp;<a href="https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html" class="uri">https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html</a></p></div><div id="fn16"><p><sup>16</sup>&nbsp;<a href="https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft" class="uri">https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft</a></p></div><div id="fn17"><p><sup>17</sup>&nbsp;<a href="https://www.proviande.ch/de/herkunft" class="uri">https://www.proviande.ch/de/herkunft</a>, <a href="https://www.identitas.ch/produkte/labelbase" class="uri">https://www.identitas.ch/produkte/labelbase</a></p></div><div id="fn18"><p><sup>18</sup>&nbsp;<a href="https://tierstatistik.identitas.ch" class="uri">https://tierstatistik.identitas.ch</a></p></div></div><p>Rasch etablierte sich das Tiermeldewesen auch entlang der gesamten Lebensmittelwertschöpfungskette. Programme mit Tierwohl-, Rückverfolgbarkeits- und Herkunftsversprechen stützen sich darauf ab<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>. Die Vielfalt der Tierinformation aus dem Meldewesen des Tierverkehrs spiegelt sich auch in den öffentlich verfügbaren Datensätzen der Open Data Plattform Tierstatistik<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>.</p>
+<p>In der Verordnung über die Identitas AG und die Tierverkehrsdatenbank <span class="citation" data-cites="IdTVD-V">[<a href="#ref-IdTVD-V" role="doc-biblioref">IdTVD-V</a>]</span> (IdTVD-V) werden Inhalte zum Tierverkehr und Aufgaben der Identitas AG sowie die Zugriffsrechte auf die Daten weiter ausgeführt. Die Bedeutung der Identifizierung/Kennzeichnung von Nutztieren geht weit über die Seuchenthematik hinaus und fand deshalb auch Eingang in die landwirtschaftliche Gesetzgebung <span class="citation" data-cites="LwG">[<a href="#ref-LwG" role="doc-biblioref">LwG</a>]</span> (Landwirtschaftsgesetz LwG Artikel 165g, 177 und 185) und diverse zugehörige Verordnungen. Die Daten aus dem Tierverkehr entwickelten sich zu einem unverzichtbaren Bestandteil in der Umsetzung agrarpolitischer Massnahmen, beispielsweise der tierbezogenen Direktzahlungen <span class="citation" data-cites="DZV">[<a href="#ref-DZV" role="doc-biblioref">DZV</a>, Titel 2, Kapitel 5, Abschnitte 7–9]</span>, der Bestimmung der Nährstoffflüsse oder des Agrarumweltmonitorings <span class="citation" data-cites="blw-agrarumweltmonitoring">[<a href="#ref-blw-agrarumweltmonitoring" role="doc-biblioref">Agrarumweltmonitoring</a>]</span>. Weiter dienen die Daten auch als Grundlage für die Strukturerhebung der Landwirtschaft in der Schweiz <span class="citation" data-cites="bfs-stru">[<a href="#ref-bfs-stru" role="doc-biblioref">STRU</a>]</span> und generell der landwirtschaftlichen Statistik <span class="citation" data-cites="sbv-agristat">[<a href="#ref-sbv-agristat" role="doc-biblioref">Agristat</a>]</span>.</p>
+<p>Rasch etablierte sich das Tiermeldewesen auch entlang der gesamten Lebensmittelwertschöpfungskette. Programme mit Tierwohl-, Rückverfolgbarkeits- und Herkunftsversprechen stützen sich darauf ab <span class="citation" data-cites="proviande-herkunft identitas-labelbase">[<a href="#ref-identitas-labelbase" role="doc-biblioref">Labelbase</a>; <a href="#ref-proviande-herkunft" role="doc-biblioref">Proviande</a>]</span>. Die Vielfalt der Tierinformation aus dem Meldewesen des Tierverkehrs spiegelt sich auch in den öffentlich verfügbaren Datensätzen der Open Data Plattform Tierstatistik <span class="citation" data-cites="identitas-tierstatistik">[<a href="#ref-identitas-tierstatistik" role="doc-biblioref">Tierstatistik</a>]</span>.</p>
 <p>Die technische Schnittstellenbeschreibung in diesem Dokument basiert auf der technischen Servicebeschreibung AnimalTracing v1.32, sowie der openAPI-Spezifikation v. x.xx.</p>
 </section>
 <section id="sec-references" class="level2" data-number="1.4">
@@ -586,11 +595,94 @@ div.csl-indent {
 </figure>
 </div>
 <p><a href="#fig-uml" class="quarto-xref">Abbildung&nbsp;1</a> zeigt die Klassen des Datenmodells und ihre Beziehungen. Jedes Rechteck ist eine Klasse, die Zeilen darin sind ihre Attribute; die eckigen Klammern geben an, wie viele Werte zulässig sind, von der Mindest- bis zur Höchstzahl — <code>[1..1]</code> bedeutet genau einen Wert, <code>[0..1]</code> höchstens einen. Ein Pfeil führt zu der Klasse, auf die verwiesen wird, und trägt den Namen der Beziehung; mehrere Beziehungen zwischen denselben Klassen teilen sich einen Pfeil. Die Linie mit dem Dreieck verbindet eine Klasse mit ihrer Oberklasse, auf die das Dreieck zeigt: Ein Equide ist ein Einzeltier und hat zusätzlich zu den gezeigten alle Attribute des Einzeltiers, die im Diagramm nicht wiederholt werden. Attribute mit einem Wertebereich sind wie alle übrigen dargestellt; die zulässigen Werte stehen in <a href="#sec-code-lists" class="quarto-xref">Kapitel&nbsp;4</a>. Datentypen und Beschreibungen führt das Diagramm nicht auf, sie folgen in den Abschnitten zu den einzelnen Klassen.</p>
-<section id="sec-nodeshape-animalshape" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sec-nodeshape-animalshape"><span class="header-section-number">3.1</span> Einzeltier</h2>
+<section id="sec-nodeshape-legalunitshape" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-nodeshape-legalunitshape"><span class="header-section-number">3.1</span> Rechtliche Einheit</h2>
+<p>Die rechtliche Einheit nach eCH-0108 ist eine juristische Person (z.B. Aktiengesellschaft, GmbH), eine Personengesellschaft (z.B. Kollektivgesellschaft) oder eine selbstständigerwerbende natürliche Person, die dem Bundesgesetz über die Unternehmens-Identifikationsnummer (UIDG) unterstellt ist und einen Eintrag im UID-Register aufweist. Sie identifiziert z.B. das Steuersubjekt für Steuerbehörden oder die beitragspflichtige Person für Sozialversicherungsbeiträge. Die rechtliche Einheit wird mit der UID identifiziert. Nur wenn das Unternehmen ein «Einzelunternehmen» ist, ist der Bewirtschafter zugleich eine natürliche Person. Das Mastersystem für diese Daten ist das UID-Register des BFS; das landwirtschaftliche Informationssystem bezieht die Daten aus diesem Register über eine Schnittstelle. Der Tierhaltende und der Equideneigentümer sind die beiden Ausprägungen der rechtlichen Einheit, die in diesem Hilfsmittel vorkommen. Die Attribute sind in <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf">eCH-0261</a>, Kapitel 3.1 und 3.2, sowie in <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf">eCH-0108</a>, Kapitel 3.1, beschrieben.</p>
+<section id="sec-nodeshape-legalunitshape-overview" class="level3 unlisted" data-number="3.1.1">
+<h3 class="unlisted anchored" data-number="3.1.1" data-anchor-id="sec-nodeshape-legalunitshape-overview"><span class="header-section-number">3.1.1</span> Übersicht</h3>
+<div class="ech-facts">
+<dl>
+<dt>Shape</dt>
+<dd>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnitShape">:LegalUnitShape</a>
+</dd>
+<dt>Zielklasse</dt>
+<dd>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnit">:LegalUnit</a>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+<section id="sec-nodeshape-animalkeepershape" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-nodeshape-animalkeepershape"><span class="header-section-number">3.2</span> Tierhaltender</h2>
+<p>Ein Bewirtschafter ist eine rechtliche Einheit nach eCH-0108, die das Geschäftsrisiko für einen Betrieb trägt (LBV Art. 2). Der Tierhaltende ist eine Form des Bewirtschafters, der Tiere hält (LBV Art. 11a); er braucht somit eine örtliche Einheit (Tierhaltung). Die Verantwortung für das Meldewesen obliegt dem Tierhaltenden für alle Tierkategorien mit Ausnahme der Equiden; bei Equiden liegt sie beim Eigentümer oder bei der Eigentümerin. Die Attribute sind in <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf">eCH-0261</a>, Kapitel 3.1 und 3.2, beschrieben.</p>
+<section id="sec-nodeshape-animalkeepershape-overview" class="level3 unlisted" data-number="3.2.1">
+<h3 class="unlisted anchored" data-number="3.2.1" data-anchor-id="sec-nodeshape-animalkeepershape-overview"><span class="header-section-number">3.2.1</span> Übersicht</h3>
+<div class="ech-facts">
+<dl>
+<dt>Shape</dt>
+<dd>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeperShape">:AnimalKeeperShape</a>
+</dd>
+<dt>Zielklasse</dt>
+<dd>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeper">:AnimalKeeper</a>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+<section id="sec-nodeshape-localunitshape" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-nodeshape-localunitshape"><span class="header-section-number">3.3</span> Örtliche Einheit</h2>
+<p>Eine örtliche Einheit nach eCH-0108 ist eine Einrichtung an einem bestimmten Ort, an welcher eine wirtschaftliche Tätigkeit ausgeübt wird. Eine örtliche Einheit hat eine BUR-Nummer und ist immer einer rechtlichen Einheit (bzw. einem Unternehmen) zugeordnet. Die örtliche Einheit wird über die BUR-Nummer identifiziert. Die örtliche Einheit kann aus einem oder mehreren Gebäuden bestehen. Die der BUR-Nummer zugewiesene EGID bezieht sich auf «das Zentrum» der örtlichen Einheit, resp. das Hauptgebäude. Diese Definition stammt aus <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf">eCH-0108</a>, Kapitel 1.5; die agrarspezifischen Ergänzungen sind in <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf">eCH-0261</a>, Kapitel 3.3 und 3.4, beschrieben. In der TVD werden die örtlichen Einheiten «Tierhaltungen» genannt und sind zusätzlich über die TVD-Nummer identifiziert.</p>
+<section id="sec-nodeshape-localunitshape-overview" class="level3 unlisted" data-number="3.3.1">
+<h3 class="unlisted anchored" data-number="3.3.1" data-anchor-id="sec-nodeshape-localunitshape-overview"><span class="header-section-number">3.3.1</span> Übersicht</h3>
+<div class="ech-facts">
+<dl>
+<dt>Shape</dt>
+<dd>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitShape">:LocalUnitShape</a>
+</dd>
+<dt>Zielklasse</dt>
+<dd>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnit">:LocalUnit</a>
+</dd>
+</dl>
+</div>
+</section>
+<section id="sec-nodeshape-localunitshape-properties" class="level3 unlisted" data-number="3.3.2">
+<h3 class="unlisted anchored" data-number="3.3.2" data-anchor-id="sec-nodeshape-localunitshape-properties"><span class="header-section-number">3.3.2</span> Eigenschaften</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 36%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Beschreibung</th>
+<th style="text-align: left;">Details</th>
+<th style="text-align: right;">Kardinalität</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Tierhaltender</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/animalKeeper">:animalKeeper</a>): Zuordnung der örtlichen Einheit zum Tierhaltenden. Nach eCH-0108, Kapitel 1.5, ist eine örtliche Einheit immer einer rechtlichen Einheit (bzw. einem Unternehmen) zugeordnet; die Stammdaten der örtlichen Einheit führen dafür das optionale Merkmal «mainUid» mit der UID der rechtlichen Haupteinheit. Da der Tierhaltende nur eine Sonderform der rechtlichen Einheit ist, ist diese Zuordnung nicht zwingend.</td>
+<td style="text-align: left;"><ul>
+<li>Typ: <a href="#sec-nodeshape-animalkeepershape">Tierhaltender</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="sec-nodeshape-animalshape" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-nodeshape-animalshape"><span class="header-section-number">3.4</span> Einzeltier</h2>
 <p>Ein einzeln identifiziertes Nutztier. In der Tierverkehrsdatenbank werden Tiere der Kategorien Rinder, Schafe, Ziegen und Equiden als Einzeltiere erfasst; sie werden über die Ohrmarkennummer, bei Equiden über die UELN, eindeutig identifiziert. Für Schweine und Geflügel werden keine Einzeltiere geführt, sondern ausschliesslich Gruppenmeldungen.</p>
-<section id="sec-nodeshape-animalshape-overview" class="level3 unlisted" data-number="3.1.1">
-<h3 class="unlisted anchored" data-number="3.1.1" data-anchor-id="sec-nodeshape-animalshape-overview"><span class="header-section-number">3.1.1</span> Übersicht</h3>
+<section id="sec-nodeshape-animalshape-overview" class="level3 unlisted" data-number="3.4.1">
+<h3 class="unlisted anchored" data-number="3.4.1" data-anchor-id="sec-nodeshape-animalshape-overview"><span class="header-section-number">3.4.1</span> Übersicht</h3>
 <div class="ech-facts">
 <dl>
 <dt>Shape</dt>
@@ -604,8 +696,8 @@ div.csl-indent {
 </dl>
 </div>
 </section>
-<section id="sec-nodeshape-animalshape-properties" class="level3 unlisted" data-number="3.1.2">
-<h3 class="unlisted anchored" data-number="3.1.2" data-anchor-id="sec-nodeshape-animalshape-properties"><span class="header-section-number">3.1.2</span> Eigenschaften</h3>
+<section id="sec-nodeshape-animalshape-properties" class="level3 unlisted" data-number="3.4.2">
+<h3 class="unlisted anchored" data-number="3.4.2" data-anchor-id="sec-nodeshape-animalshape-properties"><span class="header-section-number">3.4.2</span> Eigenschaften</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -694,16 +786,16 @@ div.csl-indent {
 </tbody>
 </table>
 </section>
-<section id="sec-nodeshape-animalshape-rules" class="level3 unlisted" data-number="3.1.3">
-<h3 class="unlisted anchored" data-number="3.1.3" data-anchor-id="sec-nodeshape-animalshape-rules"><span class="header-section-number">3.1.3</span> Regeln</h3>
+<section id="sec-nodeshape-animalshape-rules" class="level3 unlisted" data-number="3.4.3">
+<h3 class="unlisted anchored" data-number="3.4.3" data-anchor-id="sec-nodeshape-animalshape-rules"><span class="header-section-number">3.4.3</span> Regeln</h3>
 <p>Der TiergeschichteStatus ist für Equiden nicht relevant. Er ist deshalb für jedes Einzeltier ausser den Equiden Pflicht.</p>
 </section>
 </section>
-<section id="sec-nodeshape-equidshape" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="sec-nodeshape-equidshape"><span class="header-section-number">3.2</span> Equide</h2>
+<section id="sec-nodeshape-equidshape" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-nodeshape-equidshape"><span class="header-section-number">3.5</span> Equide</h2>
 <p>Subklasse der Klasse Einzeltier für Tiere der Gattung Equiden (Pferd, Maultier, Maulesel, Esel). Alle Attribute der Klasse Einzeltier gelten auch für Equiden; diese Klasse beschreibt ausschliesslich die zusätzlichen, equidenspezifischen Angaben. Die Verantwortung für das Meldewesen liegt bei Equiden nicht beim Tierhaltenden, sondern bei der Eigentümerin oder beim Eigentümer. Ein Eigentümer ist die rechtliche Einheit, in deren Eigentum Equiden sind; der Begriff wird nur für Equideneigentümer geführt.</p>
-<section id="sec-nodeshape-equidshape-overview" class="level3 unlisted" data-number="3.2.1">
-<h3 class="unlisted anchored" data-number="3.2.1" data-anchor-id="sec-nodeshape-equidshape-overview"><span class="header-section-number">3.2.1</span> Übersicht</h3>
+<section id="sec-nodeshape-equidshape-overview" class="level3 unlisted" data-number="3.5.1">
+<h3 class="unlisted anchored" data-number="3.5.1" data-anchor-id="sec-nodeshape-equidshape-overview"><span class="header-section-number">3.5.1</span> Übersicht</h3>
 <div class="ech-facts">
 <dl>
 <dt>Shape</dt>
@@ -717,8 +809,8 @@ div.csl-indent {
 </dl>
 </div>
 </section>
-<section id="sec-nodeshape-equidshape-properties" class="level3 unlisted" data-number="3.2.2">
-<h3 class="unlisted anchored" data-number="3.2.2" data-anchor-id="sec-nodeshape-equidshape-properties"><span class="header-section-number">3.2.2</span> Eigenschaften</h3>
+<section id="sec-nodeshape-equidshape-properties" class="level3 unlisted" data-number="3.5.2">
+<h3 class="unlisted anchored" data-number="3.5.2" data-anchor-id="sec-nodeshape-equidshape-properties"><span class="header-section-number">3.5.2</span> Eigenschaften</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 53%">
@@ -780,30 +872,30 @@ div.csl-indent {
 </table>
 </section>
 </section>
-<section id="sec-nodeshape-animalhealthstatusshape" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="sec-nodeshape-animalhealthstatusshape"><span class="header-section-number">3.3</span> Gesundheitsstatus Einzeltier</h2>
-<p>Eine Seucheninformation, die auf einem Einzeltier erfasst ist. Zusätzlich zum individuellen Seuchenstatus werden damit auch relevante Impfungen erfasst.</p>
-<section id="sec-nodeshape-animalhealthstatusshape-overview" class="level3 unlisted" data-number="3.3.1">
-<h3 class="unlisted anchored" data-number="3.3.1" data-anchor-id="sec-nodeshape-animalhealthstatusshape-overview"><span class="header-section-number">3.3.1</span> Übersicht</h3>
+<section id="sec-nodeshape-animalnotificationshape" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-nodeshape-animalnotificationshape"><span class="header-section-number">3.6</span> Meldung Einzeltier</h2>
+<p>Ein Ereignis, das ein Einzeltier betrifft. Als Ereignisse gelten Bewegungsmeldungen, Meldungen von Grunddaten, Änderungen einzelner Attribute der Grunddaten sowie finale Meldungen. Eine Meldung bezieht sich immer auf die örtliche Einheit, auf welcher das Ereignis stattgefunden hat, und kann zusätzlich die örtliche Einheit der Herkunft angeben. Die Ereignisse werden durch die berechtigten Personen gemeldet mit Angabe der Tierhaltung, auf die sich die Meldung bezieht; bei Equiden werden sie durch die berechtigten Personen des verantwortlichen Equideneigentümers gemeldet.</p>
+<section id="sec-nodeshape-animalnotificationshape-overview" class="level3 unlisted" data-number="3.6.1">
+<h3 class="unlisted anchored" data-number="3.6.1" data-anchor-id="sec-nodeshape-animalnotificationshape-overview"><span class="header-section-number">3.6.1</span> Übersicht</h3>
 <div class="ech-facts">
 <dl>
 <dt>Shape</dt>
 <dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatusShape">:AnimalHealthStatusShape</a>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalNotificationShape">:AnimalNotificationShape</a>
 </dd>
 <dt>Zielklasse</dt>
 <dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatus">:AnimalHealthStatus</a>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalNotification">:AnimalNotification</a>
 </dd>
 </dl>
 </div>
 </section>
-<section id="sec-nodeshape-animalhealthstatusshape-properties" class="level3 unlisted" data-number="3.3.2">
-<h3 class="unlisted anchored" data-number="3.3.2" data-anchor-id="sec-nodeshape-animalhealthstatusshape-properties"><span class="header-section-number">3.3.2</span> Eigenschaften</h3>
+<section id="sec-nodeshape-animalnotificationshape-properties" class="level3 unlisted" data-number="3.6.2">
+<h3 class="unlisted anchored" data-number="3.6.2" data-anchor-id="sec-nodeshape-animalnotificationshape-properties"><span class="header-section-number">3.6.2</span> Eigenschaften</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 53%">
-<col style="width: 36%">
+<col style="width: 37%">
 <col style="width: 9%">
 </colgroup>
 <thead>
@@ -815,108 +907,70 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Tier-ID</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/animal">:animal</a>): Ein Gesundheitsstatus Einzeltier bezieht sich auf genau ein Einzeltier.</td>
+<td style="text-align: left;"><strong>Identifikator</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/animal">:animal</a>): Eine Meldung Einzeltier bezieht sich auf genau ein Einzeltier.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a href="#sec-nodeshape-animalshape">Einzeltier</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Typ</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>): z. B. Seuchenstatus, Impfstatus, Risikostatus</td>
-<td style="text-align: left;"><ul>
-<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-healthstatustype">Typ Gesundheitsstatus</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Status</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
-<td style="text-align: left;"><ul>
-<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-animalepizooticstatus">Seuchenstatus Einzeltier</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Datum</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>): Datum, ab dem der Seuchenstatus gültig ist oder das Impfdatum</td>
-<td style="text-align: left;"><ul>
-<li>Typ: Datum (<a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="sec-nodeshape-localunithealthstatusshape" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="sec-nodeshape-localunithealthstatusshape"><span class="header-section-number">3.4</span> Gesundheitsstatus Standort</h2>
-<p>Bei Seuchengeschehen von nationaler Bedeutung ist es entscheidend, dass Tierhaltende über Sperren und Seuchenstatus informiert sind; so kann ein Ausbreitungsrisiko durch den Tierverkehr minimiert werden. Eine Seucheninformation, die auf einer örtlichen Einheit erfasst ist. Neben dem Seuchenstatus einer örtlichen Einheit können auch Impf-, Risiko- und Laborergebnisse abgebildet werden.</p>
-<section id="sec-nodeshape-localunithealthstatusshape-overview" class="level3 unlisted" data-number="3.4.1">
-<h3 class="unlisted anchored" data-number="3.4.1" data-anchor-id="sec-nodeshape-localunithealthstatusshape-overview"><span class="header-section-number">3.4.1</span> Übersicht</h3>
-<div class="ech-facts">
-<dl>
-<dt>Shape</dt>
-<dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatusShape">:LocalUnitHealthStatusShape</a>
-</dd>
-<dt>Zielklasse</dt>
-<dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatus">:LocalUnitHealthStatus</a>
-</dd>
-</dl>
-</div>
-</section>
-<section id="sec-nodeshape-localunithealthstatusshape-properties" class="level3 unlisted" data-number="3.4.2">
-<h3 class="unlisted anchored" data-number="3.4.2" data-anchor-id="sec-nodeshape-localunithealthstatusshape-properties"><span class="header-section-number">3.4.2</span> Eigenschaften</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 53%">
-<col style="width: 36%">
-<col style="width: 9%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Beschreibung</th>
-<th style="text-align: left;">Details</th>
-<th style="text-align: right;">Kardinalität</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Örtliche Einheit</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>): BUR-Nummer der örtlichen Einheit</td>
+<td style="text-align: left;"><strong>Örtliche Einheit</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>): BUR-Nummer der örtlichen Einheit, auf die sich die Meldung bezieht</td>
 <td style="text-align: left;"><ul>
 <li>Typ: <a href="#sec-nodeshape-localunitshape">Örtliche Einheit</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Typ</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>): z. B. Seuchenstatus, Impfstatus, Risikostatus</td>
+<tr class="odd">
+<td style="text-align: left;"><strong>Herkunft</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/originLocalUnit">:originLocalUnit</a>): BUR-Nummer der örtlichen Einheit von der das Tier kommt</td>
 <td style="text-align: left;"><ul>
-<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-healthstatustype">Typ Gesundheitsstatus</a></li>
+<li>Typ: <a href="#sec-nodeshape-localunitshape">Örtliche Einheit</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>ID</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/id">:id</a>): Eindeutiger Identifikator der Bewegung, der durch das System vergeben wird.</td>
+<td style="text-align: left;"><ul>
+<li>Typ: Zeichenkette (<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Status</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
+<td style="text-align: left;"><strong>Nutztierart</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/genus">:genus</a>)</td>
 <td style="text-align: left;"><ul>
-<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-localunitepizooticstatus">Seuchenstatus örtliche Einheit</a></li>
+<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-genus">Nutztierart</a></li>
 </ul></td>
-<td style="text-align: right;">0..1</td>
+<td style="text-align: right;">1..1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Datum</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>): Datum, ab dem der Seuchenstatus gültig ist</td>
+<td style="text-align: left;"><strong>Meldungstyp</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationType">:notificationType</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-notificationtype">Bewegungstyp</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Ereignisdatum</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/eventDate">:eventDate</a>): Datum, an dem das Ereignis stattgefunden hat</td>
 <td style="text-align: left;"><ul>
 <li>Typ: Datum (<a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </ul></td>
-<td style="text-align: right;">0..1</td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Meldedatum</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationDate">:notificationDate</a>): Datum, an dem das Ereignis gemeldet wurde</td>
+<td style="text-align: left;"><ul>
+<li>Typ: Datum (<a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
 </tr>
 </tbody>
 </table>
 </section>
 </section>
-<section id="sec-nodeshape-groupnotificationshape" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="sec-nodeshape-groupnotificationshape"><span class="header-section-number">3.5</span> Gruppenmeldung</h2>
+<section id="sec-nodeshape-groupnotificationshape" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-nodeshape-groupnotificationshape"><span class="header-section-number">3.7</span> Gruppenmeldung</h2>
 <p>Ein Ereignis für eine nicht eindeutig identifizierbare Tiergruppe. Gruppenmeldungen werden für Tiere der Kategorien Schweine und Geflügel erfasst; die Individuen einer Tiergruppe sind deshalb nicht bekannt. Die Ereignisse werden durch die natürlichen Personen der verantwortlichen rechtlichen Einheit Tierhaltender gemeldet. Sie umfassen Einstallungsmeldungen bei Geflügel, Bewegungsmeldungen bei Schweinen sowie Schlachtungsmeldungen von Schweinen (in Stück) und Geflügelgruppen (in kg).</p>
-<section id="sec-nodeshape-groupnotificationshape-overview" class="level3 unlisted" data-number="3.5.1">
-<h3 class="unlisted anchored" data-number="3.5.1" data-anchor-id="sec-nodeshape-groupnotificationshape-overview"><span class="header-section-number">3.5.1</span> Übersicht</h3>
+<section id="sec-nodeshape-groupnotificationshape-overview" class="level3 unlisted" data-number="3.7.1">
+<h3 class="unlisted anchored" data-number="3.7.1" data-anchor-id="sec-nodeshape-groupnotificationshape-overview"><span class="header-section-number">3.7.1</span> Übersicht</h3>
 <div class="ech-facts">
 <dl>
 <dt>Shape</dt>
@@ -930,8 +984,8 @@ div.csl-indent {
 </dl>
 </div>
 </section>
-<section id="sec-nodeshape-groupnotificationshape-properties" class="level3 unlisted" data-number="3.5.2">
-<h3 class="unlisted anchored" data-number="3.5.2" data-anchor-id="sec-nodeshape-groupnotificationshape-properties"><span class="header-section-number">3.5.2</span> Eigenschaften</h3>
+<section id="sec-nodeshape-groupnotificationshape-properties" class="level3 unlisted" data-number="3.7.2">
+<h3 class="unlisted anchored" data-number="3.7.2" data-anchor-id="sec-nodeshape-groupnotificationshape-properties"><span class="header-section-number">3.7.2</span> Eigenschaften</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 52%">
@@ -1034,30 +1088,30 @@ div.csl-indent {
 </table>
 </section>
 </section>
-<section id="sec-nodeshape-animalnotificationshape" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="sec-nodeshape-animalnotificationshape"><span class="header-section-number">3.6</span> Meldung Einzeltier</h2>
-<p>Ein Ereignis, das ein Einzeltier betrifft. Als Ereignisse gelten Bewegungsmeldungen, Meldungen von Grunddaten, Änderungen einzelner Attribute der Grunddaten sowie finale Meldungen. Eine Meldung bezieht sich immer auf die örtliche Einheit, auf welcher das Ereignis stattgefunden hat, und kann zusätzlich die örtliche Einheit der Herkunft angeben. Die Ereignisse werden durch die berechtigten Personen gemeldet mit Angabe der Tierhaltung, auf die sich die Meldung bezieht; bei Equiden werden sie durch die berechtigten Personen des verantwortlichen Equideneigentümers gemeldet.</p>
-<section id="sec-nodeshape-animalnotificationshape-overview" class="level3 unlisted" data-number="3.6.1">
-<h3 class="unlisted anchored" data-number="3.6.1" data-anchor-id="sec-nodeshape-animalnotificationshape-overview"><span class="header-section-number">3.6.1</span> Übersicht</h3>
+<section id="sec-nodeshape-localunithealthstatusshape" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="sec-nodeshape-localunithealthstatusshape"><span class="header-section-number">3.8</span> Gesundheitsstatus Standort</h2>
+<p>Bei Seuchengeschehen von nationaler Bedeutung ist es entscheidend, dass Tierhaltende über Sperren und Seuchenstatus informiert sind; so kann ein Ausbreitungsrisiko durch den Tierverkehr minimiert werden. Eine Seucheninformation, die auf einer örtlichen Einheit erfasst ist. Neben dem Seuchenstatus einer örtlichen Einheit können auch Impf-, Risiko- und Laborergebnisse abgebildet werden.</p>
+<section id="sec-nodeshape-localunithealthstatusshape-overview" class="level3 unlisted" data-number="3.8.1">
+<h3 class="unlisted anchored" data-number="3.8.1" data-anchor-id="sec-nodeshape-localunithealthstatusshape-overview"><span class="header-section-number">3.8.1</span> Übersicht</h3>
 <div class="ech-facts">
 <dl>
 <dt>Shape</dt>
 <dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalNotificationShape">:AnimalNotificationShape</a>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatusShape">:LocalUnitHealthStatusShape</a>
 </dd>
 <dt>Zielklasse</dt>
 <dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalNotification">:AnimalNotification</a>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatus">:LocalUnitHealthStatus</a>
 </dd>
 </dl>
 </div>
 </section>
-<section id="sec-nodeshape-animalnotificationshape-properties" class="level3 unlisted" data-number="3.6.2">
-<h3 class="unlisted anchored" data-number="3.6.2" data-anchor-id="sec-nodeshape-animalnotificationshape-properties"><span class="header-section-number">3.6.2</span> Eigenschaften</h3>
+<section id="sec-nodeshape-localunithealthstatusshape-properties" class="level3 unlisted" data-number="3.8.2">
+<h3 class="unlisted anchored" data-number="3.8.2" data-anchor-id="sec-nodeshape-localunithealthstatusshape-properties"><span class="header-section-number">3.8.2</span> Eigenschaften</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 53%">
-<col style="width: 37%">
+<col style="width: 36%">
 <col style="width: 9%">
 </colgroup>
 <thead>
@@ -1069,128 +1123,62 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Identifikator</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/animal">:animal</a>): Eine Meldung Einzeltier bezieht sich auf genau ein Einzeltier.</td>
+<td style="text-align: left;"><strong>Örtliche Einheit</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>): BUR-Nummer der örtlichen Einheit</td>
 <td style="text-align: left;"><ul>
-<li>Typ: <a href="#sec-nodeshape-animalshape">Einzeltier</a></li>
+<li>Typ: <a href="#sec-nodeshape-localunitshape">Örtliche Einheit</a></li>
 </ul></td>
 <td style="text-align: right;">1..1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Örtliche Einheit</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>): BUR-Nummer der örtlichen Einheit, auf die sich die Meldung bezieht</td>
+<td style="text-align: left;"><strong>Typ</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>): z. B. Seuchenstatus, Impfstatus, Risikostatus</td>
 <td style="text-align: left;"><ul>
-<li>Typ: <a href="#sec-nodeshape-localunitshape">Örtliche Einheit</a></li>
+<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-healthstatustype">Typ Gesundheitsstatus</a></li>
 </ul></td>
-<td style="text-align: right;">1..1</td>
+<td style="text-align: right;">0..1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Herkunft</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/originLocalUnit">:originLocalUnit</a>): BUR-Nummer der örtlichen Einheit von der das Tier kommt</td>
+<td style="text-align: left;"><strong>Status</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
 <td style="text-align: left;"><ul>
-<li>Typ: <a href="#sec-nodeshape-localunitshape">Örtliche Einheit</a></li>
+<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-localunitepizooticstatus">Seuchenstatus örtliche Einheit</a></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>ID</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/id">:id</a>): Eindeutiger Identifikator der Bewegung, der durch das System vergeben wird.</td>
-<td style="text-align: left;"><ul>
-<li>Typ: Zeichenkette (<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
-</ul></td>
-<td style="text-align: right;">1..1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Nutztierart</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/genus">:genus</a>)</td>
-<td style="text-align: left;"><ul>
-<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-genus">Nutztierart</a></li>
-</ul></td>
-<td style="text-align: right;">1..1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Meldungstyp</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationType">:notificationType</a>)</td>
-<td style="text-align: left;"><ul>
-<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-notificationtype">Bewegungstyp</a></li>
-</ul></td>
-<td style="text-align: right;">1..1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Ereignisdatum</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/eventDate">:eventDate</a>): Datum, an dem das Ereignis stattgefunden hat</td>
+<td style="text-align: left;"><strong>Datum</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>): Datum, ab dem der Seuchenstatus gültig ist</td>
 <td style="text-align: left;"><ul>
 <li>Typ: Datum (<a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </ul></td>
-<td style="text-align: right;">1..1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Meldedatum</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/notificationDate">:notificationDate</a>): Datum, an dem das Ereignis gemeldet wurde</td>
-<td style="text-align: left;"><ul>
-<li>Typ: Datum (<a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
-</ul></td>
-<td style="text-align: right;">1..1</td>
+<td style="text-align: right;">0..1</td>
 </tr>
 </tbody>
 </table>
 </section>
 </section>
-<section id="sec-nodeshape-legalunitshape" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="sec-nodeshape-legalunitshape"><span class="header-section-number">3.7</span> Rechtliche Einheit</h2>
-<p>Die rechtliche Einheit nach eCH-0108 ist eine juristische Person (z.B. Aktiengesellschaft, GmbH), eine Personengesellschaft (z.B. Kollektivgesellschaft) oder eine selbstständigerwerbende natürliche Person, die dem Bundesgesetz über die Unternehmens-Identifikationsnummer (UIDG) unterstellt ist und einen Eintrag im UID-Register aufweist. Sie identifiziert z.B. das Steuersubjekt für Steuerbehörden oder die beitragspflichtige Person für Sozialversicherungsbeiträge. Die rechtliche Einheit wird mit der UID identifiziert. Nur wenn das Unternehmen ein «Einzelunternehmen» ist, ist der Bewirtschafter zugleich eine natürliche Person. Das Mastersystem für diese Daten ist das UID-Register des BFS; das landwirtschaftliche Informationssystem bezieht die Daten aus diesem Register über eine Schnittstelle. Der Tierhaltende und der Equideneigentümer sind die beiden Ausprägungen der rechtlichen Einheit, die in diesem Hilfsmittel vorkommen. Die Attribute sind in <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf">eCH-0261</a>, Kapitel 3.1 und 3.2, sowie in <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf">eCH-0108</a>, Kapitel 3.1, beschrieben.</p>
-<section id="sec-nodeshape-legalunitshape-overview" class="level3 unlisted" data-number="3.7.1">
-<h3 class="unlisted anchored" data-number="3.7.1" data-anchor-id="sec-nodeshape-legalunitshape-overview"><span class="header-section-number">3.7.1</span> Übersicht</h3>
+<section id="sec-nodeshape-animalhealthstatusshape" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="sec-nodeshape-animalhealthstatusshape"><span class="header-section-number">3.9</span> Gesundheitsstatus Einzeltier</h2>
+<p>Eine Seucheninformation, die auf einem Einzeltier erfasst ist. Zusätzlich zum individuellen Seuchenstatus werden damit auch relevante Impfungen erfasst.</p>
+<section id="sec-nodeshape-animalhealthstatusshape-overview" class="level3 unlisted" data-number="3.9.1">
+<h3 class="unlisted anchored" data-number="3.9.1" data-anchor-id="sec-nodeshape-animalhealthstatusshape-overview"><span class="header-section-number">3.9.1</span> Übersicht</h3>
 <div class="ech-facts">
 <dl>
 <dt>Shape</dt>
 <dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnitShape">:LegalUnitShape</a>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatusShape">:AnimalHealthStatusShape</a>
 </dd>
 <dt>Zielklasse</dt>
 <dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LegalUnit">:LegalUnit</a>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalHealthStatus">:AnimalHealthStatus</a>
 </dd>
 </dl>
 </div>
 </section>
-</section>
-<section id="sec-nodeshape-animalkeepershape" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="sec-nodeshape-animalkeepershape"><span class="header-section-number">3.8</span> Tierhaltender</h2>
-<p>Ein Bewirtschafter ist eine rechtliche Einheit nach eCH-0108, die das Geschäftsrisiko für einen Betrieb trägt (LBV Art. 2). Der Tierhaltende ist eine Form des Bewirtschafters, der Tiere hält (LBV Art. 11a); er braucht somit eine örtliche Einheit (Tierhaltung). Die Verantwortung für das Meldewesen obliegt dem Tierhaltenden für alle Tierkategorien mit Ausnahme der Equiden; bei Equiden liegt sie beim Eigentümer oder bei der Eigentümerin. Die Attribute sind in <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf">eCH-0261</a>, Kapitel 3.1 und 3.2, beschrieben.</p>
-<section id="sec-nodeshape-animalkeepershape-overview" class="level3 unlisted" data-number="3.8.1">
-<h3 class="unlisted anchored" data-number="3.8.1" data-anchor-id="sec-nodeshape-animalkeepershape-overview"><span class="header-section-number">3.8.1</span> Übersicht</h3>
-<div class="ech-facts">
-<dl>
-<dt>Shape</dt>
-<dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeperShape">:AnimalKeeperShape</a>
-</dd>
-<dt>Zielklasse</dt>
-<dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/AnimalKeeper">:AnimalKeeper</a>
-</dd>
-</dl>
-</div>
-</section>
-</section>
-<section id="sec-nodeshape-localunitshape" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="sec-nodeshape-localunitshape"><span class="header-section-number">3.9</span> Örtliche Einheit</h2>
-<p>Eine örtliche Einheit nach eCH-0108 ist eine Einrichtung an einem bestimmten Ort, an welcher eine wirtschaftliche Tätigkeit ausgeübt wird. Eine örtliche Einheit hat eine BUR-Nummer und ist immer einer rechtlichen Einheit (bzw. einem Unternehmen) zugeordnet. Die örtliche Einheit wird über die BUR-Nummer identifiziert. Die örtliche Einheit kann aus einem oder mehreren Gebäuden bestehen. Die der BUR-Nummer zugewiesene EGID bezieht sich auf «das Zentrum» der örtlichen Einheit, resp. das Hauptgebäude. In der TVD werden die örtlichen Einheiten «Tierhaltungen» genannt und sind zusätzlich über die TVD-Nummer identifiziert. Diese Definition stammt aus <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2023-12-21_eCH-0108_V6.0.0_Unternehmensstammdaten%20Unternehmensregister.pdf">eCH-0108</a>, Kapitel 1.5; die agrarspezifischen Ergänzungen sind in <a href="https://ech.ch/sites/default/files/imce/eCH-Dossier/eCH-Dossier_PDF_Publikationen/Hauptdokument/STAN_d_DEF_2024-02_07_eCH-0261_V1.0.0_Datenstandard_Agrardaten_Stammdaten.pdf">eCH-0261</a>, Kapitel 3.3 und 3.4, beschrieben.</p>
-<section id="sec-nodeshape-localunitshape-overview" class="level3 unlisted" data-number="3.9.1">
-<h3 class="unlisted anchored" data-number="3.9.1" data-anchor-id="sec-nodeshape-localunitshape-overview"><span class="header-section-number">3.9.1</span> Übersicht</h3>
-<div class="ech-facts">
-<dl>
-<dt>Shape</dt>
-<dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitShape">:LocalUnitShape</a>
-</dd>
-<dt>Zielklasse</dt>
-<dd>
-<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnit">:LocalUnit</a>
-</dd>
-</dl>
-</div>
-</section>
-<section id="sec-nodeshape-localunitshape-properties" class="level3 unlisted" data-number="3.9.2">
-<h3 class="unlisted anchored" data-number="3.9.2" data-anchor-id="sec-nodeshape-localunitshape-properties"><span class="header-section-number">3.9.2</span> Eigenschaften</h3>
+<section id="sec-nodeshape-animalhealthstatusshape-properties" class="level3 unlisted" data-number="3.9.2">
+<h3 class="unlisted anchored" data-number="3.9.2" data-anchor-id="sec-nodeshape-animalhealthstatusshape-properties"><span class="header-section-number">3.9.2</span> Eigenschaften</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 52%">
+<col style="width: 53%">
 <col style="width: 36%">
-<col style="width: 10%">
+<col style="width: 9%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1201,9 +1189,30 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Tierhaltender</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/animalKeeper">:animalKeeper</a>): Zuordnung der örtlichen Einheit zum Tierhaltenden. Nach eCH-0108, Kapitel 1.5, ist eine örtliche Einheit immer einer rechtlichen Einheit (bzw. einem Unternehmen) zugeordnet; die Stammdaten der örtlichen Einheit führen dafür das optionale Merkmal «mainUid» mit der UID der rechtlichen Haupteinheit. Da der Tierhaltende nur eine Sonderform der rechtlichen Einheit ist, ist diese Zuordnung nicht zwingend.</td>
+<td style="text-align: left;"><strong>Tier-ID</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/animal">:animal</a>): Ein Gesundheitsstatus Einzeltier bezieht sich auf genau ein Einzeltier.</td>
 <td style="text-align: left;"><ul>
-<li>Typ: <a href="#sec-nodeshape-animalkeepershape">Tierhaltender</a></li>
+<li>Typ: <a href="#sec-nodeshape-animalshape">Einzeltier</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Typ</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>): z. B. Seuchenstatus, Impfstatus, Risikostatus</td>
+<td style="text-align: left;"><ul>
+<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-healthstatustype">Typ Gesundheitsstatus</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Status</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Typ: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, siehe Codeliste <a href="#sec-codelist-animalepizooticstatus">Seuchenstatus Einzeltier</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Datum</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>): Datum, ab dem der Seuchenstatus gültig ist oder das Impfdatum</td>
+<td style="text-align: left;"><ul>
+<li>Typ: Datum (<a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -1830,12 +1839,59 @@ div.csl-indent {
 
 
 
-
 <div id="quarto-appendix" class="default"><section id="sec-appendix-a" class="level1 appendix" data-number="8"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">8</span> Anhang A - Referenzen</h2><div class="quarto-appendix-contents">
 
 <div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-blw-agate" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[Agate] </div><div class="csl-right-inline">Bundesamt für Landwirtschaft (BLW): <em>agate.ch – der Online-Schalter für die Landwirtschaft</em>. URL <a href="https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html">https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate.html</a>. - abgerufen am 2026-10-30</div>
+</div>
+<div id="ref-blw-agis" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[AGIS] </div><div class="csl-right-inline">Bundesamt für Landwirtschaft (BLW): <em>Agrarpolitisches Informationssystem AGIS</em>. URL <a href="https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html">https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/agate/agis.html</a>. - abgerufen am 2026-10-30</div>
+</div>
+<div id="ref-blw-agrarumweltmonitoring" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[Agrarumweltmonitoring] </div><div class="csl-right-inline">Bundesamt für Landwirtschaft (BLW): <em>Agrarumweltmonitoring</em>. URL <a href="https://www.blw.admin.ch/de/agrarumweltmonitoring">https://www.blw.admin.ch/de/agrarumweltmonitoring</a>. - abgerufen am 2026-10-30</div>
+</div>
+<div id="ref-sbv-agristat" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[Agristat] </div><div class="csl-right-inline">Schweizer Bauernverband (SBV): <em>Agristat – Statistik der Schweizer Landwirtschaft</em>. URL <a href="https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft">https://www.sbv-usp.ch/de/services/agristat-statistik-der-schweizer-landwirtschaft</a>. - abgerufen am 2026-10-30</div>
+</div>
+<div id="ref-bundesrat2015bse" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[Bundesrat 2015] </div><div class="csl-right-inline">Der Bundesrat: <em>Erfolg nach 25 Jahren BSE-Bekämpfung</em>. URL <a href="https://www.admin.ch/de/nsb?id=57438">https://www.admin.ch/de/nsb?id=57438</a>. - abgerufen am 2026-10-30</div>
+</div>
+<div id="ref-DZV" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[DZV] </div><div class="csl-right-inline"><a href="https://www.fedlex.admin.ch/eli/cc/2013/765/de">Verordnung vom 23. Oktober 2013 über die Direktzahlungen an die Landwirtschaft (Direktzahlungsverordnung, DZV)</a>, 2013. —&nbsp;SR 910.13</div>
+</div>
+<div id="ref-eurlex-animal-health-law" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[EUR-Lex] </div><div class="csl-right-inline">Amt für Veröffentlichungen der Europäischen Union: <em>Das EU-Tiergesundheitsrecht</em>. URL <a href="https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html">https://eur-lex.europa.eu/DE/legal-content/summary/the-eu-animal-health-law.html</a>. - abgerufen am 2026-10-30. —&nbsp;EUR-Lex – Zusammenfassungen der EU-Gesetzgebung</div>
+</div>
+<div id="ref-IdTVD-V" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[IdTVD-V] </div><div class="csl-right-inline"><a href="https://www.fedlex.admin.ch/eli/cc/2021/751/de">Verordnung vom 3. November 2021 über die Identitas AG und die Tierverkehrsdatenbank (IdTVD-V)</a>, 2021. —&nbsp;SR 916.404.1</div>
+</div>
+<div id="ref-identitas-labelbase" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[Labelbase] </div><div class="csl-right-inline">Identitas AG: <em>Labelbase</em>. URL <a href="https://www.identitas.ch/produkte/labelbase">https://www.identitas.ch/produkte/labelbase</a>. - abgerufen am 2026-10-30</div>
+</div>
+<div id="ref-LwG" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[LwG] </div><div class="csl-right-inline"><a href="https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de">Bundesgesetz vom 29. April 1998 über die Landwirtschaft (Landwirtschaftsgesetz, LwG)</a>, 1998. —&nbsp;SR 910.1</div>
+</div>
+<div id="ref-proviande-herkunft" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[Proviande] </div><div class="csl-right-inline">Proviande: <em>Herkunft</em>. URL <a href="https://www.proviande.ch/de/herkunft">https://www.proviande.ch/de/herkunft</a>. - abgerufen am 2026-10-30</div>
+</div>
+<div id="ref-bfs-stru" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[STRU] </div><div class="csl-right-inline">Bundesamt für Statistik (BFS): <em>Landwirtschaftliche Strukturerhebung</em>. URL <a href="https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html">https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/erhebungen/stru.html</a>. - abgerufen am 2026-10-30</div>
+</div>
+<div id="ref-identitas-tierstatistik" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[Tierstatistik] </div><div class="csl-right-inline">Identitas AG: <em>Tierstatistik</em>. URL <a href="https://tierstatistik.identitas.ch">https://tierstatistik.identitas.ch</a>. - abgerufen am 2026-10-30</div>
+</div>
+<div id="ref-TSG" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[TSG] </div><div class="csl-right-inline"><a href="https://www.fedlex.admin.ch/eli/cc/1966/1565_1621_1604/de">Tierseuchengesetz vom 1. Juli 1966 (TSG)</a>, 1966. —&nbsp;SR 916.40</div>
+</div>
+<div id="ref-TSV" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[TSV] </div><div class="csl-right-inline"><a href="https://www.fedlex.admin.ch/eli/cc/1995/3716_3716_3716/de">Tierseuchenverordnung vom 27. Juni 1995 (TSV)</a>, 1995. —&nbsp;SR 916.401</div>
+</div>
 <div id="ref-Turtle" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[Turtle] </div><div class="csl-right-inline">Beckett, David ; Berners-Lee, Tim ; Prud’hommeaux, Eric ; Carothers, Gavin: <em><a href="https://www.w3.org/TR/turtle/">RDF 1.1 Turtle – Terse RDF Triple Language</a></em> (W3C Recommendation)&nbsp;: World Wide Web Consortium (W3C), 2014</div>
+</div>
+<div id="ref-TVD-Verordnung" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[TVD-Verordnung] </div><div class="csl-right-inline"><a href="https://www.fedlex.admin.ch/eli/cc/2011/775/de">Verordnung vom 26. Oktober 2011 über die Tierverkehrsdatenbank (TVD-Verordnung)</a>, 2011. —&nbsp;SR 916.404.1</div>
 </div>
 </div>
 </div></section><section id="sec-appendix-b" class="level1 appendix" data-number="9"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">9</span> Anhang B - Mitwirkung und Prüfung</h2><div class="quarto-appendix-contents">
@@ -2158,15 +2214,50 @@ div.csl-indent {
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Dunkelmodus umschalten");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Dunkelmodus umschalten");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -2245,7 +2336,8 @@ div.csl-indent {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -2254,8 +2346,69 @@ div.csl-indent {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -2269,6 +2422,7 @@ div.csl-indent {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -2431,44 +2585,54 @@ div.csl-indent {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -2566,6 +2730,9 @@ div.csl-indent {
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollbarer Code","output":"Scrollbare Ausgabe"};
   </script>
 </div> <!-- /content -->
 <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
