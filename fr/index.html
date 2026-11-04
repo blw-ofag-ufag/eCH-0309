@@ -368,7 +368,8 @@ div.csl-indent {
   <li><a href="#sec-nodeshape-equidshape" id="toc-sec-nodeshape-equidshape" class="nav-link" data-scroll-target="#sec-nodeshape-equidshape"><span class="header-section-number">3.6</span> Équidé</a></li>
   <li><a href="#sec-nodeshape-animalnotificationshape" id="toc-sec-nodeshape-animalnotificationshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalnotificationshape"><span class="header-section-number">3.7</span> Notification d’animal individuel</a></li>
   <li><a href="#sec-nodeshape-groupnotificationshape" id="toc-sec-nodeshape-groupnotificationshape" class="nav-link" data-scroll-target="#sec-nodeshape-groupnotificationshape"><span class="header-section-number">3.8</span> Notification de groupe</a></li>
-  <li><a href="#sec-nodeshape-animalhealthstatusshape" id="toc-sec-nodeshape-animalhealthstatusshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalhealthstatusshape"><span class="header-section-number">3.9</span> État sanitaire de l’animal individuel</a></li>
+  <li><a href="#sec-nodeshape-localunithealthstatusshape" id="toc-sec-nodeshape-localunithealthstatusshape" class="nav-link" data-scroll-target="#sec-nodeshape-localunithealthstatusshape"><span class="header-section-number">3.9</span> État sanitaire de l’unité locale</a></li>
+  <li><a href="#sec-nodeshape-animalhealthstatusshape" id="toc-sec-nodeshape-animalhealthstatusshape" class="nav-link" data-scroll-target="#sec-nodeshape-animalhealthstatusshape"><span class="header-section-number">3.10</span> État sanitaire de l’animal individuel</a></li>
   </ul></li>
   <li><a href="#sec-code-lists" id="toc-sec-code-lists" class="nav-link" data-scroll-target="#sec-code-lists"><span class="header-section-number">4</span> Domaines de valeurs</a>
   <ul class="collapse">
@@ -382,6 +383,7 @@ div.csl-indent {
   <li><a href="#sec-codelist-healthstatustype" id="toc-sec-codelist-healthstatustype" class="nav-link" data-scroll-target="#sec-codelist-healthstatustype"><span class="header-section-number">4.8</span> Type d’état sanitaire</a></li>
   <li><a href="#sec-codelist-notificationtype" id="toc-sec-codelist-notificationtype" class="nav-link" data-scroll-target="#sec-codelist-notificationtype"><span class="header-section-number">4.9</span> Type de mouvement</a></li>
   <li><a href="#sec-codelist-animalepizooticstatus" id="toc-sec-codelist-animalepizooticstatus" class="nav-link" data-scroll-target="#sec-codelist-animalepizooticstatus"><span class="header-section-number">4.10</span> État sanitaire de l’animal individuel</a></li>
+  <li><a href="#sec-codelist-localunitepizooticstatus" id="toc-sec-codelist-localunitepizooticstatus" class="nav-link" data-scroll-target="#sec-codelist-localunitepizooticstatus"><span class="header-section-number">4.11</span> État sanitaire de l’unité locale</a></li>
   </ul></li>
   <li><a href="#sec-safety-consideration" id="toc-sec-safety-consideration" class="nav-link" data-scroll-target="#sec-safety-consideration"><span class="header-section-number">5</span> Considérations de sécurité</a></li>
   <li><a href="#sec-disclaimer" id="toc-sec-disclaimer" class="nav-link" data-scroll-target="#sec-disclaimer"><span class="header-section-number">6</span> Clause de non-responsabilité</a></li>
@@ -658,9 +660,9 @@ div.csl-indent {
 <h3 class="unlisted anchored" data-number="3.3.2" data-anchor-id="sec-nodeshape-localunitshape-properties"><span class="header-section-number">3.3.2</span> Propriétés</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 38%">
-<col style="width: 9%">
+<col style="width: 54%">
+<col style="width: 34%">
+<col style="width: 10%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -674,22 +676,6 @@ div.csl-indent {
 <td style="text-align: left;"><strong>Détenteur d’animaux</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/animalKeeper">:animalKeeper</a>): Rattachement de l’unité locale au détenteur d’animaux. Selon l’eCH-0108, chapitre 1.5, une unité locale est toujours rattachée à une unité juridique (ou entreprise) ; les données de base de l’unité locale comportent à cet effet l’attribut facultatif «mainUid» contenant l’IDE de l’unité juridique principale. Le détenteur d’animaux n’étant qu’une forme particulière de l’unité juridique, ce rattachement n’est pas obligatoire.</td>
 <td style="text-align: left;"><ul>
 <li>Type: <a href="#sec-nodeshape-animalkeepershape">Détenteur d’animaux</a></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Statut BVD</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/bvdState">:bvdState</a>): Statut BVD de l’unité locale, pour le genre bovins.</td>
-<td style="text-align: left;"><ul>
-<li>Type: Chaîne de caractères (<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
-<li>Valeurs: <code>Undefined</code>, <code>Blocked</code>, <code>AnimalBlocked</code>, <code>NotBlocked</code>, <code>ConditionalBlocked</code>, <code>BvdFree</code>, <code>NotBvdFree</code>, <code>NotBvdFreeBlocked</code></li>
-</ul></td>
-<td style="text-align: right;">0..1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Statut piétin</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/footRotState">:footRotState</a>): Statut piétin de l’unité locale, pour le genre ovins.</td>
-<td style="text-align: left;"><ul>
-<li>Type: Chaîne de caractères (<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
-<li>Valeurs: <code>Undefined</code>, <code>Free</code>, <code>NotTested</code>, <code>Blocked</code></li>
 </ul></td>
 <td style="text-align: right;">0..1</td>
 </tr>
@@ -1101,7 +1087,7 @@ div.csl-indent {
 <td style="text-align: right;">1..1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Information de groupe</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/groupInformation">:groupInformation</a>): Uniquement pour la volaille, pas pour les porcs : une information de groupe doit être indiquée pour les annonces de mise en place.</td>
+<td style="text-align: left;"><strong>Information de groupe</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/groupInformation">:groupInformation</a>): Une information de groupe doit être indiquée pour les annonces de mise en place de volaille</td>
 <td style="text-align: left;"><ul>
 <li>Type: Chaîne de caractères (<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
 </ul></td>
@@ -1136,7 +1122,7 @@ div.csl-indent {
 <td style="text-align: right;">0..1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Poids</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/weight">:weight</a>): Uniquement pour la volaille : poids total du groupe d’animaux en kg pour les annonces d’abattage. Les abattages de porcs sont annoncés en nombre de têtes (nombre).</td>
+<td style="text-align: left;"><strong>Poids</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/weight">:weight</a>): Poids total en kg du groupe d’animaux pour les annonces d’abattage de volaille</td>
 <td style="text-align: left;"><ul>
 <li>Type: Nombre entier (<a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
 </ul></td>
@@ -1150,7 +1136,7 @@ div.csl-indent {
 <td style="text-align: right;">0..1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Âge</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Uniquement pour la volaille, pas pour les porcs : l’âge doit être indiqué en semaines pour les annonces de mise en place.</td>
+<td style="text-align: left;"><strong>Âge</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Pour les annonces de mise en place de volaille, l’âge doit être indiqué en semaines</td>
 <td style="text-align: left;"><ul>
 <li>Type: Nombre entier (<a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
 </ul></td>
@@ -1160,11 +1146,77 @@ div.csl-indent {
 </table>
 </section>
 </section>
-<section id="sec-nodeshape-animalhealthstatusshape" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="sec-nodeshape-animalhealthstatusshape"><span class="header-section-number">3.9</span> État sanitaire de l’animal individuel</h2>
+<section id="sec-nodeshape-localunithealthstatusshape" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="sec-nodeshape-localunithealthstatusshape"><span class="header-section-number">3.9</span> État sanitaire de l’unité locale</h2>
+<p>Lorsque des épizooties revêtent une importance nationale, il est essentiel que les détenteurs d’animaux soient informés des interdictions de déplacement et du statut épizootique, afin de minimiser le risque de propagation par le trafic des animaux. Une information épizootique enregistrée sur une unité locale. Outre le statut épizootique d’une unité locale, les résultats de vaccination, de risque et de laboratoire peuvent également être représentés.</p>
+<section id="sec-nodeshape-localunithealthstatusshape-overview" class="level3 unlisted" data-number="3.9.1">
+<h3 class="unlisted anchored" data-number="3.9.1" data-anchor-id="sec-nodeshape-localunithealthstatusshape-overview"><span class="header-section-number">3.9.1</span> Aperçu</h3>
+<div class="ech-facts">
+<dl>
+<dt>Shape</dt>
+<dd>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatusShape">:LocalUnitHealthStatusShape</a>
+</dd>
+<dt>Classe cible</dt>
+<dd>
+<a href="https://agriculture.ld.admin.ch/eCH-0309/1/LocalUnitHealthStatus">:LocalUnitHealthStatus</a>
+</dd>
+</dl>
+</div>
+</section>
+<section id="sec-nodeshape-localunithealthstatusshape-properties" class="level3 unlisted" data-number="3.9.2">
+<h3 class="unlisted anchored" data-number="3.9.2" data-anchor-id="sec-nodeshape-localunithealthstatusshape-properties"><span class="header-section-number">3.9.2</span> Propriétés</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 53%">
+<col style="width: 36%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Détails</th>
+<th style="text-align: right;">Cardinalité</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Unité locale</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/localUnit">:localUnit</a>): Numéro REE de l’unité locale</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="#sec-nodeshape-localunitshape">Unité locale</a></li>
+</ul></td>
+<td style="text-align: right;">1..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Type</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/healthStatusType">:healthStatusType</a>): p.&nbsp;ex. statut épizootique, vaccinal ou de risque</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la liste de codes <a href="#sec-codelist-healthstatustype">Type d’état sanitaire</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Statut</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/epizooticStatus">:epizooticStatus</a>)</td>
+<td style="text-align: left;"><ul>
+<li>Type: <a href="http://schema.org/CategoryCode">schema:CategoryCode</a>, voir la liste de codes <a href="#sec-codelist-localunitepizooticstatus">État sanitaire de l’unité locale</a></li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Date</strong> (<a href="https://agriculture.ld.admin.ch/eCH-0309/1/validFrom">:validFrom</a>): Date à partir de laquelle le statut est valable</td>
+<td style="text-align: left;"><ul>
+<li>Type: Date (<a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a>)</li>
+</ul></td>
+<td style="text-align: right;">0..1</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="sec-nodeshape-animalhealthstatusshape" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="sec-nodeshape-animalhealthstatusshape"><span class="header-section-number">3.10</span> État sanitaire de l’animal individuel</h2>
 <p>Une information épizootique enregistrée sur un animal individuel. Outre le statut épizootique individuel, les vaccinations pertinentes sont également enregistrées.</p>
-<section id="sec-nodeshape-animalhealthstatusshape-overview" class="level3 unlisted" data-number="3.9.1">
-<h3 class="unlisted anchored" data-number="3.9.1" data-anchor-id="sec-nodeshape-animalhealthstatusshape-overview"><span class="header-section-number">3.9.1</span> Aperçu</h3>
+<section id="sec-nodeshape-animalhealthstatusshape-overview" class="level3 unlisted" data-number="3.10.1">
+<h3 class="unlisted anchored" data-number="3.10.1" data-anchor-id="sec-nodeshape-animalhealthstatusshape-overview"><span class="header-section-number">3.10.1</span> Aperçu</h3>
 <div class="ech-facts">
 <dl>
 <dt>Shape</dt>
@@ -1178,8 +1230,8 @@ div.csl-indent {
 </dl>
 </div>
 </section>
-<section id="sec-nodeshape-animalhealthstatusshape-properties" class="level3 unlisted" data-number="3.9.2">
-<h3 class="unlisted anchored" data-number="3.9.2" data-anchor-id="sec-nodeshape-animalhealthstatusshape-properties"><span class="header-section-number">3.9.2</span> Propriétés</h3>
+<section id="sec-nodeshape-animalhealthstatusshape-properties" class="level3 unlisted" data-number="3.10.2">
+<h3 class="unlisted anchored" data-number="3.10.2" data-anchor-id="sec-nodeshape-animalhealthstatusshape-properties"><span class="header-section-number">3.10.2</span> Propriétés</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 53%">
@@ -1560,7 +1612,7 @@ div.csl-indent {
 </section>
 <section id="sec-codelist-healthstatustype" class="level2" data-number="4.8">
 <h2 data-number="4.8" class="anchored" data-anchor-id="sec-codelist-healthstatustype"><span class="header-section-number">4.8</span> Type d’état sanitaire</h2>
-<p>Type d’un état sanitaire d’un animal individuel.</p>
+<p>Type d’un état sanitaire d’une unité locale ou d’un animal individuel.</p>
 <div id="tbl-codelist-healthstatustype" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[22,31,47]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-healthstatustype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1750,6 +1802,75 @@ div.csl-indent {
 </figure>
 </div>
 </section>
+<section id="sec-codelist-localunitepizooticstatus" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="sec-codelist-localunitepizooticstatus"><span class="header-section-number">4.11</span> État sanitaire de l’unité locale</h2>
+<p>Valeurs de l’état sanitaire d’une unité locale ; leur type figure dans la description.</p>
+<div id="tbl-codelist-localunitepizooticstatus" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[16,34,50]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-codelist-localunitepizooticstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;12:</strong> Valeurs de la liste de codes État sanitaire de l’unité locale.
+</figcaption>
+<div aria-describedby="tbl-codelist-localunitepizooticstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 34%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Nom</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Blocked"><code>Blocked</code></a></td>
+<td style="text-align: left;">Bloqué</td>
+<td style="text-align: left;">Type : statut épizootique</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Free"><code>Free</code></a></td>
+<td style="text-align: left;">Libre</td>
+<td style="text-align: left;">Type : statut épizootique</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/High"><code>High</code></a></td>
+<td style="text-align: left;">Élevé</td>
+<td style="text-align: left;">Type : statut de risque</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Low"><code>Low</code></a></td>
+<td style="text-align: left;">Faible</td>
+<td style="text-align: left;">Type : statut de risque</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Medium"><code>Medium</code></a></td>
+<td style="text-align: left;">Moyen</td>
+<td style="text-align: left;">Type : statut de risque</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Negative"><code>Negative</code></a></td>
+<td style="text-align: left;">Négatif</td>
+<td style="text-align: left;">Type : résultat de laboratoire</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/NotTested"><code>NotTested</code></a></td>
+<td style="text-align: left;">Non testé</td>
+<td style="text-align: left;">Type : statut épizootique</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Positive"><code>Positive</code></a></td>
+<td style="text-align: left;">Positif</td>
+<td style="text-align: left;">Type : résultat de laboratoire</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
 </section>
 <section id="sec-safety-consideration" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Considérations de sécurité</h1>
@@ -1838,7 +1959,7 @@ div.csl-indent {
 <div id="tbl-glossary" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[35,65]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glossary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;12:</strong> Glossaire de l’eCH-0309
+<strong>Table&nbsp;13:</strong> Glossaire de l’eCH-0309
 </figcaption>
 <div aria-describedby="tbl-glossary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1889,12 +2010,12 @@ div.csl-indent {
 </div>
 </div></section><section id="sec-appendix-d" class="level1 appendix" data-number="11"><h2 class="anchored quarto-appendix-heading"><span class="header-section-number">11</span> Annexe D - Correspondance avec l’interface de la BDTA</h2><div class="quarto-appendix-contents">
 
-<p>Pour les domaines de valeurs du <a href="#tbl-animaltracing-enums" class="quarto-xref">Table&nbsp;13</a>, le code d’une valeur est l’élément du même nom d’une énumération de l’interface AnimalTracing de la BDTA.</p>
-<p>Pour le type de mouvement et le statut épizootique des animaux individuels, l’interface gère les types de mouvement par espèce d’animal de rente et les états sanitaires par épizootie dans des énumérations distinctes, en partie sous d’autres noms. Les tableaux suivants indiquent quels éléments de l’interface correspondent à une valeur ; les valeurs sans équivalent ne sont pas mentionnées.</p>
+<p>Pour les domaines de valeurs du <a href="#tbl-animaltracing-enums" class="quarto-xref">Table&nbsp;14</a>, le code d’une valeur est l’élément du même nom d’une énumération de l’interface AnimalTracing de la BDTA.</p>
+<p>Pour le type de mouvement, le type d’état sanitaire et les deux domaines de valeurs du statut épizootique, l’interface gère les types de mouvement par espèce d’animal de rente et les états sanitaires par épizootie dans des énumérations distinctes, en partie sous d’autres noms. Les tableaux suivants indiquent quels éléments de l’interface correspondent à une valeur ; les valeurs sans équivalent ne sont pas mentionnées.</p>
 <div id="tbl-animaltracing-enums" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[45,55]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-animaltracing-enums-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;13:</strong> Énumérations de l’interface de la BDTA dont les domaines de valeurs tirent leurs codes.
+<strong>Table&nbsp;14:</strong> Énumérations de l’interface de la BDTA dont les domaines de valeurs tirent leurs codes.
 </figcaption>
 <div aria-describedby="tbl-animaltracing-enums-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1942,10 +2063,41 @@ div.csl-indent {
 </div>
 </figure>
 </div>
+<div id="tbl-animaltracing-codelist-healthstatustype" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[19,36,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-animaltracing-codelist-healthstatustype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;15:</strong> Équivalents des valeurs du domaine de valeurs Type d’état sanitaire dans l’interface de la BDTA.
+</figcaption>
+<div aria-describedby="tbl-animaltracing-codelist-healthstatustype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 36%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Nom</th>
+<th style="text-align: left;">Interface de la BDTA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/healthstatustype/EpizooticStatus"><code>EpizooticStatus</code></a></td>
+<td style="text-align: left;">Statut épizootique</td>
+<td style="text-align: left;"><code>BvdState</code><br>
+<code>FootRotState</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 <div id="tbl-animaltracing-codelist-notificationtype" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[22,33,45]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-animaltracing-codelist-notificationtype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;14:</strong> Équivalents des valeurs du domaine de valeurs Type de mouvement dans l’interface de la BDTA.
+<strong>Table&nbsp;16:</strong> Équivalents des valeurs du domaine de valeurs Type de mouvement dans l’interface de la BDTA.
 </figcaption>
 <div aria-describedby="tbl-animaltracing-codelist-notificationtype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -2039,7 +2191,7 @@ div.csl-indent {
 <div id="tbl-animaltracing-codelist-animalepizooticstatus" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[14,41,45]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-animaltracing-codelist-animalepizooticstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<strong>Table&nbsp;15:</strong> Équivalents des valeurs du domaine de valeurs État sanitaire de l’animal individuel dans l’interface de la BDTA.
+<strong>Table&nbsp;17:</strong> Équivalents des valeurs du domaine de valeurs État sanitaire de l’animal individuel dans l’interface de la BDTA.
 </figcaption>
 <div aria-describedby="tbl-animaltracing-codelist-animalepizooticstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -2060,6 +2212,47 @@ div.csl-indent {
 <td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/animalhealthstatus/Vaccinated"><code>Vaccinated</code></a></td>
 <td style="text-align: left;">Vacciné</td>
 <td style="text-align: left;"><code>EnumCattleLsdState.Vaccinated</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-animaltracing-codelist-localunitepizooticstatus" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[14,41,45]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-animaltracing-codelist-localunitepizooticstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Table&nbsp;18:</strong> Équivalents des valeurs du domaine de valeurs État sanitaire de l’unité locale dans l’interface de la BDTA.
+</figcaption>
+<div aria-describedby="tbl-animaltracing-codelist-localunitepizooticstatus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 41%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Code</th>
+<th style="text-align: left;">Nom</th>
+<th style="text-align: left;">Interface de la BDTA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Blocked"><code>Blocked</code></a></td>
+<td style="text-align: left;">Bloqué</td>
+<td style="text-align: left;"><code>BvdState.Blocked</code><br>
+<code>FootRotState.Blocked</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/Free"><code>Free</code></a></td>
+<td style="text-align: left;">Libre</td>
+<td style="text-align: left;"><code>FootRotState.Free</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://agriculture.ld.admin.ch/eCH-0309/1/localunithealthstatus/NotTested"><code>NotTested</code></a></td>
+<td style="text-align: left;">Non testé</td>
+<td style="text-align: left;"><code>FootRotState.NotTested</code></td>
 </tr>
 </tbody>
 </table>
