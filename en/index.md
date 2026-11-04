@@ -886,8 +886,8 @@ list <a href="#sec-codelist-genus">Genus</a></li>
 <tr>
 <td style="text-align: left;"><strong>Group information</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/groupInformation">:groupInformation</a>):
-Group information must be given for housing notifications of
-poultry</td>
+Only for poultry, not for pigs: group information must be given for
+housing notifications.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Text (<a
 href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
@@ -937,8 +937,8 @@ href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
 <tr>
 <td style="text-align: left;"><strong>Weight</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/weight">:weight</a>):
-Total weight in kg of the animal group for slaughter notifications of
-poultry</td>
+Only for poultry: total weight of the animal group in kg for slaughter
+notifications. Slaughterings of pigs are notified in head (count).</td>
 <td style="text-align: left;"><ul>
 <li>Type: Integer (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
@@ -960,8 +960,9 @@ goats)</a></li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Age</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): For
-housing notifications of poultry the age must be given in weeks</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Only
+for poultry, not for pigs: the age must be given in weeks for housing
+notifications.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Integer (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>

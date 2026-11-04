@@ -926,8 +926,8 @@ rente</a></li>
 <tr>
 <td style="text-align: left;"><strong>Information de groupe</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/groupInformation">:groupInformation</a>):
-Une information de groupe doit être indiquée pour les annonces de mise
-en place de volaille</td>
+Uniquement pour la volaille, pas pour les porcs : une information de
+groupe doit être indiquée pour les annonces de mise en place.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Chaîne de caractères (<a
 href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
@@ -978,8 +978,9 @@ href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
 <tr>
 <td style="text-align: left;"><strong>Poids</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/weight">:weight</a>):
-Poids total en kg du groupe d’animaux pour les annonces d’abattage de
-volaille</td>
+Uniquement pour la volaille : poids total du groupe d’animaux en kg pour
+les annonces d’abattage. Les abattages de porcs sont annoncés en nombre
+de têtes (nombre).</td>
 <td style="text-align: left;"><ul>
 <li>Type: Nombre entier (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
@@ -1001,9 +1002,9 @@ d’utilisation (bovins, ovins, caprins)</a></li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Âge</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Pour
-les annonces de mise en place de volaille, l’âge doit être indiqué en
-semaines</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>):
+Uniquement pour la volaille, pas pour les porcs : l’âge doit être
+indiqué en semaines pour les annonces de mise en place.</td>
 <td style="text-align: left;"><ul>
 <li>Type: Nombre entier (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>

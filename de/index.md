@@ -909,8 +909,8 @@ Codeliste <a href="#sec-codelist-genus">Nutztierart</a></li>
 <tr>
 <td style="text-align: left;"><strong>Gruppeninformation</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/groupInformation">:groupInformation</a>):
-Bei Einstallungsmeldungen von Geflügel ist eine Gruppeninformation
-anzugeben</td>
+Nur für Geflügel, nicht für Schweine: Bei Einstallungsmeldungen ist eine
+Gruppeninformation anzugeben.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: Zeichenkette (<a
 href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>)</li>
@@ -961,8 +961,9 @@ href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
 <tr>
 <td style="text-align: left;"><strong>Gewicht</strong> (<a
 href="https://agriculture.ld.admin.ch/eCH-0309/1/weight">:weight</a>):
-Gesamtgewicht in kg der Tiergruppe bei Schlachtungsmeldungen von
-Geflügel</td>
+Nur für Geflügel: Gesamtgewicht der Tiergruppe in kg bei
+Schlachtungsmeldungen. Schlachtungen von Schweinen werden in Stück
+gemeldet (Anzahl).</td>
 <td style="text-align: left;"><ul>
 <li>Typ: Ganzzahl (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
@@ -984,9 +985,9 @@ Ziegen)</a></li>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Alter</strong> (<a
-href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Bei
-Einstallungsmeldungen von Geflügel ist das Alter in Wochen
-anzugeben</td>
+href="https://agriculture.ld.admin.ch/eCH-0309/1/age">:age</a>): Nur für
+Geflügel, nicht für Schweine: Bei Einstallungsmeldungen ist das Alter in
+Wochen anzugeben.</td>
 <td style="text-align: left;"><ul>
 <li>Typ: Ganzzahl (<a
 href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>)</li>
