@@ -151,9 +151,22 @@ des délais légaux \[TSV, art. 14\].
 La BDTA fait partie d’un paysage systémique regroupant l’agriculture,
 les affaires vétérinaires et la sécurité alimentaire. Le portail Agate
 \[Agate\] en constitue la porte d’entrée centrale, avec au cœur le
-système d’information sur la politique agricole AGIS \[AGIS\].
+système d’information sur la politique agricole AGIS \[AGIS\]. La
+<a href="#fig-system-map" class="quarto-xref">Figure 1</a> présente les
+systèmes informatiques et les organisations qui entourent la BDTA ainsi
+que les données échangées entre eux.
 
-<!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
+<div id="fig-system-map">
+
+<img src="../assets/img/tvd_subgraph.svg" class="lightbox"
+style="width:100.0%" />
+
+Figure 1: Paysage systémique de la BDTA. Systèmes informatiques,
+services et organisations qui entourent la banque de données sur le
+trafic des animaux et flux de données entre eux. La figure n’existe
+qu’en allemand.
+
+</div>
 
 L’ordonnance sur Identitas SA et la banque de données sur le trafic des
 animaux \[IdTVD-V\] précise les contenus relatifs au trafic des animaux,
@@ -221,11 +234,11 @@ des animaux.
 <img src="../assets/img/uml.png" class="lightbox"
 style="width:100.0%" />
 
-Figure 1: Diagramme UML du modèle de données eCH-0309.
+Figure 2: Diagramme UML du modèle de données eCH-0309.
 
 </div>
 
-La <a href="#fig-uml" class="quarto-xref">Figure 1</a> présente les
+La <a href="#fig-uml" class="quarto-xref">Figure 2</a> présente les
 classes du modèle de données et leurs relations. Chaque rectangle est
 une classe, les lignes qu’il contient sont ses attributs; les crochets
 indiquent le nombre de valeurs admises, du minimum au maximum — `[1..1]`

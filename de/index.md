@@ -146,8 +146,20 @@ Die TVD ist Teil einer Systemlandschaft der Bereiche Landwirtschaft,
 Veterinärwesen und Lebensmittelsicherheit. Die zentrale Eingangspforte
 bildet dabei das Portal Agate \[Agate\], mit dem Agrarpolitischen
 Informationssystem AGIS \[AGIS\] im Zentrum.
+<a href="#fig-system-map" class="quarto-xref">Abbildung 1</a> zeigt die
+IT-Systeme und Organisationen rund um die TVD und die Daten, die
+zwischen ihnen fliessen.
 
-<!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
+<div id="fig-system-map">
+
+<img src="../assets/img/tvd_subgraph.svg" class="lightbox"
+style="width:100.0%" />
+
+Abbildung 1: Systemlandschaft der TVD. IT-Systeme, Services und
+Organisationen rund um die Tierverkehrsdatenbank und die Datenflüsse
+zwischen ihnen.
+
+</div>
 
 In der Verordnung über die Identitas AG und die Tierverkehrsdatenbank
 \[IdTVD-V\] werden Inhalte zum Tierverkehr und Aufgaben der Identitas AG
@@ -214,11 +226,11 @@ Tabelle 1: In eCH-0309 – Tierverkehrsdaten verwendete Namespaces.
 <img src="../assets/img/uml.png" class="lightbox"
 style="width:100.0%" />
 
-Abbildung 1: UML-Diagramm des Datenmodells von eCH-0309.
+Abbildung 2: UML-Diagramm des Datenmodells von eCH-0309.
 
 </div>
 
-<a href="#fig-uml" class="quarto-xref">Abbildung 1</a> zeigt die Klassen
+<a href="#fig-uml" class="quarto-xref">Abbildung 2</a> zeigt die Klassen
 des Datenmodells und ihre Beziehungen. Jedes Rechteck ist eine Klasse,
 die Zeilen darin sind ihre Attribute; die eckigen Klammern geben an, wie
 viele Werte zulässig sind, von der Mindest- bis zur Höchstzahl —

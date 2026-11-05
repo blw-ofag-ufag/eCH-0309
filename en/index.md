@@ -143,8 +143,20 @@ The TVD is part of a system landscape spanning agriculture, veterinary
 affairs and food safety. The central entry point is the Agate portal
 \[Agate\], with the agricultural policy information system AGIS \[AGIS\]
 at its centre.
+<a href="#fig-system-map" class="quarto-xref">Figure 1</a> shows the IT
+systems and organisations around the TVD and the data that flows between
+them.
 
-<!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
+<div id="fig-system-map">
+
+<img src="../assets/img/tvd_subgraph.svg" class="lightbox"
+style="width:100.0%" />
+
+Figure 1: System landscape of the TVD. IT systems, services and
+organisations around the animal tracing database and the data flows
+between them. The figure is available in German only.
+
+</div>
 
 The Ordinance on Identitas AG and the animal movement database
 \[IdTVD-V\] further sets out the content relating to animal movements,
@@ -207,11 +219,11 @@ Table 1: Namespaces used in eCH-0309 – Animal movement data.
 <img src="../assets/img/uml.png" class="lightbox"
 style="width:100.0%" />
 
-Figure 1: UML diagram of the eCH-0309 data model.
+Figure 2: UML diagram of the eCH-0309 data model.
 
 </div>
 
-<a href="#fig-uml" class="quarto-xref">Figure 1</a> shows the classes of
+<a href="#fig-uml" class="quarto-xref">Figure 2</a> shows the classes of
 the data model and their relationships. Each rectangle is a class and
 the lines inside it are its attributes; the square brackets state how
 many values are permitted, from the minimum to the maximum — `[1..1]`
