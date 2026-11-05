@@ -23,9 +23,9 @@ def patch():
     return module
 
 
-ANIMAL = '":AnimalShape (:Animal)"'
-EQUID = '":EquidShape (:Equid)"'
-LOCAL_UNIT = '":LocalUnitShape (:LocalUnit)"'
+ANIMAL = '":Animal (:Animal)"'
+EQUID = '":Equid (:Equid)"'
+LOCAL_UNIT = '"eCH-0261:LocalUnit (eCH-0261:LocalUnit)"'
 
 DIAGRAM = [
     "@startuml",
@@ -35,7 +35,7 @@ DIAGRAM = [
     'Class ":Genus" ',
     f'{ANIMAL} : :identifier  : xsd:string  [1..1]  ',
     f'{ANIMAL} : +:gender : :Gender [0..1] ',
-    f'{EQUID} : +:localUnit : :LocalUnit [1..1] ',
+    f'{EQUID} : +:localUnit : eCH-0261:LocalUnit [1..1] ',
     f'{ANIMAL} --> ":Genus" : :genus<U+00A0>[1..1]  ',
     f'{LOCAL_UNIT} --> ":Genus" : :genus<U+00A0>[1..1]  \\l:otherGenus<U+00A0>[0..1]  ',
     "hide circle",
@@ -172,9 +172,21 @@ def test_attribute_types_are_dropped(patch):
     assert result[2] == f'{ANIMAL} --> "{EQUID[1:-1]}" : :mother [0..1] ', "associations untouched"
 
 
+def test_fixed_values_are_dropped(patch):
+    """A value fixed by sh:hasValue is in the entity table; SHACL Play writes it
+    relative to the base IRI, which would read wrongly on the box."""
+    result = patch.drop_attribute_types([f'{EQUID} : :genus  [1..1]  = :genus/Equid  '])
+    assert result == [f'{EQUID} : :genus [1..1] ']
+
+
 def test_titles_are_shortened_to_the_target_class(patch):
     result = patch.shorten_titles([f"Class {ANIMAL} ", f'{ANIMAL} <|-- {EQUID} '])
     assert result == ['Class ":Animal" ', '":Animal" <|-- ":Equid" ']
+
+
+def test_titles_in_a_foreign_namespace_keep_their_prefix(patch):
+    result = patch.shorten_titles([f"Class {LOCAL_UNIT} ", f'{EQUID} --> {LOCAL_UNIT} : :localUnit [1..1] '])
+    assert result == ['Class "eCH-0261:LocalUnit" ', '":Equid" --> "eCH-0261:LocalUnit" : :localUnit [1..1] ']
 
 
 def test_excluded_attributes_are_dropped(patch):

@@ -15,6 +15,9 @@
 @prefix equidwithersclass:<https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
 @prefix notificationtype:<https://agriculture.ld.admin.ch/eCH-0309/1/notificationtype/> .
 
+# eCH standards
+@prefix eCH-0261:        <http://www.ech.ch/xmlns/ech-0261/1/> .
+
 # LINDAS-specific namespaces/qnames
 @prefix org:             <https://register.ld.admin.ch/opendataswiss/org/> .
 @prefix cube:            <https://cube.link/> .

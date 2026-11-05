@@ -7,6 +7,9 @@
 @prefix codelist:        <https://agriculture.ld.admin.ch/eCH-0309/1/codelist/> .
 @prefix genus:           <https://agriculture.ld.admin.ch/eCH-0309/1/genus/> .
 
+# eCH standards
+@prefix eCH-0261:        <http://www.ech.ch/xmlns/ech-0261/1/> .
+
 
 # LINDAS-specific namespaces/qnames
 @prefix org:             <https://register.ld.admin.ch/opendataswiss/org/> .
@@ -63,8 +66,8 @@
 # NODE SHAPES
 #
 # One shape per class of the Objektkatalog (chapter 3.3 of the Hilfsmittel),
-# :LegalUnitShape, which the Semantikbeschreibung describes but the catalogue
-# does not list, and :RuminantShape. The catalogue lists the attributes of
+# eCH-0261:LegalUnit, which the Semantikbeschreibung describes but the catalogue
+# does not list, and :Ruminant. The catalogue lists the attributes of
 # cattle, sheep and goats under «Einzeltier» and notes those that equids lack;
 # the model moves them to a subclass of their own, so that «Einzeltier» holds
 # only what all individual animals share. The catalogue's two
@@ -83,7 +86,7 @@
 # recorded here.
 # ==============================================================================
 
-:LegalUnitShape a sh:NodeShape ;
+eCH-0261:LegalUnit a sh:NodeShape, rdfs:Class ;
     rdfs:label "Rechtliche Einheit"@de,
         "Legal unit"@en,
         "Unité juridique"@fr,
@@ -98,9 +101,9 @@
     :animalTracingTerm "LegalUnitOrganisationResponse", "LegalUnitPersonResponse" ;
     :echTerm "eCH-0108:legalUnitMasterDataType", "eCH-0261:legalUnitType" ;
     sh:order 1 ;
-    sh:targetClass :LegalUnit .
+    sh:targetClass eCH-0261:LegalUnit .
 
-:AnimalKeeperShape a sh:NodeShape ;
+:AnimalKeeper a sh:NodeShape, rdfs:Class ;
     rdfs:label "Tierhaltender"@de,
         "Animal keeper"@en,
         "Détenteur d'animaux"@fr,
@@ -114,7 +117,7 @@
     sh:order 2 ;
     sh:targetClass :AnimalKeeper .
 
-:LocalUnitShape a sh:NodeShape ;
+eCH-0261:LocalUnit a sh:NodeShape, rdfs:Class ;
     rdfs:label "Örtliche Einheit"@de,
         "Local unit"@en,
         "Unité locale"@fr,
@@ -126,7 +129,7 @@
     :animalTracingTerm "LocalUnitOwnResponse", "LocalUnitPublicResponse", "FarmDataV1Response" ;
     :echTerm "eCH-0108:localUnitMasterDataType", "eCH-0261:localUnitType" ;
     sh:order 3 ;
-    sh:targetClass :LocalUnit ;
+    sh:targetClass eCH-0261:LocalUnit ;
     sh:property [
         sh:order 1 ;
         sh:name "Tierhaltender"@de,
@@ -186,7 +189,7 @@
         sh:maxCount 1 ;
     ] .
 
-:AnimalShape a sh:NodeShape ;
+:Animal a sh:NodeShape, rdfs:Class ;
     rdfs:label "Einzeltier"@de,
         "Individual animal"@en,
         "Animal individuel"@fr,
@@ -341,7 +344,7 @@
         """ ;
     ] .
 
-:RuminantShape a sh:NodeShape ;
+:Ruminant a sh:NodeShape, rdfs:Class ;
     rdfs:label "Wiederkäuer"@de,
         "Ruminant"@en,
         "Ruminant"@fr,
@@ -477,7 +480,7 @@
     ] .
 
 
-:EquidShape a sh:NodeShape ;
+:Equid a sh:NodeShape, rdfs:Class ;
     rdfs:label "Equide"@de,
         "Equid"@en,
         "Équidé"@fr,
@@ -542,7 +545,7 @@
             "Specie di animale da reddito"@it ;
         :animalTracingTerm "EnumGenus" ;
         sh:path :genus ;
-        sh:in ( genus:Equid ) ;
+        sh:hasValue genus:Equid ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
@@ -578,7 +581,7 @@
             "L'unité juridique qui détient l'équidé en propriété. Pour les équidés, la responsabilité des notifications incombe au propriétaire et non au détenteur d'animaux."@fr,
             "L'unità giuridica che ha in proprietà l'equide. Per gli equidi la responsabilità delle notifiche spetta al proprietario e non al detentore di animali."@it ;
         sh:path :owner ;
-        sh:class :LegalUnit ;
+        sh:class eCH-0261:LegalUnit ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:message "Ein Equide hat genau einen Eigentümer oder eine Eigentümerin."@de,
@@ -602,7 +605,7 @@
             "Un equide ha al massimo una madre genetica."@it ;
     ] .
 
-:AnimalNotificationShape a sh:NodeShape ;
+:AnimalNotification a sh:NodeShape, rdfs:Class ;
     rdfs:label "Meldung Einzeltier"@de,
         "Individual animal notification"@en,
         "Notification d'animal individuel"@fr,
@@ -723,7 +726,7 @@
             "Numéro REE de l'unité locale à laquelle se rapporte la notification"@fr,
             "Numero RIS dell'unità locale a cui si riferisce la notifica"@it ;
         sh:path :localUnit ;
-        sh:class :LocalUnit ;
+        sh:class eCH-0261:LocalUnit ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:message "Eine Meldung Einzeltier bezieht sich auf genau eine örtliche Einheit."@de,
@@ -743,7 +746,7 @@
             "Numéro REE de l'unité locale d'où provient l'animal"@fr,
             "Numero RIS dell'unità locale da cui proviene l'animale"@it ;
         sh:path :originLocalUnit ;
-        sh:class :LocalUnit ;
+        sh:class eCH-0261:LocalUnit ;
         sh:maxCount 1 ;
         sh:message "Eine Meldung Einzeltier gibt höchstens eine örtliche Einheit als Herkunft an."@de,
             "An individual animal notification states at most one local unit as its origin."@en,
@@ -751,7 +754,7 @@
             "Una notifica di animale singolo indica al massimo un'unità locale come provenienza."@it ;
     ] .
 
-:GroupNotificationShape a sh:NodeShape ;
+:GroupNotification a sh:NodeShape, rdfs:Class ;
     rdfs:label "Gruppenmeldung"@de,
         "Group notification"@en,
         "Notification de groupe"@fr,
@@ -930,7 +933,7 @@
             "Numéro REE de l'unité locale"@fr,
             "Numero RIS dell'unità locale"@it ;
         sh:path :localUnit ;
-        sh:class :LocalUnit ;
+        sh:class eCH-0261:LocalUnit ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:message "Eine Gruppenmeldung bezieht sich auf genau eine örtliche Einheit."@de,
@@ -949,7 +952,7 @@
             "Numéro REE de l'unité locale d'où provient l'animal"@fr,
             "Numero RIS dell'unità locale da cui proviene l'animale"@it ;
         sh:path :originLocalUnit ;
-        sh:class :LocalUnit ;
+        sh:class eCH-0261:LocalUnit ;
         sh:maxCount 1 ;
         sh:message "Eine Gruppenmeldung gibt höchstens eine örtliche Einheit als Herkunft an."@de,
             "A group notification states at most one local unit as its origin."@en,

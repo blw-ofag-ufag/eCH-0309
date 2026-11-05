@@ -1,5 +1,5 @@
 ---
-title: Hilfsmittel Tierverkehrsdaten
+title: Tierverkehrsdaten
 abstract: Das vorliegende Dokument beschreibt die Daten der Tierverkehrsdatenbank (TVD) semantisch, um auch Fachpersonen ohne vertiefte IT-Kenntnisse ein besseres Verständnis der Daten zu ermöglichen.
 date: today
 date-format: long
@@ -32,11 +32,11 @@ Die TVD ist Teil einer Systemlandschaft der Bereiche Landwirtschaft, Veterinärw
 
 <!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
 
-In der Verordnung über die Identitas AG und die Tierverkehrsdatenbank [@IdTVD-V] (IdTVD-V) werden Inhalte zum Tierverkehr und Aufgaben der Identitas AG sowie die Zugriffsrechte auf die Daten weiter ausgeführt. Die Bedeutung der Identifizierung/Kennzeichnung von Nutztieren geht weit über die Seuchenthematik hinaus und fand deshalb auch Eingang in die landwirtschaftliche Gesetzgebung [@LwG] (Landwirtschaftsgesetz LwG Artikel 165g, 177 und 185) und diverse zugehörige Verordnungen. Die Daten aus dem Tierverkehr entwickelten sich zu einem unverzichtbaren Bestandteil in der Umsetzung agrarpolitischer Massnahmen, beispielsweise der tierbezogenen Direktzahlungen [@DZV, Titel 2, Kapitel 5, Abschnitte 7–9], der Bestimmung der Nährstoffflüsse oder des Agrarumweltmonitorings [@blw-agrarumweltmonitoring]. Weiter dienen die Daten auch als Grundlage für die Strukturerhebung der Landwirtschaft in der Schweiz [@bfs-stru] und generell der landwirtschaftlichen Statistik [@sbv-agristat].
+In der Verordnung über die Identitas AG und die Tierverkehrsdatenbank [@IdTVD-V] werden Inhalte zum Tierverkehr und Aufgaben der Identitas AG sowie die Zugriffsrechte auf die Daten weiter ausgeführt. Die Bedeutung der Identifizierung/Kennzeichnung von Nutztieren geht weit über die Seuchenthematik hinaus und fand deshalb auch Eingang in die landwirtschaftliche Gesetzgebung [@LwG] (Landwirtschaftsgesetz LwG Artikel 165g, 177 und 185) und diverse zugehörige Verordnungen. Die Daten aus dem Tierverkehr entwickelten sich zu einem unverzichtbaren Bestandteil in der Umsetzung agrarpolitischer Massnahmen, beispielsweise der tierbezogenen Direktzahlungen [@DZV, Titel 2, Kapitel 5, Abschnitte 7–9], der Bestimmung der Nährstoffflüsse oder des Agrarumweltmonitorings [@blw-agrarumweltmonitoring]. Weiter dienen die Daten auch als Grundlage für die Strukturerhebung der Landwirtschaft in der Schweiz [@bfs-stru] und generell der landwirtschaftlichen Statistik [@sbv-agristat].
 
 Rasch etablierte sich das Tiermeldewesen auch entlang der gesamten Lebensmittelwertschöpfungskette. Programme mit Tierwohl-, Rückverfolgbarkeits- und Herkunftsversprechen stützen sich darauf ab [@proviande-herkunft; @identitas-labelbase]. Die Vielfalt der Tierinformation aus dem Meldewesen des Tierverkehrs spiegelt sich auch in den öffentlich verfügbaren Datensätzen der Open Data Plattform Tierstatistik [@identitas-tierstatistik].
 
-Die technische Schnittstellenbeschreibung in diesem Dokument basiert auf der technischen Servicebeschreibung AnimalTracing v1.32, sowie der openAPI-Spezifikation v. x.xx.
+Die technische Schnittstellenbeschreibung in diesem Dokument basiert auf der technischen Servicebeschreibung AnimalTracing v1.32, sowie der openAPI-Spezifikation v1.0 [@animaltracing-openapi].
 
 ## Verweise {#sec-references}
 
@@ -92,6 +92,23 @@ Diese Bestimmungen gelten jedoch nur für die von eCH erarbeiteten Standards, ni
 
 # Anhang B - Mitwirkung und Prüfung {#sec-appendix-b .appendix}
 
+| Name                           | Organisation                                            |
+|:-------------------------------|:--------------------------------------------------------|
+| Jaquelino Barbosa              | Qualitas AG                                             |
+| Florian Frauchiger             | eOperations Schweiz AG                                  |
+| Daniela Hadorn Schneider       | Bundesamt für Lebensmittelsicherheit und Veterinärwesen |
+| David Joller                   | Identitas AG                                            |
+| Christoph Keller               | Kanton Bern                                             |
+| Damian Oswald                  | Bundesamt für Landwirtschaft                            |
+| Matthieu Perthuis              | GS1 Switzerland                                         |
+| Sara Schärrer                  | Bundesamt für Lebensmittelsicherheit und Veterinärwesen |
+| Domenic Schneider              | GS1 Switzerland                                         |
+| Heinzpeter Schwermer           | Bundesamt für Lebensmittelsicherheit und Veterinärwesen |
+| Lea Stauber                    | Bundesamt für Landwirtschaft                            |
+| Christian Wilda                | Bundesamt für Landwirtschaft                            |
+
+: Autoren und Revision {#tbl-authors tbl-colwidths="[50,50]"}
+
 # Anhang C - Abkürzungen und Glossar {#sec-appendix-c .appendix}
 
 {{< include glossary.md >}}
@@ -106,6 +123,12 @@ Beim Bewegungstyp führt die Schnittstelle die Bewegungstypen je Nutztierart in 
 
 # Anhang E - Änderungen gegenüber der Vorversion {#sec-appendix-e .appendix}
 
+Die Version {{< meta ech.version >}} ist die erste Version dieses Hilfsmittels. Es gibt daher keine Vorversion und keine Änderungen gegenüber einer solchen. Künftige Änderungen je Version werden in den [Releases auf GitHub](https://github.com/blw-ofag-ufag/eCH-0309/releases) festgehalten.
+
 # Anhang F - Abbildungsverzeichnis {#sec-appendix-f .appendix}
 
+{{< ech figures >}}
+
 # Anhang G - Tabellenverzeichnis {#sec-appendix-g .appendix}
+
+{{< ech tables >}}

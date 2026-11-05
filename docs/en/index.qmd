@@ -1,5 +1,5 @@
 ---
-title: "Auxiliary document: animal movement data"
+title: Animal movement data
 abstract: This document describes the data of the animal movement database (TVD) semantically, so that specialists without in-depth IT knowledge can also gain a better understanding of the data.
 date: today
 date-format: long
@@ -32,11 +32,11 @@ The TVD is part of a system landscape spanning agriculture, veterinary affairs a
 
 <!-- Abbildung «Systemlandschaft und Datenflüsse» wird nachgeliefert. -->
 
-The Ordinance on Identitas AG and the animal movement database [@IdTVD-V] (IdTVD-V) further sets out the content relating to animal movements, the tasks of Identitas AG and the rights of access to the data. The importance of identifying/marking farm animals goes far beyond the subject of animal disease and therefore also found its way into agricultural legislation [@LwG] (Agriculture Act LwG, Articles 165g, 177 and 185) and various associated ordinances. The animal movement data have become an indispensable component in implementing agricultural policy measures, for example animal-related direct payments [@DZV, Title 2, Chapter 5, Sections 7–9], the determination of nutrient flows or agri-environmental monitoring [@blw-agrarumweltmonitoring]. The data also serve as a basis for the structural survey of Swiss agriculture [@bfs-stru] and for agricultural statistics in general [@sbv-agristat].
+The Ordinance on Identitas AG and the animal movement database [@IdTVD-V] further sets out the content relating to animal movements, the tasks of Identitas AG and the rights of access to the data. The importance of identifying/marking farm animals goes far beyond the subject of animal disease and therefore also found its way into agricultural legislation [@LwG] (Agriculture Act LwG, Articles 165g, 177 and 185) and various associated ordinances. The animal movement data have become an indispensable component in implementing agricultural policy measures, for example animal-related direct payments [@DZV, Title 2, Chapter 5, Sections 7–9], the determination of nutrient flows or agri-environmental monitoring [@blw-agrarumweltmonitoring]. The data also serve as a basis for the structural survey of Swiss agriculture [@bfs-stru] and for agricultural statistics in general [@sbv-agristat].
 
 Animal movement reporting quickly became established along the entire food value chain as well. Programmes with animal welfare, traceability and origin commitments rely on it [@proviande-herkunft; @identitas-labelbase]. The variety of animal information from animal movement reporting is also reflected in the publicly available datasets of the Tierstatistik open data platform [@identitas-tierstatistik].
 
-The technical interface description in this document is based on the technical service description AnimalTracing v1.32 and on the openAPI specification v. x.xx.
+The technical interface description in this document is based on the technical service description AnimalTracing v1.32 and on the openAPI specification v1.0 [@animaltracing-openapi].
 
 ## References {#sec-references}
 
@@ -92,6 +92,23 @@ These provisions shall apply to the standards prepared by eCH only, however, not
 
 # Annex B - Cooperation and Verification {#sec-appendix-b .appendix}
 
+| Name                     | Organisation                              |
+|:-------------------------|:------------------------------------------|
+| Jaquelino Barbosa        | Qualitas AG                               |
+| Florian Frauchiger       | eOperations Schweiz AG                    |
+| Daniela Hadorn Schneider | Federal Food Safety and Veterinary Office |
+| David Joller             | Identitas AG                              |
+| Christoph Keller         | Canton of Bern                            |
+| Damian Oswald            | Federal Office for Agriculture            |
+| Matthieu Perthuis        | GS1 Switzerland                           |
+| Sara Schärrer            | Federal Food Safety and Veterinary Office |
+| Domenic Schneider        | GS1 Switzerland                           |
+| Heinzpeter Schwermer     | Federal Food Safety and Veterinary Office |
+| Lea Stauber              | Federal Office for Agriculture            |
+| Christian Wilda          | Federal Office for Agriculture            |
+
+: Authors and review {#tbl-authors tbl-colwidths="[50,50]"}
+
 # Annex C - Abbreviations and Glossary {#sec-appendix-c .appendix}
 
 {{< include glossary.md >}}
@@ -106,6 +123,12 @@ For notification type, the interface holds the notification types per livestock 
 
 # Annex E - Changes in comparison to previous version {#sec-appendix-e .appendix}
 
+Version {{< meta ech.version >}} is the first version of this document. There is therefore no previous version and no changes to report. Future changes per version will be recorded in the [releases on GitHub](https://github.com/blw-ofag-ufag/eCH-0309/releases).
+
 # Annex F - Table of figures {#sec-appendix-f .appendix}
 
+{{< ech figures >}}
+
 # Annex G - Table of tables {#sec-appendix-g .appendix}
+
+{{< ech tables >}}

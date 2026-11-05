@@ -14,6 +14,7 @@
 # ==============================================================================
 
 @prefix :              <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix eCH-0261:      <http://www.ech.ch/xmlns/ech-0261/1/> .
 @prefix xsd:           <http://www.w3.org/2001/XMLSchema#> .
 @prefix animalkeeper:  <https://agriculture.ld.admin.ch/eCH-0309/1/animalkeeper/> .
 @prefix localunit:     <https://agriculture.ld.admin.ch/eCH-0309/1/localunit/> .
@@ -28,15 +29,15 @@
 @prefix equidwithersclass: <https://agriculture.ld.admin.ch/eCH-0309/1/equidwithersclass/> .
 
 # A keeper with two holdings. The keeper satisfies the sh:sparql constraint on
-# :AnimalKeeperShape only because at least one local unit points back at it.
+# :AnimalKeeper only because at least one local unit points back at it.
 animalkeeper:1 a :AnimalKeeper .
 
-localunit:1 a :LocalUnit ;
+localunit:1 a eCH-0261:LocalUnit ;
     :animalKeeper animalkeeper:1 ;
     :bvdState "BvdFree" ;
     :footRotState "Free" .
 
-localunit:2 a :LocalUnit ;
+localunit:2 a eCH-0261:LocalUnit ;
     :animalKeeper animalkeeper:1 .
 
 # Three ruminants plus two equids.
@@ -62,7 +63,7 @@ animal:3 a :Ruminant ;
 
 # The equid's owner is a plain legal unit: chapter 3.1.1 makes the owner, not
 # the keeper, responsible for reporting equids.
-legalunit:1 a :LegalUnit .
+legalunit:1 a eCH-0261:LegalUnit .
 
 animal:4 a :Equid ;
     :identifier "CH000000000004" ;
@@ -72,9 +73,9 @@ animal:4 a :Equid ;
     :withersClass equidwithersclass:GreaterThan148cm ;
     :owner legalunit:1 .
 
-# Two load-bearing assertions. :owner requires sh:class :LegalUnit, but
+# Two load-bearing assertions. :owner requires sh:class eCH-0261:LegalUnit, but
 # animalkeeper:1 is typed :AnimalKeeper only; this conforms only as long as
-# :AnimalKeeper rdfs:subClassOf :LegalUnit is in scope. :mother requires
+# :AnimalKeeper rdfs:subClassOf eCH-0261:LegalUnit is in scope. :mother requires
 # sh:class :Animal, but animal:4 is typed :Equid only; sh:class traverses
 # rdfs:subClassOf*, so this conforms only as long as :Equid rdfs:subClassOf
 # :Animal is in scope -- it breaks the moment the specialization is dropped

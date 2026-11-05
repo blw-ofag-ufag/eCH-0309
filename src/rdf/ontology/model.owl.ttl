@@ -1,4 +1,5 @@
 @prefix : <https://agriculture.ld.admin.ch/eCH-0309/1/> .
+@prefix eCH-0261: <http://www.ech.ch/xmlns/ech-0261/1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -8,12 +9,12 @@
 # CLASSES
 # ==============================================================================
 
-:LegalUnit a owl:Class .
+eCH-0261:LegalUnit a owl:Class .
 
 :AnimalKeeper a owl:Class ;
-    rdfs:subClassOf :LegalUnit .
+    rdfs:subClassOf eCH-0261:LegalUnit .
 
-:LocalUnit a owl:Class .
+eCH-0261:LocalUnit a owl:Class .
 
 :Animal a owl:Class .
 
@@ -26,7 +27,6 @@
 :AnimalNotification a owl:Class .
 
 :GroupNotification a owl:Class .
-
 
 # ==============================================================================
 # OBJECT PROPERTIES
